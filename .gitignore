@@ -1,0 +1,60 @@
+# =========================
+# Various
+# =========================
+node_modules
+bower_components
+.sass-cache
+
+# =========================
+# VIM Temp Files
+# =========================
+*~
+*.swp
+
+# =========================
+# WordPress 
+# =========================
+httpdocs/style.css
+httpdocs/*.log
+httpdocs/.htaccess
+httpdocs/sitemap.xml
+httpdocs/sitemap.xml.gz
+httpdocs/*.php
+httpdocs/wp-content/advanced-cache.php
+httpdocs/wp-content/backup-db/
+httpdocs/wp-content/backups/
+httpdocs/wp-content/blogs.dir/
+httpdocs/wp-content/cache/
+httpdocs/wp-content/*.php
+httpdocs/wp-content/upgrade/
+httpdocs/wp-content/uploads/
+httpdocs/wp-content/plugins/
+httpdocs/wp-content/mu-plugins/
+httpdocs/wp-content/themes/*.php
+httpdocs/wp-content/languages/
+httpdocs/wp-content/wp-cache-config.php
+httpdocs/wp-admin/
+httpdocs/wp-includes/
+
+# =========================
+# Operating System Files
+# =========================
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
