@@ -32,11 +32,15 @@ jQuery( document ).ready( function( $ ) {
 });
 
 /*
- * Headroom.js
- *
- */
+===============================================
+		
+		Headroom.js  
+	
+===============================================
+*/		
 
-jQuery( document ).ready( function( $ ) {
+jQuery( document ).ready( function( $ ) { // Wrap all scripts in this
+
 
 // grab an element
 var myElement = document.querySelector(".site-header");
@@ -59,6 +63,8 @@ headroom.init();
 
 });
 
+}); // Wrap all scripts in this
+
 /*
 ===============================================
 		
@@ -69,25 +75,24 @@ headroom.init();
 
 jQuery( document ).ready( function( $ ) { // Wrap all scripts in this
 	
-	// Script
 	$(document).ready(function(){
-    // Target your .container, .wrapper, .post, etc.
     $("#content").fitVids();
   });
 
-}); // Wrap all scripts in thi
+}); // Wrap all scripts in this
 
 
-})(jQuery);
 
-jQuery(document).ready(function($) { // Wrap all scripts in this
 
 /*
+=====================================================
+		
+		Masonry.js
 	
-	Masonry
-	
-*/
+=====================================================
+*/	
 
+jQuery(document).ready(function($) { // Wrap all scripts in this
 
 		// initialize Masonry
 
@@ -106,14 +111,18 @@ jQuery(document).ready(function($) { // Wrap all scripts in this
 
 		
 
-/*
-	
-	Sources:
-		http://web.admcomputing.co.uk/masonry/sample-page/
-		http://masonry.desandro.com/appendix.html
-	
-*/
 }); // end Wrap all scripts in this
+
+
+/*
+=====================================================
+		
+		Responsive-nav.js
+	
+=====================================================
+*/
+
+jQuery(document).ready(function($) { // Wrap all scripts in this
 
 	var navigation = responsiveNav(".nav-collapse", {
 			animate: true,                    // Boolean: Use CSS3 transitions, true or false
@@ -131,6 +140,8 @@ jQuery(document).ready(function($) { // Wrap all scripts in this
 			open: function(){},               // Function: Open callback
 			close: function(){}               // Function: Close callback
 		});
+
+}); // end Wrap all scripts in this
 
 /*
 =====================================================

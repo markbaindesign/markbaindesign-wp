@@ -5,11 +5,12 @@
     max-height: 0;
     position: absolute;
     display: block;
-    overflow: hidden;
+    overflow: hidden; // hides menu until toggle is clicked
     zoom: 1;
     clear: both;
 		@include breakpoint(tablet) {
- 			padding-top: 1em;
+ 			overflow: visible; // allow dropdowns to overflow nav
+			padding-top: 1em;
 			padding-bottom: 1em;
 			width: 70.0%;
 				float: right;

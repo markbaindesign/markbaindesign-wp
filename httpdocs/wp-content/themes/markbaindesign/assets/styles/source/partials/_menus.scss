@@ -23,6 +23,28 @@ ul.menu {
 		@include breakpoint(tablet) {
 			display: inline-block;
 		}
+
+		ul { // Sub-menus
+			left: 0;
+			width: 150px;
+			display: none; // Hide sub-menus
+			visibility: hidden; // Hide sub-menus
+			position: absolute; // Overlay other content
+			opacity: 0;
+			padding-bottom: 0; 
+			li {
+				padding: 3px 3px;
+				width: 100%;
+				text-align: left;
+			}
+		}
+		&:hover > ul { 
+			display: block; // Sub-menus appear on hover
+			opacity: 1;
+			visibility: visible;
+			background: darken( $menu-base-color, 5%);
+			@include transition(all, 0.3s, ease-in-out);
+		}
 	}
 	a {
 		display: block;
