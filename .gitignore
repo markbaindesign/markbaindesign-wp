@@ -23,7 +23,6 @@ httpdocs/*.php
 httpdocs/wp-content/advanced-cache.php
 httpdocs/wp-content/backup-db/
 httpdocs/wp-content/backups/
-httpdocs/wp-content/blogs.dir/
 httpdocs/wp-content/cache/
 httpdocs/wp-content/*.php
 httpdocs/wp-content/upgrade/

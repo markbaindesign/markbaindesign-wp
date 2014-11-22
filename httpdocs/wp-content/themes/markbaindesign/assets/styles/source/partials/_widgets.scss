@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Widgets
+   ========================================================================== */
+
+.widget-area {
+	background: darken($base-color-alt, 3%);
+	color: $text-color-alt;
+}
+
+.widget {
+	background: rgba(0,0,0,.05);
+	margin: 0 0 1.5em;
+}
+
+/* Align widget lists by bullets */
+.widget ul {
+	padding: 0 0 0 23px;
+}
+
+
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Search widget */
+.widget_search .search-submit {
+	display: none;
+}

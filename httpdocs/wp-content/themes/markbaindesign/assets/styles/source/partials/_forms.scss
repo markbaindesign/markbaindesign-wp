@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+form {
+	@include clearfix;
+	&.search-form {
+		@extend .textblock;
+		i {
+			color: $mid-grey;
+    		display: none;
+			width: auto;
+		}
+	}
+	&.wpcf7-form {
+		p {
+			@include clearfix;
+		}
+	}
+}
+
+input, textarea {
+	color: $mid-grey;
+	background: $white;
+	padding: $block-padding;
+	margin: 10px 0 5px 0;
+	border: 1px solid $light-grey;
+	width: 100%;
+	&[type=submit] {
+		@include button;    	
+		display: table-cell
+	}
+}
+
+input {
+	&[type=search] {
+    	display: table-cell;
+		color: $mid-grey;
+		background: rgba(0,0,0,.1);
+   	border-width: 0;
+    	width: 100%;
+    	padding: $block-padding;
+	}
+}

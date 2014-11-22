@@ -1,0 +1,66 @@
+/*!
+Theme Name: MBd Longneck
+Description: A Mobile-first theme for me by me.
+Author: Mark Bain
+Author URI: http://markbaindesign.com/
+Version: 1.5
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: _mbdlongneck
+Domain Path: /languages/
+Tags:
+
+ _mbbasetheme is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+
+*/
+
+// Reset, Variables, Mixins, Etc
+// DO NOT EDIT ORDER OF FILES
+@import "partials/color-me-sass";
+@import "partials/mixins";
+@import "partials/variables";
+@import "partials/normalize";
+
+// Bower Components
+@import "../../../bower_components/singularity/stylesheets/singularitygs";
+
+// Globals
+@import "partials/h5bp-global";
+@import "partials/general";
+// @import "partials/grid";
+@import "partials/webfonts";
+
+// Layout
+@import "partials/layout";
+@import "partials/header";
+@import "partials/footer";
+
+// Modules
+@import "partials/hero";
+@import "partials/showcase";
+@import "partials/featured-content";
+
+// Menus, Page and Post styles
+@import "partials/menus";
+@import "partials/responsive-nav";
+@import "partials/page-post";
+
+// Page Templates
+// @import "partials/page-home";
+// @import "partials/page-blog";
+
+// Widgets, Search, Comments, Forms, Sharing
+@import "partials/widgets";
+@import "partials/forms";
+
+// WordPress
+@import "wp/wp"; // WP-generated classes
+@import "wp/widgets";
+@import "wp/comments";
+@import "wp/plugins/wp-contact";
+@import "wp/plugins/wp-paginate";
+
+// Helper Classes, Print, Etc
+@import "partials/helpers";
+@import "partials/print";
+@import "partials/animate";

@@ -1,0 +1,121 @@
+.hero {
+	@include clearfix;
+	padding: 1em 0;
+	position: relative;
+	@include breakpoint( tablet ) {
+		padding: 2em 0;
+	}
+
+	.hero-image {
+		@include breakpoint( tablet ) {
+			float: right;
+			width: 45%;
+			margin-left: 10%;
+		}
+	}
+	.hero-text {
+		padding-top: 1em;
+		@include breakpoint( tablet ) {
+			padding-top: 0;
+			width: 45%;
+			float: left;
+		}
+		h1 {
+			@extend h3;
+		}
+	}
+	picture {
+		@include breakpoint( tablet ) {
+			display: none;
+		}
+	}
+}
+
+
+.hero-header {
+	position: relative;
+	color: $black;
+	text-align: center;
+
+	@include breakpoint(tablet) {
+		color: $white;
+		text-align: left;
+background: url('assets/images/hero.jpg') no-repeat bottom center;
+-moz-background-size: cover;
+-webkit-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+	}
+	a {
+		display: block;
+		width: 100%;
+		&.cta-primary {
+			@include cta-primary;
+			margin: 0 0 1em 0;
+			@include breakpoint(tablet) {
+				margin: 0 20px 0 0;
+			}
+		}
+		&.cta-secondary {
+			@include cta-secondary;
+		}
+	}
+
+	.hero-cta {
+		@include clearfix;
+		div {
+			width: 100%;
+			@include breakpoint(mobile){
+				display: inline-block;
+				width: auto;
+			}
+		}	
+	}
+}
+
+// Modifications to the basic hero module for the home page
+
+.home .hero {
+	padding: 0;
+
+	// Headers & typography
+
+	h1, h3 {
+		@include breakpoint( tablet ) {
+			color: $white;
+		}
+	}
+
+	h1 {
+		padding: 30px 0 30px;
+
+		@include breakpoint( tablet ) {
+			font-size: 4em;
+			padding: 60px 0 30px;	
+		}
+		@include breakpoint( tablet-horizontal ) {
+			font-size: 5em;
+		}
+		@include breakpoint( desktop ) {
+			font-size: 6em;
+		}
+		@include breakpoint( desktop-wide ) {
+			font-size: 7em;
+
+		}
+	}
+
+	.hero-cta {
+				a {
+					padding: 1em; // Extra pad for bigness!
+				}
+		@include clearfix;
+		@include breakpoint(mobile-horizontal){
+			margin-bottom: 1em;
+		}
+		@include breakpoint(tablet){
+			margin-bottom: 2em;
+		}
+
+	}
+}

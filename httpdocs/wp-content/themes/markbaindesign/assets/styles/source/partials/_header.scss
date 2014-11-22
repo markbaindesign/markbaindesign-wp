@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+
+	z-index: 2; /* Fixed header needs to be above all else */
+	width: 100%;
+	position: relative;
+	padding: 0 3%;
+	line-height: 1;
+	background: $white;
+	border-bottom: 1px solid $light-grey;
+	// padding-bottom: 0;
+	text-transform: uppercase;
+
+	a {
+		display: block;
+		color: $mid-grey;
+		text-decoration: none;
+		&#logo-link {
+			/* width: 20%; */
+			float: left;
+		}
+	}
+
+	.branding {
+			@include clearfix;
+			padding-top: 1em;
+			padding-bottom: 1em;
+			position: relative; /* Allow absolute positioning */
+
+			@include breakpoint(tablet) {
+				width: 30%;	
+				float: left;		
+			}
+	}
+
+	@include clearfix;
+	@include breakpoint(tablet) {
+		padding: 0 3%;
+		position: fixed;
+		height: auto;
+	}
+
+}
+
+/* Headroom.js */
+
+.js .headroom--top {
+}	
+
+h1#site-title {
+	font-size: 1em;
+	margin: 0;
+}
