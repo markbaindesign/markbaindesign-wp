@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         			"devFile" : "assets/bower_components/modernizr/modernizr.js",
 
         			// Path to save out the built file.
-        			"outputFile" : "httpdocs/wp-content/assets/js/modernizr-custom.js",
+        			"outputFile" : "httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js",
 		    	}
 
 			},
