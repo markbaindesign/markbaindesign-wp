@@ -9,7 +9,7 @@ For exclusive use on http://markbaindesign.com
 
 Setup
 ---
-* Open project directory in terminal and run `npm install`
+* Open project directory in terminal and run `npm install` to install all grunt plugins
 * Run `bower install` to download Bower components (and their dependencies) as listed in bower.js
 
 Usage
