@@ -1,6 +1,6 @@
 {
   "name": "markbaindesign-wp",
-  "version": "0.2.0",
+  "version": "0.4.3",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.7.2",
@@ -12,12 +12,12 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-copy": "~0.7.0",
     "grunt-version": "~0.3.0",
-    "grunt-contrib-bump": "~0.1.0",
     "grunt-contrib-compress": "~0.12.0",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-notify": "~0.3.1",
     "load-grunt-tasks": "~0.4.0",
     "grunt-bower-task": "~0.4.0",
+    "grunt-modernizr": "^0.6.0",
     "grunt-bump": "0.0.16"
   }
 }

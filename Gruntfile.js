@@ -38,6 +38,18 @@ module.exports = function(grunt) {
 				}
   			},
 
+			// Modernizr
+			modernizr: {
+    			dist: {
+        			// [REQUIRED] Path to the build you're using for development.
+        			"devFile" : "assets/bower_components/modernizr/modernizr.js",
+
+        			// Path to save out the built file.
+        			"outputFile" : "httpdocs/wp-content/assets/js/modernizr-custom.js",
+		    	}
+
+			},
+
         // sass
         sass: {
             dist: {
@@ -60,24 +72,32 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build/*.css',
-                dest: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build'
+                src: 'httpdocs/wp-content/themes/markbaindesign/style.css',
+                dest: 'httpdocs/wp-content/themes/markbaindesign/style.css'
             },
         },
 
-        // css minify
-        cssmin: {
-            options: {
-                keepSpecialComments: 1
-            },
-            minify: {
-                expand: true,
-                cwd: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build',
-                src: ['*.css', '!*.min.css'],
-					 dest: 'httpdocs/wp-content/themes/markbaindesign',
-                ext: '.css'
-            }
-        },
+		  bump: {
+    			options: {
+
+      updateConfigs: [],
+      commit: false,
+      createTag: false,
+      push: false,
+
+    }
+  },
+
+		 // Version
+		 version: {
+		 	css: {
+        		options: {
+            	prefix: 'Version\\:\\s'
+        		},
+        		src: [ 'httpdocs/wp-content/themes/markbaindesign/style.css' ],
+   		}
+		},
+
 
         // javascript linting with jshint
         jshint: {
@@ -91,54 +111,7 @@ module.exports = function(grunt) {
             ]
         },
 
-        // uglify to concat, minify, and make source maps
-        uglify: {
-            plugins: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/plugins.js.map',
-                    sourceMappingURL: 'plugins.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/plugins.min.js': [
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/responsive-nav.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/slider.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.sticky-kit.min.js',								
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.easing.1.3.min.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.flexslider.js',
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.jcontent.0.8.js',
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/twitterFetcher.js',
-		 						'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.milk.js',                       
-		 						// 'httpdocs/wp-content/themes/varee/assets/js/vendor/yourplugin/yourplugin.js',
-                    ]
-                }
-            },
-            main: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/main.js.map',
-                    sourceMappingURL: 'main.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/main.min.js': [
-                        'httpdocs/wp-content/themes/varee/assets/js/source/main.js'
-                    ]
-                }
-            },
-            portfolio: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/portfolio.js.map',
-                    sourceMappingURL: 'portfolio.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/portfolio.min.js': [
-                        'httpdocs/wp-content/themes/varee/assets/js/source/portfolio.js'
-                    ]
-                }
-            }
-				
-        },
+
 
         // image optimization
         imagemin: {
@@ -150,9 +123,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'httpdocs/wp-content/themes/varee/assets/images/',
+                    cwd: 'httpdocs/wp-content/themes/markbaindesign/assets/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'httpdocs/wp-content/themes/varee/assets/images/'
+                    dest: 'httpdocs/wp-content/themes/markbaindesign/assets/images/'
                 }]
             }
         },
@@ -196,11 +169,16 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 	 	'sass', 
-		'autoprefixer', 
+		'modernizr',
+		// 'autoprefixer',
+		'jshint',
 		'watch'
 	]);
 
 	grunt.registerTask('build', [
+		'build',
+		'bump',
+		'version',
 		'copy', 
 		'compress',
 		'clean'
