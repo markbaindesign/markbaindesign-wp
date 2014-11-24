@@ -15,4 +15,6 @@ Setup
 Usage
 ---
 * Run `grunt` to execute default tasks
+* Run `grunt imagemin`to minify images
 * Run `grunt build` to output build files
+* Load all styles/scripts via `functions.php`and concat/uglify with a plugin
