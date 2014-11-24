@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt); // no need for grunt.loadNpmTasks!
 
     grunt.initConfig({
-
+			pkg:    grunt.file.readJSON( 'package.json' ),
         // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
@@ -157,6 +157,39 @@ module.exports = function(grunt) {
             }
         },
 
+		  // Copy the plugin to a versioned release directory
+		  copy: {
+			main: {
+				files:  [
+					// includes files within path and its sub-directories
+      			{expand: true, 
+					cwd: 'httpdocs/wp-content/themes/markbaindesign/',
+					src: [
+						'**',
+						'!style.css.map'
+					], 
+					dest: 'release/<%= pkg.name %>.<%= pkg.version %>/'},
+					],
+			},		
+		},
+
+		clean: {
+			main: ['release/<%= pkg.name %>.<%= pkg.version %>']
+		},
+
+		compress: {
+			main: {
+				options: {
+					mode: 'zip',
+					archive: 'release/<%= pkg.name %>.<%= pkg.version %>.zip'
+				},
+				expand: true,
+				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>',
+				src: ['**/*'],
+				dest: '<%= pkg.name %>/'
+			}		
+		}
+
     });
 
     // register tasks
@@ -168,8 +201,11 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'cssmin', 
-		'uglify'
+		'copy', 
+		'compress',
+		'clean'
 	]);
+
+	
 
 };
