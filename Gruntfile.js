@@ -1,15 +1,15 @@
 'use strict';
 module.exports = function(grunt) {
 
-    // load all grunt tasks matching the `grunt-*` pattern
-    require('load-grunt-tasks')(grunt);
+    // auto-load all grunt tasks matching the `grunt-*` pattern in package.json
+    require('load-grunt-tasks')(grunt); // no need for grunt.loadNpmTasks!
 
     grunt.initConfig({
 
         // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-                files: ['sass/**/*.{scss,sass}'],
+                files: ['assets/sass/**/*.{scss,sass}'],
                 tasks: ['sass', 'autoprefixer', 'cssmin']
             },
             js: {
@@ -19,10 +19,10 @@ module.exports = function(grunt) {
             livereload: {
                 options: { livereload: true },
                 files: [ 
-					 	'httpdocs/wp-content/themes/varee/*.php', 
-						'httpdocs/wp-content/themes/varee/lib/**/*.php', 
-						'httpdocs/wp-content/themes/varee/assets/js/*.js', 
-						'httpdocs/wp-content/themes/varee/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+					 	'httpdocs/wp-content/themes/markbaindesign/*.php', 
+						'httpdocs/wp-content/themes/markbaindesign/lib/**/*.php', 
+						'assets/js/*.js', 
+						'httpdocs/wp-content/themes/markbaindesign/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 			
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 		  	bower: {
     			install: {	//just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
 					options: { 
-						targetDir: '../httpdocs/wp-content/themes/varee/bower_components' 
+						targetDir: 'httpdocs/wp-content/themes/varee/bower_components' 
 					}
 				}
   			},
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/varee/assets/styles/build/style.css': 'sass/style.scss',
+                    'httpdocs/wp-content/themes/markbaindesign/assets/styles/build/style.css': 'assets/sass/style.scss',
                 }
             }
         },
@@ -58,8 +58,8 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/varee/assets/styles/build/*.css',
-                dest: 'httpdocs/wp-content/themes/varee/assets/styles/build'
+                src: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build/*.css',
+                dest: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build'
             },
         },
 
@@ -70,9 +70,9 @@ module.exports = function(grunt) {
             },
             minify: {
                 expand: true,
-                cwd: 'httpdocs/wp-content/themes/varee/assets/styles/build',
+                cwd: 'httpdocs/wp-content/themes/markbaindesign/assets/styles/build',
                 src: ['*.css', '!*.min.css'],
-					 dest: 'httpdocs/wp-content/themes/varee',
+					 dest: 'httpdocs/wp-content/themes/markbaindesign',
                 ext: '.css'
             }
         },
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'httpdocs/wp-content/themes/varee/assets/js/source/**/*.js'
+                'assets/js/source/**/*.js'
             ]
         },
 
@@ -155,37 +155,21 @@ module.exports = function(grunt) {
             }
         },
 
-        // deploy via rsync
-        deploy: {
-            options: {
-                src: "./",
-                args: ["--verbose"],
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
-                recursive: true,
-                syncDestIgnoreExcl: true
-            },
-            staging: {
-                 options: {
-                    dest: "~/path/to/theme",
-                    host: "user@host.com"
-                }
-            },
-            production: {
-                options: {
-                    dest: "~/path/to/theme",
-                    host: "user@host.com"
-                }
-            }
-        }
-
     });
 
-    // rename tasks
-    grunt.renameTask('rsync', 'deploy');
+    // register tasks
 
-    // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'watch']);
-	 grunt.loadNpmTasks('grunt-notify'); 
-	 grunt.loadNpmTasks('grunt-bower-task');
+    grunt.registerTask('default', [
+	 	'sass', 
+		'autoprefixer', 
+		'cssmin', 
+		'uglify', 
+		'watch'
+	]);
+
+	grunt.registerTask('build', [
+		'cssmin', 
+		'uglify'
+	]);
 
 };

@@ -1,6 +1,6 @@
 {
-  "name": "varee",
-  "version": "1.0.0",
+  "name": "markbaindesign-wp",
+  "version": "0.0.0",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.7.2",
@@ -10,7 +10,6 @@
     "grunt-contrib-sass": "~0.7.3",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-rsync": "~0.5.0",
 	 "grunt-notify": "~0.3.1",
     "load-grunt-tasks": "~0.4.0",
     "grunt-bower-task": "~0.4.0"	 
