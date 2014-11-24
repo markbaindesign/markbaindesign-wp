@@ -176,7 +176,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'build',
+		'default',
 		'bump',
 		'version',
 		'copy', 
