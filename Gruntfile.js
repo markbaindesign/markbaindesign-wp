@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/markbaindesign/style.css': 'assets/sass/style.scss',
+                    'httpdocs/wp-content/themes/markbaindesign/assets/css/style.css': 'assets/sass/style.scss',
                 }
             }
         },
@@ -72,8 +72,8 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/markbaindesign/style.css',
-                dest: 'httpdocs/wp-content/themes/markbaindesign/style.css'
+                src: 'httpdocs/wp-content/themes/markbaindesign/assets/css/style.css',
+                dest: 'httpdocs/wp-content/themes/markbaindesign'
             },
         },
 
@@ -169,18 +169,18 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
 	 	'sass', 
 		'modernizr',
-		// 'autoprefixer',
+		'autoprefixer',
 		'jshint',
 		'watch'
 	]);
 
 	grunt.registerTask('build', [
-		'default',
 		'bump',
 		'version',
 		'copy', 
 		'compress',
-		'clean'
+		'clean',
+		'watch'
 	]);
 
 	
