@@ -21,6 +21,7 @@ module.exports = function(grunt) {
                 files: [ 
 					 	'httpdocs/wp-content/themes/markbaindesign/*.php', 
 						'httpdocs/wp-content/themes/markbaindesign/lib/**/*.php', 
+						'assets/sass/**/*.{scss,sass}',
 						'assets/js/*.js', 
 						'httpdocs/wp-content/themes/markbaindesign/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
