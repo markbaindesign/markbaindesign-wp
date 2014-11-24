@@ -63,3 +63,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js
+httpdocs/wp-content/themes/markbaindesign/style.css
+*.map
