@@ -9,6 +9,7 @@ For exclusive use on http://markbaindesign.com
 
 Use
 ---
--Open project directory in terminal and run `npm install`
+* Open project directory in terminal and run `npm install`
+* 
 -Run <pre>grunt</pre> to execute default tasks
 -Run <pre>grunt build</pre> to output build files
