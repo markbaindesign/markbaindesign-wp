@@ -81,7 +81,6 @@ module.exports = function(grunt) {
     			options: {
 
       updateConfigs: [],
-      commit: false,
       createTag: false,
       push: false,
 
