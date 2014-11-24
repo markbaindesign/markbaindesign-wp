@@ -1,6 +1,6 @@
 {
   "name": "markbaindesign-wp",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.7.2",
