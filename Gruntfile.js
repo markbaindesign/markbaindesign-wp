@@ -10,11 +10,11 @@ module.exports = function(grunt) {
         watch: {
             sass: {
                 files: ['assets/sass/**/*.{scss,sass}'],
-                tasks: ['sass', 'autoprefixer', 'cssmin']
+                tasks: ['sass', 'autoprefixer']
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
+                tasks: ['jshint']
             },
             livereload: {
                 options: { livereload: true },
@@ -31,7 +31,8 @@ module.exports = function(grunt) {
 		  	bower: {
     			install: {	//just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
 					options: { 
-						targetDir: 'httpdocs/wp-content/themes/varee/bower_components' 
+						targetDir: 'assets/bower_components',
+						cleanup: true
 					}
 				}
   			},
@@ -44,7 +45,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/markbaindesign/assets/styles/build/style.css': 'assets/sass/style.scss',
+                    'httpdocs/wp-content/themes/markbaindesign/style.css': 'assets/sass/style.scss',
                 }
             }
         },
@@ -162,8 +163,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
 	 	'sass', 
 		'autoprefixer', 
-		'cssmin', 
-		'uglify', 
 		'watch'
 	]);
 
