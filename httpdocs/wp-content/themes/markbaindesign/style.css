@@ -3,7 +3,7 @@ Theme Name: MBd Longneck
 Description: A Mobile-first theme for me by me.
 Author: Mark Bain
 Author URI: http://markbaindesign.com/
-Version: 1.5
+Version: 2.0
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: _mbdlongneck
@@ -44,10 +44,14 @@ Tags:
  */
 /* Mixin for Call to action buttons */
 /* Buttons */
+/* Transitions */
 /* ==========================================================================
    Variables
    ========================================================================== */
 /* Masonry layouts */
+/* ==========================================================================
+   Colors
+   ========================================================================== */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -1575,6 +1579,31 @@ ul.menu li:last-child a {
     display: inline-block;
   }
 }
+ul.menu li ul {
+  left: 0;
+  width: 150px;
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  padding-bottom: 0;
+}
+ul.menu li ul li {
+  padding: 3px 3px;
+  width: 100%;
+  text-align: left;
+}
+ul.menu li:hover > ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  background: #e3e3e3;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 ul.menu a {
   display: block;
   font-weight: 700;
@@ -1725,6 +1754,7 @@ a#main-menu-toggle.active:before {
 }
 @media (min-width: 768px) {
   .js .nav-collapse {
+    overflow: visible;
     padding-top: 1em;
     padding-bottom: 1em;
     width: 70.0%;
