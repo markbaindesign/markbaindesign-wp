@@ -128,7 +128,6 @@ function mbdmaster324_scripts() {
 		// wp_enqueue_style( 'mbdmaster324-iconmoon-temp', '//i.icomoon.io/public/temp/492d787a8a/UntitledProject2/style.css');
 
 		// Enqueue javascript plugins
-		wp_enqueue_script( 'mbdmaster324-customplugins', get_template_directory_uri() . '/assets/js/plugins.min.js', array(), NULL, true );
 		wp_enqueue_script( 'mbdmaster324-modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-custom.js', array(), NULL, true );
 		wp_enqueue_script( 'mbdmaster324-headroom', get_template_directory_uri() . '/assets/js/vendor/headroom.js', array(), NULL, true );
 		wp_enqueue_script( 'mbdmaster324-responsive-nav', get_template_directory_uri() . '/assets/js/vendor/responsive-nav.js', array(), NULL, true );
