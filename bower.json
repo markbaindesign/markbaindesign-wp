@@ -1,22 +1,23 @@
 {
-  "name": "Project Name",
-  "version": "0.0.0",
+  "name": "markbaindesign-wp",
+  "version": "0.02",
   "authors": [
     "Mark Bain <hello@markbaindesign.com>"
   ],
   "license": "MIT",
   "dependencies": {
     "modernizr": "~2.6.2",
-	 "singularity": ">=1.4.0",
-	 "fontawesome": ">=4.2.0"
-
+    "singularity": ">=1.4.0",
+    "fontawesome": ">=4.2.0"
   },
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  wer.json
+  "homepage": "https://github.com/markbaindesign/markbaindesign-wp",
+  "description": "My WordPress theme"
 }

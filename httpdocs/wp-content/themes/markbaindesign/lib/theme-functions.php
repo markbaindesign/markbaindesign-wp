@@ -110,9 +110,7 @@ function mbdmaster324_scripts() {
 	// Load the main stylesheet
 	wp_enqueue_style( 'mbdmaster324-style', get_stylesheet_directory_uri() . '/style.css' );
 
-	// Add conditional IE stylesheet
-	wp_enqueue_style( 'mbdmaster324-style-ie', get_stylesheet_directory_uri() . "/ie.css", array( 'mbdmaster324' )  );
-    $wp_styles->add_data( 'mbdmaster324-style--ie', 'conditional', '(lt IE 9) & (!IEMobile)' );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

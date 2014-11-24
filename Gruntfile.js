@@ -1,28 +1,29 @@
 'use strict';
 module.exports = function(grunt) {
 
-    // load all grunt tasks matching the `grunt-*` pattern
-    require('load-grunt-tasks')(grunt);
+    // auto-load all grunt tasks matching the `grunt-*` pattern in package.json
+    require('load-grunt-tasks')(grunt); // no need for grunt.loadNpmTasks!
 
     grunt.initConfig({
-
+			pkg:    grunt.file.readJSON( 'package.json' ),
         // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-                files: ['sass/**/*.{scss,sass}'],
-                tasks: ['sass', 'autoprefixer', 'cssmin']
+                files: ['assets/sass/**/*.{scss,sass}'],
+                tasks: ['sass', 'autoprefixer']
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
+                tasks: ['jshint']
             },
             livereload: {
                 options: { livereload: true },
                 files: [ 
-					 	'httpdocs/wp-content/themes/varee/*.php', 
-						'httpdocs/wp-content/themes/varee/lib/**/*.php', 
-						'httpdocs/wp-content/themes/varee/assets/js/*.js', 
-						'httpdocs/wp-content/themes/varee/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+					 	'httpdocs/wp-content/themes/markbaindesign/*.php', 
+						'httpdocs/wp-content/themes/markbaindesign/lib/**/*.php', 
+						'assets/sass/**/*.{scss,sass}',
+						'assets/js/*.js', 
+						'httpdocs/wp-content/themes/markbaindesign/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 			
@@ -31,10 +32,23 @@ module.exports = function(grunt) {
 		  	bower: {
     			install: {	//just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
 					options: { 
-						targetDir: '../httpdocs/wp-content/themes/varee/bower_components' 
+						targetDir: 'assets/bower_components',
+						cleanup: true
 					}
 				}
   			},
+
+			// Modernizr
+			modernizr: {
+    			dist: {
+        			// [REQUIRED] Path to the build you're using for development.
+        			"devFile" : "assets/bower_components/modernizr/modernizr.js",
+
+        			// Path to save out the built file.
+        			"outputFile" : "httpdocs/wp-content/assets/js/modernizr-custom.js",
+		    	}
+
+			},
 
         // sass
         sass: {
@@ -44,7 +58,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/varee/assets/styles/build/style.css': 'sass/style.scss',
+                    'httpdocs/wp-content/themes/markbaindesign/style.css': 'assets/sass/style.scss',
                 }
             }
         },
@@ -58,24 +72,32 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/varee/assets/styles/build/*.css',
-                dest: 'httpdocs/wp-content/themes/varee/assets/styles/build'
+                src: 'httpdocs/wp-content/themes/markbaindesign/style.css',
+                dest: 'httpdocs/wp-content/themes/markbaindesign/style.css'
             },
         },
 
-        // css minify
-        cssmin: {
-            options: {
-                keepSpecialComments: 1
-            },
-            minify: {
-                expand: true,
-                cwd: 'httpdocs/wp-content/themes/varee/assets/styles/build',
-                src: ['*.css', '!*.min.css'],
-					 dest: 'httpdocs/wp-content/themes/varee',
-                ext: '.css'
-            }
-        },
+		  bump: {
+    			options: {
+
+      updateConfigs: [],
+      commit: false,
+      createTag: false,
+      push: false,
+
+    }
+  },
+
+		 // Version
+		 version: {
+		 	css: {
+        		options: {
+            	prefix: 'Version\\:\\s'
+        		},
+        		src: [ 'httpdocs/wp-content/themes/markbaindesign/style.css' ],
+   		}
+		},
+
 
         // javascript linting with jshint
         jshint: {
@@ -85,58 +107,11 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'httpdocs/wp-content/themes/varee/assets/js/source/**/*.js'
+                'assets/js/source/**/*.js'
             ]
         },
 
-        // uglify to concat, minify, and make source maps
-        uglify: {
-            plugins: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/plugins.js.map',
-                    sourceMappingURL: 'plugins.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/plugins.min.js': [
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/responsive-nav.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/slider.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.sticky-kit.min.js',								
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.easing.1.3.min.js',
-                       	'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.flexslider.js',
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.jcontent.0.8.js',
-								'httpdocs/wp-content/themes/varee/assets/js/vendor/twitterFetcher.js',
-		 						'httpdocs/wp-content/themes/varee/assets/js/vendor/jquery.milk.js',                       
-		 						// 'httpdocs/wp-content/themes/varee/assets/js/vendor/yourplugin/yourplugin.js',
-                    ]
-                }
-            },
-            main: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/main.js.map',
-                    sourceMappingURL: 'main.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/main.min.js': [
-                        'httpdocs/wp-content/themes/varee/assets/js/source/main.js'
-                    ]
-                }
-            },
-            portfolio: {
-                options: {
-                    sourceMap: 'httpdocs/wp-content/themes/varee/assets/js/portfolio.js.map',
-                    sourceMappingURL: 'portfolio.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'httpdocs/wp-content/themes/varee/assets/js/portfolio.min.js': [
-                        'httpdocs/wp-content/themes/varee/assets/js/source/portfolio.js'
-                    ]
-                }
-            }
-				
-        },
+
 
         // image optimization
         imagemin: {
@@ -148,44 +123,67 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'httpdocs/wp-content/themes/varee/assets/images/',
+                    cwd: 'httpdocs/wp-content/themes/markbaindesign/assets/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'httpdocs/wp-content/themes/varee/assets/images/'
+                    dest: 'httpdocs/wp-content/themes/markbaindesign/assets/images/'
                 }]
             }
         },
 
-        // deploy via rsync
-        deploy: {
-            options: {
-                src: "./",
-                args: ["--verbose"],
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
-                recursive: true,
-                syncDestIgnoreExcl: true
-            },
-            staging: {
-                 options: {
-                    dest: "~/path/to/theme",
-                    host: "user@host.com"
-                }
-            },
-            production: {
-                options: {
-                    dest: "~/path/to/theme",
-                    host: "user@host.com"
-                }
-            }
-        }
+		  // Copy the plugin to a versioned release directory
+		  copy: {
+			main: {
+				files:  [
+					// includes files within path and its sub-directories
+      			{expand: true, 
+					cwd: 'httpdocs/wp-content/themes/markbaindesign/',
+					src: [
+						'**',
+						'!style.css.map'
+					], 
+					dest: 'release/<%= pkg.name %>.<%= pkg.version %>/'},
+					],
+			},		
+		},
+
+		clean: {
+			main: ['release/<%= pkg.name %>.<%= pkg.version %>']
+		},
+
+		compress: {
+			main: {
+				options: {
+					mode: 'zip',
+					archive: 'release/<%= pkg.name %>.<%= pkg.version %>.zip'
+				},
+				expand: true,
+				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>',
+				src: ['**/*'],
+				dest: '<%= pkg.name %>/'
+			}		
+		}
 
     });
 
-    // rename tasks
-    grunt.renameTask('rsync', 'deploy');
+    // register tasks
 
-    // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'watch']);
-	 grunt.loadNpmTasks('grunt-notify'); 
-	 grunt.loadNpmTasks('grunt-bower-task');
+    grunt.registerTask('default', [
+	 	'sass', 
+		'modernizr',
+		// 'autoprefixer',
+		'jshint',
+		'watch'
+	]);
+
+	grunt.registerTask('build', [
+		'build',
+		'bump',
+		'version',
+		'copy', 
+		'compress',
+		'clean'
+	]);
+
+	
 
 };
