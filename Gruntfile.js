@@ -6,12 +6,18 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 			pkg:    grunt.file.readJSON( 'package.json' ),
-        // watch for changes and trigger sass, jshint, uglify and livereload
+        
+		 // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-					options: { sourcemap: true },
+					options: { 
+						// sourcemap: true 
+					},
                 files: ['assets/sass/**/*.{scss,sass}'],
-                tasks: ['sass', 'autoprefixer']
+                tasks: [
+					 	'sass', 
+						// 'autoprefixer'
+					]
             },
             js: {
                 files: '<%= jshint.all %>',
@@ -55,11 +61,11 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: {
-                    //sourcemap: true,
+                    sourcemap: true,
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/markbaindesign/assets/css/style.css': 'assets/sass/style.scss',
+                    'httpdocs/wp-content/themes/markbaindesign/style.css': 'assets/sass/style.scss',
                 }
             }
         },
