@@ -15,6 +15,7 @@ release
 # =========================
 # WordPress 
 # =========================
+#
 httpdocs/wp-content/themes/markbaindesign/style.css
 httpdocs/wp-content/themes/markbaindesign/style.css.map
 httpdocs/wp-content/themes/markbaindesign/assets/css/style.css
@@ -62,3 +63,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js
+httpdocs/wp-content/themes/markbaindesign/style.css
+*.map
