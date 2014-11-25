@@ -50,7 +50,7 @@ ul.menu {
 		display: block;
 		font-weight: 700;
 		letter-spacing: 1px;
-		padding: $block-padding;
+		padding: 1em 15px;
 		text-decoration: none;
 		border-bottom: 1px solid $light-grey;
 		&:hover {
@@ -67,7 +67,7 @@ ul.menu {
 		@include breakpoint(tablet) {
 			display: inline-block;
 			border-bottom: none;
-			padding: 5px 15px;
+			padding: 1.5em 15px;
 			font-size: 13px;
 		}
 	}
