@@ -16,7 +16,7 @@ release
 # WordPress 
 # =========================
 #
-httpdocs/wp-content/themes/markbaindesign/style.css
+style.css
 httpdocs/wp-content/themes/markbaindesign/style.css.map
 httpdocs/wp-content/themes/markbaindesign/assets/css/style.css
 httpdocs/wp-content/themes/markbaindesign/assets/css/style.css.map
