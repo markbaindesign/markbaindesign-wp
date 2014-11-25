@@ -79,7 +79,7 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/markbaindesign/assets/css/style.css',
+                src: 'httpdocs/wp-content/themes/markbaindesign/style.css',
                 dest: 'httpdocs/wp-content/themes/markbaindesign'
             },
         },
@@ -185,6 +185,7 @@ module.exports = function(grunt) {
 		'bump',
 		'version',
 		'copy', 
+		'imagemin',
 		'compress',
 		'clean',
 		'watch'
