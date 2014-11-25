@@ -133,7 +133,7 @@ function mbdmaster324_scripts() {
 		wp_enqueue_script( 'mbdmaster324-responsive-nav', get_template_directory_uri() . '/assets/js/vendor/responsive-nav.js', array(), NULL, true );
 		wp_enqueue_script( 'mbdmaster324-wow', get_template_directory_uri() . '/assets/js/vendor/wow.js', array(), NULL, true );
 		wp_enqueue_script( 'mbdmaster324-fitvids', get_template_directory_uri() . '/assets/js/vendor/jquery.fitvids.js', array(), NULL, true );
-		
+		wp_enqueue_script( 'mbdmaster324-doubletap', get_template_directory_uri() . '/assets/js/vendor/doubletaptogo.js', array(), NULL, true );		
 
 		// Masonry
 		// wp_register_script( 'masonry-latest', 'http://masonry.desandro.com/masonry.pkgd.min.js', array( 'jquery' ), TRUE);

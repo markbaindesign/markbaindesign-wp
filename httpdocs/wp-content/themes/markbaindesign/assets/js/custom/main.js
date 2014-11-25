@@ -176,3 +176,17 @@ jQuery(document).ready(function($) { // Wrap all scripts in this
 	});
 
 });
+
+/*
+=====================================================
+		
+		Responsive drop-down navigation
+	
+=====================================================
+*/
+
+// http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly
+
+jQuery(document).ready(function($) { // Wrap all scripts in this
+	$( 'nav li.menu-item-has-children' ).doubleTapToGo();
+});
