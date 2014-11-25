@@ -1757,7 +1757,6 @@ a#main-menu-toggle.active:before {
   .js .nav-collapse {
     overflow: visible;
     padding-top: 1em;
-    padding-bottom: 1em;
     width: 70.0%;
     float: right;
     position: relative;
