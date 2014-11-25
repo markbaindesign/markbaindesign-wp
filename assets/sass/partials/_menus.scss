@@ -17,32 +17,42 @@ ul.menu {
 
  	li {
 		position: relative;
-		&:last-child a {
-			border-bottom: none;
-		}
+
 		@include breakpoint(tablet) {
 			display: inline-block;
+			&:last-child a {
+				border-bottom: none;
+			}
 		}
 
 		ul { // Sub-menus
-			left: 0;
-			width: 250px;
-			display: none; // Hide sub-menus
-			visibility: hidden; // Hide sub-menus
-			position: absolute; // Overlay other content
-			opacity: 0;
-			padding-bottom: 0; 
+			padding: 0;
+			list-style-type: none;
+			@include breakpoint(tablet){
+				position: absolute;  // Overlay other content 
+				left: 0;
+				width: 250px;
+				display: none; // Hide sub-menus
+				visibility: hidden; // Hide sub-menus
+				opacity: 0;
+				padding-bottom: 0; 
+			} 
 			li {
-				padding: 3px 3px;
 				width: 100%;
-				text-align: left;
+				@include breakpoint( tablet ){
+					text-align: left;
+					padding: 3px 3px;
+				} 
+			}
+			&.sub-menu {
+				background: darken($menu-base-color, 2%);
 			}
 		}
 		&:hover > ul { 
 			display: block; // Sub-menus appear on hover
 			opacity: 1;
 			visibility: visible;
-			background: darken( $menu-base-color, 5%);
+			// background: darken( $menu-base-color, 5%);
 			@include transition(all, 0.3s, ease-in-out);
 		}
 	}
@@ -50,13 +60,13 @@ ul.menu {
 		display: block;
 		font-weight: 700;
 		letter-spacing: 1px;
-		padding: 1em 15px;
+		width: 100%;
+		padding: 1.5em 15px;
 		text-decoration: none;
 		border-bottom: 1px solid $light-grey;
 		&:hover {
-			background: darken($menu-base-color, 2%);
 			@include breakpoint(tablet) {
-				background: none;
+				background: darken($menu-base-color, 2%);
 				color: darken($black, 6%);
 			}		
 		}
@@ -84,8 +94,10 @@ ul.menu {
 
 .menu ul li {
 	 position: relative;
-	 border-bottom: 1px solid darken($menu-base-color, 10%);
-	 border-top: 1px solid lighten($menu-base-color, 2%);
+	 @include breakpoint( tablet ){
+		border-bottom: 1px solid darken($menu-base-color, 10%);
+	 	border-top: 1px solid lighten($menu-base-color, 2%); 
+	 } 
  }
 
  .menu ul li:first-of-type {
