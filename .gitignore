@@ -66,3 +66,6 @@ $RECYCLE.BIN/
 httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js
 httpdocs/wp-content/themes/markbaindesign/style.css
 *.map
+*.map
+httpdocs/wp-content/themes/markbaindesign/style.css
+httpdocs/wp-content/themes/markbaindesign/style.css.map
