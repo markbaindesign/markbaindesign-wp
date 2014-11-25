@@ -169,13 +169,13 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 	 	'sass', 
-		'modernizr',
-		'autoprefixer',
+		'modernizr',		
 		'jshint',
 		'watch'
 	]);
 
 	grunt.registerTask('build', [
+		'autoprefixer',
 		'bump',
 		'version',
 		'copy', 
