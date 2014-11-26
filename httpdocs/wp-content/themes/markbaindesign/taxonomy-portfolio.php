@@ -4,25 +4,15 @@
 		<main id="main" class="site-main" role="main">
 		<div class="section">
 			<div class="container">
+	<?php	if ( have_posts() ) : ?> 
 				<header class="entry-header">
 					<h1 class="entry-title">Work</h1>
+					<h3><?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; ?></h3>
 				</header><!-- .entry-header -->
 			</div>
 		</div>
 	
-	<?php
 
-
-		$args = array(
-			'offset' => 1,
-			'paged' => $paged,
-			'post_type' => 'portfolio_item',
-			'my_special_query' => true	
-		);
-
-		$query = new WP_Query($args);
-
-		if ( $query->have_posts() ) : ?> 
 			<div class="section">
 				<div class="container">
 					<div class="masonrycontainer">
@@ -30,14 +20,13 @@
 						<div class="gutter-sizer"></div>
 		    
 	<?php
-		while( $query->have_posts() ) {  
-			$query->the_post();	  
+		while( have_posts() ) :the_post();	  
 			get_template_part( 'content', 'home' );
-		    } 
 		   
 		    wp_reset_postdata(); 
  
 	?>
+			<?php endwhile; ?>
 				</div><!-- .masonrycontainer -->			
 			</div>
 		</div>
