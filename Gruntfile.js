@@ -26,11 +26,11 @@ module.exports = function(grunt) {
             livereload: {
                 options: { livereload: true },
                 files: [ 
-					 	'httpdocs/wp-content/themes/markbaindesign/*.php', 
-						'httpdocs/wp-content/themes/markbaindesign/lib/**/*.php', 
+					 	'httpdocs/wp-content/themes/<%= pkg.name %>/*.php', 
+						'httpdocs/wp-content/themes/<%= pkg.name %>/lib/**/*.php', 
 						'assets/sass/**/*.{scss,sass}',
 						'assets/js/*.js', 
-						'httpdocs/wp-content/themes/markbaindesign/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+						'httpdocs/wp-content/themes/<%= pkg.name %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 			
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         			"devFile" : "assets/bower_components/modernizr/modernizr.js",
 
         			// Path to save out the built file.
-        			"outputFile" : "httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js",
+        			"outputFile" : "httpdocs/wp-content/themes/<%= pkg.name %>/assets/js/vendor/modernizr-custom.js",
 		    	}
 
 			},
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/markbaindesign/style.css': 'assets/sass/style.scss',
+                    'httpdocs/wp-content/themes/<%= pkg.name %>/style.css': 'assets/sass/style.scss',
                 }
             }
         },
@@ -79,8 +79,8 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'httpdocs/wp-content/themes/markbaindesign/style.css',
-                dest: 'httpdocs/wp-content/themes/markbaindesign'
+                src: 'httpdocs/wp-content/themes/<%= pkg.name %>/style.css',
+                dest: 'httpdocs/wp-content/themes/<%= pkg.name %>'
             },
         },
 
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
         		options: {
             	prefix: 'Version\\:\\s'
         		},
-        		src: [ 'httpdocs/wp-content/themes/markbaindesign/style.css' ],
+        		src: [ 'httpdocs/wp-content/themes/<%= pkg.name %>/style.css' ],
    		}
 		},
 
@@ -127,9 +127,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'httpdocs/wp-content/themes/markbaindesign/assets/images/',
+                    cwd: 'httpdocs/wp-content/themes/<%= pkg.name %>/assets/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'httpdocs/wp-content/themes/markbaindesign/assets/images/'
+                    dest: 'httpdocs/wp-content/themes/<%= pkg.name %>/assets/images/'
                 }]
             }
         },
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 				files:  [
 					// includes files within path and its sub-directories
       			{expand: true, 
-					cwd: 'httpdocs/wp-content/themes/markbaindesign/',
+					cwd: 'httpdocs/wp-content/themes/<%= pkg.name %>/',
 					src: [
 						'**',
 						'!style.css.map'
