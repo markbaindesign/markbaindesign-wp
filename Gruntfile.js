@@ -84,15 +84,13 @@ module.exports = function(grunt) {
             },
         },
 
-		  bump: {
+		  	bump: {
     			options: {
-
-      updateConfigs: [],
-      createTag: false,
-      push: false,
-
-    }
-  },
+      			updateConfigs: ['pkg'], // make sure to check updated pkg variables
+      			createTag: false,
+      			push: false,
+    			}
+  			},
 
 		 // Version
 		 version: {
