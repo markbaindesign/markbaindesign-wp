@@ -3,7 +3,7 @@ Theme Name: MBd Longneck
 Description: A Mobile-first theme for me by me.
 Author: Mark Bain
 Author URI: http://markbaindesign.com/
-Version: 0.4.16
+Version: 2.0
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: _mbdlongneck
@@ -241,7 +241,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
-  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
@@ -358,7 +358,6 @@ input {
  */
 input[type="checkbox"],
 input[type="radio"] {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -533,6 +532,7 @@ textarea {
 :before,
 :after {
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -736,7 +736,6 @@ address {
 .screen-reader-text:focus {
   background-color: #f1f1f1;
   border-radius: 3px;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
   color: #21759b;
@@ -1264,6 +1263,7 @@ h1#site-title {
   padding: .5em 3%;
   width: auto;
   background: #d6d6d6;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
@@ -1334,6 +1334,9 @@ h1#site-title {
     color: #f0f0f0;
     text-align: left;
     background: url("assets/images/hero.jpg") no-repeat bottom center;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
   }
 }
@@ -1367,6 +1370,7 @@ h1#site-title {
 }
 .hero-header a.cta-secondary {
   padding: 1em;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
@@ -1374,7 +1378,6 @@ h1#site-title {
 .hero-header a.cta-secondary:link, .hero-header a.cta-secondary:visited {
   text-transform: uppercase;
   color: #8a959e;
-  -webkit-box-shadow: inset 0 0 3px #8a959e;
   box-shadow: inset 0 0 3px #8a959e;
   font-weight: bold;
   text-decoration: none;
@@ -1383,7 +1386,6 @@ h1#site-title {
 @media (min-width: 768px) {
   .hero-header a.cta-secondary:link, .hero-header a.cta-secondary:visited {
     color: #f0f0f0;
-    -webkit-box-shadow: inset 0 0 3px #f0f0f0;
     box-shadow: inset 0 0 3px #f0f0f0;
   }
 }
@@ -1394,7 +1396,6 @@ h1#site-title {
 @media (min-width: 768px) {
   .hero-header a.cta-secondary:hover {
     color: #fff;
-    -webkit-box-shadow: inset 0 0 5px #fff;
     box-shadow: inset 0 0 5px #fff;
   }
 }
@@ -1610,6 +1611,9 @@ ul.menu li:hover > ul {
   opacity: 1;
   visibility: visible;
   -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 ul.menu a {
@@ -1818,26 +1822,6 @@ a#main-menu-toggle.active:before {
   padding: 0;
 }
 
-.wp-caption {
-  border: 1px solid #ccc;
-  margin-bottom: 1.5em;
-  max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"] {
-  display: block;
-  margin: 1.2% auto 0;
-  max-width: 98%;
-}
-
-.wp-caption-text {
-  text-align: center;
-}
-
-.wp-caption .wp-caption-text {
-  margin: 0.8075em 0;
-}
-
 .site-main .gallery {
   margin-bottom: 1.5em;
 }
@@ -1861,11 +1845,11 @@ object {
 }
 
 /* Meta */
-.meta, p.wp-caption-text, .entry-meta {
+.meta, .wp-caption p.wp-caption-text, .entry-meta {
   font-size: .9em;
   color: #8a959e;
 }
-.meta a, p.wp-caption-text a, .entry-meta a {
+.meta a, .wp-caption p.wp-caption-text a, .entry-meta a {
   text-decoration: none;
   color: inherit;
 }
@@ -2100,6 +2084,7 @@ input, textarea {
   width: 100%;
 }
 input[type=submit], textarea[type=submit] {
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
@@ -2171,15 +2156,14 @@ img.aligncenter {
 
 .wp-caption {
   margin-bottom: 1.5em;
+  max-width: 100%;
 }
-
-.wp-caption img {
+.wp-caption img[class*="wp-image-"] {
   border: 0 none;
   margin: 0;
   padding: 0;
 }
-
-p.wp-caption-text {
+.wp-caption p.wp-caption-text {
   margin: .5em 0;
   text-align: left;
   font-style: italic;
@@ -2506,7 +2490,6 @@ div.wpcf7-mail-sent-ok {
     background: transparent !important;
     color: #000 !important;
     /* Black prints faster: h5bp.com/s */
-    -webkit-box-shadow: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -5725,19 +5708,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -webkit-transform: translateY(0);
   }
 }
+@-moz-keyframes slideDown {
+  0% {
+    -moz-transform: translateY(-100%);
+  }
+
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+@-o-keyframes slideDown {
+  0% {
+    -o-transform: translateY(-100%);
+  }
+
+  100% {
+    -o-transform: translateY(0);
+  }
+}
 @keyframes slideDown {
   0% {
-    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
 
   100% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
 .animated.slideDown {
   -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
   animation-name: slideDown;
 }
 
@@ -5750,19 +5751,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -webkit-transform: translateY(-100%);
   }
 }
+@-moz-keyframes slideUp {
+  0% {
+    -moz-transform: translateY(0);
+  }
+
+  100% {
+    -moz-transform: translateY(-100%);
+  }
+}
+@-o-keyframes slideUp {
+  0% {
+    -o-transform: translateY(0);
+  }
+
+  100% {
+    -o-transform: translateY(-100%);
+  }
+}
 @keyframes slideUp {
   0% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
   100% {
-    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
 }
 .animated.slideUp {
   -webkit-animation-name: slideUp;
+  -moz-animation-name: slideUp;
+  -o-animation-name: slideUp;
   animation-name: slideUp;
 }
+
 /*# sourceMappingURL=style.css.map */
