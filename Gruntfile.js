@@ -34,16 +34,6 @@ module.exports = function(grunt) {
             }
         },
 			
-		  	// Bower
-
-		  	bower: {
-    			install: {	//just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
-					options: { 
-						targetDir: 'assets/bower_components',
-						cleanup: true
-					}
-				}
-  			},
 
 			// Modernizr
 			modernizr: {
@@ -65,7 +55,7 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/<%= pkg.name %>/style.css': 'assets/sass/style.scss',
+                    'httpdocs/wp-content/themes/<%= pkg.name %>/style.css': 'assets/sass/styles.scss',
                 }
             }
         },
@@ -185,8 +175,7 @@ module.exports = function(grunt) {
 		'copy', 
 		'imagemin',
 		'compress',
-		'clean',
-		'watch'
+		'clean'
 	]);
 
 	

@@ -96,9 +96,7 @@ function _mbbasetheme_setup() {
 	// Function location: /lib/theme-functions.php
 	add_action( 'wp_dashboard_setup', 'mb_remove_dashboard_widgets' );
 
-	// Add custom favicon
-	// Function location: /lib/theme-functions.php
-	add_action( 'wp_head', 'lfstyle_add_favicon' );
+
 
 	// Change Admin Menu Order
 	// Function location: /lib/theme-functions.php

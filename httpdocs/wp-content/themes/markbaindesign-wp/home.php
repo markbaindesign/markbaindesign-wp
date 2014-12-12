@@ -4,7 +4,7 @@
 ?>		
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main section" role="main">
 	
 	<?php
 
@@ -18,7 +18,7 @@
 		$query = new WP_Query($args);
 
 		if ( $query->have_posts() ) : ?> 
-			<div class="masonrycontainer">
+			<div class="masonrycontainer container">
 				<div class="grid-sizer"></div>
 				<div class="gutter-sizer"></div>
 		    
