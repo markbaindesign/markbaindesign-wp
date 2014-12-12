@@ -42,20 +42,25 @@ img.aligncenter {
 
 .wp-caption {
 	margin-bottom: 1.5em;
+	max-width: 100%;
+	img[class*="wp-image-"] {
+		border: 0 none;
+		margin: 0;
+		padding: 0;
+	}
+	p {
+		&.wp-caption-text {
+			@extend .meta;
+			margin: .5em 0;
+			text-align: left;
+			font-style: italic;
+		}
+	}
 }
 
-.wp-caption img {
-	border: 0 none;
-	margin: 0;
-	padding: 0;
-}
 
-p.wp-caption-text {
-	@extend .meta;
-	margin: .5em 0;
-	text-align: left;
-	font-style: italic;
-}
+
+
 
 .wp-smiley { 
 	max-height: 1em;
