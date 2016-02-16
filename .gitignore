@@ -3,8 +3,11 @@
 # =========================
 node_modules
 bower_components
-release
 .sass-cache
+import
+export
+scripts
+release
 
 # =========================
 # VIM Temp Files
@@ -15,31 +18,36 @@ release
 # =========================
 # WordPress 
 # =========================
-#
 
-httpdocs/wp-content/themes/markbaindesign/style.css.map
-httpdocs/wp-content/themes/markbaindesign/assets/css/style.css
-httpdocs/wp-content/themes/markbaindesign/assets/css/style.css.map
+*.log
 
-httpdocs/*.log
-httpdocs/.htaccess
-httpdocs/sitemap.xml
-httpdocs/sitemap.xml.gz
-httpdocs/*.php
-httpdocs/wp-content/advanced-cache.php
-httpdocs/wp-content/backup-db/
-httpdocs/wp-content/backups/
-httpdocs/wp-content/cache/
-httpdocs/wp-content/*.php
-httpdocs/wp-content/upgrade/
-httpdocs/wp-content/uploads/
-httpdocs/wp-content/plugins/
-httpdocs/wp-content/mu-plugins/
-httpdocs/wp-content/themes/*.php
-httpdocs/wp-content/languages/
-httpdocs/wp-content/wp-cache-config.php
-httpdocs/wp-admin/
-httpdocs/wp-includes/
+# Ignore everything in the "httpdocs" directory except the "wp-content" directory.
+httpdocs/*
+!httpdocs/wp-content/
+
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+httpdocs/wp-content/*
+!httpdocs/wp-content/plugins/
+!httpdocs/wp-content/themes/
+!httpdocs/wp-content/mu-plugins/
+ 
+# Ignore everything in the "plugins" directory, except the plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+httpdocs/wp-content/plugins/*
+# !httpdocs/wp-content/plugins/my-single-file-plugin.php
+!httpdocs/wp-content/plugins/mbd-markbaindesign-custom-functions/
+
+# Ignore everything in the "mu-plugins" directory, except the mu-plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+httpdocs/wp-content/mu-plugins/*
+# !httpdocs/wp-content/mu-plugins/my-single-file-plugin.php
+# !httpdocs/wp-content/mu-plugins/my-directory-plugin/
+ 
+# Ignore everything in the "themes" directory, except the themes you
+# specify (see the commented-out example for a hint on how to do this.)
+httpdocs/wp-content/themes/*
+!httpdocs/wp-content/themes/markbaindesign-wp/
 
 # =========================
 # Operating System Files
@@ -63,13 +71,11 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-httpdocs/wp-content/themes/markbaindesign/assets/js/vendor/modernizr-custom.js
-httpdocs/wp-content/themes/markbaindesign/style.css
 *.map
-*.map
-httpdocs/wp-content/themes/markbaindesign/style.css
-httpdocs/wp-content/themes/markbaindesign/style.css.map
-*.css
-httpdocs/wp-content/themes/markbaindesign-wp/style.css
-httpdocs/license.txt
-httpdocs/readme.html
+
+# Misc
+*.zip
+*.tar
+*.gz
+*.sql
+*.sublime-workspace
