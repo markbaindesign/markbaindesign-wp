@@ -1,6 +1,6 @@
 {
   "name": "markbaindesign",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.7.2",
