@@ -1,4 +1,4 @@
-# MBD website
+# markbaindesign WordPress theme
 
 ## By Mark Bain Design
 
