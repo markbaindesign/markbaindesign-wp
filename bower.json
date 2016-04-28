@@ -1,15 +1,11 @@
 {
-  "name": "markbaindesign-wp",
-  "version": "0.02",
+  "name": "mbd-markbaindesign",
+  "version": "0.0.0",
   "authors": [
     "Mark Bain <hello@markbaindesign.com>"
   ],
   "license": "MIT",
-  "dependencies": {
-    "modernizr": "~2.6.2",
-    "singularity": ">=1.4.0",
-    "fontawesome": ">=4.2.0"
-  },
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,6 +13,11 @@
     "test",
     "tests"
   ],
-  "homepage": "https://github.com/markbaindesign/markbaindesign-wp",
-  "description": "My WordPress theme"
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "singularity": ">=1.6.2",
+    "breakpoint-sass": ">=2.4.2",
+    "fontawesome": ">=4.3.0",
+	 "modular-scale": "~2.0.6"
+  }
 }

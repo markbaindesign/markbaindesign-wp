@@ -1,0 +1,64 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "httpdocs/wp-content/themes/markbaindesign-wp",
+			"name": "Theme",
+			"folder_exclude_patterns": [
+				"assets",
+			],
+			"file_exclude_patterns":
+			[
+				"*.png",
+				"*.ico",
+				"*.xml",
+			]
+		},
+		{
+			"follow_symlinks": true,
+			"path": "httpdocs/wp-content/themes/markbaindesign-wp/assets/js/source/custom",
+			"name": "JS",
+		},
+		{
+			"follow_symlinks": true,
+			"path": "httpdocs/wp-content/plugins/mbd-markbaindesign-custom-functions",
+			"name": "Custom Plugins",
+		},
+		{
+			"follow_symlinks": true,
+			"path": "httpdocs/wp-content/mu-plugins",
+			"name": "MU Plugins",
+		},		
+		{
+			"follow_symlinks": true,
+			"path": "sass",
+			"name": "Sass"
+		},
+		{
+			"follow_symlinks": true,
+			"path": ".",
+			"name": "Root",
+			"folder_exclude_patterns": [
+				".sass-cache",
+				".tmp",
+				"bower_components",
+				"dist",
+				"httpdocs",
+				"node_modules",
+				"rc",
+				"sass",
+			],
+			"file_exclude_patterns":
+			[
+				"*.css",
+				"*.css.map",
+			]
+		},
+		{
+			"follow_symlinks": true,
+			"path": "scripts",
+			"name": "Scripts",
+		}
+	]
+}

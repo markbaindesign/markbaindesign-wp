@@ -127,9 +127,12 @@ h3 {
  
  h5 {  
 	font-size: 1.1250em; /* 18px */
-  line-height: 1.3333em; /* 24px */
-  margin-bottom: 1.3333em;  
-  margin-top: 0.0000em;
+	line-height: 1.3333em; /* 24px */
+	margin-bottom: 1.3333em;  
+	margin-top: 0.0000em;
+	&.sub-hero {
+		font-weight: normal;
+	}
   }
   
 h6 {  

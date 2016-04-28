@@ -5,44 +5,53 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt); // no need for grunt.loadNpmTasks!
 
     grunt.initConfig({
-			pkg:    grunt.file.readJSON( 'package.json' ),
+			pkg: grunt.file.readJSON( 'package.json' ),
+            rdm: 'README.md',
         
 		 // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-					options: { 
-						// sourcemap: true 
-					},
-                files: ['assets/sass/**/*.{scss,sass}'],
+                files: ['sass/**/*.{scss,sass}'],
                 tasks: [
 					 	'sass', 
-						// 'autoprefixer'
+						'autoprefixer'
 					]
             },
-            js: {
+            /*js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint']
-            },
+            },*/
             livereload: {
                 options: { livereload: true },
-                files: [ 
-					 	'httpdocs/wp-content/themes/<%= pkg.name %>/*.php', 
-						'httpdocs/wp-content/themes/<%= pkg.name %>/lib/**/*.php', 
-						'assets/sass/**/*.{scss,sass}',
-						'assets/js/*.js', 
-						'httpdocs/wp-content/themes/<%= pkg.name %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                files: [
+
+                    // Gruntfile
+                    'Gruntfile.js',
+
+                    // Theme files
+				 	'httpdocs/wp-content/themes/<%= pkg.name %>/**/*.php', 
+					'httpdocs/wp-content/themes/<%= pkg.name %>/lib/**/*.php',
+					'httpdocs/wp-content/themes/<%= pkg.name %>/style.css', 
+					'httpdocs/wp-content/themes/<%= pkg.name %>/assets/js/source/**/*.js', 
+					'httpdocs/wp-content/themes/<%= pkg.name %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+
+                    // Plugins
+                    'httpdocs/wp-content/plugins/<%= pkg.name %>-custom-functions/**/*',
+
+                ]
             }
         },
-			
+		
+
 
 			// Modernizr
 			modernizr: {
     			dist: {
         			// [REQUIRED] Path to the build you're using for development.
-        			"devFile" : "assets/bower_components/modernizr/modernizr.js",
+        			"devFile" : "bower_components/modernizr/modernizr.js",
 
         			// Path to save out the built file.
-        			"outputFile" : "httpdocs/wp-content/themes/<%= pkg.name %>/assets/js/vendor/modernizr-custom.js",
+        			"outputFile" : "httpdocs/wp-content/themes/<%= pkg.name %>/assets/js/source/vendor/modernizr-custom.js",
 		    	}
 
 			},
@@ -51,11 +60,10 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: {
-                    sourcemap: true,
                     style: 'expanded',
                 },
                 files: {
-                    'httpdocs/wp-content/themes/<%= pkg.name %>/style.css': 'assets/sass/styles.scss',
+                    'httpdocs/wp-content/themes/<%= pkg.name %>/style.css': 'sass/styles.scss',
                 }
             }
         },
@@ -63,14 +71,11 @@ module.exports = function(grunt) {
         // autoprefixer
         autoprefixer: {
             options: {
-                browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4', 'android 3'],
-                // map: true
+                browsers: ['last 2 versions', 'ie 9'],
+                map: true
             },
-            files: {
-                expand: true,
-                flatten: true,
-                src: 'httpdocs/wp-content/themes/<%= pkg.name %>/style.css',
-                dest: 'httpdocs/wp-content/themes/<%= pkg.name %>'
+            target_file: {
+               src: 'httpdocs/wp-content/themes/<%= pkg.name %>/style.css',
             },
         },
 
@@ -86,10 +91,22 @@ module.exports = function(grunt) {
 		 version: {
 		 	css: {
         		options: {
-            	prefix: 'Version\\:\\s'
+            	   prefix: 'Version\\:\\s'
         		},
-        		src: [ 'httpdocs/wp-content/themes/<%= pkg.name %>/style.css' ],
-   		}
+        		src: [ 'sass/styles.scss' ],
+            },
+            readme: {
+                options: {
+                    prefix: 'Version\ \s*'
+                },
+                src: [ '<%= rdm %>' ],
+            },
+            plugin1: {
+                options: {
+                prefix: 'Version\\:\\s'
+                },
+                src: [ 'httpdocs/wp-content/plugins/<%= pkg.name %>-custom-functions/<%= pkg.name %>-custom-functions.php' ],
+           },           
 		},
 
 
@@ -101,7 +118,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'assets/js/source/**/*.js'
+                'httpdocs/wp-content/themes/<%= pkg.name %>/assets/js/source/**/*.js'
             ]
         },
 
@@ -126,7 +143,7 @@ module.exports = function(grunt) {
 
 		  // Copy the plugin to a versioned release directory
 		  copy: {
-			main: {
+			theme: {
 				files:  [
 					// includes files within path and its sub-directories
       			{expand: true, 
@@ -135,9 +152,33 @@ module.exports = function(grunt) {
 						'**',
 						'!style.css.map'
 					], 
-					dest: 'release/<%= pkg.name %>.<%= pkg.version %>/'},
+					dest: 'release/<%= pkg.name %>.<%= pkg.version %>/wp-content/themes/<%= pkg.name %>'},
 					],
-			},		
+			},
+            plg1: {
+                files:  [
+                    // includes files within path and its sub-directories
+                {expand: true, 
+                    cwd: 'httpdocs/wp-content/plugins/<%= pkg.name %>-custom-functions/',
+                    src: [
+                        '**',
+                    ], 
+                    dest: 'release/<%= pkg.name %>.<%= pkg.version %>/wp-content/plugins/<%= pkg.name %>-custom-functions'},
+                    ],
+            },
+			font_awesome: {
+				 expand: true,
+				 flatten: true,
+				 src: ['bower_components/fontawesome/fonts/*'],
+				 dest: 'httpdocs/wp-content/themes/<%= pkg.name %>/assets/fonts'
+			},
+
+            deploy_scripts: {
+                 expand: true,
+                 flatten: true,
+                 src: ['node_modules/mbd-wp-deploy-scripts/scripts/*'],
+                 dest: 'scripts'
+            }
 		},
 
 		clean: {
@@ -148,14 +189,32 @@ module.exports = function(grunt) {
 			main: {
 				options: {
 					mode: 'zip',
-					archive: 'release/<%= pkg.name %>.<%= pkg.version %>.zip'
+					archive: 'release/<%= pkg.name %>.<%= pkg.version %>/wp-content.zip'
 				},
 				expand: true,
-				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>',
+				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>/wp-content',
 				src: ['**/*'],
-				dest: '<%= pkg.name %>/'
+				dest: 'wp-content/'
 			}		
-		}
+		},
+
+        // Shell
+        shell: {
+            exp: {
+                command: [
+                    'cd scripts',
+                    'sh local-export.sh',
+                    'cd ..'
+                ].join('&&')
+            },
+            imp: {
+                command: [
+                    'cd scripts',
+                    'sh local-import.sh',
+                    'cd ..'
+                ].join('&&')
+            }       
+        }
 
     });
 
@@ -163,21 +222,39 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 	 	'sass', 
-		'modernizr',		
-		'jshint',
+		// 'modernizr',		
 		'watch'
 	]);
+    grunt.registerTask('copyassets', [
 
+    ]);
+
+    // Build Task
 	grunt.registerTask('build', [
-		'autoprefixer',
 		'bump',
 		'version',
-		'copy', 
-		'imagemin',
-		'compress',
-		'clean'
+        'autoprefixer',
+        'sass', 
+        'modernizr',
+		'copy:theme',
+        'copy:plg1',
+        'watch'
 	]);
-
 	
+	// Copy assets 
+	grunt.registerTask('copyassets', [
+		'copy:font_awesome',
+        'copy:deploy_scripts'       
+	]);	
+
+    // Export entire WP site for deployment
+    grunt.registerTask('export', [
+        'shell:exp'
+    ]); 
+
+    // Import entire WP site for local development
+    grunt.registerTask('import', [
+        'shell:imp'
+    ]); 
 
 };
