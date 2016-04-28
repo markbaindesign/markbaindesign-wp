@@ -51,6 +51,11 @@ httpdocs/wp-content/mu-plugins/*
 httpdocs/wp-content/themes/*
 !httpdocs/wp-content/themes/markbaindesign/
 
+# Ignore generated dist files in theme directory.
+httpdocs/wp-content/themes/markbaindesign/assets/images/dist/**/*
+httpdocs/wp-content/themes/markbaindesign/assets/js/dist/**/*
+httpdocs/wp-content/themes/markbaindesign/style.css
+
 # =========================
 # Operating System Files
 # =========================

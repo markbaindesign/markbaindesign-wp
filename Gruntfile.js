@@ -121,9 +121,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/',
+                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src',
                     src: ['**/*.{png,jpg,jpeg,gif}'],
-                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist/'
+                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist'
                 }]
             }
         },
@@ -232,7 +232,7 @@ module.exports = function(grunt) {
             img: {
                 files: ['<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/*.{png,jpg,jpeg,gif,webp,svg}'],
                 tasks: [
-                    'imagemin:build'
+                    'newer:imagemin:dist'
                 ]
             },
             livereload: {
@@ -247,7 +247,7 @@ module.exports = function(grunt) {
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/lib/**/*.php',
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/style.css', 
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/src/**/*.js', 
-                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/**/*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist/**/*.{png,jpg,jpeg,gif,webp,svg}',
 
                     // Plugin files
                     '<%= vars.plugin_path %>/<%= vars.plugin_name %>/**/*',
@@ -266,7 +266,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 	 	'sass',
-        'imagemin',
+        'newer:imagemin:dist',
         'autoprefixer', 
 		'modernizr',
         'jshint',		
