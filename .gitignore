@@ -36,7 +36,7 @@ httpdocs/wp-content/*
 # specify (see the commented-out examples for hints on how to do this.)
 httpdocs/wp-content/plugins/*
 # !httpdocs/wp-content/plugins/my-single-file-plugin.php
-!httpdocs/wp-content/plugins/mbd-markbaindesign-custom-functions/
+!httpdocs/wp-content/plugins/markbaindesign-custom-functions/
 
 # Ignore everything in the "mu-plugins" directory, except the mu-plugins you
 # specify (see the commented-out examples for hints on how to do this.)
@@ -47,7 +47,7 @@ httpdocs/wp-content/mu-plugins/*
 # Ignore everything in the "themes" directory, except the themes you
 # specify (see the commented-out example for a hint on how to do this.)
 httpdocs/wp-content/themes/*
-!httpdocs/wp-content/themes/markbaindesign-wp/
+!httpdocs/wp-content/themes/markbaindesign/
 
 # =========================
 # Operating System Files

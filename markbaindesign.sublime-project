@@ -3,7 +3,7 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "httpdocs/wp-content/themes/markbaindesign-wp",
+			"path": "httpdocs/wp-content/themes/markbaindesign",
 			"name": "Theme",
 			"folder_exclude_patterns": [
 				"assets",
@@ -17,12 +17,12 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "httpdocs/wp-content/themes/markbaindesign-wp/assets/js/source/custom",
+			"path": "httpdocs/wp-content/themes/markbaindesign/assets/js/source/custom",
 			"name": "JS",
 		},
 		{
 			"follow_symlinks": true,
-			"path": "httpdocs/wp-content/plugins/mbd-markbaindesign-custom-functions",
+			"path": "httpdocs/wp-content/plugins/markbaindesign-custom-functions",
 			"name": "Custom Plugins",
 		},
 		{

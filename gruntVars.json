@@ -1,6 +1,6 @@
 {
   "theme_name":     "markbaindesign",
   "theme_path":     "httpdocs/wp-content/themes",
-  "plugin_name":    "mbd-markbaindesign-custom-functions",
+  "plugin_name":    "markbaindesign-custom-functions",
   "plugin_path":    "httpdocs/wp-content/plugins"
 }
