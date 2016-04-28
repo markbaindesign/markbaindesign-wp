@@ -47,6 +47,7 @@ module.exports = function(grunt) {
   			    push: false,
                 commitFiles: ['-a'], // Commit all files
                 tagName: '%VERSION%',
+                tagMessage: 'Bump the version to %VERSION%',
 			}
 		},
 
@@ -268,7 +269,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask( 'bump-patch', [
-        'bump-only:minor',
+        'bump-only:patch',
         'version', 
         'bump-commit',        
     ]);
