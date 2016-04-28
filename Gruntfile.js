@@ -46,7 +46,7 @@ module.exports = function(grunt) {
   			    updateConfigs: ['pkg'], // make sure to check updated pkg variables
   			    push: false,
                 commitFiles: ['-a'], // Commit all files
-                tagName: '%VERSION%',
+                createTag: false, // Branch is tagged by git flow
                 commitMessage: 'Bump the version to %VERSION%',
 			}
 		},
