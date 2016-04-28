@@ -51,7 +51,7 @@
 		<div class="container">
 			<div class="branding">
 				<a id="logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
-					<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="Mark Bain Design"> -->
+					<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dist/logo.png" alt="Mark Bain Design"> -->
 					<h1 id="site-title">Mark Bain Design</h1>
 				</a>
 

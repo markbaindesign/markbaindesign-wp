@@ -5,6 +5,7 @@ module.exports = function(grunt) {
     // auto-load all grunt tasks matching the `grunt-*` pattern in package.json
     // no need for grunt.loadNpmTasks!
     require('load-grunt-tasks')(grunt);
+    var mozjpeg = require('imagemin-mozjpeg');
 
     grunt.initConfig({
 
@@ -115,13 +116,14 @@ module.exports = function(grunt) {
                 options: {
                     optimizationLevel: 7,
                     progressive: true,
-                    interlaced: true
+                    interlaced: true,
+                    use: [mozjpeg()],
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist'
+                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/',
+                    src: ['**/*.{png,jpg,jpeg,gif}'],
+                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist/'
                 }]
             }
         },
@@ -223,10 +225,16 @@ module.exports = function(grunt) {
                         'autoprefixer'
                     ]
             },
-            /*js: {
+            js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint']
-            },*/
+            },
+            img: {
+                files: ['<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/*.{png,jpg,jpeg,gif,webp,svg}'],
+                tasks: [
+                    'imagemin:build'
+                ]
+            },
             livereload: {
                 options: { livereload: true },
                 files: [
@@ -238,8 +246,8 @@ module.exports = function(grunt) {
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/**/*.php', 
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/lib/**/*.php',
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/style.css', 
-                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/source/**/*.js', 
-                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/src/**/*.js', 
+                    '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/**/*.{png,jpg,jpeg,gif,webp,svg}',
 
                     // Plugin files
                     '<%= vars.plugin_path %>/<%= vars.plugin_name %>/**/*',
@@ -258,6 +266,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 	 	'sass',
+        'imagemin',
         'autoprefixer', 
 		'modernizr',
         'jshint',		

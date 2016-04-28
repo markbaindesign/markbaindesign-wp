@@ -15,15 +15,15 @@ get_header(); ?>
 <div class="hero">
 	<picture>
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-320x213.jpg" media="(max-width: 20em)">
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-480x320.jpg" media="(max-width: 30em)">
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-768x512.jpg" media="(max-width: 48em)">
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-960x639.jpg" media="(max-width: 64em)">
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-1120x746.jpg" media="(max-width: 70em)">
-		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero.jpg">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero-320x213.jpg" media="(max-width: 20em)">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero-480x320.jpg" media="(max-width: 30em)">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero-768x512.jpg" media="(max-width: 48em)">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero-960x639.jpg" media="(max-width: 64em)">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero-1120x746.jpg" media="(max-width: 70em)">
+		<source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero.jpg">
 
 		<!--[if IE 9]></video><![endif]-->
-		<img srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero.jpg" alt="">
+		<img srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/hero.jpg" alt="">
 	</picture>
 
 		<div class="hero-header section">
@@ -49,15 +49,15 @@ get_header(); ?>
 			<p>One of the best ways of choosing a designer to work with is to take a look at their previous work. Although my portfolio may not contain anything <i>identical</i> to what you are looking for, it'll give you a good idea of my style and the sort of projects I am looking for.</p>
 			<div class="media_objects">	
 				<a href="<?php echo get_bloginfo('url') ?>/?p=1282"class="media_object">
-					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/flovoco-browser.png">
+					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/flovoco-browser.png">
 					<p class="wp-caption-text">flovco for ELTJam</p>
 				</a>
 				<a href="<?php echo get_bloginfo('url') ?>/?p=57"class="media_object">
-					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/episodia-browser.png">
+					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/episodia-browser.png">
 					<p class="wp-caption-text">episodia.es</p>
 				</a>
 				<a href="<?php echo get_bloginfo('url') ?>/?p=1281"class="media_object">
-					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/atama-ii-browser.png">
+					<img src="<?php echo get_bloginfo('template_url') ?>/assets/images/dist/atama-ii-browser.png">
 					<p class="wp-caption-text">atama-ii books</p>
 				</a>
 			</div><!-- .media_objects -->
