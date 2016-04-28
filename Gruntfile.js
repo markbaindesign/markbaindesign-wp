@@ -279,10 +279,7 @@ module.exports = function(grunt) {
 
         // NOTE
         // This task does not automatically bump the version
-        // Precede with grunt bump:{major|minor|patch} to change the version in package.json
-
-        // Update versions across the project
-        'version', 
+        // Precede with grunt bump-{minor|patch} to change the version across the project
 
         // Make a copy of files for upload to the server
         'copy:theme',
