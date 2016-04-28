@@ -24,6 +24,8 @@ release
 # Ignore everything in the "httpdocs" directory except the "wp-content" directory.
 httpdocs/*
 !httpdocs/wp-content/
+!httpdocs/wp-content/*.png
+!httpdocs/wp-content/*.ico
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
