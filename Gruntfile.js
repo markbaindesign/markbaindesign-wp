@@ -43,9 +43,10 @@ module.exports = function(grunt) {
         // Increment the version number in package.json
 	  	bump: {
 			options: {
-  			updateConfigs: ['pkg'], // make sure to check updated pkg variables
-  			createTag: false,
-  			push: false,
+  			    updateConfigs: ['pkg'], // make sure to check updated pkg variables
+  			    push: false,
+                commitFiles: ['-a'], // Commit all files
+                tagName: '%VERSION%',
 			}
 		},
 
@@ -259,6 +260,18 @@ module.exports = function(grunt) {
 		'modernizr',		
 		'watch',
 	]);
+
+    grunt.registerTask( 'bump-minor', [
+        'bump-only:minor',
+        'version', 
+        'bump-commit',        
+    ]);
+
+    grunt.registerTask( 'bump-patch', [
+        'bump-only:minor',
+        'version', 
+        'bump-commit',        
+    ]);
 
     // Build Task
     grunt.registerTask('build', [
