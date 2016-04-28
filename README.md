@@ -1,8 +1,8 @@
-# MBD website
+# markbaindesign WordPress theme
 
 ## By Mark Bain Design
 
-### Version 0.0.0
+### Version 2.3.3
 
 ## 1. Setup
 
