@@ -128,20 +128,20 @@ function mbdmaster324_scripts() {
 		// wp_enqueue_style( 'mbdmaster324-iconmoon-temp', '//i.icomoon.io/public/temp/492d787a8a/UntitledProject2/style.css');
 
 		// Enqueue javascript plugins
-		wp_enqueue_script( 'mbdmaster324-modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-custom.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324-headroom', get_template_directory_uri() . '/assets/js/vendor/headroom.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324-responsive-nav', get_template_directory_uri() . '/assets/js/vendor/responsive-nav.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324-wow', get_template_directory_uri() . '/assets/js/vendor/wow.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324-fitvids', get_template_directory_uri() . '/assets/js/vendor/jquery.fitvids.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324-doubletap', get_template_directory_uri() . '/assets/js/vendor/doubletaptogo.js', array(), NULL, true );		
+		wp_enqueue_script( 'mbdmaster324-modernizr', get_template_directory_uri() . '/assets/js/src/vendor/modernizr-custom.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324-headroom', get_template_directory_uri() . '/assets/js/src/vendor/headroom.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324-responsive-nav', get_template_directory_uri() . '/assets/js/src/vendor/responsive-nav.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324-wow', get_template_directory_uri() . '/assets/js/src/vendor/wow.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324-fitvids', get_template_directory_uri() . '/assets/js/src/vendor/jquery.fitvids.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324-doubletap', get_template_directory_uri() . '/assets/js/src/vendor/doubletaptogo.js', array(), NULL, true );		
 
 		// Masonry
 		// wp_register_script( 'masonry-latest', 'http://masonry.desandro.com/masonry.pkgd.min.js', array( 'jquery' ), TRUE);
 		// wp_enqueue_script( 'masonry-latest' );
 
 		// Custom scripts
-		wp_enqueue_script( 'mbdmaster324_customplugins', get_template_directory_uri() . '/assets/js/custom/plugins.js', array(), NULL, true );
-		wp_enqueue_script( 'mbdmaster324_customscripts', get_template_directory_uri() . '/assets/js/custom/main.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324_customplugins', get_template_directory_uri() . '/assets/js/src/custom/plugins.js', array(), NULL, true );
+		wp_enqueue_script( 'mbdmaster324_customscripts', get_template_directory_uri() . '/assets/js/src/custom/main.js', array(), NULL, true );
 		
 		// Dequeue default plugin stylesheets
 		wp_dequeue_style( 'contact-form-7' );

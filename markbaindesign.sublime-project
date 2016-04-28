@@ -17,7 +17,7 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "httpdocs/wp-content/themes/markbaindesign/assets/js/source/custom",
+			"path": "httpdocs/wp-content/themes/markbaindesign/assets/js/src/custom",
 			"name": "JS",
 		},
 		{

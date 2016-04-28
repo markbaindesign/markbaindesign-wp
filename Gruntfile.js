@@ -119,9 +119,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/',
+                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/'
+                    dest: '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/dist'
                 }]
             }
         },
@@ -134,7 +134,8 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/source/**/*.js'
+                '<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/src/custom/**/*.js',
+                '<%= vars.plugin_path %>/<%= vars.plugin_name %>/assets/js/src/custom/**/*.js',
             ]
         },
 
@@ -145,7 +146,7 @@ module.exports = function(grunt) {
                 "devFile" : "bower_components/modernizr/modernizr.js",
 
                 // Path to save out the built file.
-                "outputFile" : "<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/source/vendor/modernizr-custom.js",
+                "outputFile" : "<%= vars.theme_path %>/<%= vars.theme_name %>/assets/js/dist/custom/modernizr-custom.js",
             }
         },
 
@@ -258,7 +259,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
 	 	'sass',
         'autoprefixer', 
-		'modernizr',		
+		'modernizr',
+        'jshint',		
 		'watch',
 	]);
 
