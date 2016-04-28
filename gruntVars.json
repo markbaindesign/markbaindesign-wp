@@ -1,0 +1,6 @@
+{
+  "theme_name":     "digital-comp",
+  "theme_path":     "httpdocs/wp-content/themes",
+  "plugin_name":    "digital-comp-custom-functions",
+  "plugin_path":    "httpdocs/wp-content/plugins"
+}
