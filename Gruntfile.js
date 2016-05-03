@@ -1,9 +1,6 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-    // auto-load all grunt tasks matching the `grunt-*` pattern in package.json
-    // no need for grunt.loadNpmTasks!
     require('load-grunt-tasks')(grunt);
     var mozjpeg = require('imagemin-mozjpeg');
 
