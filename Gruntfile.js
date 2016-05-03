@@ -265,7 +265,7 @@ module.exports = function(grunt) {
     */
 
     grunt.registerTask('default', [
-	 	'sass',
+		'sass',
         'newer:imagemin:dist',
         'autoprefixer', 
 		'modernizr',
