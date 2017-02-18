@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = function(grunt) {
+
+    // auto-load all grunt tasks matching the `grunt-*` pattern in package.json
+    // no need for grunt.loadNpmTasks!
     require('load-grunt-tasks')(grunt);
     var mozjpeg = require('imagemin-mozjpeg');
 
@@ -46,52 +49,83 @@ module.exports = function(grunt) {
                 commitFiles: ['-a'], // Commit all files
                 createTag: false, // Branch is tagged by git flow
                 commitMessage: 'Bump the version to %VERSION%',
+                prereleaseName: 'rc',
 			}
 		},
 
         // Delete temporary files
 		clean: {
-			main: ['release/<%= pkg.name %>.<%= pkg.version %>']
+            dir_release: ['release/**/*'], // Clean out the release dir
+            copy_theme: ['release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.theme_name %>.<%= pkg.version %>'],
+			copy_plugin: ['release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.plugin_name %>.<%= pkg.version %>']
 		},
 
         // Create an archive
 		compress: {
-			main: {
+
+			plugin: {
 				options: {
 					mode: 'zip',
-					archive: 'release/<%= pkg.name %>.<%= pkg.version %>.zip'
+					archive: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.plugin_name %>.<%= pkg.version %>.zip'
 				},
 				expand: true,
-				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>',
+				cwd: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.plugin_name %>.<%= pkg.version %>',
 				src: ['**/*']
-			}		
+			},
+
+            theme: {
+                options: {
+                    mode: 'zip',
+                    archive: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.theme_name %>.<%= pkg.version %>.zip'
+                },
+                expand: true,
+                cwd: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.theme_name %>.<%= pkg.version %>',
+                src: ['**/*']
+            }		
 		},
 
-        // Copy the plugin to a versioned release directory
         copy: {
+
             theme: {
-                files:  [
-                    // includes files within path and its sub-directories
-                {expand: true, 
-                    cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/',
-                    src: [
-                        '**',
-                        '!style.css.map'
-                    ], 
-                    dest: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.theme_path %>/<%= vars.theme_name %>'},
-                    ],
+                files:  [ 
+                    {
+                        expand: true, // includes files within path and its sub-directories
+                        cwd: '<%= vars.theme_path %>/<%= vars.theme_name %>/', // Target dir
+                        src: [
+                            '**',
+                            '!style.css.map',
+                            '!**/*.*.orig' // Don't copy .orig copies
+                        ], 
+                        dest: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.theme_name %>.<%= pkg.version %>'
+                    },
+                ],
             },
+
             plugin: {
                 files:  [
                     // includes files within path and its sub-directories
+                    {expand: true, 
+                    cwd: '<%= vars.plugin_path %>/<%= vars.plugin_name %>', // Target dir
+                    src: [
+                        '**',
+                        '!**/*.*.orig' // Don't copy .orig copies
+                    ], 
+                    dest: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.plugin_name %>.<%= pkg.version %>'},
+                    ],
+            },
+
+            mu_plugins: {
+                files:  [
+                    // includes files within path and its sub-directories
                 {expand: true, 
-                    cwd: 'httpdocs/wp-content/plugins/<%= pkg.name %>-custom-functions/',
+                    cwd: 'httpdocs/wp-content/mu-plugins/',
                     src: [
                         '**',
                     ], 
-                    dest: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.plugin_path %>/<%= vars.plugin_name %>'},
+                    dest: 'release/<%= pkg.name %>.<%= pkg.version %>/<%= vars.mu_plugin_path %>'},
                     ],
             },
+
             font_awesome: {
                  expand: true,
                  flatten: true,
@@ -157,6 +191,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/style.css': 'sass/styles.scss',
+                    //'<%= vars.theme_path %>/<%= vars.theme_name %>/style-custom-login.css': 'sass/custom-login-styles.scss',
                 }
             }
         },
@@ -176,7 +211,16 @@ module.exports = function(grunt) {
                     './local-import.sh',
                     'cd ../..'
                 ].join('&&')
-            }       
+            },
+            import_production_db: {
+                command: '~/htdocs/criado-em-sampa/bin/wp-db-import',
+            },
+            project_stats: {
+                command: 'du -sh ~/htdocs/criado-em-sampa/httpdocs',
+            },
+            build_stats: {
+                command: 'du -sh ~/htdocs/criado-em-sampa/release',
+            }          
         },
 
         // Version
@@ -199,6 +243,14 @@ module.exports = function(grunt) {
                     '<%= vars.theme_path %>/<%= vars.theme_name %>/style.css', 
                 ],
             },
+            theme: {
+                options: {
+                   prefix: 'Version\\:\\s'
+                },
+                src: [ 
+                    '<%= vars.theme_path %>/<%= vars.theme_name %>/theme-version.php',
+                ],
+            },
             readme: {
                 options: {
                     prefix: 'Version\ \s*'
@@ -219,25 +271,29 @@ module.exports = function(grunt) {
                 files: ['sass/**/*.{scss,sass}'],
                 tasks: [
                         'sass', 
-                        'autoprefixer'
+                        'autoprefixer',
+                        'shell:project_stats'
                     ]
             },
-            /* js: {
+            js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint']
-            }, */
+                tasks: [
+                    'jshint',
+                    'shell:project_stats'
+                ]
+            },
             img: {
                 files: ['<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/*.{png,jpg,jpeg,gif,webp,svg}'],
                 tasks: [
-                    'newer:imagemin:dist'
+                    'newer:imagemin:dist',
+                    'shell:project_stats'
                 ]
             },
             livereload: {
                 options: { livereload: true },
                 files: [
 
-                    // Project
-                    '.gitignore',
+                    // Gruntfile
                     'Gruntfile.js',
 
                     // Theme files
@@ -264,10 +320,11 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
 		'sass',
-        'newer:imagemin:dist',
+        'imagemin:dist',
         'autoprefixer', 
 		'modernizr',
-        // 'jshint',		
+        // 'jshint',        
+        'shell:project_stats',		
 		'watch',
 	]);
 
@@ -286,19 +343,42 @@ module.exports = function(grunt) {
     // Build Task
     grunt.registerTask('build', [
 
+        // Start with a clean release dir
+        // If required, legacy releases can be rebuild based on their git tag
+        // and running this task
+
+        'clean:dir_release', 
+
         // NOTE
         // This task does not automatically bump the version
         // Precede with grunt bump-{minor|patch} to change the version across the project
 
+        // Compile styles
+        // Do this because if you haven't run grunt after switching to this branch, 
+        // the CSS won't have been updated!
+        'sass',
+
         // Make a copy of files for upload to the server
+
+        /***
+         *
+         * We copy the dirs first so we can add the version to the zipped dir and
+         * remove some files we don't want.
+         *
+         */
+
         'copy:theme',
-        'copy:plugin', 
+        'copy:plugin',
 
-        // Create an archive from the copy
-        'compress', 
+        // Create an archive from the copies
+        'compress',
 
-        // Delete the uncompressed copy
-        'clean', 
+        // Show the archive sizes
+        'shell:build_stats', 
+
+        // Delete the uncompressed copies
+        'clean:copy_plugin', 
+        'clean:copy_theme', 
 
     ]);
 	
@@ -316,6 +396,11 @@ module.exports = function(grunt) {
     // Import entire WP site for local development
     grunt.registerTask('import', [
         'shell:imp'
+    ]); 
+
+    // Import production DB for local development
+    grunt.registerTask('import-db', [
+        'shell:import_production_db'
     ]); 
 
 };
