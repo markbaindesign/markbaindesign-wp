@@ -25,14 +25,20 @@ httpdocs/*
 !httpdocs/wp-content/
 !httpdocs/wp-content/*.png
 !httpdocs/wp-content/*.ico
+
 httpdocs/wp-content/*
 !httpdocs/wp-content/plugins/
 !httpdocs/wp-content/themes/
 !httpdocs/wp-content/mu-plugins/
+
+httpdocs/wp-content/plugins/*
 !httpdocs/wp-content/plugins/markbaindesign-custom-functions/
+
 httpdocs/wp-content/themes/*
 !httpdocs/wp-content/themes/markbaindesign-wp/
+
 httpdocs/wp-content/themes/markbaindesign-wp/style.css
+httpdocs/wp-content/themes/markbaindesign-wp/style.css.map
 
 # =========================
 # Operating System Files
@@ -56,7 +62,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-*.map
 
 # Misc
 *.zip
