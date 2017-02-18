@@ -222,10 +222,10 @@ module.exports = function(grunt) {
                         'autoprefixer'
                     ]
             },
-            js: {
+            /* js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint']
-            },
+            }, */
             img: {
                 files: ['<%= vars.theme_path %>/<%= vars.theme_name %>/assets/images/src/*.{png,jpg,jpeg,gif,webp,svg}'],
                 tasks: [
@@ -236,7 +236,8 @@ module.exports = function(grunt) {
                 options: { livereload: true },
                 files: [
 
-                    // Gruntfile
+                    // Project
+                    '.gitignore',
                     'Gruntfile.js',
 
                     // Theme files
@@ -266,7 +267,7 @@ module.exports = function(grunt) {
         'newer:imagemin:dist',
         'autoprefixer', 
 		'modernizr',
-        'jshint',		
+        // 'jshint',		
 		'watch',
 	]);
 
