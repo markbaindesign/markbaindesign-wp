@@ -1332,7 +1332,7 @@ h1#site-title {
   .hero-header {
     color: #f0f0f0;
     text-align: left;
-    background: url("assets/images/dist/hero.jpg") no-repeat bottom center;
+    background: url("assets/images/hero.jpg") no-repeat bottom center;
     background-size: cover;
   }
 }
