@@ -213,13 +213,13 @@ module.exports = function(grunt) {
                 ].join('&&')
             },
             import_production_db: {
-                command: '~/htdocs/criado-em-sampa/bin/wp-db-import',
+                command: 'scripts/',
             },
             project_stats: {
-                command: 'du -sh ~/htdocs/criado-em-sampa/httpdocs',
+                command: 'du -sh httpdocs',
             },
             build_stats: {
-                command: 'du -sh ~/htdocs/criado-em-sampa/release',
+                command: 'du -sh release',
             }          
         },
 
