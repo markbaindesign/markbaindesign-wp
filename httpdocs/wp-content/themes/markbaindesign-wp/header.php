@@ -50,12 +50,13 @@
 	<header id="masthead" class="site-header section" role="banner">
 		<div class="container">
 			<div class="branding">
-				<a id="logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
-					<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="Mark Bain Design"> -->
-					<h1 id="site-title">Mark Bain Design</h1>
+				<?php 
+					$blog_title = get_bloginfo('name');
+					$blog_url = esc_url( home_url());
+				?>
+				<a id="logo-link" href="<?php echo $blog_url; ?>" rel="home" title="<?php echo $blog_title; ?>">
+					<h1 id="site-title"><?php echo $blog_title; ?></h1>
 				</a>
-
-
 				<a href="#nav" id="main-menu-toggle" aria-hidden="false"><h2 class="visuallyhidden">Menu</h2></a>
 			</div>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => 'nav', 'container_class' => 'nav-collapse menu-main-container' ) ); ?>
