@@ -66,8 +66,12 @@ img {
    ========================================================================== */
 
 body {
-	font-family: "proxima-nova", sans-serif;
+	font-family: "Tisa Sans OT W01 Regular", sans-serif;
 	font-size: $base-font-size;
+}
+
+i, em {
+	font-family: "Tisa Sans OT W01 Italic", sans-serif;
 }
 
 .textblock {
@@ -76,10 +80,9 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 { // Common header styles
-	font-family: 
-		"proxima-nova", 
-		sans-serif;
+	font-family: "Tisa Sans OT W01 Bold", sans-serif;
 	font-style: normal;
+	letter-spacing: -1px;
 	clear: both;
 	color: $mid-grey;
 
