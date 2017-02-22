@@ -92,3 +92,8 @@
 .icon-pinterest:before {
 	content: "\e616";
 }
+
+@include fontface('Tisa Sans OT W01 Regular', 'assets/fonts/5452987/', '01_regular');
+@include fontface('Tisa Sans OT W01 Italic', 'assets/fonts/5452989/', '01_italic');
+@include fontface('Tisa Sans OT W01 Bold', 'assets/fonts/5452995/', '01_bold');
+@include fontface('Tisa Sans OT W01 Extrabold', 'assets/fonts/5452999/', '01_extrabold');
