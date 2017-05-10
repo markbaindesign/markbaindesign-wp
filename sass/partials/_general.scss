@@ -68,6 +68,7 @@ img {
 body {
 	font-family: "Tisa Sans OT W01 Regular", sans-serif;
 	font-size: $base-font-size;
+	color: darken($mid-grey, 10%);
 }
 
 i, em {
@@ -80,9 +81,8 @@ i, em {
 
 
 h1, h2, h3, h4, h5, h6 { // Common header styles
-	font-family: "Tisa Sans OT W01 Bold", sans-serif;
+	font-family: "Tisa Sans OT W01 Light", sans-serif;
 	font-style: normal;
-	letter-spacing: -1px;
 	clear: both;
 	color: $mid-grey;
 
@@ -133,9 +133,6 @@ h3 {
 	line-height: 1.3333em; /* 24px */
 	margin-bottom: 1.3333em;  
 	margin-top: 0.0000em;
-	&.sub-hero {
-		font-weight: normal;
-	}
   }
   
 h6 {  
