@@ -93,6 +93,7 @@
 	content: "\e616";
 }
 
+@include fontface('Tisa Sans OT W01 Light', 'assets/fonts/5452978/', '01_light');
 @include fontface('Tisa Sans OT W01 Regular', 'assets/fonts/5452987/', '01_regular');
 @include fontface('Tisa Sans OT W01 Italic', 'assets/fonts/5452989/', '01_italic');
 @include fontface('Tisa Sans OT W01 Bold', 'assets/fonts/5452995/', '01_bold');
