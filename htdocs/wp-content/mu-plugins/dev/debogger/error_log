@@ -1,0 +1,1 @@
+[06-Jun-2016 06:47:36 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/dev/debogger/debog.php on line 12

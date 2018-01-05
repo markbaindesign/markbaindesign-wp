@@ -1,0 +1,7 @@
+[11-May-2016 17:02:42 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/scripts.php on line 12
+[12-May-2016 02:51:19 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/post-types.php on line 7
+[13-May-2016 05:23:42 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/taxonomies.php on line 7
+[13-May-2016 07:23:29 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/shortcodes.php on line 8
+[13-May-2016 11:13:37 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/meta.php on line 7
+[15-May-2016 03:28:33 America/Chicago] PHP Fatal error:  Call to undefined function add_filter() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/functions.php on line 7
+[17-May-2016 08:22:36 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/includes/meta.php on line 7
