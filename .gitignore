@@ -21,24 +21,24 @@ release
 
 *.log
 
-httpdocs/*
-!httpdocs/wp-content/
-!httpdocs/wp-content/*.png
-!httpdocs/wp-content/*.ico
+htdocs/*
+!htdocs/wp-content/
+!htdocs/wp-content/*.png
+!htdocs/wp-content/*.ico
 
-httpdocs/wp-content/*
-!httpdocs/wp-content/plugins/
-!httpdocs/wp-content/themes/
-!httpdocs/wp-content/mu-plugins/
+htdocs/wp-content/*
+!htdocs/wp-content/plugins/
+!htdocs/wp-content/themes/
+!htdocs/wp-content/mu-plugins/
 
-httpdocs/wp-content/plugins/*
-!httpdocs/wp-content/plugins/markbaindesign-custom-functions/
+htdocs/wp-content/plugins/*
+!htdocs/wp-content/plugins/markbaindesign-custom-functions/
 
-httpdocs/wp-content/themes/*
-!httpdocs/wp-content/themes/markbaindesign-wp/
+htdocs/wp-content/themes/*
+!htdocs/wp-content/themes/markbaindesign-wp/
 
-httpdocs/wp-content/themes/markbaindesign-wp/style.css
-httpdocs/wp-content/themes/markbaindesign-wp/style.css.map
+htdocs/wp-content/themes/markbaindesign-wp/style.css
+htdocs/wp-content/themes/markbaindesign-wp/style.css.map
 
 # =========================
 # Operating System Files
