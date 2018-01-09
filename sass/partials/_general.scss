@@ -66,13 +66,13 @@ img {
    ========================================================================== */
 
 body {
-	font-family: "Tisa Sans OT W01 Regular", sans-serif;
+	font-family: "LotaGrotesque-Regular", sans-serif;
 	font-size: $base-font-size;
 	color: darken($mid-grey, 10%);
 }
 
 i, em {
-	font-family: "Tisa Sans OT W01 Italic", sans-serif;
+	font-family: "LotaGrotesque-RegularIt", sans-serif;
 }
 
 .textblock {
@@ -81,8 +81,9 @@ i, em {
 
 
 h1, h2, h3, h4, h5, h6 { // Common header styles
-	font-family: "Tisa Sans OT W01 Light", sans-serif;
+	font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
 	font-style: normal;
+	font-weight: normal;
 	clear: both;
 	color: $mid-grey;
 
