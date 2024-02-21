@@ -122,7 +122,7 @@ function mbdmaster324_scripts() {
 		wp_enqueue_script( 'jquery-masonry' );	
 
 		// Typekit script 
-		wp_enqueue_script( 'mbdmaster324-typekit', '//use.typekit.net/mfk0trc.js');
+		// wp_enqueue_script( 'mbdmaster324-typekit', '//use.typekit.net/mfk0trc.js');
 
 		// Temporary IconMoon stylesheet
 		// wp_enqueue_style( 'mbdmaster324-iconmoon-temp', '//i.icomoon.io/public/temp/492d787a8a/UntitledProject2/style.css');
