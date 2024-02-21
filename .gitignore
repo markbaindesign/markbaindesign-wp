@@ -26,6 +26,12 @@
 public_html/*
 !public_html/wp-content/
 
+# Don't ignore favicons, manifest.json
+!public_html/*.png
+!public_html/*.ico
+!public_html/*.svg
+!public_html/*.json
+
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
 public_html/wp-content/*
