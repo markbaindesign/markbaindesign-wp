@@ -12,6 +12,10 @@
 	background: $white;
 	border-bottom: 1px solid $light-grey;
 
+   &>.container {
+      max-width: $pageWidth;
+   }
+
 	a {
 		display: block;
 		color: $black;
