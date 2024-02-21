@@ -1,1 +1,0 @@
-[31-May-2016 03:41:27 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/dev/debug-wp-query/debug-wp-query.php on line 11

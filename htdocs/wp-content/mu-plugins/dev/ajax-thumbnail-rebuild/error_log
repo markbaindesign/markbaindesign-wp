@@ -1,1 +1,0 @@
-[03-Jun-2016 08:07:34 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/dev/ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php on line 266

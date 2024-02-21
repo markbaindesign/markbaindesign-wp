@@ -1,3 +1,0 @@
-[17-May-2016 09:29:35 America/Chicago] PHP Fatal error:  Call to undefined function wp_die() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/uninstall.php on line 8
-[18-May-2016 08:37:36 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/nice-words.php on line 24
-[22-May-2016 00:32:16 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/nice-words.php on line 24

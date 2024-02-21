@@ -1,2 +1,0 @@
-[05-Jun-2016 04:17:18 America/Chicago] PHP Fatal error:  Class 'WP_Widget' not found in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/scb/Widget.php on line 5
-[05-Jun-2016 13:30:40 America/Chicago] PHP Fatal error:  Class 'scbAdminPage' not found in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/scb/BoxesPage.php on line 5
