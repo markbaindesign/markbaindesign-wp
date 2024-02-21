@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Theme",
+      "path": "public_html/wp-content/themes"
+    },
+    {
+      "name": "Sass",
+      "path": "sass"
+    },
+    {
+      "name": "Root",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.tabSize": 3
+  }
+}

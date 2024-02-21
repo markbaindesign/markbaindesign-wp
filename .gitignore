@@ -1,19 +1,20 @@
 # =========================
 # Various
 # =========================
-node_modules
-bower_components
-.sass-cache
-import
-export
-scripts
-release
+/node_modules/
+/bower_components/
+/.sass-cache/
+/import/
+/export/
+/release/
+/temp/
+/scripts/
 
 # =========================
-# VIM Temp Files
+# VVV provisioning
 # =========================
-*~
-*.swp
+
+/provision/vvv-nginx.conf
 
 # =========================
 # WordPress 
@@ -21,24 +22,57 @@ release
 
 *.log
 
-htdocs/*
-!htdocs/wp-content/
-!htdocs/wp-content/*.png
-!htdocs/wp-content/*.ico
+# Ignore everything in the "public_html" directory except the "wp-content" directory.
+public_html/*
+!public_html/wp-content/
 
-htdocs/wp-content/*
-!htdocs/wp-content/plugins/
-!htdocs/wp-content/themes/
-!htdocs/wp-content/mu-plugins/
+# Don't ignore favicons, manifest.json
+!public_html/*.png
+!public_html/*.ico
+!public_html/*.svg
+!public_html/*.json
 
-htdocs/wp-content/plugins/*
-!htdocs/wp-content/plugins/markbaindesign-custom-functions/
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+public_html/wp-content/*
+!public_html/wp-content/plugins/
+!public_html/wp-content/themes/
+!public_html/wp-content/mu-plugins/
 
-htdocs/wp-content/themes/*
-!htdocs/wp-content/themes/markbaindesign-wp/
+# Ignore everything in the "plugins" directory, except the plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+public_html/wp-content/plugins/*
 
-htdocs/wp-content/themes/markbaindesign-wp/style.css
-htdocs/wp-content/themes/markbaindesign-wp/style.css.map
+# Include all plugins with prefix "kf-"
+!public_html/wp-content/plugins/bain-design-*
+
+# Ignore everything in the "mu-plugins" directory, except the mu-plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+public_html/wp-content/mu-plugins/*
+!public_html/wp-content/mu-plugins/bain-design-*.php
+
+# Ignore everything in the "themes" directory, except the themes you
+# specify (see the commented-out example for a hint on how to do this.)
+public_html/wp-content/themes/*
+!public_html/wp-content/themes/bain-design-*/
+
+# Ignore compiled stylesheets if using Sass
+public_html/wp-content/themes/bain-design-*/style.css
+public_html/wp-content/themes/bain-design-*/editor-style.css
+public_html/wp-content/themes/bain-design-*/editor-style-shared.css
+
+# Ignore version stylesheets if using Sass
+public_html/wp-content/themes/bain-design-*/style.*.css
+
+# Ignore minified CSS and JS created by build step
+public_html/wp-content/themes/bain-design-*/assets/js/dist/custom/*
+public_html/wp-content/themes/bain-design-*/assets/css/dist/custom/*
+public_html/wp-content/themes/bain-design-*/framework/assets/js/dist/custom/*
+public_html/wp-content/themes/bain-design-*/framework/assets/css/dist/custom/*
+!public_html/wp-content/themes/bain-design-*/framework/assets/js/dist/custom/.gitkeep
+!public_html/wp-content/themes/bain-design-*/assets/css/dist/custom/.gitkeep
+!public_html/wp-content/themes/bain-design-*/assets/js/dist/custom/.gitkeep
+!public_html/wp-content/themes/bain-design-*/framework/assets/css/dist/custom/.gitkeep
 
 # =========================
 # Operating System Files
@@ -62,6 +96,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.map
 
 # Misc
 *.zip

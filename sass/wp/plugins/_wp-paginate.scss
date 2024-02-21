@@ -5,7 +5,6 @@
 	margin-top: 1em;
 	padding: 0 0 1em;
 	text-align: center;
-	font-weight: bold;
 
 	.pages {
 		display: none;
@@ -13,25 +12,20 @@
 	
 	span {
 		color: darken( $mid-grey, 20%);
-		border: 1px solid darken( $mid-grey, 20%);
-		background: $light-grey;
 	}
 
 	a {
 
 		&:link {
 			text-decoration: none;
-			background: $light-grey;
 		}
 
 		&:link, &:visited,  {
 			color: $mid-grey;
-			border: 1px solid $mid-grey;	
 		}
 
 		&:hover {
 			color: darken( $mid-grey, 20%);
-			border: 1px solid darken( $mid-grey, 20%);
 		}
 
 	}
@@ -49,6 +43,4 @@
 	text-align: center;
 	position: relative;
 	z-index: 1;
-	border-radius: 999px;
-	behavior: url(PIE.htc);
 }
