@@ -93,8 +93,8 @@
 	content: "\e616";
 }
 
-@include fontface('LotaGrotesqueAlt3-Light', 'assets/fonts/', '3434DC_21_0');
-@include fontface('LotaGrotesque-Regular', 'assets/fonts/', '3434DC_9_0');
-@include fontface('LotaGrotesque-RegularIt', 'assets/fonts/', '3434DC_A_0');
-@include fontface('LotaGrotesqueAlt3-Bold', 'assets/fonts/', '3434DC_11_0');
+@include fontface('LotaGrotesqueAlt3-Light', 'assets/fonts/lota/', '3434DC_21_0');
+@include fontface('LotaGrotesque-Regular', 'assets/fonts/lota/', '3434DC_9_0');
+@include fontface('LotaGrotesque-RegularIt', 'assets/fonts/lota/', '3434DC_A_0');
+@include fontface('LotaGrotesqueAlt3-Bold', 'assets/fonts/lota/', '3434DC_11_0');
 
