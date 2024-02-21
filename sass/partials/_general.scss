@@ -75,13 +75,19 @@ i, em {
 	font-family: "LotaGrotesque-RegularIt", sans-serif;
 }
 
+strong {
+	font-style: normal;
+	font-weight: normal;
+   font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
+}
+
 .textblock {
 	@include rem(max-width, 600px);
 }
 
 
 h1, h2, h3, h4, h5, h6 { // Common header styles
-	font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
+	// font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	clear: both;

@@ -192,6 +192,7 @@ module.exports = function (grunt) {
          dist: {
             options: {
                style: 'expanded',
+               sourceMap: true
             },
             files: {
                '<%= vars.theme_path %>/<%= vars.theme_name %>/style.css': 'sass/styles.scss',
@@ -275,7 +276,7 @@ module.exports = function (grunt) {
             files: ['sass/**/*.{scss,sass}'],
             tasks: [
                'sass',
-               'autoprefixer',
+               // 'autoprefixer',
                'shell:project_stats'
             ]
          },
