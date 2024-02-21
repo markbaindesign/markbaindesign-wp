@@ -35,13 +35,8 @@ get_header(); ?>
                   <div class="wow fadeInLeft"><a href="<?php bloginfo('url'); ?>/contact" class="cta button cta-primary">Arrange a chat now <i aria-hidden="true" class="icon-arrow-right"></i></a></div>
                   <div class="wow fadeInRight"><a href="<?php bloginfo('url'); ?>/portfolio" class="cta button cta-secondary">Check out my work <i aria-hidden="true" class="icon-arrow-right"></i></a></div>
                </div>
-
-
-
             </div>
          </div>
-
-
       </div><!-- .hero -->
 
       <!-- Project Showcase -->

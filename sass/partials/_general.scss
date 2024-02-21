@@ -68,7 +68,6 @@ img {
 body {
 	font-family: "LotaGrotesque-Regular", sans-serif;
 	font-size: $base-font-size;
-	color: darken($mid-grey, 10%);
 }
 
 i, em {
@@ -82,16 +81,15 @@ strong {
 }
 
 .textblock {
-	@include rem(max-width, 600px);
+	max-width: 37.5rem;
 }
 
 
 h1, h2, h3, h4, h5, h6 { // Common header styles
-	// font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
+	font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	clear: both;
-	color: $mid-grey;
 
 	@include breakpoint( tablet ) {
 		padding: 0;
