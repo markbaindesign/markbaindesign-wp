@@ -43,7 +43,6 @@
    text-align: center;
 
    @include breakpoint(tablet) {
-      color: $white;
       background: url('assets/images/hero.jpg') no-repeat bottom center;
       -moz-background-size: cover;
       -webkit-background-size: cover;
