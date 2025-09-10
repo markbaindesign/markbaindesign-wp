@@ -1,6 +1,6 @@
 {
    "name": "markbaindesign",
-   "version": "2.6.0",
+   "version": "2.6.1",
    "devDependencies": {
       "bower": "1.8.14",
       "grunt": "1.4.1",
@@ -22,6 +22,7 @@
       "grunt-version": "^2.0.0",
       "imagemin-mozjpeg": "~5.1.0",
       "load-grunt-tasks": "~0.4.0",
+      "load-grunt-config": "~4.0.1",
       "mozjpeg": "~4.0.1",
       "node-sass": "^4.12.0",
       "scripts": "markbaindesign/mbd-wp-deploy-scripts"
