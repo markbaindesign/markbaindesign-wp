@@ -58,12 +58,12 @@
 }
 
 .site-footer a:hover {
-	color: darken($black, 10%);
+	color: color.adjust($black, $lightness: -10%);
 }
 
 .site-footer a:active {
-	color: darken($link-color-alt, 15%);
-	border-bottom: 1px solid  darken($link-color-alt, 15%); 
+	color: color.adjust($link-color-alt, $lightness: -15%);
+	border-bottom: 1px solid  color.adjust($link-color-alt, $lightness: -15%); 
 }
 
 .site-footer li {
@@ -93,17 +93,17 @@
 		display: inline-block;
 		padding: .5em 3%;
 		width: auto;
-		background: darken( $white, 10%);
+		background: color.adjust( $white, $lightness: -10%);
 		@include border-radius( 5px );
 
 		&:link, &:visited {
-			background: darken( $white, 15%);
+			background: color.adjust( $white, $lightness: -15%);
 		}
 		&:hover {
-			background: darken( $white, 25%);
+			background: color.adjust( $white, $lightness: -25%);
 		}
 		&:active {
-			background: darken( $white, 35%);
+			background: color.adjust( $white, $lightness: -35%);
 		}	}
 
 	@include breakpoint(tablet) {

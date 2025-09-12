@@ -62,10 +62,10 @@ $orange: #ab9772;
 // Alternate Color Scheme
 
 $base-color-alt: $nephritis;
-$text-color-alt: darken(white, 5%);
+$text-color-alt: color.adjust(white, $lightness: -5%);
 $text-shadow-color-alt: none;
 	// Links
-	$link-color-alt: darken(white, 15%);
+	$link-color-alt: color.adjust(white, $lightness: -15%);
 
 // Fixed height header & footer
 $sticky-footer-height: 50px;

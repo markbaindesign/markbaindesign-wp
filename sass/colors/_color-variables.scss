@@ -11,8 +11,8 @@
 	$color_white: 				rgba(255,255,255,1);	
 	$color_white-bright: 	#fff;
 
-	$color_grey: 				darken($color_white, 50%);
-	$color_grey-light: 		darken($color_white, 10%);
+	$color_grey: 				color.adjust($color_white, $lightness: -50%);
+	$color_grey-light: 		color.adjust($color_white, $lightness: -10%);
 
 
 	/* Paul Smith Jumper */

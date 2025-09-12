@@ -19,7 +19,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -28,8 +28,8 @@
 
 		}
 		&:hover {
-			color: darken($color, 20%);
-			border-color: darken($border, 20%);
+			color: color.adjust($color, $lightness: -20%);
+			border-color: color.adjust($border, $lightness: -20%);
 		}
 		&:active {
 
@@ -39,7 +39,7 @@
 				color: $icon-color;
 			}
 			&:hover {
-				color: darken($icon-color, 10%);	
+				color: color.adjust($icon-color, $lightness: -10%);	
 			}			
 		}
 	}
@@ -51,7 +51,7 @@
 		color: $btn-color;
 		background-color: $btn-bg;
 		&:hover {
-			background-color: darken($btn-bg, 10%);		
+			background-color: color.adjust($btn-bg, $lightness: -10%);		
 		}
 	}
 }
@@ -75,7 +75,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -84,8 +84,8 @@
 
 		}
 		&:hover {
-			color: darken($color, 20%);
-			border-color: darken($border, 20%);
+			color: color.adjust($color, $lightness: -20%);
+			border-color: color.adjust($border, $lightness: -20%);
 		}
 		&:active {
 
@@ -96,7 +96,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}
@@ -108,7 +108,7 @@
 		color: $btn-color;
 		background-color: $btn-bg;
 		&:hover {
-			background-color: darken($btn-bg, 10%);		
+			background-color: color.adjust($btn-bg, $lightness: -10%);		
 		}
 	}
 }
@@ -128,7 +128,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -145,7 +145,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}
@@ -169,7 +169,7 @@
 	background: $bg;
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -186,7 +186,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}
@@ -212,7 +212,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 
 	a {
@@ -230,7 +230,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}
@@ -255,20 +255,20 @@
 	background: $bg;	
 	color: $color_white;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
 			color: rgba(255,255,255,.5);
 			i {
-				color: darken($bg, 10%);
+				color: color.adjust($bg, $lightness: -10%);
 				text-shadow: 1px 1px 1px lighten($bg, 10%);
 			}
 		}
 		&:hover {
 			color: $color_white;
 			i {
-				color: darken($bg, 20%);
+				color: color.adjust($bg, $lightness: -20%);
 			}
 		}
 		&:active {
@@ -279,7 +279,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 			
@@ -305,7 +305,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -322,7 +322,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}
@@ -346,7 +346,7 @@
 	background: $bg;	
 	color: $color;
 	&::before {
-		background: darken($bg,3%);
+		background: color.adjust($bg, $lightness: -3%);
 	}
 	a {
 		&:link, &:visited {
@@ -363,7 +363,7 @@
 				background-color: $btn-bg;
 			}
 			&:hover {
-				background-color: darken($btn-bg, 10%);		
+				background-color: color.adjust($btn-bg, $lightness: -10%);		
 			}
 		}
 	}

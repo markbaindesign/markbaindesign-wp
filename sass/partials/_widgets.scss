@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .widget-area {
-	background: darken($base-color-alt, 3%);
+	background: color.adjust($base-color-alt, $lightness: -3%);
 	color: $text-color-alt;
 }
 

@@ -35,12 +35,12 @@ a {
 	}
 
 	&:hover {
-		color: darken($link-color, 10%);
+		color: color.adjust($link-color, $lightness: -10%);
 		text-decoration: $hover-decoration;
 	}
 
 	&:active {
-		color: darken($link-color, 30%);
+		color: color.adjust($link-color, $lightness: -30%);
 		text-decoration: $hover-decoration;
 	}
 

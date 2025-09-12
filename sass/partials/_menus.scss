@@ -45,14 +45,14 @@ ul.menu {
 				} 
 			}
 			&.sub-menu {
-				background: darken($menu-base-color, 2%);
+				background: color.adjust($menu-base-color, $lightness: -2%);
 			}
 		}
 		&:hover > ul { 
 			display: block; // Sub-menus appear on hover
 			opacity: 1;
 			visibility: visible;
-			// background: darken( $menu-base-color, 5%);
+			// background: color.adjust( $menu-base-color, $lightness: -5%);
 			@include transition(all, 0.3s, ease-in-out);
 		}
 	}
@@ -64,8 +64,8 @@ ul.menu {
 		border-bottom: 1px solid $light-grey;
 		&:hover {
 			@include breakpoint(tablet) {
-				background: darken($menu-base-color, 2%);
-				color: darken($black, 6%);
+				background: color.adjust($menu-base-color, $lightness: -2%);
+				color: color.adjust($black, $lightness: -6%);
 			}		
 		}
 		&:active {
@@ -93,7 +93,7 @@ ul.menu {
 .menu ul li {
 	 position: relative;
 	 @include breakpoint( tablet ){
-		border-bottom: 1px solid darken($menu-base-color, 10%);
+		border-bottom: 1px solid color.adjust($menu-base-color, $lightness: -10%);
 	 	border-top: 1px solid lighten($menu-base-color, 2%); 
 	 } 
  }
@@ -103,19 +103,19 @@ ul.menu {
  }
 
 .menu ul ul a {
-	 background: darken($menu-base-color, 2%);
-	 border-top: 1px solid darken($menu-base-color, 4%);
+	 background: color.adjust($menu-base-color, $lightness: -2%);
+	 border-top: 1px solid color.adjust($menu-base-color, $lightness: -4%);
 	 border-bottom: 1px solid lighten($menu-base-color, 2%);
  }
 
 .menu ul ul ul a {
-	 background: darken($menu-base-color, 4%);
-	 border-top: 1px solid darken($menu-base-color, 6%);
-	 border-bottom: 1px solid darken($menu-base-color, 4%);
+	 background: color.adjust($menu-base-color, $lightness: -4%);
+	 border-top: 1px solid color.adjust($menu-base-color, $lightness: -6%);
+	 border-bottom: 1px solid color.adjust($menu-base-color, $lightness: -4%);
  }
 
 .menu ul ul li {
- 	background: darken($menu-base-color, 10%);
+ 	background: color.adjust($menu-base-color, $lightness: -10%);
 }
 
 /* Top level menu items */
@@ -125,11 +125,11 @@ ul.menu {
 }
 
 .menu ul ul li:hover > a {
-	 background: darken($menu-base-color, 4%);
+	 background: color.adjust($menu-base-color, $lightness: -4%);
  }
 
 .menu ul ul ul li:hover > a {
-	 background: darken($menu-base-color, 6%);
+	 background: color.adjust($menu-base-color, $lightness: -6%);
  }
 
 .menu ul ul a:hover {
