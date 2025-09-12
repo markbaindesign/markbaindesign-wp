@@ -5,21 +5,21 @@
  *
  */
 
-	@import "colors/reds";
-	@import "colors/peaches";
-	@import "colors/tans";
-	@import "colors/oranges";
-	@import "colors/ambers";
-	@import "colors/yellows";
-	@import "colors/limes";
-	@import "colors/greens";
-	@import "colors/turquoise";
-	@import "colors/blues";
-	@import "colors/purples";
-	@import "colors/pinks";
-	@import "colors/browns";
-	@import "colors/whites";
-	@import "colors/grays";
-	@import "colors/flat-ui-colorscheme";
+	@use "colors/reds";
+	@use "colors/peaches";
+	@use "colors/tans";
+	@use "colors/oranges";
+	@use "colors/ambers";
+	@use "colors/yellows";
+	@use "colors/limes";
+	@use "colors/greens";
+	@use "colors/turquoise";
+	@use "colors/blues";
+	@use "colors/purples";
+	@use "colors/pinks";
+	@use "colors/browns";
+	@use "colors/whites";
+	@use "colors/grays";
+	@use "colors/flat-ui-colorscheme";
 
-	@import "colors/bootstrap"; //Colour varialbles from twitter bootstrap
+	@use "colors/bootstrap"; //Colour varialbles from twitter bootstrap
