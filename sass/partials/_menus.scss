@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /* ==========================================================================
    Menus
    ========================================================================== */
@@ -70,7 +72,7 @@ ul.menu {
 		}
 		&:active {
 			color: $white;
-			background-color: lighten($mid-grey, 3%);
+			background-color: color.adjust($mid-grey, $lightness: 3%, $space: hsl);
 		}
 		@include breakpoint(tablet) {
 			display: inline-block;
@@ -94,7 +96,7 @@ ul.menu {
 	 position: relative;
 	 @include breakpoint( tablet ){
 		border-bottom: 1px solid color.adjust($menu-base-color, $lightness: -10%);
-	 	border-top: 1px solid lighten($menu-base-color, 2%); 
+	 	border-top: 1px solid color.adjust($menu-base-color, $lightness: 2%, $space: hsl); 
 	 } 
  }
 
@@ -105,7 +107,7 @@ ul.menu {
 .menu ul ul a {
 	 background: color.adjust($menu-base-color, $lightness: -2%);
 	 border-top: 1px solid color.adjust($menu-base-color, $lightness: -4%);
-	 border-bottom: 1px solid lighten($menu-base-color, 2%);
+	 border-bottom: 1px solid color.adjust($menu-base-color, $lightness: 2%, $space: hsl);
  }
 
 .menu ul ul ul a {
