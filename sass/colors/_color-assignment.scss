@@ -1,18 +1,3 @@
-/* 
-* 		Color assignment */
-
-/* 	Here's where we assign palettes to the major sections of the site */
-/* 	Assigning palettes from one central location makes it easy to experiment with color schemes */
-
-// 	$color_white 								= palette-0
-// 	$color_pink-psj 							= palette-1
-// 	$color_navy-psj 							= palette-2
-// 	$color_aubergine-psj 					= palette-3
-// 	$color_blue-psj 							= palette-4
-// 	$color_black-psj 							= palette-5
-// 	$color_red-psj 							= palette-6
-// 	$color_brown-psj 							= palette-7
-
 html {												@include palette-0;}
 body {												@include palette-0;}
 
