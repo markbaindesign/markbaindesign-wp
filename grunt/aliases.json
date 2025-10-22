@@ -1,46 +1,45 @@
 {
-  "default": [
-    "sass",
-    "browserSync",
-    "watch"
-  ],
-  "bump-minor": [
-    "clean:version",
-    "bump-only:minor",
-    "build",
-    "bump-commit"
-  ],
-  "bump-patch": [
-    "clean:version",
-    "bump-only:patch",
-    "build",
-    "bump-commit"
-  ],
-  "bump-major": [
-    "clean:version",
-    "bump-only:major",
-    "build",
-    "bump-commit"
-  ],
-  "build": [
-    "clean:build",
-    "sass",
-    "concat:css",
-    "postcss",
-    "filerev",
-    "filerev_assets",
-    "clean:dir_release",
-    "copy:theme",
-    "copy:plugin",
-    "compress"
-  ],
-  "export": [
-    "shell:exp"
-  ],
-  "import": [
-    "shell:imp"
-  ],
-  "import-db": [
-    "shell:import_production_db"
-  ]
+   "default": [
+      "sass",
+      "watch"
+   ],
+   "bump-minor": [
+      "clean:version",
+      "bump-only:minor",
+      "build",
+      "bump-commit"
+   ],
+   "bump-patch": [
+      "clean:version",
+      "bump-only:patch",
+      "build",
+      "bump-commit"
+   ],
+   "bump-major": [
+      "clean:version",
+      "bump-only:major",
+      "build",
+      "bump-commit"
+   ],
+   "build": [
+      "clean:build",
+      "sass",
+      "concat:css",
+      "postcss",
+      "filerev",
+      "filerev_assets",
+      "clean:dir_release",
+      "copy:theme",
+      "copy:plugin",
+      "compress"
+   ],
+   "export": [
+      "shell:exp"
+   ],
+   "import": [
+      "shell:imp"
+   ],
+   "import-db": [
+      "shell:import_production_db"
+   ]
 }
