@@ -1,15 +1,16 @@
+@use "sass:color";
 	$color_black: rgba(0, 0, 0, .8);
 	$color_white: rgba(255, 255, 255, 1);
 	$color_white-bright: #fff;
 	$color_grey: color.adjust($color_white, $lightness: -50%);
 	$color_grey-light: color.adjust($color_white, $lightness: -10%);
-	$color_black-psj: lighten(#1B1A18, 10%); // palette-5
-	$color_brown-psj: lighten(#564E39, 10%); // palette-1
-	$color_red-psj: lighten(#9F290B, 10%); // palette-6
-	$color_pink-psj: lighten(#E67770, 0%); // palette-7
-	$color_blue-psj: lighten(#2A575D, 10%); // palette-4
-	$color_navy-psj: lighten(#222933, 10%); // palette-2
-	$color_aubergine-psj: lighten(#392023, 10%); // palette-3
+	$color_black-psj: color.adjust(#1B1A18, $lightness: 10%); // palette-5
+	$color_brown-psj: color.adjust(#564E39, $lightness: 10%); // palette-1
+	$color_red-psj: color.adjust(#9F290B, $lightness: 10%); // palette-6
+	$color_pink-psj: color.adjust(#E67770, $lightness: 0%); // palette-7
+	$color_blue-psj: color.adjust(#2A575D, $lightness: 10%); // palette-4
+	$color_navy-psj: color.adjust(#222933, $lightness: 10%); // palette-2
+	$color_aubergine-psj: color.adjust(#392023, $lightness: 10%); // palette-3
 	$color_text: $color_black;
 	$color_text-cta: $color_white;
 	$color_text-cta-2: $color_grey;

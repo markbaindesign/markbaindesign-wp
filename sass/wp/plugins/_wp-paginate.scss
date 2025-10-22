@@ -1,46 +1,50 @@
-/* WP Plugin -- PageNavi */
+@use "../../partials/variables" as *;
+@use "../../partials/mixins" as *;
+@use "sass:color";
 
 .wp-pagenavi {
-	
-	margin-top: 1em;
-	padding: 0 0 1em;
-	text-align: center;
 
-	.pages {
-		display: none;
-	}
-	
-	span {
-		color: color.adjust( $mid-grey, $lightness: -20%);
-	}
+   margin-top: 1em;
+   padding: 0 0 1em;
+   text-align: center;
 
-	a {
+   .pages {
+      display: none;
+   }
 
-		&:link {
-			text-decoration: none;
-		}
+   span {
+      color: color.adjust($mid-grey, $lightness: -20%);
+   }
 
-		&:link, &:visited,  {
-			color: $mid-grey;
-		}
+   a {
 
-		&:hover {
-			color: color.adjust( $mid-grey, $lightness: -20%);
-		}
+      &:link {
+         text-decoration: none;
+      }
 
-	}
+      &:link,
+      &:visited,
+      {
+      color: $mid-grey;
+   }
+
+   &:hover {
+      color: color.adjust($mid-grey, $lightness: -20%);
+   }
+
+}
 }
 
 .wp-pagenavi a,
 .wp-pagenavi span {
-	display: inline-block;
-	width: 34px;
-	height: 34px;
-	padding: 5px;
-	margin: 0 5px 5px 0;
-	bottom: 0;
-	font-size: 18px;	
-	text-align: center;
-	position: relative;
-	z-index: 1;
+   display: inline-block;
+   width: 34px;
+   height: 34px;
+   padding: 5px;
+   margin: 0 5px 5px 0;
+   bottom: 0;
+   font-size: 18px;
+   text-align: center;
+   position: relative;
+   z-index: 1;
 }

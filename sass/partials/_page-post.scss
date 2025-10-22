@@ -1,42 +1,52 @@
 @use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
 
 /* ==========================================================================
    Posts and pages
    ========================================================================== */
 
 .site-main {
-		@include breakpoint( tablet ) {
-			margin-top: $fixed-header-height;
-		}
-	}
+   @include breakpoint(tablet) {
+      margin-top: $fixed-header-height;
+   }
+}
 
 
 .home {
-	.site-main {
-		margin-top: 0;
-	}
+   .site-main {
+      margin-top: 0;
+   }
 }
 
 /* Entry Content */
 
 .entry-content {
-	p, h1, h2, h3, h4, h5, h6 {
-		@extend .textblock;
-	}
+
+   p,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+      @extend .textblock !optional;
+   }
 }
 
 .page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+   clear: both;
+   margin: 0 0 1.5em;
 }
 
 .page-content img.wp-smiley,
 .entry-content img.wp-smiley,
 .comment-content img.wp-smiley {
-	border: none;
-	margin-bottom: 0;
-	margin-top: 0;
-	padding: 0;
+   border: none;
+   margin-bottom: 0;
+   margin-top: 0;
+   padding: 0;
 }
 
 
@@ -45,155 +55,161 @@
 
 
 .site-main .gallery {
-	margin-bottom: 1.5em;
+   margin-bottom: 1.5em;
 }
 
-.gallery-caption {
-}
+.gallery-caption {}
 
 .site-main .gallery a img {
-	border: none;
-	height: auto;
-	max-width: 90%;
+   border: none;
+   height: auto;
+   max-width: 90%;
 }
 
 .site-main .gallery dd,
 .site-main .gallery figcaption {
-	margin: 0;
+   margin: 0;
 }
 
-.site-main .gallery-columns-4 .gallery-item {
-}
+.site-main .gallery-columns-4 .gallery-item {}
 
-.site-main .gallery-columns-4 .gallery-item img {
-}
+.site-main .gallery-columns-4 .gallery-item img {}
 
 /* Make sure embeds and iframes fit their containers */
 embed,
 iframe,
 object {
-	max-width: 100%;
+   max-width: 100%;
 }
 
 /* Meta */
 
-.meta, .entry-meta {
-	font-size: .9em;
-	color: black;
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
+.meta,
+.entry-meta {
+   font-size: .9em;
+   color: black;
+
+   a {
+      text-decoration: none;
+      color: inherit;
+   }
 }
 
 .categories-links+.tags-links {
-	padding-top: .5em;
+   padding-top: .5em;
 }
 
 
 
 footer {
-	
-	&.entry-footer {
-	
+
+   &.entry-footer {
 
 
-		@include breakpoint( tablet ) {
-	
-			padding-right: 0;
-			padding-left: 0;
-		}
-	}
+
+      @include breakpoint(tablet) {
+
+         padding-right: 0;
+         padding-left: 0;
+      }
+   }
 
 }
 
-.byline, .page-links {
+.byline,
+.page-links {
    font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
-	margin-bottom: 1em;
+   margin-bottom: 1em;
 
 }
 
- 
+
 /* Post Navigation */
 
 .post-navigation {
-	@include border;
-	
-	.container {
-		max-width: 100%;
-	}
-	
-	header {
-		display: inline-block;
-		@include breakpoint( mobile-horizontal ) {
-			display: block;
-		}
-	}
+   @include border;
 
-	label {
-		display: none;
-		@include breakpoint( mobile-horizontal ) {
-			display: inline-block;
-		}
-	}
+   .container {
+      max-width: 100%;
+   }
 
-	i {
+   header {
+      display: inline-block;
 
-		@include breakpoint( mobile-horizontal ) {
-			display: inline-block;
-		}
+      @include breakpoint(mobile-horizontal) {
+         display: block;
+      }
+   }
 
-		&.icon-arrow-right {
-			padding: 0 10px 0 0;
-			@include breakpoint( mobile-horizontal ) {
-				padding: 0 0 0 10px;
-			}
-		}
-		&.icon-arrow-left {
-			padding: 0 10px 0 0;
-		}		
-	}
+   label {
+      display: none;
+
+      @include breakpoint(mobile-horizontal) {
+         display: inline-block;
+      }
+   }
+
+   i {
+
+      @include breakpoint(mobile-horizontal) {
+         display: inline-block;
+      }
+
+      &.icon-arrow-right {
+         padding: 0 10px 0 0;
+
+         @include breakpoint(mobile-horizontal) {
+            padding: 0 0 0 10px;
+         }
+      }
+
+      &.icon-arrow-left {
+         padding: 0 10px 0 0;
+      }
+   }
 
 }
 
 /* Use this class via @extend */
 .post-nav-block {
-	background: $white;
-	padding: 1em 3%;
-	@include breakpoint( mobile-horizontal ) {
-		background: none;
-		padding: 0;
-	}
+   background: $white;
+   padding: 1em 3%;
+
+   @include breakpoint(mobile-horizontal) {
+      background: none;
+      padding: 0;
+   }
 }
 
 .comment-navigation .nav-previous,
 .paging-navigation .nav-previous,
 .post-navigation .nav-previous {
-	@extend .post-nav-block;
-	float: none;
-	width: 100%;
-	margin-bottom: 1em;
+   @extend .post-nav-block !optional;
+   float: none;
+   width: 100%;
+   margin-bottom: 1em;
 
 
-	@include breakpoint( mobile-horizontal ) {
-		float: left;
-		width: 50%;
-		margin-bottom: 0;
-	}
+   @include breakpoint(mobile-horizontal) {
+      float: left;
+      width: 50%;
+      margin-bottom: 0;
+   }
 }
 
 .comment-navigation .nav-next,
 .paging-navigation .nav-next,
 .post-navigation .nav-next {
-		float: none;
-		width: 100%;
-		text-align: left;	
-		@extend .post-nav-block;
-		@include breakpoint( mobile-horizontal ) {
-			float: right;
-			text-align: right;
-			width: 50%;
-	}
+   float: none;
+   width: 100%;
+   text-align: left;
+   @extend .post-nav-block !optional;
+
+   @include breakpoint(mobile-horizontal) {
+      float: right;
+      text-align: right;
+      width: 50%;
+   }
 }
 
 
@@ -201,48 +217,49 @@ footer {
 /* Home */
 
 .blog .site-main {
-	margin: 0 auto;
-	max-width: 1600px;
+   margin: 0 auto;
+   max-width: 1600px;
 }
 
 .home-post {
-	
-	width: 100%;
 
-	@include breakpoint( mobile-horizontal ) {
-		float: left;
-		width: $grid-sizer-1;
-	}
+   width: 100%;
 
-	@include breakpoint( tablet-horizontal ) {
-		float: left;
-		width: $grid-sizer-2;
-	}
+   @include breakpoint(mobile-horizontal) {
+      float: left;
+      width: $grid-sizer-1;
+   }
 
-	a {
-		display: block;
-	}
-	
-	img {
-		width: 100%;
+   @include breakpoint(tablet-horizontal) {
+      float: left;
+      width: $grid-sizer-2;
+   }
 
-	}
+   a {
+      display: block;
+   }
 
-	header {
-		padding: 1em 0;
-		.entry-meta {
-			font-size: .77em;
-		}
+   img {
+      width: 100%;
 
-		@include breakpoint( tablet ) {
-			float: none;
-			width: 100%;
-		}
-	}
+   }
 
-	h1.entry-title {
-		font-size: 1em;
-	}
+   header {
+      padding: 1em 0;
+
+      .entry-meta {
+         font-size: .77em;
+      }
+
+      @include breakpoint(tablet) {
+         float: none;
+         width: 100%;
+      }
+   }
+
+   h1.entry-title {
+      font-size: 1em;
+   }
 
 
 
@@ -252,8 +269,8 @@ footer {
 
 
 
-.block  {
-	@include outer-block;
+.block {
+   @include outer-block;
 }
 
 /* Portfolio */
@@ -268,12 +285,14 @@ footer {
          max-width: 1800px;
       }
    }
+
    .hero-header {
       background: none;
       display: flex;
       gap: 5%;
       text-align: left;
    }
+
    .hero .hero-image {
       width: 100%;
       margin-left: 0;

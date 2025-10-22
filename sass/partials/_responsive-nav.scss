@@ -1,4 +1,8 @@
 @use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 /*! responsive-nav.js 1.0.32 by @viljamis */
 
 .js .nav-collapse {

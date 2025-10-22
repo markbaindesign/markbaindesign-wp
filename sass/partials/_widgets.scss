@@ -1,32 +1,34 @@
 @use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
 
 /* ==========================================================================
    Widgets
    ========================================================================== */
 
 .widget-area {
-	background: color.adjust($base-color-alt, $lightness: -3%);
-	color: $text-color-alt;
+   background: color.adjust($base-color-alt, $lightness: -3%);
+   color: $text-color-alt;
 }
 
 .widget {
-	background: rgba(0,0,0,.05);
-	margin: 0 0 1.5em;
+   background: rgba(0, 0, 0, .05);
+   margin: 0 0 1.5em;
 }
 
 /* Align widget lists by bullets */
 .widget ul {
-	padding: 0 0 0 23px;
+   padding: 0 0 0 23px;
 }
 
 
 
 /* Make sure select elements fit in widgets */
 .widget select {
-	max-width: 100%;
+   max-width: 100%;
 }
 
 /* Search widget */
 .widget_search .search-submit {
-	display: none;
+   display: none;
 }

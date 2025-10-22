@@ -1,18 +1,21 @@
+@use "sass:color";
+@use "color-variables";
+
 // Color schemes
 
 @mixin palette-0 {
 	
 	// Vars
 	
-	$bg: $color_white;
-	$color: $color_black;
+	$bg: color-variables.$color_white;
+	$color: color-variables.$color_black;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
-	$btn-bg: $color_blue-psj;
+	$btn-color: color-variables.$color_white;
+	$btn-bg: color-variables.$color_blue-psj;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_black;
-	$icon-color: $color_blue-psj;
+	$input-color: color-variables.$color_black;
+	$icon-color: color-variables.$color_blue-psj;
 
 	// Styles
 	
@@ -60,14 +63,14 @@
 
 	// Vars
 
-	$bg: $color_pink-psj;
-	$color: $color_aubergine-psj;
+	$bg: color-variables.$color_pink-psj;
+	$color: color-variables.$color_aubergine-psj;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 	
 	// Styles
@@ -102,7 +105,7 @@
 	}
 	h1,h2,h3 {
 		color: $header;
-		text-shadow: 1px 1px 1px lighten($bg, 10%);
+		text-shadow: 1px 1px 1px color.adjust($bg, $lightness: 10%);
 	}
 	.button {
 		color: $btn-color;
@@ -115,14 +118,14 @@
 
 @mixin palette-2 {
 	// vars
-	$bg: $color_navy-psj;
-	$color: $color_blue-psj;
+	$bg: color-variables.$color_navy-psj;
+	$color: color-variables.$color_blue-psj;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 
 	background: $bg;	
@@ -132,10 +135,10 @@
 	}
 	a {
 		&:link, &:visited {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:active {
 		}
@@ -150,20 +153,20 @@
 		}
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }
 
 @mixin palette-3 { // Base = $color_aubergine-psj
 	// vars
-	$bg: $color_aubergine-psj;
-	$color: $color_pink-psj;
+	$bg: color-variables.$color_aubergine-psj;
+	$color: color-variables.$color_pink-psj;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 
 	background: $bg;
@@ -173,10 +176,10 @@
 	}
 	a {
 		&:link, &:visited {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:active {
 		}
@@ -191,7 +194,7 @@
 		}
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }
 
@@ -199,14 +202,14 @@
 
 @mixin palette-4 { 
 	//vars
-	$bg: $color_blue-psj;
-	$color: $color_navy-psj;
+	$bg: color-variables.$color_blue-psj;
+	$color: color-variables.$color_navy-psj;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 
 	background: $bg;	
@@ -217,10 +220,10 @@
 
 	a {
 		&:link, &:visited {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:active {
 		}
@@ -235,25 +238,25 @@
 		}
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }
 
 // Base = $color_black-psj
 
 @mixin palette-5 { 
-	$bg: $color_black-psj;
-	$color: $color_white;
+	$bg: color-variables.$color_black-psj;
+	$color: color-variables.$color_white;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 
 	background: $bg;	
-	color: $color_white;
+	color: color-variables.$color_white;
 	&::before {
 		background: color.adjust($bg, $lightness: -3%);
 	}
@@ -262,11 +265,11 @@
 			color: rgba(255,255,255,.5);
 			i {
 				color: color.adjust($bg, $lightness: -10%);
-				text-shadow: 1px 1px 1px lighten($bg, 10%);
+				text-shadow: 1px 1px 1px color.adjust($bg, $lightness: 10%);
 			}
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 			i {
 				color: color.adjust($bg, $lightness: -20%);
 			}
@@ -285,21 +288,21 @@
 			
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }
 
 // Base = $color_black-psj
 
 @mixin palette-6 { 
-	$bg: $color_red-psj;
-	$color: $color_white;
+	$bg: color-variables.$color_red-psj;
+	$color: color-variables.$color_white;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 
 	background: $bg;	
@@ -312,7 +315,7 @@
 			color: rgba(255,255,255,.5);
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:active {
 		}
@@ -327,21 +330,21 @@
 		}
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }
 
 // Base = $color_black-psj
 
 @mixin palette-7 { 
-	$bg: $color_brown-psj;
-	$color: $color_white;
+	$bg: color-variables.$color_brown-psj;
+	$color: color-variables.$color_white;
 	$border: $color;
 	$header: $color;
-	$btn-color: $color_white;
+	$btn-color: color-variables.$color_white;
 	$btn-bg: $color;
 	$input-bg: rgba(0,0,0,.1);
-	$input-color: $color_white;
+	$input-color: color-variables.$color_white;
 	$icon-color: $color;
 	background: $bg;	
 	color: $color;
@@ -353,7 +356,7 @@
 			color: rgba(255,255,255,.5);
 		}
 		&:hover {
-			color: $color_white;
+			color: color-variables.$color_white;
 		}
 		&:active {
 		}
@@ -368,6 +371,6 @@
 		}
 	}
 	h1,h2,h3 {
-		color: $color_white;
+		color: color-variables.$color_white;
 	}
 }

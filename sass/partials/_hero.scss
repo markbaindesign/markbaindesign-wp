@@ -1,4 +1,7 @@
 @use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
 
 .hero {
    @include clearfix;
@@ -27,7 +30,7 @@
       }
 
       h1 {
-         @extend h3;
+         @extend h3 !optional;
       }
    }
 
