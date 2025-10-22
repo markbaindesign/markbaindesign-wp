@@ -17,7 +17,7 @@ module.exports = {
       command: 'scripts/',
    },
    project_stats: {
-      command: 'du -sh httpdocs',
+      command: 'du -sh public_html',
    },
    build_stats: {
       command: 'du -sh release',
