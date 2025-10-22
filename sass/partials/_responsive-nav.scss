@@ -2,31 +2,33 @@
 /*! responsive-nav.js 1.0.32 by @viljamis */
 
 .js .nav-collapse {
-    clip: rect(0 0 0 0);
-    max-height: 0;
-    position: absolute;
-    display: block;
-    overflow: hidden; // hides menu until toggle is clicked
-    zoom: 1;
-    clear: both;
-		@include breakpoint(tablet) {
- 			overflow: visible; // allow dropdowns to overflow nav
-			width: 70.0%;
-				float: right;
-				position: relative;
-        text-align: right;
-				clear: none;
-				&.closed {
-					max-height: none;
-				}
-    }
+   clip: rect(0 0 0 0);
+   max-height: 0;
+   position: absolute;
+   display: block;
+   overflow: hidden; // hides menu until toggle is clicked
+   zoom: 1;
+   clear: both;
+
+   @media (min-width: 768px) {
+      overflow: visible; // allow dropdowns to overflow nav
+      width: 70.0%;
+      float: right;
+      position: relative;
+      text-align: right;
+      clear: none;
+
+      &.closed {
+         max-height: none;
+      }
+   }
 }
 
 .nav-collapse.opened {
-    max-height: 9999px;
+   max-height: 9999px;
    margin-bottom: 1em;
 }
 
 .disable-pointer-events {
-    pointer-events: none !important;
+   pointer-events: none !important;
 }

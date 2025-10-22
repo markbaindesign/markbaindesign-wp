@@ -5,12 +5,12 @@
    padding: 1em 0;
    position: relative;
 
-   @include breakpoint(tablet) {
+   @media (min-width: 768px) {
       padding: 2em 0;
    }
 
    .hero-image {
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          float: right;
          width: 45%;
          margin-left: 10%;
@@ -20,7 +20,7 @@
    .hero-text {
       padding-top: 1em;
 
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          padding-top: 0;
          width: 45%;
          float: left;
@@ -32,7 +32,7 @@
    }
 
    picture {
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          display: none;
       }
    }
@@ -44,7 +44,7 @@
    color: $black;
    text-align: center;
 
-   @include breakpoint(tablet) {
+   @media (min-width: 768px) {
       background: url('assets/images/hero.jpg') no-repeat bottom center;
       -moz-background-size: cover;
       -webkit-background-size: cover;
@@ -60,7 +60,7 @@
          @include cta-primary;
          margin: 0 0 1em 0;
 
-         @include breakpoint(tablet) {
+         @media (min-width: 768px) {
             margin: 0 20px 0 0;
          }
       }
@@ -92,7 +92,7 @@ body.home .hero {
 
    h1,
    h3 {
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          color: $white;
       }
    }
@@ -101,7 +101,7 @@ body.home .hero {
       padding: 30px 0 30px;
       font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
 
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          font-size: 4em;
          padding: 100px 0 30px;
       }
@@ -136,7 +136,7 @@ body.home .hero {
          margin-bottom: 1em;
       }
 
-      @include breakpoint(tablet) {
+      @media (min-width: 768px) {
          margin-bottom: 2em;
       }
 

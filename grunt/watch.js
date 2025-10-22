@@ -2,7 +2,7 @@ module.exports = {
    sass: {
       files: ['sass/**/*.{scss,sass}'],
       tasks: [
-         // 'sass',
+         'sass',
          // 'autoprefixer',
          'shell:project_stats'
       ]

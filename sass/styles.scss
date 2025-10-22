@@ -16,11 +16,9 @@ Tags:
 
 // Reset, Variables, Mixins, Etc
 // DO NOT EDIT ORDER OF FILES
-@use "partials/color-me-sass" as *;
 @use "partials/mixins" as *;
 @use "partials/variables" as *;
 @use "partials/normalize";
-@use "variables" as *;
 
 // Bower Components
 @use "../bower_components/singularity/stylesheets/singularitygs";

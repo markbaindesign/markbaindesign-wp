@@ -5,110 +5,120 @@
    ========================================================================== */
 
 .site-footer {
-	background: $white;
-	color: $black;
-	text-align: center;
+   background: $white;
+   color: $black;
+   text-align: center;
 
-	@include breakpoint(tablet) {
-		height: $sticky-footer-height; 
-		text-align: left;
-	}
+   @media (min-width: 768px) {
+      height: $sticky-footer-height;
+      text-align: left;
+   }
 
-	.container {
-		max-width: 100%;
+   .container {
+      max-width: 100%;
 
-		&>div {
-			@include breakpoint(tablet) {
-				width: 50%;
-				float: left;
-			}
+      &>div {
+         @media (min-width: 768px) {
+            width: 50%;
+            float: left;
+         }
 
-			.social {
-				text-align: right;
-			}
-		}
-	}
+         .social {
+            text-align: right;
+         }
+      }
+   }
 
-	p {
-		max-width: 100%;
-		margin: 0 0 1em 0;
-	}
+   p {
+      max-width: 100%;
+      margin: 0 0 1em 0;
+   }
 
-	ul {
-		padding: 0;
-		margin: 0;
-		@include breakpoint(tablet) {
-			text-align: right;
-		}
+   ul {
+      padding: 0;
+      margin: 0;
 
-		li {
-			padding: 0 15px;
-			@include breakpoint(tablet) {
-				padding: 0;
-				margin-left: 15px;
-			}
-			span {
-				margin-left: 10px;
-			}
-		}
-	}
+      @media (min-width: 768px) {
+         text-align: right;
+      }
 
- 	a {
-		color: $black;
-		text-decoration: none;
-	}
+      li {
+         padding: 0 15px;
+
+         @media (min-width: 768px) {
+            padding: 0;
+            margin-left: 15px;
+         }
+
+         span {
+            margin-left: 10px;
+         }
+      }
+   }
+
+   a {
+      color: $black;
+      text-decoration: none;
+   }
 }
 
 .site-footer a:hover {
-	color: color.adjust($black, $lightness: -10%);
+   color: color.adjust($black, $lightness: -10%);
 }
 
 .site-footer a:active {
-	color: color.adjust($link-color-alt, $lightness: -15%);
-	border-bottom: 1px solid  color.adjust($link-color-alt, $lightness: -15%); 
+   color: color.adjust($link-color-alt, $lightness: -15%);
+   border-bottom: 1px solid color.adjust($link-color-alt, $lightness: -15%);
 }
 
 .site-footer li {
-	list-style-type: none;
-		display: inline;
-		font-size: 1.5em;
-		span {
-			display: none;
-		}
-		@include breakpoint(tablet) {
-			font-size: 1em;
-		}
+   list-style-type: none;
+   display: inline;
+   font-size: 1.5em;
+
+   span {
+      display: none;
+   }
+
+   @media (min-width: 768px) {
+      font-size: 1em;
+   }
 }
 
 
 
 /* Back to top link */
 #back-to-top {
-	margin-top: 1em;
-	i {
-		&.icon-arrow-up {
-			padding-right: 7px;
-		}
-	}
+   margin-top: 1em;
 
-	a {
-		display: inline-block;
-		padding: .5em 3%;
-		width: auto;
-		background: color.adjust( $white, $lightness: -10%);
-		@include border-radius( 5px );
+   i {
+      &.icon-arrow-up {
+         padding-right: 7px;
+      }
+   }
 
-		&:link, &:visited {
-			background: color.adjust( $white, $lightness: -15%);
-		}
-		&:hover {
-			background: color.adjust( $white, $lightness: -25%);
-		}
-		&:active {
-			background: color.adjust( $white, $lightness: -35%);
-		}	}
+   a {
+      display: inline-block;
+      padding: .5em 3%;
+      width: auto;
+      background: color.adjust($white, $lightness: -10%);
+      @include border-radius(5px);
 
-	@include breakpoint(tablet) {
-		display: none;
-	}
+      &:link,
+      &:visited {
+         background: color.adjust($white, $lightness: -15%);
+      }
+
+      &:hover {
+         background: color.adjust($white, $lightness: -25%);
+      }
+
+      &:active {
+         background: color.adjust($white, $lightness: -35%);
+      }
+   }
+
+   @media (min-width: 768px) {
+      display: none;
+   }
 }

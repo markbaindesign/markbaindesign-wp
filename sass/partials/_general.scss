@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sass:color";
 
 /* ==========================================================================
    Border-box all the things!
@@ -7,9 +8,9 @@
 *,
 :before,
 :after {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 
@@ -17,7 +18,7 @@
    General
    ========================================================================== */
 
-body { }
+body {}
 
 
 /* ==========================================================================
@@ -26,25 +27,25 @@ body { }
 
 a {
 
-	&:link {
-		color: $link-color;
-		text-decoration: $link-decoration;
-	}
+   &:link {
+      color: $link-color;
+      text-decoration: $link-decoration;
+   }
 
-	&:visited {
-		color: $link-color;
-		text-decoration: $link-decoration;
-	}
+   &:visited {
+      color: $link-color;
+      text-decoration: $link-decoration;
+   }
 
-	&:hover {
-		color: color.adjust($link-color, $lightness: -10%);
-		text-decoration: $hover-decoration;
-	}
+   &:hover {
+      color: color.adjust($link-color, $lightness: -10%);
+      text-decoration: $hover-decoration;
+   }
 
-	&:active {
-		color: color.adjust($link-color, $lightness: -30%);
-		text-decoration: $hover-decoration;
-	}
+   &:active {
+      color: color.adjust($link-color, $lightness: -30%);
+      text-decoration: $hover-decoration;
+   }
 
 }
 
@@ -54,12 +55,14 @@ a {
    ========================================================================== */
 
 img {
-	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
+   height: auto;
+   /* Make sure images are scaled correctly. */
+   max-width: 100%;
 
-	@include breakpoint( tablet ) {
-		width: auto; 
-	}
+   /* Adhere to container width. */
+   @media (min-width: 768px) {
+      width: auto;
+   }
 }
 
 
@@ -68,132 +71,158 @@ img {
    ========================================================================== */
 
 body {
-	font-family: "LotaGrotesque-Regular", sans-serif;
-	font-size: $base-font-size;
+   font-family: "LotaGrotesque-Regular", sans-serif;
+   font-size: $base-font-size;
 }
 
-i, em {
-	font-family: "LotaGrotesque-RegularIt", sans-serif;
+i,
+em {
+   font-family: "LotaGrotesque-RegularIt", sans-serif;
 }
 
 strong {
-	font-style: normal;
-	font-weight: normal;
+   font-style: normal;
+   font-weight: normal;
    font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
 }
 
 .textblock {
-	max-width: 37.5rem;
+   max-width: 37.5rem;
 }
 
 
-h1, h2, h3, h4, h5, h6 { // Common header styles
-	font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	clear: both;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   // Common header styles
+   font-family: "LotaGrotesqueAlt3-Bold", sans-serif;
+   font-style: normal;
+   font-weight: normal;
+   clear: both;
 
-	@include breakpoint( tablet ) {
-		padding: 0;
-	}
+   @media (min-width: 768px) {
+      padding: 0;
+   }
 
-	&.hero { // Common hero header styles
-		@include breakpoint( tablet ) {		
-			color: $white;
-		}
-	}
+   &.hero {
+
+      // Common hero header styles
+      @media (min-width: 768px) {
+         color: $white;
+      }
+   }
 }
 
 h1 {
- font-size: 3.0000em; /* 48px */
-  line-height: 1.0000em; /* 48px */
-  margin-bottom: 0.5000em;  
-  margin-top: 0.0000em;
+   font-size: 3.0000em;
+   /* 48px */
+   line-height: 1.0000em;
+   /* 48px */
+   margin-bottom: 0.5000em;
+   margin-top: 0.0000em;
 
-	&#site-title {
-		padding: 0;
-	}
+   &#site-title {
+      padding: 0;
+   }
 }
 
 h2 {
-  font-size: 2.2500em; /* 36px */
-  line-height: 1.3333em; /* 48px */
-  margin-bottom: 0.6667em;  
-  margin-top: 0.0000em;
+   font-size: 2.2500em;
+   /* 36px */
+   line-height: 1.3333em;
+   /* 48px */
+   margin-bottom: 0.6667em;
+   margin-top: 0.0000em;
 
-}		
+}
 
 h3 {
-	font-size: 1.5000em; /* 24px */
-	line-height: 1.0000em; /* 24px */
-	margin-bottom: 1.0000em;  
-	margin-top: 0.0000em;
-}	
+   font-size: 1.5000em;
+   /* 24px */
+   line-height: 1.0000em;
+   /* 24px */
+   margin-bottom: 1.0000em;
+   margin-top: 0.0000em;
+}
 
- h4 {  font-size: 1.3125em; /* 21px */
-  line-height: 1.1429em; /* 24px */
-  margin-top: 0;  
-  margin-bottom: 1.1429em;}
- 
- h5 {  
-	font-size: 1.1250em; /* 18px */
-	line-height: 1.3333em; /* 24px */
-	margin-bottom: 1.3333em;  
-	margin-top: 0.0000em;
-  }
-  
-h6 {  
-	font-size: 1.1250em; /* 18px */
-  line-height: 1.3333em; /* 24px */
-  margin-bottom: 1.3333em;  
-  margin-top: 0.0000em;
-  color: #999;
-  }
- 
+h4 {
+   font-size: 1.3125em;
+   /* 21px */
+   line-height: 1.1429em;
+   /* 24px */
+   margin-top: 0;
+   margin-bottom: 1.1429em;
+}
+
+h5 {
+   font-size: 1.1250em;
+   /* 18px */
+   line-height: 1.3333em;
+   /* 24px */
+   margin-bottom: 1.3333em;
+   margin-top: 0.0000em;
+}
+
+h6 {
+   font-size: 1.1250em;
+   /* 18px */
+   line-height: 1.3333em;
+   /* 24px */
+   margin-bottom: 1.3333em;
+   margin-top: 0.0000em;
+   color: #999;
+}
+
 
 p {
-	margin-bottom: 1em;
-	@extend .textblock;
+   margin-bottom: 1em;
+   @extend .textblock;
 }
 
 .entry-content blockquote {
-	@extend h2;
-	margin: 0;
-	font-style: italic;
-	position: relative;
-	max-width: 100%;
-	&>p {
-		max-width: 100%;
-		&:before {
-			content: '"';
-		}
-	}
+   @extend h2;
+   margin: 0;
+   font-style: italic;
+   position: relative;
+   max-width: 100%;
+
+   &>p {
+      max-width: 100%;
+
+      &:before {
+         content: '"';
+      }
+   }
 }
 
 /* Lists */
 
 // Bullets & numerals should hang outside the main text box if there's enough space
 
-ul, ol {
-	padding-bottom: 1em;
-	list-style-position: inside;
+ul,
+ol {
+   padding-bottom: 1em;
+   list-style-position: inside;
 
-	@include breakpoint( tablet ) {
-		list-style-position: outside;		
-		padding-right: 0;
-		padding-left: 0;
-	}
+   @media (min-width: 768px) {
+      list-style-position: outside;
+      padding-right: 0;
+      padding-left: 0;
+   }
 
 
 }
 
 address {
-	margin: 0 0 1em;
+   margin: 0 0 1em;
 }
 
 .amp {
-	font-family: Baskerville, Palatino, "Book Antiqua", sans-serif;
-	font-style: italic;
+   font-family: Baskerville, Palatino, "Book Antiqua", sans-serif;
+   font-style: italic;
 }
 
 /* ==========================================================================
@@ -201,19 +230,21 @@ address {
    ========================================================================== */
 
 .alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
+   display: inline;
+   float: left;
+   margin-right: 1.5em;
 }
+
 .alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
+   display: inline;
+   float: right;
+   margin-left: 1.5em;
 }
+
 .aligncenter {
-	clear: both;
-	display: block;
-	margin: 0 auto;
+   clear: both;
+   display: block;
+   margin: 0 auto;
 }
 
 
@@ -223,29 +254,30 @@ address {
 
 /* Text meant only for screen readers */
 .screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
+   clip: rect(1px, 1px, 1px, 1px);
+   position: absolute !important;
 }
 
 .screen-reader-text:hover,
 .screen-reader-text:active,
 .screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
-	color: #21759b;
-	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	text-decoration: none;
-	top: 5px;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar */
+   background-color: #f1f1f1;
+   border-radius: 3px;
+   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+   clip: auto !important;
+   color: #21759b;
+   display: block;
+   font-size: 14px;
+   font-weight: bold;
+   height: auto;
+   left: 5px;
+   line-height: normal;
+   padding: 15px 23px 14px;
+   text-decoration: none;
+   top: 5px;
+   width: auto;
+   z-index: 100000;
+   /* Above WP toolbar */
 }
 
 /* ==========================================================================
@@ -263,8 +295,8 @@ address {
 .site-content:after,
 .site-footer:before,
 .site-footer:after {
-	content: '';
-	display: table;
+   content: '';
+   display: table;
 }
 
 .clear:after,
@@ -273,7 +305,7 @@ address {
 .site-header:after,
 .site-content:after,
 .site-footer:after {
-	clear: both;
+   clear: both;
 }
 
 
@@ -282,12 +314,14 @@ address {
    ========================================================================== */
 
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
-.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
-	display: none;
+.infinite-scroll .paging-navigation,
+/* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer {
+   /* Theme Footer (when set to scrolling) */
+   display: none;
 }
 
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
 .infinity-end.neverending .site-footer {
-	display: block;
+   display: block;
 }
