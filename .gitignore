@@ -43,13 +43,13 @@ public_html/wp-content/*
 # specify (see the commented-out examples for hints on how to do this.)
 public_html/wp-content/plugins/*
 
-# Include all plugins with prefix "kf-"
-!public_html/wp-content/plugins/bain-design-*
+# Include all plugins with prefix "bd-"
+!public_html/wp-content/plugins/bd-*
 
 # Ignore everything in the "mu-plugins" directory, except the mu-plugins you
 # specify (see the commented-out examples for hints on how to do this.)
 public_html/wp-content/mu-plugins/*
-!public_html/wp-content/mu-plugins/bain-design-*.php
+!public_html/wp-content/mu-plugins/bd-*.php
 
 # Ignore everything in the "themes" directory, except the themes you
 # specify (see the commented-out example for a hint on how to do this.)
