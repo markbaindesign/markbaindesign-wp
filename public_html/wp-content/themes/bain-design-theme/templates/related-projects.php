@@ -1,25 +1,26 @@
 <?php
-$data = $args['related_projects'] ?? null;
-$context = $args['context'] ?? null;
+$data = $args['data_projects'] ?? null;
+
+$context = $data['context'] ?? 'list';
+$projects = $data['related'] ?? null;
 ?>
-<?php if ($data) : ?>
+<?php if ($projects) : ?>
     <section class="related-projects section-<?php echo esc_attr($context); ?>">
         <h2 class="related-projects__title"><?php esc_html_e('Related Projects', '_mbbasetheme'); ?></h2>
         <div class="related-projects__items">
-            <?php foreach ($data as $project) : ?>
+            <?php foreach ($projects as $project) : ?>
                 <?php
-                $project_id = $project->ID;
-                $project_title = get_the_title($project_id);
-                $project_permalink = get_permalink($project_id);
+                $data_postcard = [
+                    'context'   => 'postcard',
+                    'title'     => $project['title'] ?? '',
+                    'permalink' => $project['permalink'] ?? '',
+                    'excerpt'   => $project['excerpt'] ?? '',
+                    'year'      => $project['year'] ?? '',
+                    'thumbnail' => $project['thumbnail'] ?? '',
+                ];
+                get_template_part('templates/postcard', null, ['data_postcard' => $data_postcard]);
+
                 ?>
-                <article id="post-<?php echo esc_attr($project_id); ?>" class="related-projects__item">
-                    <h3 class="related-projects__item-title">
-                        <a href="<?php echo esc_url($project_permalink); ?>">
-                            <?php echo esc_html($project_title); ?>
-                        </a>
-                    </h3>
-                    <div class="related-projects__item-excerpt"><?php echo wp_kses_post(get_the_excerpt($project_id)); ?></div>
-                </article>
             <?php endforeach; ?>
         </div>
     </section>

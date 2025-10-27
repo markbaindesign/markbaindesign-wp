@@ -29,6 +29,13 @@ $data_header = array(
     'meta'                   => $client_meta,
     'permalink'              => $permalink,
 );
+
+// Template: Projects
+$data_projects = array(
+    'context'                => $context,
+    'related'                => $related_projects,
+);
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -45,7 +52,9 @@ $data_header = array(
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-        <?php get_template_part('templates/related-testimonials', null, ['related_projects' => $related_testimonials, 'context' => $context]); ?>
-        <?php get_template_part('templates/related-projects', null, ['related_projects' => $related_projects, 'context' => $context]); ?>
+        <?php get_template_part('templates/related-testimonials', null, ['data_projects' => $related_testimonials, 'context' => $context]); ?>
+        <?php if (!empty($data_projects['related'])) : ?>
+            <?php get_template_part('templates/related-projects', null, ['data_projects' => $data_projects]); ?>
+        <?php endif; ?>
     </footer>
 </article><!-- #post-## -->

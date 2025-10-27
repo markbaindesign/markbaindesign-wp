@@ -32,7 +32,7 @@ $data_testimonials = array(
     'testimonials' => $data_project['data_testimonials'] ?? [],
 );
 $data_related = array(
-        $context                = $context,
+    'context'                => $context,
     'base' => $data_project['data_base'] ?? [],
     'related' => $data_project['data_related'] ?? [],
 );
