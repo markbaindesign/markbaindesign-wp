@@ -302,3 +302,20 @@ footer {
       padding: 10px 0 2rem
    }
 }
+
+.meta {
+   font-family: 'Courier New', Courier, monospace;
+
+   .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+         display: inline-block;
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+   }
+}

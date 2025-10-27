@@ -132,13 +132,53 @@
             ],
             "return_format": "object",
             "min": "",
-            "max": "",
+            "max": 1,
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
             "bidirectional_target": [
                 "field_68fa5cde2c2f6"
             ]
+        },
+        {
+            "key": "field_68ff38f846dc1",
+            "label": "Project End",
+            "name": "project_end",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "default_to_current_date": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68ff391846dc2",
+            "label": "Project Start",
+            "name": "project_start",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "default_to_current_date": 0,
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -160,5 +200,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761290602
+    "modified": 1761556956
 }

@@ -10,6 +10,8 @@ $active_language = array(
 
 /* Requires */
 require_once BD092__PLUGIN_DIR . '/inc/acf.php';
+require_once BD092__PLUGIN_DIR . '/inc/clients/business-logic.php';
+require_once BD092__PLUGIN_DIR . '/inc/projects/business-logic.php';
 // require_once BD092__PLUGIN_DIR . '/inc/admin/index.php';
 // require_once BD092__PLUGIN_DIR . '/inc/body-classes.php';
 // require_once BD092__PLUGIN_DIR . '/inc/data.php';

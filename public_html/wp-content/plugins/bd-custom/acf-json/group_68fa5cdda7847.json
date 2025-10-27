@@ -65,6 +65,44 @@
             "elements": "",
             "bidirectional": 1,
             "bidirectional_target": ""
+        },
+        {
+            "key": "field_68fba8edfcb96",
+            "label": "Client External Link",
+            "name": "client_external_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_68ff418e9baca",
+            "label": "Client Location",
+            "name": "client_location",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": "",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -86,5 +124,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761238752
+    "modified": 1761558947
 }
