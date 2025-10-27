@@ -17,11 +17,19 @@ $post_type = $data['post_type'] ?? null;
                 <?php endif; ?>
 
                 <?php if (! empty($item['url'])) : ?>
-                    <a href="<?= esc_url($item['url']); ?>" target="_blank" rel="noopener">
+                    <a href="<?= esc_url($item['url']); ?>">
                     <?= esc_html($item['value']); ?>
                     </a>
                 <?php elseif (is_array($item['value'])) : ?>
-                    <?= esc_html(implode(', ', $item['value'])); ?>
+                    <?php foreach ($item['value'] as $val) : ?>
+                        <?php if (! empty($val['url'])) : ?>
+                            <a href="<?= esc_url($val['url']); ?>">
+                            <?= esc_html($val['value']); ?>
+                            </a>
+                        <?php else : ?>
+                            <?php echo esc_html($val['value']); ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 <?php else : ?>
                     <?php echo esc_html($item['value']); ?>
                 <?php endif; ?>

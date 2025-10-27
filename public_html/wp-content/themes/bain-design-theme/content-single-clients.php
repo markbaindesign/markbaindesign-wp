@@ -1,20 +1,38 @@
 <?php
-/**
- * @package _mbbasetheme
- */
 
-$post_id = get_the_ID();
-$related_projects = get_field('related_projects', $post_id);
-$client_meta = array(
-    'active_language' => apply_filters('wpml_current_language', null),
-    'client_external_link' => bd324_get_client_external_link_by_id($post_id),
-    'client_industries' => bd324_get_project_terms($post_id, 'client-industry'),
-);
+$client_id = get_the_ID();
+$client_data = bd324_get_client_data($client_id);
 $context = 'single';
+
+// Vars: Base
+$title                  = $client_data['data_base']['title'] ?? '';
+$post_type              = $client_data['data_base']['post_type'] ?? null;
+$permalink              = $client_data['data_base']['permalink'] ?? '';
+$excerpt                = $client_data['data_base']['excerpt'] ?? '';
+$breadcrumb_link_label  = $client_data['data_base']['breadcrumb_link_label'] ?? null;
+$breadcrumb_link        = $client_data['data_base']['breadcrumb_link'] ?? null;
+
+// Vars: Meta
+$client_meta           = $client_data['data_meta'] ?? [];
+
+// Vars: Related
+$related_testimonials  = $client_data['data_testimonials'] ?? [];
+$related_projects      = $client_data['data_projects'] ?? [];
+
+// Template: Header
+$data_header = array(
+    'context'                => $context,
+    'post_type'              => $post_type,
+    'breadcrumb_link_label'  => $breadcrumb_link_label,
+    'breadcrumb_link'        => $breadcrumb_link,
+    'title'                  => $title,
+    'meta'                   => $client_meta,
+    'permalink'              => $permalink,
+);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php get_template_part('templates/post/header', null, ['data_header' => $client_meta, 'context' => $context]); ?>
+    <?php get_template_part('templates/post/header', null, ['data_header' => $data_header]); ?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>

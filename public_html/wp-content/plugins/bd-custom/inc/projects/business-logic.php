@@ -121,6 +121,17 @@ function bd324_get_project_meta($post_id)
         }
     }
 
+    // Project Website
+    $project_website = get_field('website', $post_id) ?? '';
+    if ($project_website) {
+        $meta[] = [
+            'label' => 'Website',
+            'value' => $project_website,
+            'url' => esc_url($project_website),
+            'target' => '_blank',
+        ];
+    }
+
     // Project Year
     $project_year = get_field('project_end', $post_id) ?? '';
     if ($project_year instanceof DateTime) {
@@ -139,6 +150,42 @@ function bd324_get_project_meta($post_id)
         $meta[] = [
             'label' => 'Type',
             'value' => $project_type,
+        ];
+    }
+
+    // Project Services
+    $project_services = bd324_get_meta_terms_as_array($post_id, 'project-category-service');
+    if (!is_wp_error($project_services) && !empty($project_services)) {
+        $meta[] = [
+            'label' => 'Services',
+            'value' => $project_services,
+        ];
+    }
+
+    // Project Tools
+    $project_tools = bd324_get_meta_terms_as_array($post_id, 'project-category-tool');
+    if (!is_wp_error($project_tools) && !empty($project_tools)) {
+        $meta[] = [
+            'label' => 'Tools',
+            'value' => $project_tools,
+        ];
+    }
+
+    // Project Tech Stack
+    $project_stack = bd324_get_meta_terms_as_array($post_id, 'project-category-tech-stack');
+    if (!is_wp_error($project_stack) && !empty($project_stack)) {
+        $meta[] = [
+            'label' => 'Tech Stack',
+            'value' => $project_stack,
+        ];
+    }
+
+    // Profile
+    $project_profile = bd324_get_meta_terms_as_array($post_id, 'project-category-profile');
+    if (!is_wp_error($project_profile) && !empty($project_profile)) {
+        $meta[] = [
+            'label' => 'Profile',
+            'value' => $project_profile,
         ];
     }
 

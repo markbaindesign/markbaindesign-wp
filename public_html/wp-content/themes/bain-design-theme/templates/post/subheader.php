@@ -14,6 +14,6 @@ $data_meta = [
 ?>
 <div class="subheader">
     <?php if ($context === 'single') : ?>
-        <?php get_template_part('templates/meta', $post_type, ['data_meta' => $data_meta]); ?>
+        <?php get_template_part('templates/meta-list', null, ['data_meta' => $data_meta]); ?>
     <?php endif; ?>
 </div>
