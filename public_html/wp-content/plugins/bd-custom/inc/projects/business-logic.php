@@ -1,7 +1,5 @@
 <?php
 
-use function SimplePay\Core\reCAPTCHA\get_key;
-
 function bd324_get_project_data($post_id)
 {
 
@@ -224,4 +222,44 @@ function bd324_get_project_meta($post_id)
     }
 
     return $meta;
+}
+
+function bd324_get_projects_for_related_posts($post_id, $key)
+{
+    $args = [
+        'post_type' => 'portfolio_item',
+        'posts_per_page' => -1,
+        'meta_query' => [
+            [
+                'key' => $key,
+                'value' => '"' . $post_id . '"',
+                'compare' => 'LIKE',
+            ],
+        ],
+    ];
+
+    $query = new WP_Query($args);
+    $posts = $query->posts ?? [];
+
+    $projects = [];
+    if ($posts) {
+        foreach ($posts as $post) {
+
+            // Get the year
+            $year = get_field('project_end', $post->ID) ?? '';
+            $formatted_year = '';
+            if ($year) {
+                $formatted_year = date('Y', strtotime($year));
+            }
+            $projects[] = [
+                'title' => get_the_title($post->ID),
+                'permalink' => get_permalink($post->ID),
+                'excerpt' => get_the_excerpt($post->ID),
+                'thumbnail' => get_the_post_thumbnail_url($post->ID, 'full'),
+                'year' => $formatted_year,
+            ];
+        }
+        wp_reset_postdata();
+    }
+    return $projects;
 }

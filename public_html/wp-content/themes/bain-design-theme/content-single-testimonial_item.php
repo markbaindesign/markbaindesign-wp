@@ -1,8 +1,8 @@
 <?php
 
 $post_id = get_the_ID();
-$data = bd324_get_testimonial_data($post_id);
 $context = 'single';
+$data = bd324_get_testimonial_data($post_id, $context);
 
 // Vars
 $title                  = $data['data_base']['author'] ?? '';
@@ -13,10 +13,13 @@ $breadcrumb_link_label  = $data['data_base']['breadcrumb_link_label'] ?? null;
 $breadcrumb_link        = $data['data_base']['breadcrumb_link'] ?? null;
 $role                   = $data['data_base']['author_role'] ?? '';
 $meta                   = $data['data_meta'] ?? [];
-$client_name            = $data['data_base']['related_client']['client_name'] ?? '';
-$client_permalink       = $data['data_base']['related_client']['client_permalink'] ?? '';
-$client_image           = $data['data_base']['related_client']['client_logo'] ?? '';
+$data_client            = $data['data_client'] ?? [];
 
+$data_related_projects = [
+    'context'                => $context,
+    'base' => $data['data_base'] ?? [],
+    'related' => $data['data_projects'] ?? [],
+];
 
 $data_header = array(
     'context'                => $context,
@@ -27,9 +30,7 @@ $data_header = array(
     'role'                   => $role,
     'meta'                   => $meta,
     'permalink'              => $permalink,
-    'client_name'            => $client_name,
-    'client_permalink'       => $client_permalink,
-    'client_image'           => $client_image,
+    'data_client'            => $data_client,
 
 );
 
@@ -73,8 +74,8 @@ $project_meta = array(
 ?>
 	</div><!-- .entry-content -->
 	<footer class="entry-footer">
-        <?php if (!empty($data_projects['related'])) : ?>
-            <?php get_template_part('templates/related-projects', null, ['data_projects' => $data_projects]); ?>
+        <?php if (!empty($data_related_projects)) : ?>
+            <?php get_template_part('templates/related-projects', null, ['data_projects' => $data_related_projects]); ?>
         <?php endif; ?>
     </footer>
 </article><!-- #post-## -->

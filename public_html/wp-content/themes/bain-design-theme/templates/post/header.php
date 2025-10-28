@@ -8,6 +8,8 @@ $breadcrumb_link           = $data['breadcrumb_link'] ?? null;
 $title                  = $data['title'] ?? '';
 $meta                   = $data['meta'] ?? [];
 $permalink              = $data['permalink'] ?? '';
+$data_client            = $data['data_client'] ?? [];
+$author_role            = $data['role'] ?? '';
 
 $data_preheader = [
     'context'           => $context,
@@ -19,6 +21,8 @@ $data_subheader = [
     'context'           => $context,
     'post_type'         => $post_type,
     'meta'              => $meta,
+    'data_client'       => $data_client,
+    'author_role'       => $author_role,
 ];
 ?>
 <header class="entry-header">

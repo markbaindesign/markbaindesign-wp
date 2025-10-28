@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     die('Invalid request, dude!');
 }
 
-function bd324_get_testimonial_data($testimonial_id)
+function bd324_get_testimonial_data($testimonial_id, $context = 'single')
 {
     $post_type = get_post_type($testimonial_id);
 
@@ -17,8 +17,8 @@ function bd324_get_testimonial_data($testimonial_id)
         'data_client' => bd324_get_testimonial_related_client_data($testimonial_id) ?? [],
     ];
 
-    if (is_singular('testimonial_item')) {
-        // $testimonial_data['data_projects'] = bd324_get_projects_by_testimonial($testimonial_id) ?? [];
+    if ($context === 'single') {
+        $testimonial_data['data_projects'] = bd324_get_testimonial_related_projects($testimonial_id) ?? [];
     }
 
     return $testimonial_data;
@@ -31,7 +31,7 @@ function bd324_get_testimonial_author_name($testimonial_id)
 
 function bd324_get_testimonial_author_role($testimonial_id)
 {
-    return get_post_meta($testimonial_id, 'author_role', true) ?: '';
+    return get_post_meta($testimonial_id, 'testimonial_role', true) ?: '';
 }
 
 
@@ -103,4 +103,9 @@ function bd324_get_testimonial_base_data($testimonial_id)
         'breadcrumb_link_label' => $breadcrumb_link_label,
         'breadcrumb_link' => $breadcrumb_link,
     ];
+}
+
+function bd324_get_testimonial_related_projects($testimonial_id)
+{
+    return bd324_get_projects_for_related_posts($testimonial_id, 'related_testimonials');
 }

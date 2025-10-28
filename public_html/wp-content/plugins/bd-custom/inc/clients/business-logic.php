@@ -80,45 +80,7 @@ function bd324_get_client_external_link_by_id($client_id)
 
 function bd324_get_projects_by_client($client_id)
 {
-    $args = [
-        'post_type' => 'portfolio_item',
-        'posts_per_page' => -1,
-        'meta_query' => [
-            [
-                'key' => 'related_client',
-                'value' => '"' . $client_id . '"',
-                'compare' => 'LIKE',
-            ],
-        ],
-    ];
-
-    $related = get_field('related_projects', $client_id);
-
-    $query = new WP_Query($args);
-
-    $projects = [];
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-
-            // Get the year
-            $year = get_field('project_end', get_the_ID()) ?? '';
-            $formatted_year = '';
-            if ($year) {
-                $formatted_year = date('Y', strtotime($year));
-            }
-
-            $projects[] = [
-                'title' => get_the_title(),
-                'permalink' => get_permalink(),
-                'excerpt' => get_the_excerpt(),
-                'thumbnail' => get_the_post_thumbnail_url(null, 'full'),
-                'year' => $formatted_year,
-            ];
-        }
-        wp_reset_postdata();
-    }
-    return $projects;
+    return bd324_get_projects_for_related_posts($client_id, 'related_client');
 }
 
 function bd324_get_client_testimonials($client_id)
