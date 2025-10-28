@@ -1,9 +1,30 @@
 {
-    "key": "group_68fa5cdda7847",
-    "title": "Clients",
+    "key": "group_68fb299ce1b4a",
+    "title": "Testimonials",
     "fields": [
         {
-            "key": "field_68fa5cde2c2f6",
+            "key": "field_690097a0a4ba7",
+            "label": "Role",
+            "name": "testimonial_role",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68fb299ce368e",
             "label": "Related Projects",
             "name": "related_projects",
             "aria-label": "",
@@ -32,14 +53,12 @@
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": [
-                "field_68fa5dcb7866c"
-            ]
+            "bidirectional_target": ""
         },
         {
-            "key": "field_68fa5d4ed14fd",
-            "label": "Related Testimonial",
-            "name": "related_testimonial",
+            "key": "field_68fb299ce36d4",
+            "label": "Related Client",
+            "name": "related_client",
             "aria-label": "",
             "type": "relationship",
             "instructions": "",
@@ -51,14 +70,12 @@
                 "id": ""
             },
             "post_type": [
-                "testimonial_item"
+                "clients"
             ],
             "post_status": "",
             "taxonomy": "",
             "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
+                "search"
             ],
             "return_format": "object",
             "min": "",
@@ -67,44 +84,6 @@
             "elements": "",
             "bidirectional": 1,
             "bidirectional_target": ""
-        },
-        {
-            "key": "field_68fba8edfcb96",
-            "label": "Client External Link",
-            "name": "client_external_link",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_68ff418e9baca",
-            "label": "Client Location",
-            "name": "client_location",
-            "aria-label": "",
-            "type": "google_map",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": "",
-            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -112,7 +91,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "clients"
+                "value": "testimonial_item"
             }
         ]
     ],
@@ -126,5 +105,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761640801
+    "modified": 1761646543
 }

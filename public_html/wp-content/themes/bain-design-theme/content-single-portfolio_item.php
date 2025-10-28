@@ -5,7 +5,6 @@ $data = bd324_get_project_data($post_id);
 $context = 'single';
 
 // Vars
-
 $title                  = $data['data_base']['title'] ?? '';
 $post_type              = $data['data_base']['post_type'] ?? null;
 $permalink              = $data['data_base']['permalink'] ?? '';
@@ -26,10 +25,10 @@ $data_header = array(
 );
 
 $data_testimonials = array(
-        $context                = $context,
-    'base' => $data_project['data_base'] ?? [],
-    'meta' => $data_project['data_meta'] ?? [],
-    'testimonials' => $data_project['data_testimonials'] ?? [],
+    'context'                => $context,
+    'base' => $data['data_base'] ?? [],
+    'meta' => $data['data_meta'] ?? [],
+    'testimonials' => $data['data_testimonials'] ?? [],
 );
 $data_related = array(
     'context'                => $context,
@@ -52,9 +51,10 @@ $data_related = array(
 ?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">		<?php mbdmaster_posted_on(); ?>			<?php mbdmaster_post_meta(); ?>
-
-
-		<!-- <?php edit_post_link(__('Edit', '_mbbasetheme'), '<span class="edit-link">', '</span>'); ?> -->
-	</footer><!-- .entry-footer -->
+	<footer class="entry-footer">
+        <?php get_template_part('templates/related-testimonials', null, ['data_testimonials' => $data_testimonials]); ?>
+        <?php if (!empty($data_projects['related'])) : ?>
+            <?php get_template_part('templates/related-projects', null, ['data_projects' => $data_projects]); ?>
+        <?php endif; ?>
+    </footer>
 </article><!-- #post-## -->

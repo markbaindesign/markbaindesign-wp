@@ -57,6 +57,11 @@ function bd324_get_client_name_by_id($client_id)
     return get_the_title($client_id);
 }
 
+function bd324_get_client_logo_by_id($client_id, $size = 'full')
+{
+    return get_the_post_thumbnail_url($client_id, $size);
+}
+
 function bd324_get_client_industries($client_id)
 {
     $industries = get_field('industries', $client_id);
@@ -77,6 +82,7 @@ function bd324_get_projects_by_client($client_id)
 {
     $args = [
         'post_type' => 'portfolio_item',
+        'posts_per_page' => -1,
         'meta_query' => [
             [
                 'key' => 'related_client',
@@ -85,6 +91,8 @@ function bd324_get_projects_by_client($client_id)
             ],
         ],
     ];
+
+    $related = get_field('related_projects', $client_id);
 
     $query = new WP_Query($args);
 

@@ -1,5 +1,7 @@
 <?php
 
+use function SimplePay\Core\reCAPTCHA\get_key;
+
 function bd324_get_project_data($post_id)
 {
 
@@ -67,14 +69,46 @@ function bd324_get_project_base_data($post_id)
 
 }
 
-function bd324_get_project_testimonials($post_id)
+function bd324_get_project_testimonials($project_id)
 {
-    $testimonials = get_field('project_testimonials', $post_id);
+    $data_testimonials = [];
+
+    $testimonials = get_field('related_testimonials', $project_id);
     if (empty($testimonials)) {
         return [];
     }
+    foreach ($testimonials as $testimonial) {
+        $testimonial_id = $testimonial->ID ?? null;
+        $related_client = get_field('related_client', $testimonial_id);
+        $author_name = bd324_get_testimonial_author_name($testimonial_id) ?? '';
+        $author_role = bd324_get_testimonial_author_role($testimonial_id) ?? '';
 
-    return $testimonials; // array of testimonial data
+        // Related
+        $related_client = get_field('related_client', $testimonial_id)  ?? null;
+        if ($related_client && is_array($related_client) && count($related_client) > 0) {
+            $related_client = $related_client[0]; // Assuming single related client
+            $related_client_name = $related_client->post_title ?? '';
+        } else {
+            $related_client_name = '';
+        }
+
+        $data_testimonials[] = [
+            'post_id' => $testimonial_id,
+            'post_type' => $testimonial->post_type ?? null,
+
+            'title' => esc_html($testimonial->title ?? ''),
+            'content' => get_the_content(null, false, $testimonial->ID ?? null),
+            'excerpt' => get_the_excerpt($testimonial->ID ?? null),
+            'permalink' => get_the_permalink($testimonial->ID ?? null) ?? '',
+
+            'image' => get_the_post_thumbnail($testimonial->ID ?? null, 'full') ? get_the_post_thumbnail_url($testimonial->ID ?? null, 'thumbnail') : '',
+
+            'author' => esc_html($author_name),
+            'role' => esc_html($author_role),
+            'company' => esc_html($related_client_name),
+        ];
+    }
+    return $data_testimonials;
 }
 
 function bd324_get_related_client_data($post_id)
