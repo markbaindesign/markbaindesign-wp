@@ -9,21 +9,21 @@
 				</header><!-- .entry-header -->
 			</div>
 		</div>
-<?php get_template_part( 'featured' ); ?>	
+<?php get_template_part('featured'); ?>	
 	
 	<?php
 
 
-		$args = array(
-			'offset' => 1,
-			'paged' => $paged,
-			'post_type' => 'portfolio_item',
-			'my_special_query' => true	
-		);
+        $args = array(
+            'offset' => 1,
+            'paged' => $paged,
+            'post_type' => 'bd324_projects',
+            'my_special_query' => true
+        );
 
-		$query = new WP_Query($args);
+$query = new WP_Query($args);
 
-		if ( $query->have_posts() ) : ?> 
+if ($query->have_posts()) : ?> 
 			<div class="section">
 				<div class="container">
 					<div class="masonrycontainer">
@@ -31,21 +31,21 @@
 						<div class="gutter-sizer"></div>
 		    
 	<?php
-		while( $query->have_posts() ) {  
-			$query->the_post();	  
-			get_template_part( 'content', 'home' );
-		    } 
-		   
-		    wp_reset_postdata(); 
- 
-	?>
+while ($query->have_posts()) {
+    $query->the_post();
+    get_template_part('content', 'home');
+}
+
+    wp_reset_postdata();
+
+    ?>
 				</div><!-- .masonrycontainer -->			
 			</div>
 		</div>
 <?php wp_pagenavi(); ?>							
 						<?php else : ?>
 
-				<?php get_template_part( 'content', 'none' ); ?>
+				<?php get_template_part('content', 'none'); ?>
 
 			<?php endif; ?>
 

@@ -53,7 +53,9 @@
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": ""
+            "bidirectional_target": [
+                "field_68fa5d4ed14fd"
+            ]
         },
         {
             "key": "field_68fb299ce36d4",
@@ -83,7 +85,9 @@
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": ""
+            "bidirectional_target": [
+                "field_68fa5d4ed14fd"
+            ]
         }
     ],
     "location": [
@@ -91,7 +95,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "testimonial_item"
+                "value": "bd324_testimonials"
             }
         ]
     ],
@@ -105,5 +109,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761646543
+    "modified": 1761732091
 }

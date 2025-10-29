@@ -1,4 +1,5 @@
 <?php
+
 /**
  * _mbbasetheme functions and definitions
  *
@@ -37,7 +38,7 @@ require get_template_directory() . '/lib/inc/custom-meta.php';
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/lib/inc/custom-header.php';
+require get_template_directory() . '/lib/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -77,15 +78,17 @@ Misc Theme Functions
 /**
  * Define custom post type capabilities for use with Members
  */
-add_action( 'admin_init', 'mb_add_post_type_caps' );
-function mb_add_post_type_caps() {
-	// mb_add_capabilities( 'portfolio' );
+add_action('admin_init', 'mb_add_post_type_caps');
+function mb_add_post_type_caps()
+{
+    // mb_add_capabilities( 'portfolio' );
 }
 
 /**
  * Filter Yoast SEO Metabox Priority
  */
-add_filter( 'wpseo_metabox_prio', 'mb_filter_yoast_seo_metabox' );
-function mb_filter_yoast_seo_metabox() {
-	return 'low';
+add_filter('wpseo_metabox_prio', 'mb_filter_yoast_seo_metabox');
+function mb_filter_yoast_seo_metabox()
+{
+    return 'low';
 }

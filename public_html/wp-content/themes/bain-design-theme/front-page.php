@@ -40,11 +40,11 @@ get_header(); ?>
       </div><!-- .hero -->
 
       <!-- Project Showcase -->
-      <?php if (function_exists('bd324_show_latest_posts') && bd324_show_latest_posts('portfolio_item', 3)) : ?>
+      <?php if (function_exists('bd324_show_latest_posts') && bd324_show_latest_posts('bd324_projects', 3)) : ?>
          <div class="section showcase">
             <div class="container">
                <h2><?php _e('Latest Projects', '_baindesign'); ?></h2>
-               <?php echo bd324_show_latest_posts('portfolio_item', '3'); ?>
+               <?php echo bd324_show_latest_posts('bd324_projects', '3'); ?>
                <h3><a href="<?php echo get_bloginfo('url') ?>/portfolio/">See more projects</a></h3>
             </div>
          </div>

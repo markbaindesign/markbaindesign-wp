@@ -104,11 +104,13 @@
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": ""
+            "bidirectional_target": [
+                "field_68fb299ce368e"
+            ]
         },
         {
             "key": "field_68fa5dcb7866c",
-            "label": "Related Clients",
+            "label": "Related Client",
             "name": "related_client",
             "aria-label": "",
             "type": "relationship",
@@ -186,7 +188,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "portfolio_item"
+                "value": "bd324_projects"
             }
         ]
     ],
@@ -200,5 +202,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761641362
+    "modified": 1761732050
 }

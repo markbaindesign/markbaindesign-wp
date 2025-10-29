@@ -39,7 +39,7 @@
         {
             "key": "field_68fa5d4ed14fd",
             "label": "Related Testimonial",
-            "name": "related_testimonial",
+            "name": "related_testimonials",
             "aria-label": "",
             "type": "relationship",
             "instructions": "",
@@ -66,7 +66,9 @@
             "allow_in_bindings": 0,
             "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": ""
+            "bidirectional_target": [
+                "field_68fb299ce36d4"
+            ]
         },
         {
             "key": "field_68fba8edfcb96",
@@ -112,7 +114,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "clients"
+                "value": "bd324_clients"
             }
         ]
     ],
@@ -126,5 +128,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761640801
+    "modified": 1761732070
 }
