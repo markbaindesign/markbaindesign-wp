@@ -13,22 +13,32 @@ $role                   = $data['role'] ?? '';
 $company                = $data['company'] ?? '';
 ?>
 <article class="postcard postcard--<?php echo esc_attr($post_type); ?> postcard--<?php echo esc_attr($context); ?>">
-    <a class="postcard__link" href="<?php echo esc_url($permalink); ?>">
-        <?php if ($image) : ?>
-            <div class="postcard__image">
-                <img class="postcard__img" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title ?: ''); ?>" loading="lazy">
+    <?php if ($image) : ?>
+        <div class="postcard__image">
+                <a class="postcard__link" href="<?php echo esc_url($permalink); ?>">
+                    <img class="postcard__img" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title ?: ''); ?>" loading="lazy">
+                </a>
             </div>
         <?php endif; ?>
         <div class="postcard__content">
             <?php if ($title) : ?>
-                <h3 class="postcard__title"><?php echo esc_html($title); ?></h3>
+                <h3 class="postcard__title">
+                    <a class="postcard__link" href="<?php echo esc_url($permalink); ?>">
+                        <?php echo esc_html($title); ?>
+                    </a>
+                </h3>
             <?php endif; ?>
 
             <?php if ($year) : ?>
                 <span class="postcard__year"><?php echo esc_html($year); ?></span>
             <?php endif; ?>
 
-            <div class="postcard__excerpt"><?php echo wp_kses_post($excerpt); ?></div>
+            <div class="postcard__excerpt">
+                <blockquote><?php echo wp_kses_post($excerpt); ?></blockquote>
+                <div class="postcard_readmore">
+                    <a class="postcard__link" href="<?php echo esc_url($permalink); ?>">Read More</a>
+                </div>
+            </div>
             
             <?php // Testimonial specific footer?>
             <?php if ($author) : ?>
@@ -40,5 +50,5 @@ $company                = $data['company'] ?? '';
                 </footer>
             <?php endif; ?>
         </div>
-    </a>
+
 </article>
