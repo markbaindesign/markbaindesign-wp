@@ -8,10 +8,12 @@ function bd324_register_all_post_types_and_taxonomies()
 {
     // Register Post Types
     bd324_register_post_type('bd324_clients', [
+        'name' => 'Clients',
         'singular_name' => 'Client',
         'plural_name' => 'Clients',
         'menu_icon' => 'dashicons-tagcloud',
         'menu_name' => 'Clients',
+        'rewrite_slug' => 'clients',
         'menu_position' => 5
     ]);
 
@@ -26,11 +28,12 @@ function bd324_register_all_post_types_and_taxonomies()
     ]);
 
     bd324_register_post_type('bd324_testimonials', [
-        'name' => 'Testimonials',
+        'name' => 'Client Testimonials',
         'singular_name' => 'Client Testimonial',
         'plural_name' => 'Client Testimonials',
         'menu_icon' => 'dashicons-tagcloud',
         'menu_name' => 'Testimonials',
+        'rewrite_slug' => 'testimonials',
         'menu_position' => 5
     ]);
 
