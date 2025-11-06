@@ -14,7 +14,7 @@ function bd324_get_metabox_config()
                     'id' => 'related_clients_metabox',
                     'title' => 'Related Clients',
                     'field_name' => 'related_client',
-                    'target_post_type' => 'clients'
+                    'target_post_type' => 'bd324_clients'
                 ],
                 [
                     'id' => 'related_testimonials_metabox',
@@ -52,7 +52,7 @@ function bd324_get_metabox_config()
                     'id' => 'related_clients_metabox',
                     'title' => 'Related Clients',
                     'field_name' => 'related_client',
-                    'target_post_type' => 'clients'
+                    'target_post_type' => 'bd324_clients'
                 ]
             ]
         ]

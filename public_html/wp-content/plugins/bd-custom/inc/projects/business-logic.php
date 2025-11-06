@@ -6,7 +6,7 @@ function bd324_get_project_data($post_id)
     $data = [
         'data_base' => bd324_get_project_base_data($post_id) ?? [],
     ];
-    if (is_singular('portfolio_item')) {
+    if (is_singular('bd324_projects')) {
         $data['data_meta'] = bd324_get_project_meta($post_id) ?? [];
         $data['data_testimonials'] = bd324_get_project_testimonials($post_id) ?? [];
     }
@@ -227,7 +227,7 @@ function bd324_get_project_meta($post_id)
 function bd324_get_projects_for_related_posts($post_id, $key)
 {
     $args = [
-        'post_type' => 'portfolio_item',
+        'post_type' => 'bd324_projects',
         'posts_per_page' => -1,
         'meta_query' => [
             [

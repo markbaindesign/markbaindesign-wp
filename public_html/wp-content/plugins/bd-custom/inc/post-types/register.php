@@ -38,7 +38,7 @@ function bd324_register_all_post_types_and_taxonomies()
     ]);
 
     // Register Taxonomies
-    bd324_register_taxonomy('client-industry', ['clients'], [
+    bd324_register_taxonomy('client-industry', ['bd324_clients'], [
         'singular_name' => 'Client Industry',
         'plural_name' => 'Client Industries',
         'menu_name' => 'Client Industries'

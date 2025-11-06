@@ -89,7 +89,7 @@
                 "id": ""
             },
             "post_type": [
-                "testimonial_item"
+                "bd324_testimonials"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -123,7 +123,7 @@
                 "id": ""
             },
             "post_type": [
-                "clients"
+                "bd324_clients"
             ],
             "post_status": "",
             "taxonomy": "",

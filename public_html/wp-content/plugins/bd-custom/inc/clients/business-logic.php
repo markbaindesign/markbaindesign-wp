@@ -2,7 +2,7 @@
 
 function bd324_get_client_data($client_id)
 {
-    if (empty($client_id) || get_post_type($client_id) !== 'clients') {
+    if (empty($client_id) || get_post_type($client_id) !== 'bd324_clients') {
         return null;
     }
 
@@ -22,7 +22,7 @@ function bd324_get_client_data($client_id)
     $client_data = [
         'data_base' => bd324_get_client_base_data($client_id) ?? [],
     ];
-    if (is_singular('clients')) {
+    if (is_singular('bd324_clients')) {
         $client_data['data_meta'] = bd324_get_client_meta($client_id) ?? [];
         $client_data['data_testimonials'] = bd324_get_client_testimonials($client_id) ?? [];
         $client_data['data_projects'] = bd324_get_projects_by_client($client_id) ?? [];

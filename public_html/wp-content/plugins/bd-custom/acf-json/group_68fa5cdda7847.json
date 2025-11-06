@@ -17,7 +17,7 @@
                 "id": ""
             },
             "post_type": [
-                "portfolio_item"
+                "bd324_projects"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -51,7 +51,7 @@
                 "id": ""
             },
             "post_type": [
-                "testimonial_item"
+                "bd324_projects"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -128,5 +128,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761732070
+   "modified": 1718371200
 }
