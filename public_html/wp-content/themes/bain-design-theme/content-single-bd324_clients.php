@@ -36,6 +36,13 @@ $data_projects = array(
     'related'                => $related_projects,
 );
 
+// Template: Testimonials
+$data_testimonials = array(
+    'context'                => $context,
+    'related'                => $related_testimonials,
+);
+
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -52,7 +59,7 @@ $data_projects = array(
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-        <?php get_template_part('templates/related-testimonials', null, ['data_projects' => $related_testimonials, 'context' => $context]); ?>
+        <?php get_template_part('templates/related-testimonials', null, ['data_testimonials' => $data_testimonials]); ?>
         <?php if (!empty($data_projects['related'])) : ?>
             <?php get_template_part('templates/related-projects', null, ['data_projects' => $data_projects]); ?>
         <?php endif; ?>

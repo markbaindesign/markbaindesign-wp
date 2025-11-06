@@ -80,12 +80,15 @@ function bd324_get_client_external_link_by_id($client_id)
 
 function bd324_get_projects_by_client($client_id)
 {
+    /**
+     * Calls a function in Projects business logic to get projects related to a client
+     */
     return bd324_get_projects_for_related_posts($client_id, 'related_client');
 }
 
 function bd324_get_client_testimonials($client_id)
 {
-    $testimonials = get_field('project_testimonials', $client_id);
+    $testimonials = get_field('related_testimonials', $client_id);
     if (empty($testimonials)) {
         return [];
     }

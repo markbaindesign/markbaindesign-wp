@@ -2,7 +2,7 @@
 $data = $args['data_testimonials'] ?? null;
 
 $context = $data['context'] ?? 'list';
-$testimonials = $data['testimonials'] ?? null;
+$testimonials = $data['related'] ?? null;
 ?>
 <?php if ($testimonials) : ?>
     <section class="related-projects section-<?php echo esc_attr($context); ?>">
