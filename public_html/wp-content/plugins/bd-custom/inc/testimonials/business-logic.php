@@ -8,7 +8,7 @@ function bd324_get_testimonial_data($testimonial_id, $context = 'single')
 {
     $post_type = get_post_type($testimonial_id);
 
-    if (empty($testimonial_id) || $post_type !== 'testimonial_item') {
+    if (empty($testimonial_id) || $post_type !== 'bd324_testimonials') {
         return null;
     }
 
@@ -107,5 +107,8 @@ function bd324_get_testimonial_base_data($testimonial_id)
 
 function bd324_get_testimonial_related_projects($testimonial_id)
 {
+    /**
+     * Calls a function in Projects business logic to get projects related to a testimonial
+     */
     return bd324_get_projects_for_related_posts($testimonial_id, 'related_testimonials');
 }

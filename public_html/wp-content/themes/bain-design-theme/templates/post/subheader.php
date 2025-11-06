@@ -20,7 +20,7 @@ $author_role = $data['author_role'] ?? '';
 <div class="subheader subheader--<?php echo esc_attr($context); ?> subheader--<?php echo esc_attr($post_type); ?>">
     <?php if ($context === 'single') : ?>
         <?php get_template_part('templates/meta-list', null, ['data_meta' => $data_meta]); ?>
-        <?php if ($post_type === 'testimonial_item' && !empty($client_name)) : ?>
+        <?php if ($post_type === 'bd324_testimonials' && !empty($client_name)) : ?>
             <div class="role">
                 <span class="role__label"><?php esc_html_e('Role:', '_mbbasetheme'); ?></span>
                 <span class="role__text"><?php echo esc_html($author_role); ?></span>

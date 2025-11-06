@@ -20,7 +20,7 @@ function bd324_get_metabox_config()
                     'id' => 'related_testimonials_metabox',
                     'title' => 'Related Testimonials',
                     'field_name' => 'related_testimonials',
-                    'target_post_type' => 'testimonial_item'
+                    'target_post_type' => 'bd324_testimonials'
                 ]
             ]
         ],
@@ -36,7 +36,7 @@ function bd324_get_metabox_config()
                     'id' => 'related_testimonials_metabox',
                     'title' => 'Related Testimonials',
                     'field_name' => 'related_testimonials',
-                    'target_post_type' => 'testimonial_item'
+                    'target_post_type' => 'bd324_testimonials'
                 ]
             ]
         ],
