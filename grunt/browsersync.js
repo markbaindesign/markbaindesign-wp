@@ -18,7 +18,7 @@ module.exports = {
          //     key: "path-to-custom.key",
          //     cert: "path-to-custom.crt"
          // },
-         proxy: 'https://bain.design.ddev.site:34443'
+         proxy: 'https://bain.design.ddev.site'
       }
    }
 };

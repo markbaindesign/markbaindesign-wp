@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio/design studio WordPress site for Bain Design. A custom WordPress theme and companion plugin running on DDEV locally.
 
-- **Local URL**: `https://bain.design.ddev.site:34443`
+- **Local URL**: `https://bain.design.ddev.site`
 - **Production URL**: `https://bain.design`
 - **Production SSH**: `master_czajrvfzzm@178.62.31.106`
 - **Theme**: `bain-design-theme` (custom, based on Underscores)
