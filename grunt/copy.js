@@ -44,13 +44,6 @@ module.exports = {
       ],
    },
 
-   font_awesome: {
-      expand: true,
-      flatten: true,
-      src: ['bower_components/fontawesome/fonts/*'],
-      dest: '<%= theme_path %>/<%= theme_name %>/assets/fonts'
-   },
-
    deploy_scripts: {
       expand: true,
       flatten: true,

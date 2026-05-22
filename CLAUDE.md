@@ -20,8 +20,6 @@ ddev start           # start local environment
 ddev stop            # stop local environment
 ddev wp <cmd>        # run WP-CLI commands inside DDEV
 npm install          # install Grunt plugins
-bower install        # download Bower components
-grunt copyassets     # copy bower assets to theme
 grunt                # compile Sass + watch (default dev task)
 grunt build          # full production build → /release
 grunt export         # export WordPress install to /export
@@ -93,3 +91,13 @@ Entry point `sass/styles.scss` loads in this order (do not reorder): mixins → 
 2. Run `grunt export` — archives the full WordPress install to `/export`
 3. Upload the archive to staging/production and run the import script
 4. Use Search-Replace-DB to update URLs in the database after import
+
+## Asana
+
+ASANA_PROJECT_GID: 1202804672032851
+ASANA_TASK_PREFIX: BD
+ASANA_PROJECT_NAME: Bain Design
+
+## Studio PM
+
+- **Tone:** Sweary, direct.

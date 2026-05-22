@@ -42,7 +42,6 @@
             <li><a href="https://github.com/markbaindesign"><i aria-hidden="true" title="GitHub" class="icon-github icon-left"></i><span class="">GitHub</span></a></li>
 				<li><a href="https://www.facebook.com/markbaindesign"><i aria-hidden="true" title="Facebook" class="icon-facebook icon-left"></i><span class="">Facebook</span></a></li> 
 				<li><a href="https://twitter.com/mbain"><i aria-hidden="true" title="Twitter" class="icon-twitter icon-left"></i><span class="">Twitter</span></a></li> 
-				<li><a href="<?php bloginfo('rss2_url'); ?>"><i aria-hidden="true" title="RSS" class="icon-feed icon-left"></i><span class="">RSS</span></a></li> 
 			</ul>
 		</div><!-- .social -->
 
