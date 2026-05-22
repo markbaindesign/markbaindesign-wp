@@ -18,7 +18,7 @@ module.exports = {
          //     key: "path-to-custom.key",
          //     cert: "path-to-custom.crt"
          // },
-         proxy: 'http://localhost' // local url to proxy
+         proxy: 'https://bain.design.ddev.site:34443'
       }
    }
 };

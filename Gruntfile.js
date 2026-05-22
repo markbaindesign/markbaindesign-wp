@@ -13,7 +13,7 @@ module.exports = function (grunt) {
          plugin_path: 'public_html/wp-content/plugins',
          mu_plugin_path: 'wp-content/mu-plugins',
          stylesheet_name: 'style',
-         url: 'http://localhost' // Change this to your local dev URL if needed
+         url: 'https://bain.design.ddev.site:34443'
       },
    });
 };

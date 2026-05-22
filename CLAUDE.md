@@ -4,16 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio/design studio WordPress site for Bain Design. A custom WordPress theme and companion plugin running on VVV (Varying Vagrant Vagrants) locally.
+Personal portfolio/design studio WordPress site for Bain Design. A custom WordPress theme and companion plugin running on DDEV locally.
 
-- **Local URL**: `https://localhost:3002/`
+- **Local URL**: `https://bain.design.ddev.site:34443`
+- **Production URL**: `https://bain.design`
+- **Production SSH**: `master_czajrvfzzm@178.62.31.106`
 - **Theme**: `bain-design-theme` (custom, based on Underscores)
 - **Plugin**: `bd-custom` (all site-specific business logic)
-- **WP-CLI alias**: `wp @bain-dot-design <command>` (runs via Vagrant SSH)
+- **WP-CLI**: `ddev wp <command>` (runs inside DDEV container)
 
 ## Build Commands
 
 ```bash
+ddev start           # start local environment
+ddev stop            # stop local environment
+ddev wp <cmd>        # run WP-CLI commands inside DDEV
 npm install          # install Grunt plugins
 bower install        # download Bower components
 grunt copyassets     # copy bower assets to theme
