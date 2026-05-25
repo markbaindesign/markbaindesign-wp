@@ -1,63 +1,29 @@
 <?php
 /**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after
- *
- * @package _mbbasetheme
+ * Site footer template.
  */
 ?>
+</main><!-- #main -->
 
-	</div><!-- #content -->
-	
-	<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-		<div id="footer-widgets" class="widget-area">
-			
-				
-				<div class="masonrycontainer">
-					<div class="grid-sizer"></div>
-					<div class="gutter-sizer"></div>				
-					<?php dynamic_sidebar( 'sidebar-2' ); ?>
-				
-				
-				</div>
-				
-			
-		</div><!-- .widget-container -->
-	<?php endif; ?>
-	<footer id="colophon" class="section site-footer" role="contentinfo">
-		<div class="container">
-		<div class="site-info">
-			<div id="copyright">
-					<p><a href="<?php echo bloginfo( 'url' ); ?>">&copy; <?php echo date("Y"); ?> <?php echo bloginfo( 'name' ); ?></a></p>
-			</div> 
-		<!--	<p id="tagline">
-				<?php echo get_bloginfo( 'description' ); ?>
-			</p> --> 
-		</div><!-- .site-info -->
+<footer class="site-footer" id="colophon">
+	<div class="site-footer__copy">
+		<span>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?> &mdash;</span>
+		<span class="footer-verb" id="footer-verb">Build</span>
+		<span> with </span>
+		<span class="footer-heart" id="footer-heart">&#9829;</span>
+	</div>
 
-		<div class="social">
-			<ul class="social-media-links">
-            <li><a href="https://profiles.wordpress.org/markcbain/"><i aria-hidden="true" title="WordPress" class="icon-wordpress icon-left"></i><span class="">WordPress</span></a></li>
-            <li><a href="https://github.com/markbaindesign"><i aria-hidden="true" title="GitHub" class="icon-github icon-left"></i><span class="">GitHub</span></a></li>
-				<li><a href="https://www.facebook.com/markbaindesign"><i aria-hidden="true" title="Facebook" class="icon-facebook icon-left"></i><span class="">Facebook</span></a></li> 
-				<li><a href="https://twitter.com/mbain"><i aria-hidden="true" title="Twitter" class="icon-twitter icon-left"></i><span class="">Twitter</span></a></li> 
-			</ul>
-		</div><!-- .social -->
+	<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'bain-design-theme' ); ?>">
+		<a href="https://profiles.wordpress.org/markcbain/">WordPress</a>
+		<span class="footer-sep">/</span>
+		<a href="https://github.com/markbaindesign">GitHub</a>
+		<span class="footer-sep">/</span>
+		<a href="<?php echo esc_url( get_feed_link() ); ?>">RSS</a>
+	</nav>
+</footer><!-- #colophon -->
 
-		<!-- <div id="design">
-			<p>Designed <span class="amp">&amp;</span> coded by <a href="http://markbaindesign.com" title="Visit the website of Mark Bain Design">Mark Bain Design</a></p>
-		</div> --><!-- #design -->
-
-		<div id="back-to-top" >
-			<p><a href="#header" title="Go back to the top" class=""><i aria-hidden="true" class="icon-arrow-up"></i>Back to top</a></p>
-		</div><!-- #back-to-top -->
-		</div><!-- .container -->
-	</footer><!-- #colophon -->
-
-</div><!-- #page -->
+</div><!-- .site-wrapper -->
 
 <?php wp_footer(); ?>
-
 </body>
 </html>
