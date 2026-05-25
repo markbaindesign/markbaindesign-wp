@@ -398,6 +398,7 @@
   }
 
   .portfolio-card {
+    position: relative;
     border: 1px solid var(--rule);
     background: var(--paper);
     display: flex;
@@ -533,10 +534,90 @@
     margin: 0;
   }
 
+  .archive-header__count {
+    font-family: var(--font-mono-2);
+    font-size: var(--type-13);
+    color: var(--pencil);
+    margin: var(--space-2) 0 0;
+  }
+
   .archive-content {
     padding: var(--space-7) var(--gutter);
     max-width: var(--max-w);
     margin: 0 auto;
+  }
+
+  /* Portfolio archive grid — 3 columns, 4:3 thumb */
+  .portfolio-grid--archive {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 560px) { grid-template-columns: 1fr; }
+  }
+
+  /* 4:3 thumbnail on archive cards */
+  .portfolio-archive .portfolio-card__thumb {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* ASCII corner ticks */
+  .portfolio-card__tick {
+    position: absolute;
+    font-family: var(--font-mono-2);
+    font-size: 14px;
+    color: var(--clay);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms;
+    line-height: 1;
+  }
+  .portfolio-card:hover .portfolio-card__tick { opacity: 1; }
+  .portfolio-card__tick--tl { top: -8px;  left: -8px; }
+  .portfolio-card__tick--tr { top: -8px;  right: -8px; }
+  .portfolio-card__tick--bl { bottom: -8px; left: -8px; }
+  .portfolio-card__tick--br { bottom: -8px; right: -8px; }
+
+  /* Clay shadow on hover (set by JS tilt, but also CSS fallback) */
+  .portfolio-card:hover {
+    box-shadow: 6px 6px 0 var(--clay);
+  }
+
+  /* "view project" link inside card */
+  .portfolio-card__link {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono-2);
+    font-size: var(--type-12);
+    color: var(--ink);
+    text-decoration: none;
+    transition: color var(--dur-1);
+
+    .portfolio-card:hover & { color: var(--clay); }
+  }
+
+  /* Pagination */
+  .portfolio-pagination {
+    margin-top: var(--space-8);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    font-family: var(--font-mono-2);
+    font-size: var(--type-13);
+  }
+  .portfolio-pagination .page-numbers {
+    padding: 8px 14px;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    text-decoration: none;
+    transition: background var(--dur-1), border-color var(--dur-1);
+
+    &:hover { background: var(--paper-deep); border-color: var(--ink); }
+    &.current { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  }
+
+  .archive-empty {
+    font-family: var(--font-mono-2);
+    font-size: var(--type-14);
+    color: var(--pencil);
   }
 }
 
