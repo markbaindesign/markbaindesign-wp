@@ -1,187 +1,253 @@
 {
     "key": "group_5be07d58217fd",
-    "title": "Projects",
+    "title": "Project — case study",
     "fields": [
+
         {
-            "key": "field_50b792099630a",
-            "label": "Website",
-            "name": "website",
-            "aria-label": "",
+            "key": "field_bain_proj_meta_tab",
+            "label": "Meta",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_bain_proj_tagline",
+            "label": "Tagline",
+            "name": "tagline",
             "type": "text",
-            "instructions": "",
+            "instructions": "One sentence under the title. Keep it under ~14 words. Falls back to the post excerpt if left blank.",
             "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "formatting": "html",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "wrapper": { "width": "100" }
         },
         {
-            "key": "field_50b792529630b",
-            "label": "Secondary content",
-            "name": "secondary_content",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "toolbar": "full",
-            "media_upload": 1,
-            "the_content": "yes",
-            "tabs": "all",
-            "delay": 0
+            "key": "field_bain_proj_client",
+            "label": "Client",
+            "name": "client",
+            "type": "text",
+            "instructions": "Display name shown in the case study header.",
+            "required": 1,
+            "wrapper": { "width": "33" }
         },
         {
-            "key": "field_50b7928755281",
-            "label": "Image width",
-            "name": "image-width",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "single": "Single",
-                "double": "Double"
-            },
-            "default_value": [
-                "single"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "return_format": "value",
-            "create_options": 0,
-            "save_options": 0
+            "key": "field_bain_proj_year",
+            "label": "Year",
+            "name": "year",
+            "type": "number",
+            "min": 2000,
+            "max": 2100,
+            "instructions": "4-digit year. Defaults to publish year if blank.",
+            "wrapper": { "width": "16" }
         },
         {
-            "key": "field_68fa5d7949f7d",
-            "label": "Related Testimonials",
-            "name": "related_testimonials",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "bd324_testimonials"
-            ],
-            "post_status": "",
-            "taxonomy": "",
-            "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
-            ],
-            "return_format": "object",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "elements": "",
-            "bidirectional": 1,
-            "bidirectional_target": [
-                "field_68fb299ce368e"
+            "key": "field_bain_proj_duration",
+            "label": "Duration",
+            "name": "duration",
+            "type": "text",
+            "placeholder": "5 months",
+            "wrapper": { "width": "17" }
+        },
+        {
+            "key": "field_bain_proj_role",
+            "label": "Role",
+            "name": "role",
+            "type": "text",
+            "placeholder": "Design & development",
+            "wrapper": { "width": "34" }
+        },
+        {
+            "key": "field_bain_proj_live_url",
+            "label": "Live URL",
+            "name": "live_url",
+            "type": "url",
+            "placeholder": "https://…",
+            "wrapper": { "width": "100" }
+        },
+
+        {
+            "key": "field_bain_proj_body_tab",
+            "label": "Case study",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_bain_proj_brief",
+            "label": "01 · Brief",
+            "name": "brief",
+            "type": "textarea",
+            "rows": 5,
+            "new_lines": "wpautop",
+            "instructions": "The problem. One or two paragraphs."
+        },
+        {
+            "key": "field_bain_proj_approach",
+            "label": "02 · Approach",
+            "name": "approach",
+            "type": "textarea",
+            "rows": 5,
+            "new_lines": "wpautop",
+            "instructions": "How you built it. One or two paragraphs."
+        },
+        {
+            "key": "field_bain_proj_approach_gallery",
+            "label": "Approach images",
+            "name": "approach_gallery",
+            "type": "gallery",
+            "return_format": "id",
+            "min": 0,
+            "max": 2,
+            "instructions": "Up to 2 images shown side-by-side under the Approach paragraph."
+        },
+        {
+            "key": "field_bain_proj_outcome",
+            "label": "03 · Outcome",
+            "name": "outcome",
+            "type": "textarea",
+            "rows": 5,
+            "new_lines": "wpautop",
+            "instructions": "Results. One paragraph + the wins list below."
+        },
+        {
+            "key": "field_bain_proj_wins",
+            "label": "Selected wins",
+            "name": "wins",
+            "type": "repeater",
+            "instructions": "Plain statements. Each renders with a ✔ bullet.",
+            "min": 0,
+            "max": 8,
+            "layout": "table",
+            "button_label": "Add win",
+            "sub_fields": [
+                {
+                    "key": "field_bain_proj_win",
+                    "label": "Win",
+                    "name": "win",
+                    "type": "text"
+                }
             ]
+        },
+
+        {
+            "key": "field_bain_proj_quote_tab",
+            "label": "Testimonial",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_bain_proj_testimonial_quote",
+            "label": "Quote",
+            "name": "testimonial_quote",
+            "type": "textarea",
+            "rows": 4,
+            "instructions": "No quote marks — they're added in the template."
+        },
+        {
+            "key": "field_bain_proj_testimonial_author",
+            "label": "Author",
+            "name": "testimonial_author",
+            "type": "text",
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_bain_proj_testimonial_role",
+            "label": "Author role",
+            "name": "testimonial_role",
+            "type": "text",
+            "placeholder": "Executive Director · Acme Co.",
+            "wrapper": { "width": "50" }
+        },
+
+        {
+            "key": "field_bain_proj_media_tab",
+            "label": "Media",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_bain_proj_showcase_gallery",
+            "label": "Showcase gallery",
+            "name": "showcase_gallery",
+            "type": "gallery",
+            "return_format": "id",
+            "min": 0,
+            "max": 3,
+            "instructions": "Up to 3 images. First sits big on the left, the other two stack on the right."
+        },
+
+        {
+            "key": "field_bain_proj_extras_tab",
+            "label": "Extras",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_bain_proj_stack",
+            "label": "Stack",
+            "name": "stack",
+            "type": "repeater",
+            "instructions": "Tech the project runs on. Each entry renders as a hairline pill.",
+            "min": 0,
+            "layout": "table",
+            "button_label": "Add tech",
+            "sub_fields": [
+                {
+                    "key": "field_bain_proj_tech",
+                    "label": "Tech",
+                    "name": "tech",
+                    "type": "text",
+                    "placeholder": "WordPress, ACF, …"
+                }
+            ]
+        },
+        {
+            "key": "field_bain_proj_related",
+            "label": "Related projects",
+            "name": "related",
+            "type": "relationship",
+            "post_type": [ "bd324_projects" ],
+            "filters": [ "search", "taxonomy" ],
+            "return_format": "id",
+            "min": 0,
+            "max": 2,
+            "instructions": "Pick up to 2. Leave blank to auto-pick by shared taxonomy."
         },
         {
             "key": "field_68fa5dcb7866c",
             "label": "Related Client",
             "name": "related_client",
-            "aria-label": "",
             "type": "relationship",
-            "instructions": "",
+            "instructions": "Links this project to a client CPT entry.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "bd324_clients"
-            ],
+            "wrapper": { "width": "" },
+            "post_type": [ "bd324_clients" ],
             "post_status": "",
             "taxonomy": "",
-            "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
-            ],
+            "filters": [ "search", "post_type", "taxonomy" ],
             "return_format": "object",
             "min": "",
             "max": 1,
-            "allow_in_bindings": 0,
-            "elements": "",
             "bidirectional": 1,
-            "bidirectional_target": [
-                "field_68fa5cde2c2f6"
-            ]
+            "bidirectional_target": [ "field_68fa5cde2c2f6" ]
         },
         {
-            "key": "field_68ff38f846dc1",
-            "label": "Project End",
-            "name": "project_end",
-            "aria-label": "",
-            "type": "date_picker",
-            "instructions": "",
+            "key": "field_68fa5d7949f7d",
+            "label": "Related Testimonials",
+            "name": "related_testimonials",
+            "type": "relationship",
+            "instructions": "Legacy field — links to standalone testimonial CPT entries.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1,
-            "default_to_current_date": 0,
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68ff391846dc2",
-            "label": "Project Start",
-            "name": "project_start",
-            "aria-label": "",
-            "type": "date_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1,
-            "default_to_current_date": 0,
-            "allow_in_bindings": 0
+            "wrapper": { "width": "" },
+            "post_type": [ "bd324_testimonials" ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [ "search", "post_type", "taxonomy" ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "bidirectional": 1,
+            "bidirectional_target": [ "field_68fb299ce368e" ]
         }
+
     ],
     "location": [
         [
@@ -194,13 +260,11 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [ "discussion", "comments", "trackbacks" ],
     "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "display_title": "",
-    "modified": 1761732050
+    "description": "Bain Design — project case study fields. Matches the new design system. Legacy fields (related_client, related_testimonials) preserved for back-compat.",
+    "modified": 1748131200
 }
