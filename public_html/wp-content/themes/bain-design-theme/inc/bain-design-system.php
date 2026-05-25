@@ -249,6 +249,109 @@ function bain_ascii_rule( $glyph = '─' ) {
 
 
 /* =====================================================================
+ *  Single project template helpers
+ * ================================================================== */
+
+/**
+ * ACF field with fallback to post meta, then a default value.
+ */
+function bain_project_field( $key, $post_id = null, $default = '' ) {
+	$post_id = $post_id ?: get_the_ID();
+	if ( function_exists( 'get_field' ) ) {
+		$v = get_field( $key, $post_id );
+		if ( $v !== null && $v !== '' && $v !== false ) {
+			return $v;
+		}
+	}
+	$meta = get_post_meta( $post_id, $key, true );
+	return $meta !== '' ? $meta : $default;
+}
+
+/**
+ * Two-digit zero-padded project number derived from menu_order.
+ */
+function bain_project_number( $post_id = null ) {
+	$post_id = $post_id ?: get_the_ID();
+	$order   = (int) get_post_field( 'menu_order', $post_id );
+	if ( $order > 0 ) {
+		return str_pad( $order, 2, '0', STR_PAD_LEFT );
+	}
+	return str_pad( ( $post_id % 99 ) + 1, 2, '0', STR_PAD_LEFT );
+}
+
+/**
+ * Wins repeater → flat array of strings.
+ */
+function bain_project_wins( $post_id = null ) {
+	$post_id = $post_id ?: get_the_ID();
+	if ( ! function_exists( 'have_rows' ) ) {
+		return array_filter( (array) get_post_meta( $post_id, 'wins', true ) );
+	}
+	$out = array();
+	if ( have_rows( 'wins', $post_id ) ) {
+		while ( have_rows( 'wins', $post_id ) ) {
+			the_row();
+			$txt = get_sub_field( 'win' );
+			if ( $txt ) { $out[] = $txt; }
+		}
+	}
+	return $out;
+}
+
+/**
+ * Stack repeater → flat array of strings.
+ */
+function bain_project_stack( $post_id = null ) {
+	$post_id = $post_id ?: get_the_ID();
+	if ( ! function_exists( 'have_rows' ) ) {
+		return array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $post_id, 'stack', true ) ) ) );
+	}
+	$out = array();
+	if ( have_rows( 'stack', $post_id ) ) {
+		while ( have_rows( 'stack', $post_id ) ) {
+			the_row();
+			$txt = get_sub_field( 'tech' );
+			if ( $txt ) { $out[] = $txt; }
+		}
+	}
+	return $out;
+}
+
+/**
+ * Related projects — manual picks from ACF, falling back to shared
+ * project-category-service terms.
+ *
+ * @return WP_Post[]
+ */
+function bain_project_related( $post_id = null, $limit = 2 ) {
+	if ( function_exists( 'bd324_get_project_related' ) ) {
+		return bd324_get_project_related( $post_id ?: get_the_ID(), $limit );
+	}
+	return array();
+}
+
+/**
+ * Adjacent project — previous or next by date within bd324_projects.
+ *
+ * @param string $direction 'prev' or 'next'
+ * @return WP_Post|null
+ */
+function bain_project_adjacent( $direction = 'prev' ) {
+	$args = array(
+		'post_type'      => 'bd324_projects',
+		'posts_per_page' => 1,
+		'orderby'        => 'date',
+		'order'          => $direction === 'prev' ? 'DESC' : 'ASC',
+		'date_query'     => array( array(
+			$direction === 'prev' ? 'before' : 'after' => get_the_date( 'Y-m-d H:i:s' ),
+		) ),
+	);
+	$q = get_posts( $args );
+	return $q ? $q[0] : null;
+}
+
+
+/* =====================================================================
  *  Body sign-off auto-render (optional)
  * ================================================================== */
 
