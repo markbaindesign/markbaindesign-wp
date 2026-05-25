@@ -2,22 +2,27 @@
    "folders": [
       {
          "name": "Theme",
-         "path": "public_html/wp-content/themes/bain-design-theme"
+         "path": "public_html/wp-content/themes/bain-design-theme",
       },
       {
          "name": "Custom Plugin",
-         "path": "public_html/wp-content/plugins/bd-custom"
+         "path": "public_html/wp-content/plugins/bd-custom",
+      },
+      {
+         "name": "Design System",
+         "path": "design",
       },
       {
          "name": "Sass",
-         "path": "sass"
+         "path": "sass",
       },
       {
          "name": "Root",
-         "path": "."
-      }
+         "path": ".",
+      },
    ],
    "settings": {
-      "editor.tabSize": 3
+    "editor.tabSize": 3,
+    "liveServer.settings.multiRootWorkspaceName": "Design System"
    }
 }
