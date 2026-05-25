@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_SESSION_NAME": "Bain Web"
+  },
   "permissions": {
     "allow": [
       "Bash(*)",
