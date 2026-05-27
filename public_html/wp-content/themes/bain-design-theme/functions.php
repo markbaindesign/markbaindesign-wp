@@ -95,11 +95,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 add_filter( 'body_class', function ( $classes ) {
 	// Apply "letter" layout (generous margins) to long-form content
-	if (
-		is_singular( 'post' ) ||
-		is_page_template( 'page-about.php' ) ||
-		is_page( array( 'about', 'colophon' ) )
-	) {
+	// Not used on the about page — it has its own full-width editorial layout.
+	if ( is_singular( 'post' ) ) {
 		$classes[] = 'bain-letter';
 	}
 	return $classes;
