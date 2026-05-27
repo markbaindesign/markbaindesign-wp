@@ -489,6 +489,13 @@
     margin-top: var(--space-5);
     max-width: 60ch;
   }
+
+  .tip-q {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--clay);
+    cursor: help;
+  }
 }
 
 /* ----- Contact section ----------------------------------------------- */

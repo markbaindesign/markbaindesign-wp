@@ -161,14 +161,12 @@ get_header();
 			<p class="about-section__intro">
 				14+ years building bespoke WordPress sites from inception to execution. Based near Barcelona, working with clients worldwide.
 			</p>
-			<?php
-			bain_check_list( array(
-				'Dedicated and creative &mdash; every site is coded from scratch.',
-				'Proficient in wireframing, designing responsive layouts, and coding bespoke themes &amp; plugins.',
-				'Two open-source plugins published on WordPress.org.',
-				'Committed to delivering technical solutions that align with clients&#8217; business objectives.',
-			) );
-			?>
+			<ul class="bain-check">
+				<li>Dedicated and creative &mdash; every site is coded from scratch. <span class="tip-q" data-tip="no Wix/Squarespace/Webflow">?</span></li>
+				<li>Proficient in wireframing, designing responsive layouts, and coding bespoke themes &amp; plugins. <span class="tip-q" data-tip="full-stack, mostly">?</span></li>
+				<li>Two open-source plugins published on WordPress.org. <span class="tip-q" data-tip="free as in beer">?</span></li>
+				<li>Committed to delivering technical solutions that align with clients&#8217; business objectives. <span class="tip-q" data-tip="translation: I read your brief">?</span></li>
+			</ul>
 		</div>
 
 	</div>
@@ -185,7 +183,8 @@ get_header();
 		<p class="contact-section__lead">
 			If you're keen to find out more, there are lots of ways to get in touch &mdash; but why not start with an email?
 		</p>
-		<a href="mailto:hello@bain.design" class="contact-section__email" id="contact-email">
+		<a href="mailto:hello@bain.design" class="contact-section__email" id="contact-email"
+			   data-tip="click to copy + open">
 			hello@bain.design →
 		</a>
 	</div>
