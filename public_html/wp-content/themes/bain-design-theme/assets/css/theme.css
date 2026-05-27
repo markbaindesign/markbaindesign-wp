@@ -3,7 +3,7 @@
    Depends on tokens.css and base.css being loaded first.
    ===================================================================== */
 
-@layer layout, header, footer, hero, sections, about, contact, archive, single, wp;
+@layer layout, header, footer, hero, sections, about, contact, services, archive, single, wp;
 
 /* ----- Page shell ---------------------------------------------------- */
 @layer layout {
@@ -521,6 +521,41 @@
 
     &:hover { color: var(--ink); }
   }
+}
+
+/* ----- Services page ------------------------------------------------- */
+@layer services {
+  .services-page { padding: var(--space-9) 0; }
+
+  .services-list--page {
+    border: 1px solid var(--rule);
+    background: var(--paper-pure);
+  }
+
+  .services-list--page .services-list__item {
+    grid-template-columns: 52px 180px 1fr auto;
+    cursor: pointer;
+
+    &:first-child { border-top: none; }
+  }
+
+  .services-list__cta {
+    font-family: var(--font-mono-2);
+    font-size: var(--type-12);
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 160ms;
+    align-self: center;
+  }
+
+  .services-list--page .services-list__item:hover .services-list__cta {
+    color: var(--clay);
+  }
+
+  .services-list__cta-hover { display: none; }
+  .services-list--page .services-list__item:hover .services-list__cta-default { display: none; }
+  .services-list--page .services-list__item:hover .services-list__cta-hover   { display: inline; }
 }
 
 /* ----- Archive pages ------------------------------------------------- */
