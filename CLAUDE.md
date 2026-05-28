@@ -56,11 +56,12 @@ public_html/wp-content/
 
 All CPTs use the `bd324_` prefix:
 
-| Post Type | Slug | URL |
-|---|---|---|
-| `bd324_clients` | `clients` | `/clients/` |
-| `bd324_projects` | `portfolio` | `/portfolio/` |
-| `bd324_testimonials` | `testimonials` | `/testimonials/` |
+| Post Type | Slug | URL | Notes |
+|---|---|---|---|
+| `bd324_clients` | `clients` | `/clients/` | |
+| `bd324_projects` | `portfolio` | `/portfolio/` | |
+| `bd324_testimonials` | `testimonials` | `/testimonials/` | |
+| `bd324_services` | `services` | `/services/` | hierarchical; replaces old service pages |
 
 Project taxonomies: `project-category-service`, `project-category-tool`, `project-category-tech-stack`, `project-category-profile`
 Client taxonomy: `client-industry`
@@ -95,7 +96,7 @@ Three flat CSS files in `assets/css/`, enqueued in dependency order via `functio
 
 Enqueue chain: `bain-fonts` → `bain-tokens` → `bain-base` → `bain-theme` → `bain-main` (JS).
 
-**New styles go in `theme.css`** inside the appropriate `@layer`. Layers defined (in order): `layout`, `header`, `footer`, `hero`, `sections`, `archive`, `single`, `wp`. Add new named layers to the `@layer` declaration at the top of the file before using them.
+**New styles go in `theme.css`** inside the appropriate `@layer`. Layers defined (in order): `layout`, `header`, `footer`, `hero`, `sections`, `about`, `contact`, `services`, `about-page`, `archive`, `single`, `testimonials`, `error404`, `wp`. Add new named layers to the `@layer` declaration at the top of the file before using them.
 
 The old `sass/` tree and Grunt Sass compilation are no longer used for the active design.
 
@@ -111,6 +112,37 @@ UPDATE wp_term_taxonomy SET taxonomy = 'project-category-profile' WHERE taxonomy
 ```
 
 Then `ddev wp rewrite flush`.
+
+## Testimonial ↔ Project data model
+
+`related_testimonials` is an ACF relationship field on **projects** — projects store which testimonials relate to them. `bd324_get_testimonial_related_projects()` queries all projects whose `related_testimonials` meta contains a given testimonial ID. The lookup direction is testimonial → projects (not projects → testimonials).
+
+ACF relationship fields store post IDs as serialized PHP integers: `a:1:{i:0;i:1784;}`. Meta queries must search for `'i:{id};'` with `LIKE`, not `'"{id}"'`.
+
+`bd324_get_projects_for_related_posts()` returns arrays, not objects. Use `$item['ID']`, not `$item->ID`.
+
+## Nav walker
+
+`inc/nav-walker.php` — `Bain_Nav_Walker extends Walker_Nav_Menu`. `header.php` must use `depth => 2` and `walker => new Bain_Nav_Walker()`. CSS handles `├──` vs `└──` via `:last-child` — no PHP counting needed.
+
+## Contact Form 7
+
+- Active version is the **mu-plugin** at `mu-plugins/contact-form-7/`. The regular plugin must stay deactivated.
+- Meta keys: `_mail`, `_form`, `_messages` (not `_wpcf7_*`).
+- `From:` must be a static address (`hello@bain.design`) — dynamic `[field-name]` in From breaks `wp_mail()`. Use `Reply-To` for the submitter's address.
+- WP Mail SMTP must have Gmail credentials configured before being activated on production.
+
+## Content inbox
+
+`context/inbox/` receives content drops from the studio (copy, project briefs, etc.). A morning cron (8:47am) processes new files and moves them to `context/processed/`. The cron is session-only — reschedule at the start of each session.
+
+## Gotchas
+
+- `bain_meta_bracket()` applies `esc_html()` — never pass HTML into it. Use direct `echo` with a `<nav>` element for breadcrumbs.
+- CPT archive URL takes precedence over a page with the same slug. Use `archive-{cpt}.php`, not `page-{slug}.php`.
+- `ddev wp post create --post_parent=X` silently ignores `--post_parent`. Set it separately: `ddev wp post update ID --post_parent=PARENT_ID`.
+- WP menu items of type `post_type` ignore `--url` overrides. To point them at a different URL, update `_menu_item_type` → `custom`, `_menu_item_object` → `custom`, `_menu_item_object_id` → `0`, and `_menu_item_url` in postmeta directly.
+- All mu-plugins are required from `mu-plugins/load.php`. Removing a plugin directory without removing its `require` line causes a fatal error.
 
 ## Deployment
 
