@@ -1,6 +1,6 @@
 <?php
 /**
- * Services page template — page-services.php
+ * Services CPT archive — archive-bd324_services.php
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }

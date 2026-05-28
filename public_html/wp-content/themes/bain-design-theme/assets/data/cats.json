@@ -1,0 +1,49 @@
+{
+  "gala": {
+    "name": "Gala",
+    "personality": "bright, energetic, curious",
+    "speed": 58,
+    "startLeft": true,
+    "frames": {
+      "walkA": " /\\_/\\\n(^.^)> ",
+      "walkB": " /\\_/\\\n(^-^)> ",
+      "idle": " /\\_/\\\n (^.^) ",
+      "sleep": " /\\_/\\\n(-.-) z",
+      "blink": " /\\_/\\\n(O.O)! ",
+      "pet": " /\\_/\\\n(*^.^*) "
+    },
+    "messages": {
+      "pet": ["mrrp", "purrr", "ok fine", "ok, enough", "still here", "...", "I said enough", "you again"]
+    }
+  },
+  "salvador": {
+    "name": "Salvador",
+    "personality": "chill, aloof, surrealist",
+    "speed": 42,
+    "startLeft": false,
+    "frames": {
+      "walkA": " /\\_/\\\n(=.=)> ",
+      "walkB": " /\\_/\\\n(-_-)> ",
+      "idle": " /\\_/\\\n (=.=) ",
+      "sleep": " /\\_/\\\n(-.-) z",
+      "blink": " /\\_/\\\n(O.o)! ",
+      "pet": " /\\_/\\\n(*=.=*) "
+    },
+    "messages": {
+      "pet": ["...", "hmm.", "if you insist", "I suppose", "fine.", "enough now", "I have things to do", "you again"]
+    }
+  },
+  "shared": {
+    "colors": {
+      "ink": "var(--ink)",
+      "clay": "var(--clay)",
+      "phosphor": "var(--phosphor)",
+      "pencil": "var(--pencil)"
+    },
+    "font": "var(--font-mono)",
+    "size": "11px",
+    "lineHeight": 1.3,
+    "zIndex": 6,
+    "bottomOffset": "6px"
+  }
+}

@@ -107,6 +107,7 @@ add_filter( 'body_class', function ( $classes ) {
  * ============================================================================= */
 
 require get_theme_file_path( 'inc/bain-design-system.php' );
+require get_theme_file_path( 'inc/nav-walker.php' );
 
 /* =============================================================================
  * Cleanup

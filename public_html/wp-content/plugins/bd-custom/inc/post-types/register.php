@@ -37,6 +37,18 @@ function bd324_register_all_post_types_and_taxonomies()
         'menu_position' => 5
     ]);
 
+    bd324_register_post_type('bd324_services', [
+        'name'          => 'Services',
+        'singular_name' => 'Service',
+        'plural_name'   => 'Services',
+        'menu_name'     => 'Services',
+        'menu_icon'     => 'dashicons-hammer',
+        'menu_position' => 5,
+        'rewrite_slug'  => 'services',
+        'hierarchical'  => true,
+        'has_archive'   => true,
+    ]);
+
     // Register Taxonomies
     bd324_register_taxonomy('client-industry', ['bd324_clients'], [
         'singular_name' => 'Client Industry',

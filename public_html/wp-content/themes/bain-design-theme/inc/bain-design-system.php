@@ -249,6 +249,47 @@ function bain_ascii_rule( $glyph = '─' ) {
 
 
 /* =====================================================================
+ *  Testimonials helpers
+ * ================================================================== */
+
+/**
+ * Testimonial avatar: featured image if set, otherwise initials monogram.
+ *
+ * @param string $name     Full name — used for initials fallback and alt text.
+ * @param string $tone     'ink' (default) or 'paper' — controls fallback colours.
+ * @param bool   $large    If true, applies the --lg modifier (56 × 56).
+ * @param int    $post_id  Post ID to pull the featured image from. 0 = skip.
+ */
+function bain_nw_initials( $name, $tone = 'ink', $large = false, $post_id = 0 ) {
+	$classes = 'nw-initials';
+	if ( $tone === 'paper' ) { $classes .= ' nw-initials--paper'; }
+	if ( $large )            { $classes .= ' nw-initials--lg'; }
+
+	$size = $large ? 'thumbnail' : 'thumbnail';
+
+	if ( $post_id && has_post_thumbnail( $post_id ) ) {
+		$img = get_the_post_thumbnail( $post_id, $size, array(
+			'alt'   => esc_attr( $name ),
+			'class' => '',
+		) );
+		printf( '<div class="%s nw-initials--photo">%s</div>', esc_attr( $classes ), $img );
+		return;
+	}
+
+	$parts    = preg_split( '/[\s\/,]+/', trim( $name ) );
+	$initials = '';
+	foreach ( array_slice( $parts, 0, 2 ) as $p ) {
+		$initials .= strtoupper( substr( $p, 0, 1 ) );
+	}
+	printf(
+		'<div class="%s" aria-hidden="true">%s</div>',
+		esc_attr( $classes ),
+		esc_html( $initials ?: '?' )
+	);
+}
+
+
+/* =====================================================================
  *  Single project template helpers
  * ================================================================== */
 

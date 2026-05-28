@@ -22,6 +22,13 @@
 	</nav>
 </footer><!-- #colophon -->
 
+<div class="bain-pet" data-petname="Gala" aria-hidden="true" role="presentation">
+	<div class="bain-pet__sprite"></div>
+</div>
+<div class="bain-pet" data-petname="Salvador" aria-hidden="true" role="presentation">
+	<div class="bain-pet__sprite"></div>
+</div>
+
 </div><!-- .site-wrapper -->
 
 <?php wp_footer(); ?>

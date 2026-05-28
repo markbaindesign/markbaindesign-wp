@@ -18,7 +18,7 @@
 <header class="site-header" id="masthead">
 
 	<a class="site-header__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<div class="site-header__mark" id="bd-mark" aria-hidden="true">Bd</div>
+		<div class="site-header__mark" id="bd-mark" aria-hidden="true">Bd</div><script>try{var _bm=+localStorage.getItem('bd-mark-idx');if(_bm)document.getElementById('bd-mark').textContent=['Bd','B|','B_','B/'][_bm]||'Bd';}catch(e){}</script>
 		<span class="site-header__name"><?php bloginfo( 'name' ); ?></span>
 	</a>
 
@@ -33,8 +33,9 @@
 			'theme_location' => 'primary',
 			'menu_id'        => 'primary-menu',
 			'container'      => false,
-			'depth'          => 1,
+			'depth'          => 2,
 			'fallback_cb'    => false,
+			'walker'         => new Bain_Nav_Walker(),
 		) );
 		?>
 	</nav>

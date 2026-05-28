@@ -31,6 +31,18 @@ while ( have_posts() ) :
 	$tq       = bain_project_field( 'testimonial_quote',  null, '' );
 	$ta       = bain_project_field( 'testimonial_author', null, '' );
 	$tr       = bain_project_field( 'testimonial_role',   null, '' );
+
+	// Prefer linked testimonial CPT over hardcoded fields
+	$linked_testimonials = get_post_meta( get_the_ID(), 'related_testimonials', true );
+	if ( ! empty( $linked_testimonials ) && is_array( $linked_testimonials ) ) {
+		$t_post = get_post( $linked_testimonials[0] );
+		if ( $t_post && $t_post->post_status === 'publish' ) {
+			$tq = wp_strip_all_tags( $t_post->post_content ) ?: $tq;
+			$ta = $ta ?: get_the_title( $t_post );
+			$tr = $tr ?: get_post_meta( $t_post->ID, 'testimonial_role', true );
+			$testimonial_permalink = get_permalink( $t_post );
+		}
+	}
 	$related  = bain_project_related();
 	$prev     = bain_project_adjacent( 'prev' );
 	$next     = bain_project_adjacent( 'next' );
@@ -146,6 +158,11 @@ while ( have_posts() ) :
 					<span class="bain-project__quote-role"> / <?php echo esc_html( $tr ); ?></span>
 				<?php endif; ?>
 			</div>
+			<?php endif; ?>
+			<?php if ( ! empty( $testimonial_permalink ) ) : ?>
+			<a class="bain-project__quote-link" href="<?php echo esc_url( $testimonial_permalink ); ?>">
+				read the full testimonial &rarr;
+			</a>
 			<?php endif; ?>
 		</div>
 	</section>

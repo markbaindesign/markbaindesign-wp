@@ -1,6 +1,6 @@
 {
   "env": {
-    "CLAUDE_SESSION_NAME": "Bain Web"
+    "CLAUDE_SESSION_NAME": "BD Web"
   },
   "permissions": {
     "allow": [

@@ -268,7 +268,7 @@ function bd324_get_projects_for_related_posts( $post_id, $key ) {
 		'posts_per_page' => -1,
 		'meta_query'     => [ [
 			'key'     => $key,
-			'value'   => '"' . $post_id . '"',
+			'value'   => 'i:' . (int) $post_id . ';',
 			'compare' => 'LIKE',
 		] ],
 	];
@@ -282,6 +282,7 @@ function bd324_get_projects_for_related_posts( $post_id, $key ) {
 			$year = (int) get_the_date( 'Y', $post->ID );
 		}
 		$projects[] = [
+			'ID'        => $post->ID,
 			'title'     => get_the_title( $post->ID ),
 			'permalink' => get_permalink( $post->ID ),
 			'excerpt'   => get_the_excerpt( $post->ID ),
