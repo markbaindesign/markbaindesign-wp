@@ -243,7 +243,7 @@ function bain_portfolio_card( $project ) {
 function bain_ascii_rule( $glyph = '─' ) {
 	printf(
 		'<div class="bain-ascii-rule" aria-hidden="true" style="font-family:var(--font-mono);color:var(--pencil);overflow:hidden;white-space:nowrap;line-height:1;margin:var(--space-6) 0;">%s</div>',
-		str_repeat( esc_html( $glyph ), 200 )
+		str_repeat( esc_html( $glyph ), 1000 )
 	);
 }
 

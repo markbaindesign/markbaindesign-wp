@@ -5,6 +5,11 @@
 
 @layer layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, error404, wp;
 
+/* ----- Dropdown visibility — unlayered to beat @layer header specificity ----- */
+.nav-dropdown { display: none; }
+.has-dropdown:hover > .nav-dropdown,
+.has-dropdown:focus-within > .nav-dropdown { display: block; }
+
 /* ----- Page shell ---------------------------------------------------- */
 @layer layout {
   .site-wrapper {
@@ -109,8 +114,17 @@
     position: relative;
   }
 
+  /* Invisible bridge fills the gap so the mouse doesn't exit :hover mid-travel */
+  #primary-menu > li.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 14px;
+  }
+
   .nav-dropdown {
-    display: none;
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -126,16 +140,15 @@
     white-space: nowrap;
   }
 
-  .has-dropdown:hover > .nav-dropdown,
-  .has-dropdown:focus-within > .nav-dropdown {
-    display: block;
-  }
-
   .nav-dropdown li {
     display: flex;
     align-items: baseline;
     gap: 0;
-    line-height: 1.9;
+    line-height: 1;
+  }
+
+  .nav-dropdown li a {
+    padding: 5px 0;
   }
 
   .nav-tree-char {
@@ -1933,6 +1946,179 @@
   }
 }
 
+/* ================================================================
+   Single client
+   ================================================================ */
+@layer single {
+
+  /* ---- Hero ---------------------------------------------------- */
+  .bain-client__hero {
+    padding: 80px var(--gutter) 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .bain-client__hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 64px;
+    align-items: start;
+  }
+  .bain-client__title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 16px 0 24px;
+  }
+  .bain-client__title-dot { color: var(--clay); }
+  .bain-client__tagline {
+    font-size: 20px;
+    color: var(--graphite);
+    max-width: 44ch;
+    line-height: 1.55;
+    margin: 0 0 32px;
+    text-wrap: pretty;
+  }
+
+  /* Meta DL */
+  .bain-client__meta { font-family: var(--font-mono-2); font-size: 13px; line-height: 1.85; margin: 0; }
+  .bain-client__meta-row { display: grid; grid-template-columns: 72px 1fr; gap: 10px; margin: 0; }
+  .bain-client__meta-label { color: var(--pencil); text-transform: uppercase; letter-spacing: 0.04em; font-size: 11px; font-weight: 400; margin: 0; }
+  .bain-client__meta-value { color: var(--ink); margin: 0; }
+  .bain-client__meta-value a { color: var(--link); text-decoration: underline; }
+
+  /* Logo */
+  .bain-client__logo-wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 8px;
+  }
+  .bain-client__logo {
+    max-width: 200px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ---- Section heads ------------------------------------------- */
+  .bain-client__inline-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .bain-client__inline-num { font-family: var(--font-mono-2); font-size: 13px; color: var(--pencil); text-transform: uppercase; letter-spacing: 0.08em; }
+  .bain-client__inline-label { font-size: 32px; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
+
+  /* ---- Projects ------------------------------------------------ */
+  .bain-client__projects { padding: 96px var(--gutter) 0; }
+  .bain-client__projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .bain-client__project-card {
+    background: var(--paper-pure);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--dur-2) var(--ease-1), box-shadow var(--dur-2) var(--ease-1);
+    &:hover { border-color: var(--ink); box-shadow: var(--shadow-press); }
+  }
+  .bain-client__project-thumb {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--rule-soft);
+    & img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  .bain-client__project-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .bain-client__project-title { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  .bain-client__project-excerpt { font-size: 14px; color: var(--graphite); margin: 0; line-height: 1.55; text-wrap: pretty; }
+  .bain-client__project-link { margin-top: auto; padding-top: 12px; font-family: var(--font-mono-2); font-size: 13px; color: var(--link); text-decoration: underline; }
+
+  /* ---- Testimonials -------------------------------------------- */
+  .bain-client__testimonials {
+    padding: 96px var(--gutter) 0;
+  }
+  .bain-client__quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .bain-client__quote {
+    border-left: 3px solid var(--clay);
+    padding-left: 32px;
+    max-width: 740px;
+  }
+  .bain-client__quote-text {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.4;
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 400;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+  .bain-client__quote-attribution {
+    font-family: var(--font-mono-2);
+    font-size: 13px;
+    color: var(--graphite);
+  }
+  .bain-client__quote-role { color: var(--pencil); }
+  .bain-client__quote-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: var(--font-mono-2);
+    font-size: 13px;
+    color: var(--link);
+    text-decoration: underline;
+  }
+
+  /* ---- Body content -------------------------------------------- */
+  .bain-client__body { padding: 96px var(--gutter) 0; }
+  .bain-client__body-inner { max-width: 700px; }
+  .bain-client__prose p { font-size: 18px; line-height: 1.65; color: var(--graphite); margin: 0 0 20px; text-wrap: pretty; }
+  .bain-client__prose p:last-child { margin-bottom: 0; }
+
+  /* ---- Pager --------------------------------------------------- */
+  .bain-client__pager { padding: 64px var(--gutter) 48px; border-top: 1px solid var(--rule); }
+  .bain-client__pager-inner { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono-2); font-size: 14px; }
+  .bain-client__pager-link { color: var(--ink); text-decoration: none; }
+  .bain-client__pager-link--right { text-align: right; }
+  .bain-client__pager-dir { color: var(--pencil); }
+  .bain-client__pager-title { border-bottom: 1px solid var(--ink); }
+  .bain-client__pager-link:hover .bain-client__pager-title { border-bottom-width: 2px; }
+
+  /* ---- Responsive ---------------------------------------------- */
+  @media (max-width: 1080px) {
+    .bain-client__hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .bain-client__logo-wrap { justify-content: flex-start; order: -1; }
+    .bain-client__logo { max-width: 160px; }
+  }
+
+  @media (max-width: 640px) {
+    .bain-client__hero { padding-top: 40px; padding-bottom: 40px; }
+    .bain-client__projects { padding-top: 64px; }
+    .bain-client__testimonials { padding-top: 64px; }
+    .bain-client__body { padding-top: 64px; }
+    .bain-client__projects-grid { grid-template-columns: 1fr; }
+    .bain-client__inline-label { font-size: 24px; }
+    .bain-client__quote { padding-left: 20px; }
+    .bain-client__pager-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .bain-client__pager-link--right { text-align: left; }
+  }
+}
+
 /* ----- WordPress admin bar shim ------------------------------------- */
 @layer wp {
   /* WP admin bar shifts sticky header down */
@@ -1941,7 +2127,8 @@
 }
 
 /* ----- Primary nav — WP default ul/li output ----------------------- */
-.site-header__nav ul {
+/* Use > ul (direct child only) so .nav-dropdown nested deeper is not targeted */
+.site-header__nav > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1950,10 +2137,10 @@
   gap: 0;
 }
 
-.site-header__nav li { display: flex; align-items: center; }
+#primary-menu > li { display: flex; align-items: center; }
 
-/* /  separator between items */
-.site-header__nav li + li::before {
+/* /  separator between top-level items only */
+#primary-menu > li + li::before {
   content: "/";
   color: var(--pencil);
   padding: 0 5px;
@@ -1976,8 +2163,8 @@
 
 /* Mobile: stack vertically, hide separators */
 @media (max-width: 640px) {
-  .site-header__nav ul { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
-  .site-header__nav li + li::before { display: none; }
+  .site-header__nav > ul { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  #primary-menu > li + li::before { display: none; }
 }
 
 /* =====================================================================
