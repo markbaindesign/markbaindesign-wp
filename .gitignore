@@ -9,6 +9,8 @@
 /release/
 /temp/
 /scripts/
+/content/
+/.claude/pm-log.md
 
 # =========================
 # VVV provisioning
