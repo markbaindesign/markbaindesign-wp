@@ -5,7 +5,7 @@
 			<p>Three cols ought to do it</p>
 				<?php
 				$args = array( 
-					'post_type' => 'testimonial_item', 
+					'post_type' => 'bd324_testimonials', 
 					'posts_per_page' => 3,
 				  	'orderby' => 'rand'	
 				);

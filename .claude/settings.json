@@ -1,0 +1,17 @@
+{
+  "env": {
+    "CLAUDE_SESSION_NAME": "BD Web"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "WebSearch(*)",
+      "WebFetch(*)",
+      "Write(.claude/asana-mirror.md)",
+      "Edit(.claude/asana-mirror.md)"
+    ]
+  }
+}

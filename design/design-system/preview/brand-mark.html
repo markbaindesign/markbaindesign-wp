@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bain — Brand mark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:22px; display:flex; gap:24px; align-items:center; }
+  .demo { display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
+  .bd { width:84px; height:84px; background:var(--ink); color:var(--paper); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:700; font-size:42px; letter-spacing:-0.04em; }
+  .bd-clay { background:var(--clay); }
+  .bd-outline { background:transparent; color:var(--ink); border:2px solid var(--ink); }
+  .lockup { display:flex; align-items:center; gap:14px; }
+  .wordmark { font-family:var(--font-mono); font-weight:700; font-size:20px; letter-spacing:-0.02em; color:var(--ink); }
+  .lbl { font-family:var(--font-mono-2); font-size:10px; color:var(--pencil); text-transform:uppercase; }
+  .tag { font-family:var(--font-mono-2); font-size:11px; color:var(--graphite); }
+</style></head>
+<body>
+  <div class="demo"><div class="bd">Bd</div><div class="lbl">[primary]</div></div>
+  <div class="demo"><div class="bd bd-clay">Bd</div><div class="lbl">[clay]</div></div>
+  <div class="demo"><div class="bd bd-outline">Bd</div><div class="lbl">[outline]</div></div>
+  <div class="demo">
+    <div class="lockup">
+      <div class="bd" style="width:48px;height:48px;font-size:24px">Bd</div>
+      <div>
+        <div class="wordmark">BAIN DESIGN</div>
+        <div class="tag">build with <span style="color:var(--clay)">♥</span></div>
+      </div>
+    </div>
+    <div class="lbl">[horizontal lockup]</div>
+  </div>
+</body></html>

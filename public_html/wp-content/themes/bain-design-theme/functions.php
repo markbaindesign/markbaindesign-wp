@@ -1,91 +1,118 @@
 <?php
 /**
- * _mbbasetheme functions and definitions
- *
- * @package _mbbasetheme
+ * Bain Design Theme — functions.php
  */
 
-/****************************************
-Theme Setup
-*****************************************/
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-/**
- * Theme initialization
- */
-require get_template_directory() . '/lib/init.php';
+/* =============================================================================
+ * Theme setup
+ * ============================================================================= */
 
-/**
- * Custom theme functions definited in /lib/init.php
- */
-require get_template_directory() . '/lib/theme-functions.php';
+add_action( 'after_setup_theme', function () {
+	// Localisation
+	load_theme_textdomain( 'bain-design-theme', get_template_directory() . '/languages' );
 
-/**
- * Helper functions for use in other areas of the theme
- */
-require get_template_directory() . '/lib/theme-helpers.php';
+	// Featured images
+	add_theme_support( 'post-thumbnails' );
 
-/**
- * Custom comment.
- */
-require get_template_directory() . '/lib/inc/custom-comment.php';
+	// HTML5 markup
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
-/**
- * Custom meta.
- */
-require get_template_directory() . '/lib/inc/custom-meta.php';
+	// Widgets
+	add_theme_support( 'widgets' );
 
-/**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/lib/inc/custom-header.php';
+	// Navigation menus
+	register_nav_menus( array(
+		'primary' => esc_html__( 'Primary Navigation', 'bain-design-theme' ),
+		'footer'  => esc_html__( 'Footer Links', 'bain-design-theme' ),
+	) );
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/lib/inc/template-tags.php';
+	// Editor styles
+	add_theme_support( 'editor-styles' );
+	add_editor_style( array(
+		'assets/css/tokens.css',
+		'assets/css/base.css',
+	) );
+} );
 
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/lib/inc/extras.php';
+/* =============================================================================
+ * Google Fonts preconnect + CSS enqueue
+ * ============================================================================= */
 
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/lib/inc/customizer.php';
+add_action( 'wp_head', function () {
+	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 1 );
 
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/lib/inc/jetpack.php';
+add_action( 'wp_enqueue_scripts', function () {
+	$ver = wp_get_theme()->get( 'Version' );
 
+	// Google Fonts
+	wp_enqueue_style(
+		'bain-fonts',
+		'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap',
+		array(),
+		null
+	);
 
-/****************************************
-Require Plugins
-*****************************************/
+	// Design system CSS
+	wp_enqueue_style(
+		'bain-tokens',
+		get_theme_file_uri( 'assets/css/tokens.css' ),
+		array( 'bain-fonts' ),
+		$ver
+	);
 
-require get_template_directory() . '/lib/class-tgm-plugin-activation.php';
-require get_template_directory() . '/lib/theme-require-plugins.php';
+	wp_enqueue_style(
+		'bain-base',
+		get_theme_file_uri( 'assets/css/base.css' ),
+		array( 'bain-tokens' ),
+		$ver
+	);
 
-// add_action( 'tgmpa_register', 'mb_register_required_plugins' );
+	// Theme CSS
+	wp_enqueue_style(
+		'bain-theme',
+		get_theme_file_uri( 'assets/css/theme.css' ),
+		array( 'bain-base' ),
+		$ver
+	);
 
+	// Main JS (interaction effects)
+	wp_enqueue_script(
+		'bain-main',
+		get_theme_file_uri( 'assets/js/dist/main.min.js' ),
+		array(),
+		$ver,
+		true
+	);
+}, 20 );
 
-/****************************************
-Misc Theme Functions
-*****************************************/
+/* =============================================================================
+ * Body classes
+ * ============================================================================= */
 
-/**
- * Define custom post type capabilities for use with Members
- */
-add_action( 'admin_init', 'mb_add_post_type_caps' );
-function mb_add_post_type_caps() {
-	// mb_add_capabilities( 'portfolio' );
-}
+add_filter( 'body_class', function ( $classes ) {
+	// Apply "letter" layout (generous margins) to long-form content
+	// Not used on the about page — it has its own full-width editorial layout.
+	if ( is_singular( 'post' ) ) {
+		$classes[] = 'bain-letter';
+	}
+	return $classes;
+} );
 
-/**
- * Filter Yoast SEO Metabox Priority
- */
-add_filter( 'wpseo_metabox_prio', 'mb_filter_yoast_seo_metabox' );
-function mb_filter_yoast_seo_metabox() {
-	return 'low';
-}
+/* =============================================================================
+ * Template tags (design system helpers)
+ * ============================================================================= */
+
+require get_theme_file_path( 'inc/bain-design-system.php' );
+require get_theme_file_path( 'inc/nav-walker.php' );
+
+/* =============================================================================
+ * Cleanup
+ * ============================================================================= */
+
+// Remove emoji script
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );

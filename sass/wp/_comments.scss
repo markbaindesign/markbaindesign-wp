@@ -1,49 +1,56 @@
+@use "../partials/variables" as *;
+@use "../partials/mixins" as *;
+@use "sass:color";
+
 #comments {
-	margin-top: 2em;
-	ol {
-		margin: 0;
-		padding: 0;
-		list-style: none;
+   margin-top: 2em;
 
-		div.comment {
-			padding-bottom: 1.5em;
-		}
+   ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
 
-		li.comment {
-			position: relative; /* Allows avatar to be absolutely positioned */
-			margin-bottom: 1em;
-			@include textblock;
-			@include breakpoint( tablet ) {
-				padding-left: 56px;
-			}
-			
-		}
-	}
+      div.comment {
+         padding-bottom: 1.5em;
+      }
+
+      li.comment {
+         position: relative;
+         /* Allows avatar to be absolutely positioned */
+         margin-bottom: 1em;
+         @include textblock;
+
+         @include breakpoint(tablet) {
+            padding-left: 56px;
+         }
+
+      }
+   }
 
 
 }
 
 .comment-author {
-	// margin-left: 40px; /* Shift it for avatar, 32px wide */
-	padding-bottom: 1.8em;
+   // margin-left: 40px; /* Shift it for avatar, 32px wide */
+   padding-bottom: 1.8em;
 }
 
 ol.comment-list {
 
-	list-style: none;
+   list-style: none;
 
-	ul {
-		padding: 0;
-	}
+   ul {
+      padding: 0;
+   }
 
-	.avatar {
-		@include breakpoint( tablet ) {
-			position: absolute;
-			top: 4px;
-			left: 0;
-		}
+   .avatar {
+      @include breakpoint(tablet) {
+         position: absolute;
+         top: 4px;
+         left: 0;
+      }
 
-	}
+   }
 
 }
 
@@ -51,44 +58,45 @@ ol.comment-list {
 
 .comment-list li.comment {
 
-line-height: 24px;
-margin: 0 0 24px 0;
+   line-height: 24px;
+   margin: 0 0 24px 0;
 
-position: relative;
+   position: relative;
 }
 
 .comment-list .children {
-list-style: none;
-margin: 0;
+   list-style: none;
+   margin: 0;
 }
 
 
 .comment-author {
-	
-	.says {
-		font-style: italic;
-	}
 
-	cite {
-		color: #000;
-		font-style: normal;
-		font-weight: bold;
-	}
+   .says {
+      font-style: italic;
+   }
+
+   cite {
+      color: #000;
+      font-style: normal;
+      font-weight: bold;
+   }
 
 }
-.comment-meta {
-	display: block;
 
-	a {
-		color: #777;
-	}
-	
+.comment-meta {
+   display: block;
+
+   a {
+      color: #777;
+   }
+
 }
 
 .comment-content {
-	a {
-		word-wrap: break-word;
-	}
+   a {
+      word-wrap: break-word;
+   }
 
 
 }
@@ -96,18 +104,18 @@ margin: 0;
 /* Respond */
 
 .comment-respond {
-	padding-top: 2em;
+   padding-top: 2em;
 }
 
 /* Comment Form */
 
 .comment-form {
 
-	.form-submit {
-		@include clearfix;
-	}
+   .form-submit {
+      @include clearfix;
+   }
 }
 
 .says {
-	display: none;
+   display: none;
 }

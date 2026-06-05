@@ -1,100 +1,127 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 @font-face {
-	font-family: 'mbd-icon-font';
-	src:url('assets/fonts/mbd-icon-font.eot?-ldbknu');
-	src:url('assets/fonts/mbd-icon-font.eot?#iefix-ldbknu') format('embedded-opentype'),
-		url('assets/fonts/mbd-icon-font.woff?-ldbknu') format('woff'),
-		url('assets/fonts/mbd-icon-font.ttf?-ldbknu') format('truetype'),
-		url('assets/fonts/mbd-icon-font.svg?-ldbknu#mbd-icon-font') format('svg');
-	font-weight: normal;
-	font-style: normal;
+   font-family: 'mbd-icon-font';
+   src: url('assets/fonts/mbd-icon-font.eot?-ldbknu');
+   src: url('assets/fonts/mbd-icon-font.eot?#iefix-ldbknu') format('embedded-opentype'),
+      url('assets/fonts/mbd-icon-font.woff?-ldbknu') format('woff'),
+      url('assets/fonts/mbd-icon-font.ttf?-ldbknu') format('truetype'),
+      url('assets/fonts/mbd-icon-font.svg?-ldbknu#mbd-icon-font') format('svg');
+   font-weight: normal;
+   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'mbd-icon-font';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+[class^="icon-"],
+[class*=" icon-"] {
+   font-family: 'mbd-icon-font';
+   speak: none;
+   font-style: normal;
+   font-weight: normal;
+   font-variant: normal;
+   text-transform: none;
+   line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+   /* Better Font Rendering =========== */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-folder-open:before {
-	content: "\e603";
+   content: "\e603";
 }
+
 .icon-tags:before {
-	content: "\e604";
+   content: "\e604";
 }
+
 .icon-search:before {
-	content: "\e605";
+   content: "\e605";
 }
+
 .icon-menu:before {
-	content: "\e600";
+   content: "\e600";
 }
+
 .icon-cancel-circle:before {
-	content: "\e601";
+   content: "\e601";
 }
+
 .icon-close:before {
-	content: "\e602";
+   content: "\e602";
 }
+
 .icon-arrow-up:before {
-	content: "\e606";
+   content: "\e606";
 }
+
 .icon-arrow-right:before {
-	content: "\e607";
+   content: "\e607";
 }
+
 .icon-arrow-down:before {
-	content: "\e608";
+   content: "\e608";
 }
+
 .icon-arrow-left:before {
-	content: "\e609";
+   content: "\e609";
 }
+
 .icon-googleplus:before {
-	content: "\e60a";
+   content: "\e60a";
 }
+
 .icon-facebook:before {
-	content: "\e60b";
+   content: "\e60b";
 }
+
 .icon-twitter:before {
-	content: "\e60c";
+   content: "\e60c";
 }
+
 .icon-feed:before {
-	content: "\e60d";
+   content: "\e60d";
 }
+
 .icon-dribbble:before {
-	content: "\e60e";
+   content: "\e60e";
 }
+
 .icon-dribbble2:before {
-	content: "\e60f";
+   content: "\e60f";
 }
+
 .icon-github:before {
-	content: "\e610";
+   content: "\e610";
 }
+
 .icon-github2:before {
-	content: "\e611";
+   content: "\e611";
 }
+
 .icon-github3:before {
-	content: "\e612";
+   content: "\e612";
 }
+
 .icon-wordpress:before {
-	content: "\e613";
+   content: "\e613";
 }
+
 .icon-linkedin:before {
-	content: "\e614";
+   content: "\e614";
 }
+
 .icon-stackoverflow:before {
-	content: "\e615";
+   content: "\e615";
 }
+
 .icon-pinterest:before {
-	content: "\e616";
+   content: "\e616";
 }
 
 @include fontface('LotaGrotesqueAlt3-Light', 'assets/fonts/lota/', '3434DC_21_0');
 @include fontface('LotaGrotesque-Regular', 'assets/fonts/lota/', '3434DC_9_0');
 @include fontface('LotaGrotesque-RegularIt', 'assets/fonts/lota/', '3434DC_A_0');
 @include fontface('LotaGrotesqueAlt3-Bold', 'assets/fonts/lota/', '3434DC_11_0');
-

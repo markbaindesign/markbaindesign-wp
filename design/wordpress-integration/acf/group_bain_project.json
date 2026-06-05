@@ -1,0 +1,233 @@
+{
+  "key": "group_bain_project",
+  "title": "Project — case study",
+  "fields": [
+    {
+      "key": "field_bain_project_tagline",
+      "label": "Tagline",
+      "name": "tagline",
+      "type": "text",
+      "instructions": "One sentence under the title. Keep it under ~14 words. Falls back to the post excerpt if left blank.",
+      "required": 0,
+      "wrapper": { "width": "100" }
+    },
+
+    {
+      "key": "field_bain_project_meta_tab",
+      "label": "Meta",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_bain_project_client",
+      "label": "Client",
+      "name": "client",
+      "type": "text",
+      "required": 1,
+      "wrapper": { "width": "33" }
+    },
+    {
+      "key": "field_bain_project_year",
+      "label": "Year",
+      "name": "year",
+      "type": "number",
+      "min": 2000,
+      "max": 2100,
+      "wrapper": { "width": "16" },
+      "instructions": "4-digit year. Defaults to the publish year if blank."
+    },
+    {
+      "key": "field_bain_project_duration",
+      "label": "Duration",
+      "name": "duration",
+      "type": "text",
+      "placeholder": "5 months",
+      "wrapper": { "width": "17" }
+    },
+    {
+      "key": "field_bain_project_role",
+      "label": "Role",
+      "name": "role",
+      "type": "text",
+      "placeholder": "Design & development",
+      "wrapper": { "width": "34" }
+    },
+    {
+      "key": "field_bain_project_live_url",
+      "label": "Live URL",
+      "name": "live_url",
+      "type": "url",
+      "placeholder": "https://…",
+      "wrapper": { "width": "100" }
+    },
+
+    {
+      "key": "field_bain_project_body_tab",
+      "label": "Case study",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_bain_project_brief",
+      "label": "01 · Brief",
+      "name": "brief",
+      "type": "textarea",
+      "rows": 5,
+      "new_lines": "wpautop",
+      "instructions": "The problem. One or two paragraphs."
+    },
+    {
+      "key": "field_bain_project_approach",
+      "label": "02 · Approach",
+      "name": "approach",
+      "type": "textarea",
+      "rows": 5,
+      "new_lines": "wpautop",
+      "instructions": "How you built it. One or two paragraphs."
+    },
+    {
+      "key": "field_bain_project_approach_gallery",
+      "label": "Approach images",
+      "name": "approach_gallery",
+      "type": "gallery",
+      "return_format": "id",
+      "min": 0,
+      "max": 2,
+      "instructions": "Up to two images shown side-by-side under the Approach paragraph."
+    },
+    {
+      "key": "field_bain_project_outcome",
+      "label": "03 · Outcome",
+      "name": "outcome",
+      "type": "textarea",
+      "rows": 5,
+      "new_lines": "wpautop",
+      "instructions": "Results. One paragraph + the wins list below."
+    },
+    {
+      "key": "field_bain_project_wins",
+      "label": "Selected wins",
+      "name": "wins",
+      "type": "repeater",
+      "instructions": "Plain statements. Each renders with a ✔ bullet.",
+      "min": 0,
+      "max": 8,
+      "layout": "table",
+      "button_label": "Add win",
+      "sub_fields": [
+        {
+          "key": "field_bain_project_win",
+          "label": "Win",
+          "name": "win",
+          "type": "text"
+        }
+      ]
+    },
+
+    {
+      "key": "field_bain_project_quote_tab",
+      "label": "Testimonial",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_bain_project_testimonial_quote",
+      "label": "Quote",
+      "name": "testimonial_quote",
+      "type": "textarea",
+      "rows": 4,
+      "instructions": "No quote marks — they're added in the template."
+    },
+    {
+      "key": "field_bain_project_testimonial_author",
+      "label": "Author",
+      "name": "testimonial_author",
+      "type": "text",
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_bain_project_testimonial_role",
+      "label": "Author role",
+      "name": "testimonial_role",
+      "type": "text",
+      "wrapper": { "width": "50" },
+      "placeholder": "Executive Director · Acme Co."
+    },
+
+    {
+      "key": "field_bain_project_media_tab",
+      "label": "Media",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_bain_project_showcase_gallery",
+      "label": "Showcase gallery",
+      "name": "showcase_gallery",
+      "type": "gallery",
+      "return_format": "id",
+      "min": 0,
+      "max": 3,
+      "instructions": "Up to 3 images. First sits big on the left, the other two stack on the right."
+    },
+
+    {
+      "key": "field_bain_project_extras_tab",
+      "label": "Extras",
+      "name": "",
+      "type": "tab"
+    },
+    {
+      "key": "field_bain_project_stack",
+      "label": "Stack",
+      "name": "stack",
+      "type": "repeater",
+      "instructions": "Tech the project runs on. Each entry renders as a hairline pill.",
+      "min": 0,
+      "layout": "table",
+      "button_label": "Add tech",
+      "sub_fields": [
+        {
+          "key": "field_bain_project_tech",
+          "label": "Tech",
+          "name": "tech",
+          "type": "text",
+          "placeholder": "WordPress, ACF Pro, …"
+        }
+      ]
+    },
+    {
+      "key": "field_bain_project_related",
+      "label": "Related projects",
+      "name": "related",
+      "type": "relationship",
+      "post_type": ["project"],
+      "filters": ["search", "taxonomy"],
+      "return_format": "id",
+      "min": 0,
+      "max": 2,
+      "instructions": "Pick up to 2. Leave blank to auto-pick by shared tag."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "project"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "discussion",
+    "comments",
+    "trackbacks"
+  ],
+  "active": true,
+  "description": "Bain Design — Project case study fields. Loaded automatically by inc/cpt-project.php."
+}

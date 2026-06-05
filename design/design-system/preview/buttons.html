@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bain — Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; display:flex; flex-direction:column; gap:14px; align-items:flex-start; }
+  .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .lbl { font-family:var(--font-mono-2); font-size:10px; color:var(--pencil); text-transform:uppercase; letter-spacing:.04em; }
+  button { font-family:var(--font-mono); font-weight:700; font-size:14px; padding:10px 18px; border:1px solid var(--ink); cursor:pointer; }
+  .b-primary  { background:var(--ink); color:var(--paper); }
+  .b-primary:hover  { box-shadow:var(--shadow-press); transform:translate(-2px,-2px); }
+  .b-clay     { background:var(--clay); color:var(--paper); }
+  .b-clay:hover     { background:var(--clay-deep); }
+  .b-ghost    { background:transparent; color:var(--ink); }
+  .b-ghost:hover    { background:var(--ink); color:var(--paper); }
+  .b-link     { background:transparent; color:var(--link); border:0; padding:10px 4px; text-decoration:underline; text-underline-offset:3px; }
+  .b-sm { padding:6px 12px; font-size:12px; }
+</style></head>
+<body>
+  <div class="lbl">[primary / clay / ghost / link]</div>
+  <div class="row">
+    <button class="b-primary">Arrange a chat now</button>
+    <button class="b-clay">Build with ♥</button>
+    <button class="b-ghost">Check out my work</button>
+    <button class="b-link">See more projects →</button>
+  </div>
+  <div class="lbl">[small]</div>
+  <div class="row">
+    <button class="b-primary b-sm">view.txt</button>
+    <button class="b-ghost b-sm">cancel</button>
+    <button class="b-clay b-sm">submit</button>
+  </div>
+</body></html>

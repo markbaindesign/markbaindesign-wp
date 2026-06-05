@@ -1,0 +1,109 @@
+/* =====================================================================
+   Bain Design — Design Tokens
+   Geeky, tasteful, dev. Monospace-first.
+
+   This file is just CSS custom properties. Safe to load in the editor
+   (add_editor_style) AND on the front end. No element selectors here —
+   those live in base.css.
+
+   Fonts are enqueued separately in functions.php (don't @import inside
+   a stylesheet; it blocks rendering).
+   ===================================================================== */
+
+:root {
+  /* ----- Color ----- */
+  /* The page is warm cream "paper" — borrowed from Claude's reading-room
+     aesthetic, married to Bain's ink-and-monospace discipline. */
+  --paper:        #E8DFCC;   /* page background — deeper warm cream */
+  --paper-deep:   #DDD2BB;   /* tinted panels, hovered rows */
+  --paper-pure:   #FFFFFF;   /* card / form surfaces, rare */
+  --ink:          #141413;   /* primary text, mark — warm black */
+  --graphite:     #3D3D3A;   /* secondary text */
+  --pencil:       #8C8A85;   /* tertiary, captions */
+  --rule:         #1F1F1D;   /* hairlines, borders */
+  --rule-soft:    #D8D0C0;   /* dividers on tinted areas */
+  --hover-bg:     rgba(20, 20, 19, 0.04);
+
+  /* Accent — warm clay/coral. Marks, key highlights, the ♥ glyph.
+     NEVER use clay for links; it's a brand mark, not a navigation cue. */
+  --clay:         #C96442;
+  --clay-deep:    #A24E32;
+  --clay-soft:    #E8B59E;
+
+  /* Links stay blue — a Bain signature from the resume specimen. */
+  --link:         #1A4FE3;
+  --link-hover:   #0E0E0E;
+  --visited:      #6B3FB7;
+  --phosphor:     #22C55E;   /* terminal-green; cursors, OK */
+  --amber:        #D89A2B;   /* caution */
+  --vermilion:    #C43D2F;   /* error */
+
+  /* Semantic aliases — refer to these from component CSS where possible,
+     so we can re-skin later without find/replace. */
+  --fg-1: var(--ink);
+  --fg-2: var(--graphite);
+  --fg-3: var(--pencil);
+  --bg-1: var(--paper);
+  --bg-2: var(--paper-pure);
+  --border-1: var(--rule);
+  --border-2: var(--rule-soft);
+
+  /* ----- Type ----- */
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-mono-2:  'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif:   'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+
+  --type-12: 12px;
+  --type-13: 13px;
+  --type-14: 14px;
+  --type-16: 16px;
+  --type-18: 18px;
+  --type-20: 20px;
+  --type-24: 24px;
+  --type-32: 32px;
+  --type-44: 44px;
+  --type-64: 64px;
+  --type-96: 96px;
+  --type-240: 240px;
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-loose:  1.65;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.02em;
+
+  /* ----- Spacing (4px base grid) ----- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ----- Borders & corners ----- */
+  --radius: 0;          /* load-bearing rule: no rounded corners */
+  --border-w-1: 1px;
+  --border-w-2: 2px;
+
+  /* ----- Elevation (almost none) ----- */
+  --shadow-press:      2px 2px 0 var(--ink);
+  --shadow-press-2:    4px 4px 0 var(--ink);
+  --shadow-inset-rule: inset 0 1px 0 var(--rule);
+
+  /* ----- Motion ----- */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --ease-1: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ----- Layout ----- */
+  --max-w: 1280px;
+  --gutter: 24px;
+}

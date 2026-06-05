@@ -2,6 +2,8 @@
    Variables
    ========================================================================== */
 
+@use "sass:color";
+
 $base-font-size: 16px;
 
 // Font Face
@@ -15,17 +17,15 @@ $textblock-width: 100%;
 $block-padding: 1em 3%;
 $side-padding: 0 3%;
 
-	/* Masonry layouts */
+/* Masonry layouts */
 
-	// Apply these to the .grid-sizer and .gutter-sizer elements, plus the items themselves.
+// Apply these to the .grid-sizer and .gutter-sizer elements, plus the items themselves.
 
-	$grid-sizer-1: 47.5%; // 2 columns, gutter x1
-	$grid-sizer-2: 30%; // 3 columns, gutter x2
-	$gutter-sizer-1: 5%; // width of gutter
+$grid-sizer-1: 47.5%; // 2 columns, gutter x1
+$grid-sizer-2: 30%; // 3 columns, gutter x2
+$gutter-sizer-1: 5%; // width of gutter
 
 
-// Text Selection
-$selectionColor: $orange;
 
 /* ==========================================================================
    Colors
@@ -38,35 +38,40 @@ $black: #333;
 $red: green;
 $blue: blue;
 $orange: #ab9772;
+$nephritis: #27ae60;
 
-	// Borders
-	$border-color: $light-grey;
+// Borders
+$border-color: $light-grey;
 
-	// CTAs
-	$color-primary-cta: $white;
-	$color-bg-primary-cta: $orange;
-	$color-secondary-cta-1: $mid-grey;
-	$color-secondary-cta-2: $white;
-	$color-bg-secondary-cta: transparent;
+// CTAs
+$color-primary-cta: $white;
+$color-bg-primary-cta: $orange;
+$color-secondary-cta-1: $mid-grey;
+$color-secondary-cta-2: $white;
+$color-bg-secondary-cta: transparent;
 
-	// Menu 
-	$menu-base-color: $white;
+// Menu 
+$menu-base-color: $white;
 
-	// Anchors (Links)
-	$link-color: $orange;
-	$link-decoration: none;
-	$hover-color: $mid-grey;
-	$hover-decoration: underline;
+// Anchors (Links)
+$link-color: $orange;
+$link-decoration: none;
+$hover-color: $mid-grey;
+$hover-decoration: underline;
 
 
 // Alternate Color Scheme
 
 $base-color-alt: $nephritis;
-$text-color-alt: darken(white, 5%);
+$text-color-alt: color.adjust(white, $lightness: -5%);
 $text-shadow-color-alt: none;
-	// Links
-	$link-color-alt: darken(white, 15%);
+// Links
+$link-color-alt: color.adjust(white, $lightness: -15%);
 
 // Fixed height header & footer
 $sticky-footer-height: 50px;
 $fixed-header-height: 56px;
+
+
+// Text Selection
+$selectionColor: $orange;

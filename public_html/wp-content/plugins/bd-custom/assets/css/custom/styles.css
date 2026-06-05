@@ -1,0 +1,111 @@
+@import "nav.css";
+@import "ai-helper.css";
+
+.hits--curriculum .search__hits {
+   display: block;
+   width: 100%;
+}
+.hits--curriculum.search__results article footer {
+   display: none;
+}
+.hits .ais-InfiniteHits-list {
+   width: 100%;
+}
+.hits--curriculum .ais-InfiniteHits-item {
+   animation: fadeIn 0.5s;
+}
+
+.hits--curriculum .meta {
+   display: inline-flex;
+   align-items: flex-end;
+   padding: 2px 5px;
+   animation: fadeIn 1.5s;
+   line-height: 1;
+}
+.hits--curriculum .search__result__title {
+   animation: fadeIn 2s;
+}
+.hits--curriculum .search__result__title:hover .title {
+   transition: all 0.3s ease-in-out;
+}
+.hits--curriculum .search__result__excerpt {
+   animation: fadeIn 3s;
+   color: black;
+}
+.hits--curriculum .search__result__preheader {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+}
+.hits--curriculum .search__result__subheader {
+   margin-bottom: 0.7rem;
+   font-style: italic;
+   text-transform: none;
+   letter-spacing: -0.2px;
+   font-size: 1rem;
+   line-height: 1.4;
+}
+.hits--curriculum .meta--serial {
+   font-family: monospace;
+   font-size: 16px;
+}
+.hits--curriculum .meta--grade--liberation {
+   background-color: #b0d3eb9e;
+   border-radius: 8px;
+   padding: 2px 5px;
+}
+.hits--curriculum .meta--grade--exploration {
+   background-color: #b0ebba9e;
+   border-radius: 8px;
+   padding: 2px 5px;
+}
+.hits--curriculum .strand_terms--lvl0 {
+   color: var(--color-curriculum-subtitle);
+   display: none;
+   color: #17224a;
+   text-transform: capitalize;
+   display: block;
+   margin-bottom: 0.5rem;
+   font-size: 1.1rem;
+}
+
+/* Current Refinements */
+
+#search__current-refinements .ais-CurrentRefinements-list {
+   grid-auto-flow: column;
+}
+
+#search__current-refinements .ais-CurrentRefinements-item {
+   background-color: var(--bd-search-form-input-bg-color);
+   border-radius: 8px;
+   padding: 2px 5px;
+}
+
+#search__current-refinements .ais-CurrentRefinements-category {
+   align-items: center;
+   background-color: unset;
+   margin: 0;
+   padding: 3px 7px;
+   gap: 7px;
+}
+
+#search__current-refinements .ais-CurrentRefinements-categoryLabel {
+   font-size: 1rem;
+   font-weight: normal;
+   padding: 0;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   font-weight: 700;
+   font-size: 0.66rem;
+   color: #7f7f7f;
+   background-color: unset;
+}
+
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}

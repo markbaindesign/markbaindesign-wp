@@ -1,197 +1,213 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 /* ==========================================================================
    Menus
    ========================================================================== */
 
 ul.menu {
-	clear: both;
-	display: block;
-	width: 100%;
-	max-width: 100%;
-	text-align: center;
-	color: $black;
-	list-style: none;
-	margin: 0 0 1em 0;
-	padding-left: 0;
-	padding-bottom: 1em;
+   clear: both;
+   display: block;
+   width: 100%;
+   max-width: 100%;
+   text-align: center;
+   color: $black;
+   list-style: none;
+   margin: 0 0 1em 0;
+   padding-left: 0;
+   padding-bottom: 1em;
 
 
- 	li {
-		position: relative;
+   li {
+      position: relative;
 
-		@include breakpoint(tablet) {
-			display: inline-block;
-			&:last-child a {
-				border-bottom: none;
-			}
-		}
+      @media (min-width: 768px) {
+         display: inline-block;
 
-		ul { // Sub-menus
-			padding: 0;
-			list-style-type: none;
-			@include breakpoint(tablet){
-				position: absolute;  // Overlay other content 
-				left: 0;
-				width: 250px;
-				display: none; // Hide sub-menus
-				visibility: hidden; // Hide sub-menus
-				opacity: 0;
-				padding-bottom: 0; 
-			} 
-			li {
-				width: 100%;
-				@include breakpoint( tablet ){
-					text-align: left;
-					padding: 3px 3px;
-				} 
-			}
-			&.sub-menu {
-				background: darken($menu-base-color, 2%);
-			}
-		}
-		&:hover > ul { 
-			display: block; // Sub-menus appear on hover
-			opacity: 1;
-			visibility: visible;
-			// background: darken( $menu-base-color, 5%);
-			@include transition(all, 0.3s, ease-in-out);
-		}
-	}
-	a {
-		display: block;
-		width: 100%;
-		padding: 1.5em 15px;
-		text-decoration: none;
-		border-bottom: 1px solid $light-grey;
-		&:hover {
-			@include breakpoint(tablet) {
-				background: darken($menu-base-color, 2%);
-				color: darken($black, 6%);
-			}		
-		}
-		&:active {
-			color: $white;
-			background-color: lighten($mid-grey, 3%);
-		}
-		@include breakpoint(tablet) {
-			display: inline-block;
-			border-bottom: none;
-			padding: 1.5em 15px;
-			font-size: 14px;
-		}
-	}
+         &:last-child a {
+            border-bottom: none;
+         }
+      }
 
-	@include breakpoint(tablet) {
-		text-align: right;
-		float: right;
-		padding: 0;
-		margin: 0;
-	}
-	
+      ul {
+         // Sub-menus
+         padding: 0;
+         list-style-type: none;
+
+         @include breakpoint(tablet) {
+            position: absolute; // Overlay other content 
+            left: 0;
+            width: 250px;
+            display: none; // Hide sub-menus
+            visibility: hidden; // Hide sub-menus
+            opacity: 0;
+            padding-bottom: 0;
+         }
+
+         li {
+            width: 100%;
+
+            @include breakpoint(tablet) {
+               text-align: left;
+               padding: 3px 3px;
+            }
+         }
+
+         &.sub-menu {
+            background: color.adjust($menu-base-color, $lightness: -2%);
+         }
+      }
+
+      &:hover>ul {
+         display: block; // Sub-menus appear on hover
+         opacity: 1;
+         visibility: visible;
+         // background: color.adjust( $menu-base-color, $lightness: -5%);
+         @include transition(all, 0.3s, ease-in-out);
+      }
+   }
+
+   a {
+      display: block;
+      width: 100%;
+      padding: 1.5em 15px;
+      text-decoration: none;
+      border-bottom: 1px solid $light-grey;
+
+      &:hover {
+         @media (min-width: 768px) {
+            background: color.adjust($menu-base-color, $lightness: -2%);
+            color: color.adjust($black, $lightness: -6%);
+         }
+      }
+
+      &:active {
+         color: $white;
+         background-color: color.adjust($mid-grey, $lightness: 3%, $space: hsl);
+      }
+
+      @media (min-width: 768px) {
+         display: inline-block;
+         border-bottom: none;
+         padding: 1.5em 15px;
+         font-size: 14px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      text-align: right;
+      float: right;
+      padding: 0;
+      margin: 0;
+   }
+
 }
 
 
 .menu ul li {
-	 position: relative;
-	 @include breakpoint( tablet ){
-		border-bottom: 1px solid darken($menu-base-color, 10%);
-	 	border-top: 1px solid lighten($menu-base-color, 2%); 
-	 } 
- }
+   position: relative;
 
- .menu ul li:first-of-type {
-	 border-top: none;
- }
+   @include breakpoint(tablet) {
+      border-bottom: 1px solid color.adjust($menu-base-color, $lightness: -10%);
+      border-top: 1px solid color.adjust($menu-base-color, $lightness: 2%, $space: hsl);
+   }
+}
+
+.menu ul li:first-of-type {
+   border-top: none;
+}
 
 .menu ul ul a {
-	 background: darken($menu-base-color, 2%);
-	 border-top: 1px solid darken($menu-base-color, 4%);
-	 border-bottom: 1px solid lighten($menu-base-color, 2%);
- }
+   background: color.adjust($menu-base-color, $lightness: -2%);
+   border-top: 1px solid color.adjust($menu-base-color, $lightness: -4%);
+   border-bottom: 1px solid color.adjust($menu-base-color, $lightness: 2%, $space: hsl);
+}
 
 .menu ul ul ul a {
-	 background: darken($menu-base-color, 4%);
-	 border-top: 1px solid darken($menu-base-color, 6%);
-	 border-bottom: 1px solid darken($menu-base-color, 4%);
- }
+   background: color.adjust($menu-base-color, $lightness: -4%);
+   border-top: 1px solid color.adjust($menu-base-color, $lightness: -6%);
+   border-bottom: 1px solid color.adjust($menu-base-color, $lightness: -4%);
+}
 
 .menu ul ul li {
- 	background: darken($menu-base-color, 10%);
+   background: color.adjust($menu-base-color, $lightness: -10%);
 }
 
 /* Top level menu items */
 
-.menu li:hover > a {
+.menu li:hover>a {}
 
+.menu ul ul li:hover>a {
+   background: color.adjust($menu-base-color, $lightness: -4%);
 }
 
-.menu ul ul li:hover > a {
-	 background: darken($menu-base-color, 4%);
- }
-
-.menu ul ul ul li:hover > a {
-	 background: darken($menu-base-color, 6%);
- }
-
-.menu ul ul a:hover {
+.menu ul ul ul li:hover>a {
+   background: color.adjust($menu-base-color, $lightness: -6%);
 }
 
-.menu ul li:hover > ul {
-	display: block;
+.menu ul ul a:hover {}
+
+.menu ul li:hover>ul {
+   display: block;
 }
 
 .menu .current_page_item a,
-.menu .current-menu-item a {
-}
+.menu .current-menu-item a {}
 
 /* Menu toggle */
 
 a#main-menu-toggle {
-		display: block;
-		position: absolute;
-		right: 0;
-		top: 1em; 
-		line-height: 1em;	
-		cursor: pointer;
+   display: block;
+   position: absolute;
+   right: 0;
+   top: 1em;
+   line-height: 1em;
+   cursor: pointer;
 
-	&:before {
-		font-size: 1.5em;
-		font-family: 'mbd-icon-font';
-		content: "\e600";
-	}
-	&.active:before {
-		font-size: 1.3em;
-		content: "\e602";
-	}
-	@include breakpoint(tablet) {
-		display: none;
-	}
+   &:before {
+      font-size: 1.5em;
+      font-family: 'mbd-icon-font';
+      content: "\e600";
+   }
+
+   &.active:before {
+      font-size: 1.3em;
+      content: "\e602";
+   }
+
+   @media (min-width: 768px) {
+      display: none;
+   }
 }
 
 
 
-.menu li.page_item_has_children > a:after {
-	content: " +";
-	position: absolute;
-	right: 3%;
-	font-size: 1em;
-	padding: 0;
+.menu li.page_item_has_children>a:after {
+   content: " +";
+   position: absolute;
+   right: 3%;
+   font-size: 1em;
+   padding: 0;
 }
 
-.menu li.page_item_has_children > a:after {
-	content: " +";
-	position: absolute;
-	right: 3%;
-	font-size: 1em;
-	padding: 0;
+.menu li.page_item_has_children>a:after {
+   content: " +";
+   position: absolute;
+   right: 3%;
+   font-size: 1em;
+   padding: 0;
 }
 
 /* Highlight "contact" on main menu */
 
-.menu li.menu-item-923 > a {
-	@include cta-primary;
-	padding: .8em 10px;
-	@include breakpoint(tablet) {
-		padding: 5px 10px;
-	}
+.menu li.menu-item-923>a {
+   @include cta-primary;
+   padding: .8em 10px;
+
+   @media (min-width: 768px) {
+      padding: 5px 10px;
+   }
 
 }

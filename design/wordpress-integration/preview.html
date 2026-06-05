@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bain Design — Token & Component Preview</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+
+<style>
+  /* Page-local layout — not part of the system. */
+  body { padding: var(--space-8) 0 var(--space-10); }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  @media (max-width: 720px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  .swatch {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: var(--type-14);
+  }
+  .swatch__chip { width: 56px; height: 56px; border: 1px solid var(--rule); }
+  .swatch__name { font-family: var(--font-mono); }
+  .swatch__val  { font-family: var(--font-mono-2); color: var(--pencil); }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: baseline;
+    gap: var(--space-5);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .type-row__label { font-family: var(--font-mono-2); color: var(--pencil); font-size: var(--type-13); }
+  .type-row__sample { font-family: var(--font-mono); }
+
+  .space-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-2) 0;
+  }
+  .space-bar { height: 12px; background: var(--ink); }
+
+  header.hero {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: var(--space-9) 0;
+    margin-bottom: var(--space-9);
+  }
+  .hero h1 { font-size: clamp(36px, 7vw, var(--type-64)); max-width: 16ch; }
+  .hero .lede { color: var(--graphite); font-size: var(--type-18); max-width: 60ch; margin-top: var(--space-5); }
+  .hero__row { display: flex; gap: var(--space-3); margin-top: var(--space-6); flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<div class="bain-wrap">
+
+  <header class="hero">
+    <span class="meta-bracket">WordPress Designer &amp; Developer</span>
+    <h1>Friendly websites for interesting people.<span class="cursor" aria-hidden="true"></span></h1>
+    <p class="lede">A preview of the Bain Design tokens and components, rendered straight from <code>tokens.css</code> and <code>base.css</code>. Drop these two files into <code>your-theme/assets/css/</code> and enqueue them via <code>functions.php</code>.</p>
+    <div class="hero__row">
+      <a class="bain-btn" href="#components">View components</a>
+      <a class="bain-btn bain-btn--ghost" href="#tokens">View tokens</a>
+    </div>
+  </header>
+
+  <!-- ============ TOKENS =========== -->
+  <section id="tokens">
+    <span class="meta-bracket">01 / Tokens</span>
+    <h2 style="margin-top: var(--space-3);">Color</h2>
+    <p>The page lives in the negative space between <strong>paper</strong> and <strong>ink</strong>, with a single warm <span style="color:var(--clay);font-weight:700;">clay</span> accent. Links are always <a href="#">underlined blue</a>.</p>
+
+    <div class="grid-2" style="margin-top: var(--space-5);">
+      <div>
+        <h5 style="margin-bottom: var(--space-3);">Surfaces</h5>
+        <div class="swatch"><div class="swatch__chip" style="background:#E8DFCC"></div><span class="swatch__name">--paper</span><span class="swatch__val">#E8DFCC</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#DDD2BB"></div><span class="swatch__name">--paper-deep</span><span class="swatch__val">#DDD2BB</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#FFFFFF;border-color:var(--rule-soft);"></div><span class="swatch__name">--paper-pure</span><span class="swatch__val">#FFFFFF</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#141413"></div><span class="swatch__name">--ink</span><span class="swatch__val">#141413</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#3D3D3A"></div><span class="swatch__name">--graphite</span><span class="swatch__val">#3D3D3A</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#8C8A85"></div><span class="swatch__name">--pencil</span><span class="swatch__val">#8C8A85</span></div>
+      </div>
+      <div>
+        <h5 style="margin-bottom: var(--space-3);">Accents</h5>
+        <div class="swatch"><div class="swatch__chip" style="background:#C96442"></div><span class="swatch__name">--clay</span><span class="swatch__val">#C96442</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#A24E32"></div><span class="swatch__name">--clay-deep</span><span class="swatch__val">#A24E32</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#1A4FE3"></div><span class="swatch__name">--link</span><span class="swatch__val">#1A4FE3</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#6B3FB7"></div><span class="swatch__name">--visited</span><span class="swatch__val">#6B3FB7</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#22C55E"></div><span class="swatch__name">--phosphor</span><span class="swatch__val">#22C55E</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#D89A2B"></div><span class="swatch__name">--amber</span><span class="swatch__val">#D89A2B</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#C43D2F"></div><span class="swatch__name">--vermilion</span><span class="swatch__val">#C43D2F</span></div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: var(--space-9);">Typography</h2>
+    <p>Two monos (display + metadata) and a quiet serif for editorial flourishes. <strong>Headings are left-aligned, never centered, never all-caps.</strong></p>
+
+    <div style="margin-top: var(--space-5);">
+      <div class="type-row"><span class="type-row__label">H1 / 64</span><span class="type-row__sample" style="font-size:var(--type-64);font-weight:700;line-height:1.1;">Build with ♥</span></div>
+      <div class="type-row"><span class="type-row__label">H2 / 44</span><span class="type-row__sample" style="font-size:var(--type-44);font-weight:700;">Selected work, recent</span></div>
+      <div class="type-row"><span class="type-row__label">H3 / 32</span><span class="type-row__sample" style="font-size:var(--type-32);font-weight:700;">Bespoke WordPress development</span></div>
+      <div class="type-row"><span class="type-row__label">H4 / 24</span><span class="type-row__sample" style="font-size:var(--type-24);font-weight:700;">A one-stop solution</span></div>
+      <div class="type-row"><span class="type-row__label">Body / 16</span><span class="type-row__sample">I design &amp; build bespoke websites for individuals, small businesses &amp; start-ups.</span></div>
+      <div class="type-row"><span class="type-row__label">Meta / 14</span><span class="type-row__sample" style="font-family:var(--font-mono-2);color:var(--graphite);font-size:var(--type-14);">[WordPress Designer &amp; Developer]</span></div>
+      <div class="type-row"><span class="type-row__label">Serif / 32</span><span class="type-row__sample" style="font-family:var(--font-serif);font-size:var(--type-32);font-style:italic;">A rare editorial moment.</span></div>
+    </div>
+
+    <h2 style="margin-top: var(--space-9);">Spacing</h2>
+    <p>A 4px base grid; section rhythm of 96px desktop, 48px mobile.</p>
+    <div style="margin-top: var(--space-5);">
+      <div class="space-row"><span class="type-row__label">--space-1 / 4</span><div class="space-bar" style="width:4px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-2 / 8</span><div class="space-bar" style="width:8px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-3 / 12</span><div class="space-bar" style="width:12px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-4 / 16</span><div class="space-bar" style="width:16px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-5 / 24</span><div class="space-bar" style="width:24px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-6 / 32</span><div class="space-bar" style="width:32px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-7 / 48</span><div class="space-bar" style="width:48px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-8 / 64</span><div class="space-bar" style="width:64px;"></div></div>
+      <div class="space-row"><span class="type-row__label">--space-9 / 96</span><div class="space-bar" style="width:96px;"></div></div>
+    </div>
+  </section>
+
+  <hr class="bain-rule-double">
+
+  <!-- ============ COMPONENTS =========== -->
+  <section id="components">
+    <span class="meta-bracket">02 / Components</span>
+    <h2 style="margin-top: var(--space-3);">Buttons</h2>
+    <div class="hero__row">
+      <a class="bain-btn" href="#">Arrange a chat now</a>
+      <a class="bain-btn bain-btn--ghost" href="#">Check out my work</a>
+      <a class="bain-btn" href="#">See more projects <span aria-hidden="true">→</span></a>
+    </div>
+
+    <h2 style="margin-top: var(--space-9);">Links</h2>
+    <p>Bain links are <a href="#">always underlined blue</a>. On hover, color shifts to ink and the underline thickens. Visited links are <a href="#" style="color:var(--visited);">classic browser purple</a> — that's deliberate. External links use the <a href="#" target="_blank" rel="noopener">↗ glyph</a>.</p>
+
+    <h2 style="margin-top: var(--space-9);">Checked list</h2>
+    <ul class="bain-check">
+      <li>Bespoke WordPress themes, built from scratch.</li>
+      <li>Custom plugin development &amp; refactor work.</li>
+      <li>Fully-responsive, high-specification websites.</li>
+      <li>Migration, performance &amp; SEO clean-up.</li>
+    </ul>
+
+    <h2 style="margin-top: var(--space-9);">Cards</h2>
+    <div class="grid-3">
+      <article class="bain-card">
+        <span class="meta-bracket">Marketing site</span>
+        <h4 style="margin-top: var(--space-3);">The Forge</h4>
+        <p style="color:var(--graphite);">A custom WordPress theme for a Barcelona-based design studio. Bespoke editorial layouts, no page builder.</p>
+        <p><a href="#">View project →</a></p>
+      </article>
+      <article class="bain-card">
+        <span class="meta-bracket">Plugin</span>
+        <h4 style="margin-top: var(--space-3);">Plain Sitemap</h4>
+        <p style="color:var(--graphite);">An open-source WordPress plugin that ships a minimal, screen-readable XML sitemap.</p>
+        <p><a href="#">Read more →</a></p>
+      </article>
+      <article class="bain-card">
+        <span class="meta-bracket">Theme</span>
+        <h4 style="margin-top: var(--space-3);">Letter</h4>
+        <p style="color:var(--graphite);">A classic-PHP theme tuned for writers — wide measure, generous left margin, no JavaScript.</p>
+        <p><a href="#">Read more →</a></p>
+      </article>
+    </div>
+
+    <h2 style="margin-top: var(--space-9);">Forms</h2>
+    <form onsubmit="event.preventDefault();" style="max-width: 480px;">
+      <div style="margin-bottom: var(--space-4);">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Mark Crawford Bain">
+      </div>
+      <div style="margin-bottom: var(--space-4);">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="mark@bain.design">
+      </div>
+      <div style="margin-bottom: var(--space-5);">
+        <label for="msg">Brief</label>
+        <textarea id="msg" rows="4" placeholder="A line or two about the project."></textarea>
+      </div>
+      <button type="submit" class="bain-btn">Send the brief</button>
+    </form>
+
+    <h2 style="margin-top: var(--space-9);">Code</h2>
+    <p>Inline <code>wp_enqueue_style()</code> calls live in a single hook so dependency order is explicit:</p>
+    <pre><code>add_action( 'wp_enqueue_scripts', function () {
+    wp_enqueue_style( 'bain-fonts',  $google_fonts_url );
+    wp_enqueue_style( 'bain-tokens', get_theme_file_uri( 'assets/css/tokens.css' ), [ 'bain-fonts' ] );
+    wp_enqueue_style( 'bain-base',   get_theme_file_uri( 'assets/css/base.css' ),   [ 'bain-tokens' ] );
+    wp_enqueue_style( 'bain-theme',  get_stylesheet_uri(),                          [ 'bain-base' ] );
+} );</code></pre>
+
+    <h2 style="margin-top: var(--space-9);">ASCII rule</h2>
+    <div style="font-family:var(--font-mono);color:var(--pencil);overflow:hidden;white-space:nowrap;line-height:1;">────────────────────────────────────────────────────────────────────────────────────────────────────────────────</div>
+  </section>
+
+  <hr class="bain-rule-double">
+
+  <footer style="padding-bottom: var(--space-7);">
+    <span class="meta-bracket">Mark Crawford Bain / WordPress Designer &amp; Developer</span>
+    <p style="margin-top: var(--space-3);">Email: <a href="mailto:mark@bain.design">mark@bain.design</a> / Website: <a href="https://bain.design">https://bain.design</a></p>
+    <p class="bain-signoff">Build with <span class="heart" style="color:var(--clay);">&hearts;</span></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
