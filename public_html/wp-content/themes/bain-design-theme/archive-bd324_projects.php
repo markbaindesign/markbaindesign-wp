@@ -23,8 +23,6 @@ $pub_count = (int) wp_count_posts( 'bd324_projects' )->publish;
 	</div>
 </div>
 
-<?php bain_ascii_rule(); ?>
-
 <div class="archive-content portfolio-archive">
 
 	<?php if ( have_posts() ) : ?>
