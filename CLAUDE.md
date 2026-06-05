@@ -153,9 +153,9 @@ ACF relationship fields store post IDs as serialized PHP integers: `a:1:{i:0;i:1
 
 ## Asana
 
-ASANA_PROJECT_GID: 1202804672032851
+ASANA_PROJECT_GID: 1215368887959233
 ASANA_TASK_PREFIX: BD
-ASANA_PROJECT_NAME: Bain Design
+ASANA_PROJECT_NAME: Bain Website
 
 ## Studio PM
 
