@@ -1,3 +1,0 @@
-[27-May-2016 20:22:32 America/Chicago] PHP Fatal error:  Call to undefined function plugin_basename() in /home/markbain/public_html/longneck/wp-content/mu-plugins/contact-form-7/wp-contact-form-7.php on line 35
-[30-May-2016 07:30:23 America/Chicago] PHP Warning:  require_once(WPCF7_PLUGIN_DIR/includes/functions.php): failed to open stream: No such file or directory in /home/markbain/public_html/longneck/wp-content/mu-plugins/contact-form-7/settings.php on line 3
-[30-May-2016 07:30:23 America/Chicago] PHP Fatal error:  require_once(): Failed opening required 'WPCF7_PLUGIN_DIR/includes/functions.php' (include_path='.:/opt/php54/lib/php') in /home/markbain/public_html/longneck/wp-content/mu-plugins/contact-form-7/settings.php on line 3

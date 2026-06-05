@@ -1,69 +1,193 @@
 <?php
-
 /**
- * The template for displaying the front page.
- *
- * This is the template that displays on the front page only.
- *
- * @package _mbbasetheme
+ * Front page template.
  */
 
-get_header(); ?>
+get_header();
+?>
 
-<div id="primary" class="content-area">
-   <main id="main" class="site-main" role="main">
+<!-- ================================================================== HERO -->
+<section class="hero" aria-label="<?php esc_attr_e( 'Introduction', 'bain-design-theme' ); ?>">
+	<div class="bain-wrap">
+		<?php bain_meta_bracket( 'WordPress Designer & Developer' ); ?>
 
-      <div class="hero">
-         <picture>
-            <!--[if IE 9]><video style="display: none;"><![endif]-->
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-320x213.jpg" media="(max-width: 20em)">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-480x320.jpg" media="(max-width: 30em)">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-768x512.jpg" media="(max-width: 48em)">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-960x639.jpg" media="(max-width: 64em)">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero-1120x746.jpg" media="(max-width: 70em)">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero.jpg">
+		<h1 class="hero__headline" id="hero-headline">
+			<span class="hero__slot" id="slot-0"
+				><span class="hero__slot-reserve" aria-hidden="true">Tasteful</span
+				><span class="hero__slot-inner"
+					><span class="hero__slot-highlight" aria-hidden="true"></span
+					><span id="slot-0-text">Friendly</span
+				></span
+			></span
+			><span class="hero__connector"> websites for </span
+			><span class="hero__slot" id="slot-1"
+				><span class="hero__slot-reserve" aria-hidden="true">interesting</span
+				><span class="hero__slot-inner"
+					><span class="hero__slot-highlight" aria-hidden="true"></span
+					><span id="slot-1-text">interesting</span
+				></span
+			></span
+			>&nbsp;<span class="hero__slot" id="slot-2"
+				><span class="hero__slot-reserve" aria-hidden="true">entrepreneurs</span
+				><span class="hero__slot-inner"
+					><span class="hero__slot-highlight" aria-hidden="true"></span
+					><span id="slot-2-text">people</span
+				></span
+			></span>
+			<span class="hero__caret" id="hero-caret" aria-hidden="true"></span>
+		</h1>
 
-            <!--[if IE 9]></video><![endif]-->
-            <img srcset="<?php echo get_bloginfo('template_url') ?>/assets/images/hero.jpg" alt="">
-         </picture>
+		<p class="hero__sub">
+			I design &amp; build <strong>bespoke websites</strong> for
+			<strong>individuals</strong>, <strong>small businesses</strong> &amp;
+			<strong>start-ups</strong>.
+		</p>
 
-         <div class="hero-header section">
-            <div class="container">
-               <h1 class="wow fadeInLeft"><span class="friendly">Friendly websites</span> <span class="for">for</span> interesting people.</h1>
-               <h3 class="wow fadeInRight textblock">I design <span class="amp">&amp;</span> build <strong>bespoke websites</strong> for<br /> <strong>individuals</strong>, <strong>small businesses</strong> <span class="amp">&amp;</span> <strong>start-ups</strong>.</h3>
-               <div class="hero-cta">
-                  <div class="wow fadeInLeft"><a href="<?php bloginfo('url'); ?>/contact" class="cta button cta-primary">Arrange a chat now <i aria-hidden="true" class="icon-arrow-right"></i></a></div>
-                  <div class="wow fadeInRight"><a href="<?php bloginfo('url'); ?>/portfolio" class="cta button cta-secondary">Check out my work <i aria-hidden="true" class="icon-arrow-right"></i></a></div>
-               </div>
-            </div>
-         </div>
-      </div><!-- .hero -->
+		<div class="hero__actions">
+			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="bain-btn">Arrange a chat now</a>
+			<a href="<?php echo esc_url( home_url( '/portfolio' ) ); ?>" class="bain-btn bain-btn--ghost">Check out my work →</a>
+		</div>
+	</div>
+</section>
 
-      <!-- Project Showcase -->
-      <?php if (function_exists('bd324_show_latest_posts') && bd324_show_latest_posts('portfolio_item', 3)) : ?>
-         <div class="section showcase">
-            <div class="container">
-               <h2><?php _e('Latest Projects', '_baindesign'); ?></h2>
-               <?php echo bd324_show_latest_posts('portfolio_item', '3'); ?>
-               <h3><a href="<?php echo get_bloginfo('url') ?>/portfolio/">See more projects</a></h3>
-            </div>
-         </div>
-      <?php endif; ?>
+<?php bain_ascii_rule(); ?>
 
-      <div class="section final-call">
-         <div class="container">
-            <h2>Get in touch</h2>
-            <div class="final-call-content clearfix">
-               <p>If you're keen to find out more, there are lots of ways you can get in touch with me, but <a href="mailto:hello@markbaindesign.com">why not start with an email?</a></p>
-            </div>
-         </div>
-      </div><!-- .final-call -->
+<!-- ============================================================= SERVICES -->
+<section class="bain-section" id="services" aria-labelledby="services-heading">
+	<div class="bain-section__inner">
 
-   </main><!-- #main -->
-</div><!-- #primary -->
+		<header class="section-header">
+			<h2 class="section-header__title" id="services-heading">
+				<span class="section-number" aria-hidden="true">01 /</span>Services
+			</h2>
+		</header>
 
+		<div class="services-panel">
+			<div class="services-list" role="list">
+				<div class="services-list__item" role="listitem">
+					<span class="services-list__num" aria-hidden="true">01</span>
+					<span class="services-list__name">Themes<span class="services-list__stamp" aria-hidden="true">no bloat ✦</span></span>
+					<span class="services-list__note">Bespoke WordPress themes, coded from scratch. No page builders, no bloat.</span>
+				</div>
+				<div class="services-list__item" role="listitem">
+					<span class="services-list__num" aria-hidden="true">02</span>
+					<span class="services-list__name">Plugins<span class="services-list__stamp" aria-hidden="true">two on .org ✦</span></span>
+					<span class="services-list__note">Custom functionality, two open-source plugins on .org, hundreds of bespoke installs.</span>
+				</div>
+				<div class="services-list__item" role="listitem">
+					<span class="services-list__num" aria-hidden="true">03</span>
+					<span class="services-list__name">Design<span class="services-list__stamp" aria-hidden="true">pixels &amp; all ✦</span></span>
+					<span class="services-list__note">Wireframing through to UI &mdash; mood-boarding, prototyping, full handoff.</span>
+				</div>
+			</div>
+		</div>
 
+	</div>
+</section>
 
+<?php bain_ascii_rule(); ?>
 
-<?php get_sidebar(); ?>
+<!-- ============================================================= PROJECTS -->
+<section class="bain-section" id="projects" aria-labelledby="projects-heading">
+	<div class="bain-section__inner">
+
+		<div class="section-header section-header--row">
+			<h2 class="section-header__title" id="projects-heading">
+				<span class="section-number" aria-hidden="true">02 /</span>Latest projects
+			</h2>
+			<a href="<?php echo esc_url( home_url( '/portfolio' ) ); ?>" class="bain-btn bain-btn--ghost bain-btn--sm">
+				See all →
+			</a>
+		</div>
+
+		<?php
+		$fp_projects = new WP_Query( array(
+			'post_type'      => 'bd324_projects',
+			'posts_per_page' => 3,
+			'post_status'    => 'publish',
+			'no_found_rows'  => true,
+		) );
+
+		if ( $fp_projects->have_posts() ) :
+		?>
+		<div class="portfolio-grid">
+			<?php while ( $fp_projects->have_posts() ) : $fp_projects->the_post();
+				$proj_year  = get_the_date( 'Y' );
+				$proj_terms = get_the_terms( get_the_ID(), 'project-category-service' );
+				$proj_tag   = ( $proj_terms && ! is_wp_error( $proj_terms ) ) ? $proj_terms[0]->name : '';
+			?>
+			<article class="portfolio-card" id="post-<?php the_ID(); ?>">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<a href="<?php the_permalink(); ?>" class="portfolio-card__thumb" tabindex="-1" aria-hidden="true">
+						<?php the_post_thumbnail( 'medium_large' ); ?>
+					</a>
+				<?php else : ?>
+					<a href="<?php the_permalink(); ?>" class="portfolio-card__thumb portfolio-card__thumb--empty" tabindex="-1" aria-hidden="true">
+						<span class="portfolio-card__placeholder">[project preview]</span>
+					</a>
+				<?php endif; ?>
+
+				<div class="portfolio-card__body">
+					<div class="portfolio-card__meta">
+						<?php bain_meta_bracket( trim( $proj_year . ( $proj_tag ? ' / ' . $proj_tag : '' ) ) ); ?>
+					</div>
+					<h3 class="portfolio-card__title">
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</h3>
+					<p class="portfolio-card__excerpt">
+						<?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
+					</p>
+				</div>
+			</article>
+			<?php endwhile; wp_reset_postdata(); ?>
+		</div>
+		<?php else : ?>
+			<p style="color:var(--graphite);"><?php esc_html_e( 'Projects coming soon.', 'bain-design-theme' ); ?></p>
+		<?php endif; ?>
+
+	</div>
+</section>
+
+<?php bain_ascii_rule(); ?>
+
+<!-- ================================================================= ABOUT -->
+<section class="bain-section about-section" id="about" aria-labelledby="about-heading">
+	<div class="bain-section__inner about-section__inner">
+
+		<div class="about-section__text">
+			<?php bain_meta_bracket( 'about' ); ?>
+			<h2 class="about-section__name" id="about-heading">Mark Crawford Bain</h2>
+			<?php bain_meta_bracket( 'WordPress Designer & Developer', array( 'tag' => 'p' ) ); ?>
+			<p class="about-section__intro">
+				14+ years building bespoke WordPress sites from inception to execution. Based near Barcelona, working with clients worldwide.
+			</p>
+			<ul class="bain-check">
+				<li>Dedicated and creative &mdash; every site is coded from scratch. <span class="tip-q" data-tip="no Wix/Squarespace/Webflow">?</span></li>
+				<li>Proficient in wireframing, designing responsive layouts, and coding bespoke themes &amp; plugins. <span class="tip-q" data-tip="full-stack, mostly">?</span></li>
+				<li>Two open-source plugins published on WordPress.org. <span class="tip-q" data-tip="free as in beer">?</span></li>
+				<li>Committed to delivering technical solutions that align with clients&#8217; business objectives. <span class="tip-q" data-tip="translation: I read your brief">?</span></li>
+			</ul>
+		</div>
+
+	</div>
+</section>
+
+<?php bain_ascii_rule(); ?>
+
+<!-- =============================================================== CONTACT -->
+<section class="bain-section contact-section" id="contact" aria-labelledby="contact-heading">
+	<div class="bain-section__inner">
+		<h2 class="section-header__title" id="contact-heading">
+			<span class="section-number" aria-hidden="true">03 /</span>Get in touch
+		</h2>
+		<p class="contact-section__lead">
+			If you're keen to find out more, there are lots of ways to get in touch &mdash; but why not start with an email?
+		</p>
+		<a href="mailto:hello@bain.design" class="contact-section__email" id="contact-email"
+			   data-tip="click to copy + open">
+			hello@bain.design →
+		</a>
+	</div>
+</section>
+
 <?php get_footer(); ?>

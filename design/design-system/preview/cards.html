@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bain — Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .card { border:1px solid var(--rule); background:var(--paper-pure); padding:16px; transition:border .12s, box-shadow .12s; }
+  .card:hover { border-width:2px; padding:15px; box-shadow:var(--shadow-press); }
+  .meta { font-family:var(--font-mono-2); font-size:11px; color:var(--pencil); }
+  .meta::before { content:"["; } .meta::after { content:"]"; }
+  .title { font-family:var(--font-mono); font-weight:700; font-size:18px; color:var(--ink); margin:6px 0 4px; letter-spacing:-0.01em; }
+  .desc { font-family:var(--font-mono); font-size:13px; color:var(--graphite); line-height:1.55; }
+  .card.tinted { background:var(--paper-deep); }
+  .card.clay { border:2px solid var(--ink); background:var(--clay-soft); }
+  .footer { margin-top:10px; font-family:var(--font-mono-2); font-size:11px; color:var(--link); text-decoration:underline; }
+</style></head>
+<body>
+  <div class="card">
+    <div class="meta">2025 / branding</div>
+    <div class="title">Buddhist Curriculum Framework</div>
+    <div class="desc">A bespoke WordPress site for an educational non-profit.</div>
+    <div class="footer">view project →</div>
+  </div>
+  <div class="card tinted">
+    <div class="meta">2024 / responsive</div>
+    <div class="title">Mhairi McFarlane</div>
+    <div class="desc">Author site rebuilt from scratch with a custom theme.</div>
+    <div class="footer">view project →</div>
+  </div>
+  <div class="card clay" style="grid-column:1/-1">
+    <div class="meta">featured</div>
+    <div class="title">Khyentse Foundation</div>
+    <div class="desc">Multi-language WordPress + custom plugins.</div>
+  </div>
+</body></html>

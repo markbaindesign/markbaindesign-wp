@@ -1,2 +1,0 @@
-[22-May-2016 22:28:34 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/admin/admin.php on line 15
-[27-May-2016 06:11:27 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/nice-words/admin/admin.php on line 15

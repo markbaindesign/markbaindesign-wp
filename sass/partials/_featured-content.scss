@@ -1,24 +1,32 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 /* Featured */
 
 .featured-content {
-	color: $black;
-	@include clearfix;
-	position: relative;
-	margin-bottom: 1em;
-	.media__content {
+   color: $black;
+   @include clearfix;
+   position: relative;
+   margin-bottom: 1em;
 
-		
-		h3 {
-			font-size: 5em;
-			a {
-				color: #fff;
-			}
-		}
+   .media__content {
 
 
-	}
-		img {
-			width: 100%;
-			height: auto;
-		}
+      h3 {
+         font-size: 5em;
+
+         a {
+            color: #fff;
+         }
+      }
+
+
+   }
+
+   img {
+      width: 100%;
+      height: auto;
+   }
 }

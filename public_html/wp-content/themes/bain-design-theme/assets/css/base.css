@@ -1,0 +1,267 @@
+/* =====================================================================
+   Bain Design — Base element styles + utilities
+   Depends on tokens.css being loaded first.
+
+   This file styles raw HTML elements (h1–h6, p, a, code, hr, ::selection)
+   and ships a handful of brand utilities used throughout the system:
+
+     .meta-bracket    [bracketed metadata]
+     .cursor          terminal _ cursor (blinks)
+     .bain-check      ✔ checked list
+     .bain-rule-double  major section divider
+     .bain-press      2px hard-offset press shadow on hover
+     .bain-signoff    "Build with ♥"
+
+   Load on the front end only — NOT inside add_editor_style — so the
+   WP admin doesn't inherit body-level rules.
+   ===================================================================== */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-mono);
+  font-size: var(--type-16);
+  line-height: var(--leading-loose);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  /* Headings are LEFT-ALIGNED. Never center, never all-caps. */
+  text-align: left;
+}
+h1 { font-size: var(--type-64); }
+h2 { font-size: var(--type-44); }
+h3 { font-size: var(--type-32); }
+h4 { font-size: var(--type-24); }
+h5 { font-size: var(--type-20); font-weight: 500; }
+h6 { font-size: var(--type-16); font-weight: 500; }
+
+p {
+  margin: 0 0 var(--space-4) 0;
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-1) var(--ease-1),
+              text-decoration-thickness var(--dur-1) var(--ease-1);
+}
+a:hover  { color: var(--link-hover); text-decoration-thickness: 2px; }
+a:visited { color: var(--visited); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.site-header__brand,
+.site-header__brand:hover { text-decoration: none; color: var(--ink); }
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono-2);
+  font-size: 0.95em;
+}
+code {
+  background: var(--hover-bg);
+  padding: 2px 6px;
+  border: 1px solid var(--border-2);
+}
+pre {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  padding: var(--space-4);
+  overflow-x: auto;
+  line-height: var(--leading-snug);
+}
+pre code { background: none; border: 0; padding: 0; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-7) 0;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+::selection { background: var(--ink); color: var(--paper); }
+
+/* ----- Buttons -------------------------------------------------------- */
+
+.bain-btn,
+button.bain-btn,
+a.bain-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--type-14);
+  line-height: 1;
+  padding: 14px 22px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--dur-2) var(--ease-1),
+    color var(--dur-2) var(--ease-1),
+    box-shadow var(--dur-2) var(--ease-1),
+    transform var(--dur-1) var(--ease-1);
+}
+.bain-btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-press);
+  text-decoration: none;
+}
+.bain-btn:active { transform: translate(2px, 2px); box-shadow: none; }
+
+.bain-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.bain-btn--ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* ----- Cards ---------------------------------------------------------- */
+
+.bain-card {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: var(--space-5);
+  transition: border-width var(--dur-2) var(--ease-1),
+              box-shadow var(--dur-2) var(--ease-1);
+}
+.bain-card:hover {
+  border-width: 2px;
+  /* offset padding so border thickening doesn't reflow contents */
+  padding: calc(var(--space-5) - 1px);
+}
+
+/* ----- Bracket metadata ---------------------------------------------- */
+
+.meta-bracket {
+  font-family: var(--font-mono-2);
+  color: var(--fg-2);
+  font-size: var(--type-14);
+}
+.meta-bracket::before { content: "["; }
+.meta-bracket::after  { content: "]"; }
+
+/* ----- Terminal cursor ----------------------------------------------- */
+
+.cursor::after {
+  content: "_";
+  display: inline-block;
+  margin-left: 2px;
+  animation: bain-blink 1.06s steps(2) infinite;
+  color: var(--phosphor);
+}
+@keyframes bain-blink {
+  0%, 50%       { opacity: 1; }
+  50.01%, 100%  { opacity: 0; }
+}
+
+/* ----- Checked list -------------------------------------------------- */
+
+ul.bain-check {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5) 0;
+}
+ul.bain-check > li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: var(--space-3);
+  color: var(--fg-2);
+}
+ul.bain-check > li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--phosphor);
+  font-weight: 700;
+}
+
+/* ----- Double-rule section divider ----------------------------------- */
+
+.bain-rule-double {
+  border: 0;
+  height: 0;
+  margin: var(--space-9) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding-top: 2px; /* the gap */
+}
+
+/* ----- Sign-off ------------------------------------------------------- */
+
+.bain-signoff {
+  font-family: var(--font-mono);
+  color: var(--fg-2);
+  font-size: var(--type-14);
+}
+.bain-signoff .heart { color: var(--clay); }
+
+/* ----- "Letter" layout for long-form pages --------------------------- */
+/* Apply via body class — see functions.php */
+.bain-letter .entry-content,
+.bain-letter main {
+  margin-left: clamp(var(--space-5), 12vw, 160px);
+  margin-right: var(--space-5);
+  max-width: 68ch;
+}
+
+/* ----- Layout helpers ------------------------------------------------- */
+
+.bain-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.bain-stack > * + * { margin-top: var(--space-4); }
+.bain-stack-lg > * + * { margin-top: var(--space-7); }
+
+/* ----- Forms ---------------------------------------------------------- */
+
+input[type="text"], input[type="email"], input[type="url"],
+input[type="search"], input[type="tel"], textarea, select {
+  font: inherit;
+  background: var(--paper-pure);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  width: 100%;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+label {
+  font-family: var(--font-mono-2);
+  font-size: var(--type-14);
+  color: var(--fg-2);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+/* ----- Mobile rhythm -------------------------------------------------- */
+
+@media (max-width: 720px) {
+  h1 { font-size: clamp(36px, 9vw, var(--type-64)); }
+  h2 { font-size: clamp(28px, 6vw, var(--type-44)); }
+  .bain-letter .entry-content,
+  .bain-letter main { margin-left: var(--space-4); margin-right: var(--space-4); }
+}

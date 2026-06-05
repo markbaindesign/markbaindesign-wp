@@ -1,78 +1,70 @@
-/* -------------------------------------------------------------- 
-   
-  WordPress Blog Styles Reset  
-     
--------------------------------------------------------------- */   
-
-
-/* Images
--------------------------------------------------------------- */
-
-
+@use "../partials/variables" as *;
+@use "../partials/mixins" as *;
+@use "sass:color" as *;
 
 img {
 
-	&.avatar {
-		width: auto;
-	}
+   &.avatar {
+      width: auto;
+   }
 
 }
 
 .alignleft,
 img.alignleft {
-	display: inline;
-	float: left;
-  margin-right: 1.5em;
+   display: inline;
+   float: left;
+   margin-right: 1.5em;
 }
 
 .alignright,
 img.alignright {
-	display: inline;
-	float: right;
-  margin-left: 1.5em;
+   display: inline;
+   float: right;
+   margin-left: 1.5em;
 }
 
 .aligncenter,
 img.aligncenter {
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+   clear: both;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .wp-caption {
-	margin-bottom: 1.5em;
-	max-width: 100%;
-	img[class*="wp-image-"] {
-		border: 0 none;
-		margin: 0;
-		padding: 0;
-	}
-	p {
-		&.wp-caption-text {
-			@extend .meta;
-			margin: .5em 0;
-			text-align: left;
-			font-style: italic;
-		}
-	}
+   margin-bottom: 1.5em;
+   max-width: 100%;
+
+   img[class*="wp-image-"] {
+      border: 0 none;
+      margin: 0;
+      padding: 0;
+   }
+
+   p {
+      &.wp-caption-text {
+         @extend .meta !optional;
+         margin: .5em 0;
+         text-align: left;
+         font-style: italic;
+      }
+   }
 }
 
 
 
 
 
-.wp-smiley { 
-	max-height: 1em;
-	margin:0 !important;
+.wp-smiley {
+   max-height: 1em;
+   margin: 0 !important;
 }
 
 .gallery dl {
-	margin: 0;
+   margin: 0;
 }
 
 .gallery-caption {
-	margin:-1.5em 0 0 0;
+   margin: -1.5em 0 0 0;
 }
-
-

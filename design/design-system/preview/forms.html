@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bain — Form fields</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; display:flex; flex-direction:column; gap:14px; }
+  label { font-family:var(--font-mono-2); font-size:11px; color:var(--graphite); display:block; margin-bottom:6px; }
+  label::before { content:"[ "; color:var(--pencil); }
+  label::after  { content:" ]"; color:var(--pencil); }
+  .field { display:flex; flex-direction:column; }
+  input, textarea, select { font-family:var(--font-mono); font-size:14px; padding:10px 12px; border:1px solid var(--rule); background:var(--paper-pure); color:var(--ink); }
+  input:focus, textarea:focus, select:focus { outline:2px solid var(--ink); outline-offset:2px; }
+  .row { display:flex; gap:14px; }
+  .row > * { flex:1; }
+  .help { font-family:var(--font-mono-2); font-size:11px; color:var(--pencil); margin-top:4px; }
+  .err  { color:var(--vermilion); }
+</style></head>
+<body>
+  <div class="row">
+    <div class="field"><label>your name</label><input value="Mark Bain" /></div>
+    <div class="field"><label>email</label><input value="hello@bain.design" /></div>
+  </div>
+  <div class="field"><label>brief</label><textarea rows="2" placeholder="tell me about the website you have in mind…"></textarea></div>
+  <div class="field"><label>budget range</label><select><option>£3k – £6k</option><option>£6k – £12k</option><option>£12k+</option></select></div>
+  <div class="field"><label>required field</label><input style="border-color:var(--vermilion)" /><div class="help err">! this field is required.</div></div>
+</body></html>

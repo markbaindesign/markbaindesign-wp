@@ -1,0 +1,210 @@
+/* =====================================================================
+   Bain Design — Design Tokens
+   Geeky, tasteful, dev. Monospace-first.
+   ===================================================================== */
+
+/* --- Webfonts (Google Fonts substitutes) ---------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap');
+
+:root {
+  /* ----- Color ----- */
+  /* The page is warm cream "paper" — borrowed from Claude's reading-room
+     aesthetic, married to Bain's ink-and-monospace discipline. */
+  --paper:        #E8DFCC;   /* page background — deeper warm cream, less Claude-white */
+  --paper-deep:   #DDD2BB;   /* tinted panels, hovered rows */
+  --paper-pure:   #FFFFFF;   /* card / form surfaces, rare */
+  --ink:          #141413;   /* primary text, mark — true black is too cold */
+  --graphite:     #3D3D3A;   /* secondary text */
+  --pencil:       #8C8A85;   /* tertiary, captions */
+  --rule:         #1F1F1D;   /* hairlines, borders */
+  --rule-soft:    #D8D0C0;   /* dividers on tinted areas */
+  --hover-bg:     rgba(20,20,19,0.04);
+
+  /* Accent — a warm clay/coral, Claude-influenced. Used for marks, key
+     highlights, and the ♥ glyph. */
+  --clay:         #C96442;   /* primary warm accent */
+  --clay-deep:    #A24E32;   /* press / focused */
+  --clay-soft:    #E8B59E;   /* tints, highlights */
+
+  /* Links stay blue — that's a Bain signature from the resume specimen.
+     Never use clay for links; it's a brand mark, not a navigation cue. */
+  --link:         #1A4FE3;   /* hyperlink blue */
+  --link-hover:   #0E0E0E;
+  --visited:      #6B3FB7;   /* classic visited purple */
+  --phosphor:     #22C55E;   /* terminal-green; cursors, OK */
+  --amber:        #D89A2B;   /* caution — warmed to fit palette */
+  --vermilion:    #C43D2F;   /* error — desaturated */
+
+  /* Semantic */
+  --fg-1: var(--ink);
+  --fg-2: var(--graphite);
+  --fg-3: var(--pencil);
+  --bg-1: var(--paper);
+  --bg-2: var(--paper-pure);
+  --border-1: var(--rule);
+  --border-2: var(--rule-soft);
+
+  /* ----- Type ----- */
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-mono-2:  'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif:   'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+
+  /* Type scale (px values; rem-friendly) */
+  --type-12: 12px;   /* meta, captions */
+  --type-13: 13px;   /* small UI */
+  --type-14: 14px;   /* default body small */
+  --type-16: 16px;   /* default body */
+  --type-18: 18px;   /* lead paragraph */
+  --type-20: 20px;   /* h5 */
+  --type-24: 24px;   /* h4 */
+  --type-32: 32px;   /* h3 */
+  --type-44: 44px;   /* h2 */
+  --type-64: 64px;   /* h1 */
+  --type-96: 96px;   /* display */
+  --type-240: 240px; /* margin numerals */
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-loose:  1.65;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.02em;
+
+  /* ----- Spacing (4px base grid) ----- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ----- Borders & corners ----- */
+  --radius: 0;            /* hard rule: no rounded corners */
+  --border-w-1: 1px;
+  --border-w-2: 2px;
+
+  /* ----- Elevation (almost none) ----- */
+  --shadow-press: 2px 2px 0 var(--ink);
+  --shadow-press-2: 4px 4px 0 var(--ink);
+  --shadow-inset-rule: inset 0 1px 0 var(--rule);
+
+  /* ----- Motion ----- */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --ease-1: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ----- Layout ----- */
+  --max-w: 1280px;
+  --gutter: 24px;
+}
+
+/* =====================================================================
+   Base / element styles — semantic CSS vars at use site
+   ===================================================================== */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-mono);
+  font-size: var(--type-16);
+  line-height: var(--leading-loose);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+h1 { font-size: var(--type-64); }
+h2 { font-size: var(--type-44); }
+h3 { font-size: var(--type-32); }
+h4 { font-size: var(--type-24); }
+h5 { font-size: var(--type-20); font-weight: 500; }
+h6 { font-size: var(--type-16); font-weight: 500; text-transform: none; }
+
+p { margin: 0 0 var(--space-4) 0; max-width: 65ch; }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-1) var(--ease-1),
+              text-decoration-thickness var(--dur-1) var(--ease-1);
+}
+a:hover { color: var(--link-hover); text-decoration-thickness: 2px; }
+a:visited { color: var(--visited); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono-2);
+  font-size: 0.95em;
+}
+
+code {
+  background: var(--hover-bg);
+  padding: 2px 6px;
+  border: 1px solid var(--border-2);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-7) 0;
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+/* Utility — bracket metadata pattern */
+.meta-bracket {
+  font-family: var(--font-mono-2);
+  color: var(--fg-2);
+  font-size: var(--type-14);
+}
+.meta-bracket::before { content: "["; }
+.meta-bracket::after  { content: "]"; }
+
+/* Utility — terminal cursor */
+.cursor::after {
+  content: "_";
+  display: inline-block;
+  margin-left: 2px;
+  animation: bain-blink 1.06s steps(2) infinite;
+  color: var(--phosphor);
+}
+@keyframes bain-blink {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Utility — checked list */
+ul.bain-check {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5) 0;
+}
+ul.bain-check > li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: var(--space-3);
+  color: var(--fg-2);
+}
+ul.bain-check > li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--phosphor);
+  font-weight: 700;
+}

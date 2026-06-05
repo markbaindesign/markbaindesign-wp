@@ -1,53 +1,62 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 /* ==========================================================================
    Header
    ========================================================================== */
 
 .site-header {
 
-	z-index: 2; /* Fixed header needs to be above all else */
-	width: 100%;
-	position: relative;
-	padding: 0 3%;
-	line-height: 1;
-	background: $white;
-	border-bottom: 1px solid $light-grey;
+   z-index: 2;
+   /* Fixed header needs to be above all else */
+   width: 100%;
+   position: relative;
+   padding: 0 3%;
+   line-height: 1;
+   background: $white;
+   border-bottom: 1px solid $light-grey;
 
    &>.container {
       max-width: $pageWidth;
    }
 
-	a {
-		display: block;
-		color: $black;
-		text-decoration: none;
-		&#logo-link {
-			/* width: 20%; */
-			float: left;
-		}
-	}
+   a {
+      display: block;
+      color: $black;
+      text-decoration: none;
 
-	.branding {
-			@include clearfix;
-			padding-top: 1em;
-			padding-bottom: 1em;
-			position: relative; /* Allow absolute positioning */
+      &#logo-link {
+         /* width: 20%; */
+         float: left;
+      }
+   }
 
-			@include breakpoint(tablet) {
-				width: 30%;	
-				float: left;		
-			}
-	}
+   .branding {
+      @include clearfix;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      position: relative;
+      /* Allow absolute positioning */
 
-	@include clearfix;
-	@include breakpoint(tablet) {
-		padding: 0 3%;
-		position: fixed;
-		height: auto;
-	}
+      @media (min-width: 768px) {
+         width: 30%;
+         float: left;
+      }
+   }
+
+   @include clearfix;
+
+   @media (min-width: 768px) {
+      padding: 0 3%;
+      position: fixed;
+      height: auto;
+   }
 
 }
 
 h1#site-title {
-	font-size: 1.2em;
-	margin: 0;
+   font-size: 1.2em;
+   margin: 0;
 }

@@ -1,4 +1,0 @@
-[27-May-2016 23:09:58 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/test.php on line 4
-[28-May-2016 09:02:43 America/Chicago] PHP Fatal error:  Class 'scbAdminPage' not found in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/admin.php on line 3
-[30-May-2016 02:13:10 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/scb/load.php on line 32
-[01-Jun-2016 03:13:05 America/Chicago] PHP Fatal error:  Class 'scbAdminPage' not found in /home/markbain/public_html/longneck/wp-content/mu-plugins/wp-pagenavi/admin.php on line 3

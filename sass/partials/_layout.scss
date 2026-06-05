@@ -1,149 +1,163 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "sass:color";
+
+
 /* ==========================================================================
    Layout
    ========================================================================== */
 
-html, 
+html,
 body,
 #page {
-	height: 100%; /* Important for sticky footer */
+   height: 100%;
+   /* Important for sticky footer */
 }
 
 .section {
-	width: 100%;
-	padding: 1em 3%;
+   width: 100%;
+   padding: 1em 3%;
 
-	.container {
-		max-width: $container-width;
-		margin: 0 auto; // Centre the container on the page.
-		@include clearfix; // Likely to contain floated elements i.e. columns
-	}
+   .container {
+      max-width: $container-width;
+      margin: 0 auto; // Centre the container on the page.
+      @include clearfix; // Likely to contain floated elements i.e. columns
+   }
 }
 
 #page {
-	max-width: $pageWidth;
-	margin: 0 auto;
+   max-width: $pageWidth;
+   margin: 0 auto;
 }
 
 .site-content {
-	margin: 0 auto; 
+   margin: 0 auto;
 
-	@include breakpoint(tablet) {
-		min-height: 100%;
-		margin-bottom: -$sticky-footer-height; // Negative! 
-		&:after {
-			height: $sticky-footer-height;
-			content: "";
-			display: block;
-		}
-	}
+   @media (min-width: 768px) {
+      min-height: 100%;
+      margin-bottom: -$sticky-footer-height; // Negative! 
+
+      &:after {
+         height: $sticky-footer-height;
+         content: "";
+         display: block;
+      }
+   }
 }
 
 .entry-footer,
 .byline {
-	@include textblock;
+   @include textblock;
 }
 
 /* Right sidebar */
 
 .right-sidebar .content-area {
-	@include breakpoint(medium) {
-		float: left;
-		margin: 0 -25% 0 0;
-	}
-	width: 100%;
+   @include breakpoint(medium) {
+      float: left;
+      margin: 0 -25% 0 0;
+   }
+
+   width: 100%;
 }
 
 .right-sidebar .site-main {
-	padding: $block-padding;
-	@include breakpoint(medium) {
-		margin: 0 25% 0 0;
-	}
+   padding: $block-padding;
+
+   @include breakpoint(medium) {
+      margin: 0 25% 0 0;
+   }
 }
 
 .right-sidebar .site-content .widget-area {
-	@include breakpoint(medium) {
-		float: right;
-		overflow: hidden;
-		width: 25%;
-	}
+   @include breakpoint(medium) {
+      float: right;
+      overflow: hidden;
+      width: 25%;
+   }
 }
 
 /* Left sidebar */
 
 .left-sidebar .content-area {
-	@include breakpoint(medium) {
-		float: right;
-		margin: 0 -25% 0 0;
-	}
-	width: 100%;
+   @include breakpoint(medium) {
+      float: right;
+      margin: 0 -25% 0 0;
+   }
+
+   width: 100%;
 }
 
 .left-sidebar .site-main {
-	padding: $block-padding;
-	@include breakpoint(medium) {
-		margin: 0;
-	}
+   padding: $block-padding;
+
+   @include breakpoint(medium) {
+      margin: 0;
+   }
 }
 
 .left-sidebar .site-content .widget-area {
-	@include breakpoint(medium) {
-		float: left;
-		overflow: hidden;
-		width: 25%;
-	}
+   @include breakpoint(medium) {
+      float: left;
+      overflow: hidden;
+      width: 25%;
+   }
 }
 
 /* Header */
 
 .site-description {
-	padding: $block-padding;
+   padding: $block-padding;
 }
 
 .site-title {
-	padding: $block-padding;
+   padding: $block-padding;
 }
 
 h1.menu-toggle {
-	margin: 0;
-	padding:  0 $side-padding;
+   margin: 0;
+   padding: 0 $side-padding;
 }
 
 /* Menu */
 
 ul.nav-menu li a {
-	padding: 5px $side-padding;
+   padding: 5px $side-padding;
 }
 
 #footer-widgets {
-	padding: $block-padding;
+   padding: $block-padding;
 }
 
 .site-footer ul {
-	padding: 0;
-	margin-bottom: 1em;
+   padding: 0;
+   margin-bottom: 1em;
 }
 
 .masonrycontainer {
-	@include clearfix;
+   @include clearfix;
 }
 
 
 
 .grid-sizer {
-	width: 100%;
-	@include breakpoint(mobile-horizontal) {
-		width: $grid-sizer-1;
-	}
-	@include breakpoint(tablet-horizontal) {
-		width: $grid-sizer-2;
-	}
+   width: 100%;
+
+   @include breakpoint(mobile-horizontal) {
+      width: $grid-sizer-1;
+   }
+
+   @include breakpoint(tablet-horizontal) {
+      width: $grid-sizer-2;
+   }
 }
 
 .gutter-sizer {
-	width: 0; // No gutter
-	@include breakpoint(mobile-horizontal) {
-		width: $gutter-sizer-1;
-	}
+   width: 0; // No gutter
+
+   @include breakpoint(mobile-horizontal) {
+      width: $gutter-sizer-1;
+   }
 }
 
 
@@ -153,26 +167,26 @@ ul.nav-menu li a {
 /* Image Layouts */
 
 img[class*='size-'] {
-	margin-bottom: 1.953125%;
+   margin-bottom: 1.953125%;
 }
 
 .size-sq3 {
-	float: left;
-	width: 32.03125%;
-	margin-right: 1.953125%;
+   float: left;
+   width: 32.03125%;
+   margin-right: 1.953125%;
 }
 
 .size-rec {
-	float: left;
-	width: 66.015625%;
-	margin-right: 1.953125%;
+   float: left;
+   width: 66.015625%;
+   margin-right: 1.953125%;
 }
 
 .size-letterbox {
-	width: 100%;
-	margin-right: 0;
+   width: 100%;
+   margin-right: 0;
 }
 
 img.last {
-	margin-right: 0;
+   margin-right: 0;
 }
