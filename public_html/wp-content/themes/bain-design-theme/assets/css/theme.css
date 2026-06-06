@@ -2455,11 +2455,11 @@
   .nw-wall { padding-bottom: var(--space-7); }
   .nw-wall__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
     align-items: start;
   }
-  .nw-wall__col { display: flex; flex-direction: column; gap: var(--space-6); }
+  .nw-wall__col { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
 
   /* Testimonial card */
   .nw-card {
@@ -2499,6 +2499,7 @@
     color: var(--ink);
     font-weight: 400;
     font-family: var(--font-mono);
+    overflow-wrap: break-word;
   }
   .nw-card--long .nw-card__quote { font-size: 22px; }
   .nw-card--pinned .nw-card__quote { color: var(--paper); }
@@ -2551,7 +2552,7 @@
   }
   .nw-counters__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-6);
   }
   .nw-counters__item {
@@ -2919,7 +2920,7 @@
   .nw-others__h3 { font-size: 32px; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
   .nw-others__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-5);
   }
   .nw-other-card {
