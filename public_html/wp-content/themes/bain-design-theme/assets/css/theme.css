@@ -290,7 +290,6 @@
     letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0;
-    max-width: 16ch;
   }
 
   /* Inline cycling slots — JS sets content via data attributes */
