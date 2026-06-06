@@ -1742,6 +1742,22 @@
     aspect-ratio: 4 / 3;
   }
 
+  /* 2-column internal layout at single-column breakpoint: thumb | body */
+  @media (max-width: 560px) {
+    .portfolio-archive .portfolio-card {
+      flex-direction: row;
+    }
+    .portfolio-archive .portfolio-card__thumb {
+      width: 38%;
+      flex-shrink: 0;
+      aspect-ratio: unset;
+      align-self: stretch;
+    }
+    .portfolio-archive .portfolio-card__thumb img {
+      height: 100%;
+    }
+  }
+
   /* ASCII corner ticks */
   .portfolio-card__tick {
     position: absolute;
