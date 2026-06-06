@@ -497,6 +497,17 @@
     color: var(--fg-2);
   }
 
+  /* Mobile: collapse to 2-col (num | name+note stacked) and hide stamps */
+  @media (max-width: 640px) {
+    .services-list__item {
+      grid-template-columns: 40px 1fr;
+      grid-template-rows: auto auto;
+    }
+    .services-list__num { grid-row: 1 / span 2; }
+    .services-list__note { grid-column: 2; }
+    .services-list__stamp { display: none; }
+  }
+
   /* Section header row variant (with trailing link) */
   .section-header--row {
     display: flex;
