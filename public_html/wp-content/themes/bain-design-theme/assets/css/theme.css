@@ -1109,6 +1109,20 @@
     background: transparent;
     color: var(--ink);
   }
+
+  @media (max-width: 900px) {
+    .contact-channels__grid { grid-template-columns: 1fr 1fr; }
+    .contact-faq__grid       { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .contact-hero__title { font-size: clamp(36px, 10vw, 72px); }
+    .contact-channels__grid { grid-template-columns: 1fr; }
+    .contact-form-section__grid { grid-template-columns: 1fr; }
+    .contact-form-section__form-row { grid-template-columns: 1fr; }
+    .wpcf7-form > p > label.cf7-label:nth-of-type(1),
+    .wpcf7-form > p > label.cf7-label:nth-of-type(2) { grid-column: 1 / -1; }
+  }
 }
 
 /* ----- About page ---------------------------------------------------- */
