@@ -1499,7 +1499,7 @@
     background: var(--ink);
     color: var(--paper);
   }
-  .about-cta__band .meta-bracket { color: rgba(245, 240, 232, 0.55); }
+  .about-cta__band .meta-bracket { color: rgba(245, 240, 232, 0.80); }
   .about-cta__heading {
     font-size: clamp(24px, 3vw, 40px);
     font-weight: 700;
