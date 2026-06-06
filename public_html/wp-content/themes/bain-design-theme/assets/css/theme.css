@@ -2921,6 +2921,7 @@
     .nw-context__grid {
       grid-template-columns: 1fr;
     }
+    .nw-featured__openquote { font-size: 80px; line-height: 1; margin-top: 0; margin-bottom: -8px; }
     .nw-page-header__monogram,
     .nw-hero__num { display: none; }
     .nw-wall__grid,
