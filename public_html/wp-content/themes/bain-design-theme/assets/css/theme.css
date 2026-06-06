@@ -365,11 +365,18 @@
       max-width: none;
       font-size: clamp(30px, 8.5vw, 42px);
     }
-    /* Allow headline slots to wrap naturally on mobile.
-       white-space:normal collapses leading spaces at line-start,
-       fixing the indent on wrapped lines. */
-    .hero__connector,
+    /* On mobile the inline-grid slots size to the reserve (widest) word,
+       which can be wider than the viewport (e.g. "entrepreneurs" ≈ 250px
+       at 32px font). Switch to inline so slots size to visible text only,
+       eliminating the overflow and the gap between wrapped lines. */
     .hero__slot {
+      display: inline;
+      white-space: normal;
+    }
+    .hero__slot-reserve { display: none; }
+    .hero__slot-inner   { display: inline; }
+    .hero__slot-highlight { display: none; }
+    .hero__connector {
       white-space: normal;
     }
     .hero__sub {
