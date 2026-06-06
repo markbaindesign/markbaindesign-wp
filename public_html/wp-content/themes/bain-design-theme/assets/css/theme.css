@@ -2016,6 +2016,7 @@
     .bain-project__prose p { font-size: 17px; }
     .bain-project__pager-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
     .bain-project__pager-link--right { text-align: left; }
+    .bain-project__pager-link { display: flex; flex-direction: column; gap: 4px; }
   }
 }
 
@@ -2189,6 +2190,7 @@
     .bain-client__quote { padding-left: 20px; }
     .bain-client__pager-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
     .bain-client__pager-link--right { text-align: left; }
+    .bain-client__pager-link { display: flex; flex-direction: column; gap: 4px; }
   }
 }
 
