@@ -11,6 +11,8 @@
 /scripts/
 /content/
 /.claude/pm-log.md
+/.claude/asana-mirror.md
+/.claude/asana-ids.json
 /qa/
 
 # =========================
