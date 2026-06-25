@@ -11,7 +11,7 @@ function bd324_register_all_post_types_and_taxonomies()
         'name' => 'Clients',
         'singular_name' => 'Client',
         'plural_name' => 'Clients',
-        'menu_icon' => 'dashicons-tagcloud',
+        'menu_icon' => 'dashicons-businessperson',
         'menu_name' => 'Clients',
         'rewrite_slug' => 'clients',
         'menu_position' => 5
@@ -22,7 +22,7 @@ function bd324_register_all_post_types_and_taxonomies()
         'singular_name' => 'Portfolio Project',
         'plural_name' => 'Portfolio Projects',
         'menu_name' => 'Projects',
-        'menu_icon' => 'dashicons-tagcloud',
+        'menu_icon' => 'dashicons-portfolio',
         'menu_position' => 5,
         'rewrite_slug' => 'portfolio'
     ]);
@@ -31,7 +31,7 @@ function bd324_register_all_post_types_and_taxonomies()
         'name' => 'Client Testimonials',
         'singular_name' => 'Client Testimonial',
         'plural_name' => 'Client Testimonials',
-        'menu_icon' => 'dashicons-tagcloud',
+        'menu_icon' => 'dashicons-format-quote',
         'menu_name' => 'Testimonials',
         'rewrite_slug' => 'testimonials',
         'menu_position' => 5
