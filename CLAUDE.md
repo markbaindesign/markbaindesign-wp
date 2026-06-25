@@ -13,6 +13,12 @@ Personal portfolio/design studio WordPress site for Bain Design. A custom WordPr
 - **Plugin**: `bd-custom` (all site-specific business logic) — **must be active** for CPTs to be registered. If CPT queries return empty, check with `ddev wp plugin list`.
 - **WP-CLI**: `ddev wp <command>` (runs inside DDEV container)
 
+## Git Branching
+
+- **Base branch:** `develop` — all feature branches must be cut from `develop` and PRs must target `develop`
+- `master` is the production branch; it is behind `develop` and must never be used as a base for new work
+- Branch naming: `feature/{prefix-id}-{slug}` e.g. `feature/bd-040-audit-hardcoded-content`
+
 ## Build Commands
 
 ```bash
