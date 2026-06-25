@@ -62,23 +62,29 @@ get_header();
 			</h2>
 		</header>
 
+		<?php
+		$fp_services = get_posts( array(
+			'post_type'      => 'bd324_services',
+			'post_status'    => 'publish',
+			'post_parent'    => 0,
+			'posts_per_page' => -1,
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
+		) );
+		?>
 		<div class="services-panel">
 			<div class="services-list" role="list">
-				<div class="services-list__item" role="listitem">
-					<span class="services-list__num" aria-hidden="true">01</span>
-					<span class="services-list__name">Themes<span class="services-list__stamp" aria-hidden="true">no bloat ✦</span></span>
-					<span class="services-list__note">Bespoke WordPress themes, coded from scratch. No page builders, no bloat.</span>
-				</div>
-				<div class="services-list__item" role="listitem">
-					<span class="services-list__num" aria-hidden="true">02</span>
-					<span class="services-list__name">Plugins<span class="services-list__stamp" aria-hidden="true">two on .org ✦</span></span>
-					<span class="services-list__note">Custom functionality, two open-source plugins on .org, hundreds of bespoke installs.</span>
-				</div>
-				<div class="services-list__item" role="listitem">
-					<span class="services-list__num" aria-hidden="true">03</span>
-					<span class="services-list__name">Design<span class="services-list__stamp" aria-hidden="true">pixels &amp; all ✦</span></span>
-					<span class="services-list__note">Wireframing through to UI &mdash; mood-boarding, prototyping, full handoff.</span>
-				</div>
+				<?php foreach ( $fp_services as $i => $svc ) :
+					$svc_note = $svc->post_excerpt ?: wp_trim_words( strip_tags( $svc->post_content ), 20 );
+				?>
+				<a class="services-list__item" href="<?php echo esc_url( get_permalink( $svc ) ); ?>" role="listitem">
+					<span class="services-list__num" aria-hidden="true"><?php echo sprintf( '%02d', $i + 1 ); ?></span>
+					<span class="services-list__name"><?php echo esc_html( $svc->post_title ); ?></span>
+					<?php if ( $svc_note ) : ?>
+					<span class="services-list__note"><?php echo esc_html( $svc_note ); ?></span>
+					<?php endif; ?>
+				</a>
+				<?php endforeach; ?>
 			</div>
 		</div>
 

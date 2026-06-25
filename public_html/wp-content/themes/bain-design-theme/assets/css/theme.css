@@ -427,8 +427,10 @@
     gap: var(--space-5);
     padding: var(--space-5) var(--space-5);
     border-bottom: 1px solid var(--rule-soft);
-    cursor: default;
+    cursor: pointer;
     transition: background var(--dur-1) var(--ease-1);
+    text-decoration: none;
+    color: inherit;
 
     &:hover { background: rgba(201, 100, 66, 0.04); }
 
