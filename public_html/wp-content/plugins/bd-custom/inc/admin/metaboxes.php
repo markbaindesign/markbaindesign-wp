@@ -59,6 +59,41 @@ function bd324_get_metabox_config()
     ];
 }
 
+// Template-sourced page notice — shown on pages whose content lives in a template file, not the editor
+add_action('add_meta_boxes', 'bd324_add_template_source_notice');
+function bd324_add_template_source_notice() {
+    $screen = get_current_screen();
+    if (!$screen || 'page' !== $screen->post_type) {
+        return;
+    }
+    $post_id = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+    if (!$post_id) {
+        return;
+    }
+    $template = get_post_meta($post_id, '_wp_page_template', true);
+    if (empty($template) || 'default' === $template) {
+        return;
+    }
+    add_meta_box(
+        'bd324_template_source_notice',
+        'Content location',
+        'bd324_render_template_source_notice',
+        'page',
+        'normal',
+        'high',
+        array('template' => $template)
+    );
+}
+
+function bd324_render_template_source_notice($post, $metabox) {
+    $template = esc_html($metabox['args']['template']);
+    echo '<p style="margin:0">The content on this page is rendered by the template file:</p>';
+    echo '<p style="margin:6px 0 0;font-family:monospace;font-size:13px;background:#f6f7f7;padding:6px 8px;border-radius:3px">';
+    echo 'themes/bain-design-theme/' . $template;
+    echo '</p>';
+    echo '<p style="margin:6px 0 0;color:#646970">Edit that file to change headings, copy, or structure. The WP editor content area is not used.</p>';
+}
+
 // Add all metaboxes
 function bd324_add_related_metaboxes()
 {
