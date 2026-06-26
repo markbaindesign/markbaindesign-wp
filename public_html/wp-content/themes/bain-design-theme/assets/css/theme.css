@@ -1999,9 +1999,9 @@
 
   /* Pager */
   .bain-project__pager { padding: 32px var(--gutter); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-  .bain-project__pager-inner { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 14px; }
-  .bain-project__pager-link { color: var(--ink); text-decoration: none; }
-  .bain-project__pager-link--right { text-align: right; }
+  .bain-project__pager-inner { display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--font-mono); font-size: 14px; }
+  .bain-project__pager-link { display: flex; flex-direction: column; gap: 4px; color: var(--ink); text-decoration: none; }
+  .bain-project__pager-link--right { align-items: flex-end; text-align: right; }
   .bain-project__pager-dir { color: var(--pencil); }
   .bain-project__pager-title { border-bottom: 1px solid var(--ink); }
   .bain-project__pager-link:hover .bain-project__pager-title { border-bottom-width: 2px; }
@@ -2186,9 +2186,9 @@
 
   /* ---- Pager --------------------------------------------------- */
   .bain-client__pager { padding: 64px var(--gutter) 48px; border-top: 1px solid var(--rule); }
-  .bain-client__pager-inner { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 14px; }
-  .bain-client__pager-link { color: var(--ink); text-decoration: none; }
-  .bain-client__pager-link--right { text-align: right; }
+  .bain-client__pager-inner { display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--font-mono); font-size: 14px; }
+  .bain-client__pager-link { display: flex; flex-direction: column; gap: 4px; color: var(--ink); text-decoration: none; }
+  .bain-client__pager-link--right { align-items: flex-end; text-align: right; }
   .bain-client__pager-dir { color: var(--pencil); }
   .bain-client__pager-title { border-bottom: 1px solid var(--ink); }
   .bain-client__pager-link:hover .bain-client__pager-title { border-bottom-width: 2px; }
