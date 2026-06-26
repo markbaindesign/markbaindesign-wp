@@ -5,3 +5,4 @@ if (!defined('ABSPATH')) {
 }
 
 require_once BD092__PLUGIN_DIR . '/inc/admin/metaboxes.php';
+require_once BD092__PLUGIN_DIR . '/inc/admin/columns.php';
