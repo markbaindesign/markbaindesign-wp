@@ -160,6 +160,13 @@ get_header();
 <section class="bain-section about-section" id="about" aria-labelledby="about-heading">
 	<div class="bain-section__inner about-section__inner">
 
+		<div class="about-section__portrait">
+			<?php echo wp_get_attachment_image( 1954, 'large', false, array(
+				'class'   => 'about-section__portrait-img',
+				'alt'     => 'Mark Crawford Bain',
+			) ); ?>
+		</div>
+
 		<div class="about-section__text">
 			<?php bain_meta_bracket( 'about' ); ?>
 			<h2 class="about-section__name" id="about-heading">Mark Crawford Bain</h2>
