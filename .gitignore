@@ -109,3 +109,5 @@ $RECYCLE.BIN/
 *.gz
 *.sql
 *.sublime-workspace
+# Claude Code session state
+.claude/*.local.md
