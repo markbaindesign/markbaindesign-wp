@@ -20,12 +20,12 @@ the_post();
 
 $contact = array(
 	'email'         => 'hello@bain.design',
-	'schedule'      => 'calendly.com/bain',
+	'schedule'      => 'https://calendar.app.google/fS1HHEXdqo8d6Wq7A',
 	'github'        => 'github.com/markbaindesign',
 	'rss'           => 'bain.design/feed',
-	'location'      => 'Eixample / Gràcia',
+	'location'      => 'Sabadell',
 	'responseTime'  => 'within a working day or two',
-	'hours'         => '09:00–17:00 CET (weekdays)',
+	'hours'         => '09:30–19:00 CET (weekdays)',
 );
 
 $channels = array(
@@ -49,7 +49,7 @@ $channels = array(
 		'kind'  => 'Engineering',
 		'title' => 'GitHub',
 		'addr'  => $contact['github'],
-		'desc'  => 'Open-source plugins, theme experiments, code review. Drop an issue on Plain Sitemap if you found a bug.',
+		'desc'  => 'Open-source plugins, theme experiments, code review. Drop an issue if you found a bug.',
 		'cta'   => 'Browse repos ↗',
 		'tone'  => 'paper',
 	),
@@ -63,9 +63,9 @@ $channels = array(
 	),
 	array(
 		'kind'  => 'In person',
-		'title' => 'Barcelona',
-		'addr'  => 'Eixample / Gràcia',
-		'desc'  => 'I work from home or from Antic Forn café most mornings. Happy to meet for coffee if you\'re passing through.',
+		'title' => 'Sabadell',
+		'addr'  => 'La Creu Alta',
+		'desc'  => 'I work from home in Sabadell. Happy to meet for coffee if you\'re passing through.',
 		'cta'   => 'Say hi if you\'re here',
 		'tone'  => 'paper',
 	),
@@ -81,8 +81,8 @@ $channels = array(
 
 $faq = array(
 	array(
-		'q' => 'Do you work with WordPress only?',
-		'a' => 'Yes — bespoke themes and plugins, no page builders, no parent themes. If your stack is React/Next or Astro, I can recommend a couple of friends who do that well.',
+		'q' => 'Do you only work with WordPress?',
+		'a' => 'No — As well as bespoke WordPress themes and plugins, I also build in React/Next, Vue & Astro.',
 	),
 	array(
 		'q' => 'Smallest project you\'ll take on?',
@@ -94,15 +94,15 @@ $faq = array(
 	),
 	array(
 		'q' => 'Where are you based?',
-		'a' => 'Barcelona (Eixample). I work async with clients across UTC-8 to UTC+10. The overlap with US East and West coasts is the usual sticking point.',
+		'a' => 'Sabadell (La Creu Alta). I work async with clients across UTC-8 to UTC+10, but if you\'re in Australia, I\'ll get up early just for you.',
 	),
 	array(
 		'q' => 'Do you use AI?',
-		'a' => 'For early drafting, code skeletons, and rubber-ducking — yes. For decisions, design, and final code — no. The shipped work is mine.',
+		'a' => 'Yes, specifically Claude Code. I consider Claude a valuable part of the Bain Design team. But just as if Claude was a junior dev, I review its output. The shipped work is mine.',
 	),
 	array(
 		'q' => 'What about page builders?',
-		'a' => 'I don\'t use Elementor, Divi, WPBakery, or similar. They optimise for click-flow at the cost of performance, accessibility and maintainability. The Bain default is custom blocks or ACF.',
+		'a' => 'It depends on the project. I don\'t rule them out, and I\'ve worked with Elementor, Divi, WPBakery, and others. But it\'s important to consider the trade-offs. The Bain default is custom blocks or ACF.',
 	),
 );
 ?>
@@ -181,7 +181,6 @@ $faq = array(
 				<ul class="contact-form-section__benefits">
 					<li>No newsletter sign-up.</li>
 					<li>Goes straight to my inbox.</li>
-					<li>I delete it after we close out.</li>
 				</ul>
 			</div>
 
