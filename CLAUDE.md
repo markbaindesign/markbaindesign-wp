@@ -15,9 +15,8 @@ Personal portfolio/design studio WordPress site for Bain Design. A custom WordPr
 
 ## Git Branching
 
-- **Base branch:** `develop` — all feature branches must be cut from `develop` and PRs must target `develop`
-- `master` is the production branch; it is behind `develop` and must never be used as a base for new work
-- Branch naming: `feature/{prefix-id}-{slug}` e.g. `feature/bd-040-audit-hardcoded-content`
+- **Base branch:** `develop` — commit directly to `develop`; no feature branches or PRs
+- `master` is the production branch; it is behind `develop` and must never be committed to directly
 
 ## Build Commands
 
@@ -25,14 +24,7 @@ Personal portfolio/design studio WordPress site for Bain Design. A custom WordPr
 ddev start           # start local environment
 ddev stop            # stop local environment
 ddev wp <cmd>        # run WP-CLI commands inside DDEV
-npm install          # install Grunt plugins
-grunt                # compile Sass + watch (default dev task)
-grunt build          # full production build → /release
-grunt export         # export WordPress install to /export
-grunt import         # import archive from /import to local env
 ```
-
-The watch task monitors `sass/**/*.{scss,sass}` and JS files, triggering Sass compilation and livereload on change.
 
 ## Project Structure
 
