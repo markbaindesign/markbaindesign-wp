@@ -263,6 +263,9 @@ function bd324_get_project_terms( $project_id, $taxonomy ) {
 }
 
 function bd324_get_projects_for_related_posts( $post_id, $key ) {
+	global $post;
+	$saved_post = $post;
+
 	$args = [
 		'post_type'      => 'bd324_projects',
 		'posts_per_page' => -1,
@@ -276,20 +279,25 @@ function bd324_get_projects_for_related_posts( $post_id, $key ) {
 	$query    = new WP_Query( $args );
 	$projects = [];
 
-	foreach ( $query->posts ?? [] as $post ) {
-		$year = (int) get_field( 'year', $post->ID );
+	foreach ( $query->posts ?? [] as $queried_post ) {
+		$year = (int) get_field( 'year', $queried_post->ID );
 		if ( ! $year ) {
-			$year = (int) get_the_date( 'Y', $post->ID );
+			$year = (int) get_the_date( 'Y', $queried_post->ID );
 		}
 		$projects[] = [
-			'ID'        => $post->ID,
-			'title'     => get_the_title( $post->ID ),
-			'permalink' => get_permalink( $post->ID ),
-			'excerpt'   => get_the_excerpt( $post->ID ),
-			'thumbnail' => get_the_post_thumbnail_url( $post->ID, 'full' ),
+			'ID'        => $queried_post->ID,
+			'title'     => get_the_title( $queried_post->ID ),
+			'permalink' => get_permalink( $queried_post->ID ),
+			'excerpt'   => get_the_excerpt( $queried_post->ID ),
+			'thumbnail' => get_the_post_thumbnail_url( $queried_post->ID, 'full' ),
 			'year'      => $year,
 		];
 	}
-	wp_reset_postdata();
+
+	$post = $saved_post;
+	if ( $saved_post ) {
+		setup_postdata( $saved_post );
+	}
+
 	return $projects;
 }
