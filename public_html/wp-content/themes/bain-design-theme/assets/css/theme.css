@@ -2053,7 +2053,11 @@
 .bain-project__prose--legacy h2 { font-size: 24px; font-weight: 700; margin: 32px 0 12px; letter-spacing: -0.01em; }
 .bain-project__prose--legacy h3,
 .bain-project__prose--legacy h4 { font-size: 18px; font-weight: 700; margin: 24px 0 8px; }
-.bain-project__prose--legacy img { max-width: 100%; height: auto; display: block; float: none; margin: 24px 0; border: 1px solid var(--rule); }
+.bain-project__prose--legacy img { max-width: 100% !important; height: auto; display: block; float: none; margin: 24px 0; border: 1px solid var(--rule); }
+.bain-project__prose--legacy figure,
+.bain-project__prose--legacy .wp-caption { max-width: 100% !important; width: auto !important; float: none !important; margin: 24px 0 !important; }
+.bain-project__prose--legacy .wp-caption-text,
+.bain-project__prose--legacy figcaption { font-size: 13px; color: var(--pencil); margin-top: 6px; }
 .bain-project__prose--legacy ul,
 .bain-project__prose--legacy ol { margin: 0 0 20px 24px; font-size: 18px; line-height: 1.6; color: var(--graphite); }
 .bain-project__prose--legacy li { margin-bottom: 6px; }
