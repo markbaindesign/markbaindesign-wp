@@ -126,10 +126,6 @@ function bain_nw_short_quote( $post ) {
 						<span class="nw-mini-row__label">Year</span>
 						<span class="nw-mini-row__value"><?php echo esc_html( $f_year ); ?></span>
 					</div>
-					<div class="nw-mini-row">
-						<span class="nw-mini-row__label">Verb.</span>
-						<span class="nw-mini-row__value">Unedited</span>
-					</div>
 				</div>
 			</div>
 

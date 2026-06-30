@@ -119,10 +119,6 @@ wp_reset_postdata();
 					<dt class="nw-meta-row__label">Year</dt>
 					<dd class="nw-meta-row__value"><?php echo esc_html( $year ); ?></dd>
 				</div>
-				<div class="nw-meta-row">
-					<dt class="nw-meta-row__label">Verb.</dt>
-					<dd class="nw-meta-row__value">Unedited</dd>
-				</div>
 			</dl>
 
 		</div>
