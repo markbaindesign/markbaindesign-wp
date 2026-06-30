@@ -143,34 +143,6 @@ $off_clock = array(
 
 <?php bain_ascii_rule(); ?>
 
-<!-- ============================================================== TIMELINE -->
-<section class="about-timeline">
-	<div class="bain-wrap about-timeline__grid">
-
-		<div class="about-timeline__aside">
-			<?php bain_meta_bracket( '02' ); ?>
-			<h2 class="about-timeline__heading">What happened, in order</h2>
-			<div class="about-timeline__cmd">cat ~/career.log<br><span class="about-timeline__cmd-count"><?php echo count( $timeline ); ?> entries</span></div>
-		</div>
-
-		<ol class="about-timeline__list">
-			<div class="about-timeline__rule" aria-hidden="true"></div>
-			<?php $last = count( $timeline ) - 1; foreach ( $timeline as $i => $t ) : ?>
-			<li class="about-timeline__item">
-				<div class="about-timeline__year">
-					<?php echo esc_html( $t['year'] ); ?>
-					<span class="about-timeline__dot<?php echo $i === $last ? ' about-timeline__dot--clay' : ''; ?>" aria-hidden="true"></span>
-				</div>
-				<p class="about-timeline__body"><?php echo esc_html( $t['body'] ); ?></p>
-			</li>
-			<?php endforeach; ?>
-		</ol>
-
-	</div>
-</section>
-
-<?php bain_ascii_rule(); ?>
-
 <!-- ================================================================= TOOLS -->
 <section class="about-tools">
 	<div class="bain-wrap">
