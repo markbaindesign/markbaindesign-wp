@@ -97,6 +97,8 @@ while ( have_posts() ) :
 	<section class="bain-project__body">
 		<div class="bain-wrap">
 
+			<?php if ( $brief || $approach || $outcome || $wins ) : ?>
+
 			<?php if ( $brief ) : ?>
 			<div class="bain-project__block">
 				<?php bain_project__section_rail( '01', 'Brief' ); ?>
@@ -132,6 +134,14 @@ while ( have_posts() ) :
 				<div class="bain-project__prose">
 					<?php if ( $outcome ) { echo wp_kses_post( wpautop( $outcome ) ); } ?>
 					<?php if ( $wins ) { bain_check_list( $wins, 'bain-project__wins' ); } ?>
+				</div>
+			</div>
+			<?php endif; ?>
+
+			<?php else : ?>
+			<div class="bain-project__block bain-project__block--legacy">
+				<div class="bain-project__prose bain-project__prose--legacy">
+					<?php the_content(); ?>
 				</div>
 			</div>
 			<?php endif; ?>
