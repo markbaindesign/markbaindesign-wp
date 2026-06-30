@@ -2057,6 +2057,12 @@
 .bain-project__prose--legacy ul,
 .bain-project__prose--legacy ol { margin: 0 0 20px 24px; font-size: 18px; line-height: 1.6; color: var(--graphite); }
 .bain-project__prose--legacy li { margin-bottom: 6px; }
+.bain-project__prose--legacy iframe,
+.bain-project__prose--legacy embed { max-width: 100%; width: 100%; aspect-ratio: 16 / 9; display: block; margin: 24px 0; }
+.bain-project__prose--legacy video { max-width: 100% !important; width: 100% !important; height: auto !important; display: block; margin: 24px 0; }
+.bain-project__prose--legacy .wp-video,
+.bain-project__prose--legacy .mejs-container { max-width: 100% !important; width: 100% !important; }
+.bain-project__prose--legacy .mejs-container { height: auto !important; aspect-ratio: 16 / 9; }
 
 /* ================================================================
    Single client
