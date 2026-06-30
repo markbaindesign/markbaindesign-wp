@@ -151,11 +151,15 @@ $faq = array(
 					<?php echo esc_html( $c['title'] ); ?><span class="contact-channel-card__dot">.</span>
 				</h3>
 
+				<?php if ( ! empty( $c['url'] ) ) : ?>
+				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="<?php echo esc_url( $c['url'] ); ?>" <?php echo str_starts_with( $c['url'], 'mailto:' ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>>
+					<?php echo str_starts_with( $c['url'], 'mailto:' ) ? antispambot( $c['addr'] ) : esc_html( $c['addr'] ); ?>
+				</a>
+				<?php else : ?>
 				<div class="contact-channel-card__addr">
-					<?php echo isset( $c['url'] ) && str_starts_with( (string) $c['url'], 'mailto:' )
-						? antispambot( $c['addr'] )
-						: esc_html( $c['addr'] ); ?>
+					<?php echo esc_html( $c['addr'] ); ?>
 				</div>
+				<?php endif; ?>
 
 				<p class="contact-channel-card__desc">
 					<?php echo esc_html( $c['desc'] ); ?>

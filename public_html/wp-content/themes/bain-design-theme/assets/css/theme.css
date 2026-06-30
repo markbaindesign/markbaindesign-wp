@@ -754,21 +754,15 @@
     color: var(--clay);
   }
 
-  .contact-channel-card--ink .contact-channel-card__addr {
+  .contact-channel-card__addr {
     font-family: var(--font-mono);
     font-size: var(--type-13);
-    color: var(--clay-soft);
-    text-decoration: underline;
+    color: var(--pencil);
     word-break: break-all;
+    text-decoration: none;
   }
-
-  .contact-channel-card--paper .contact-channel-card__addr {
-    font-family: var(--font-mono);
-    font-size: var(--type-13);
-    color: var(--link);
-    text-decoration: underline;
-    word-break: break-all;
-  }
+  .contact-channel-card--ink .contact-channel-card__addr--link { color: var(--clay-soft); text-decoration: underline; }
+  .contact-channel-card--paper .contact-channel-card__addr--link { color: var(--link); text-decoration: underline; }
 
   .contact-channel-card__desc {
     font-size: var(--type-14);
