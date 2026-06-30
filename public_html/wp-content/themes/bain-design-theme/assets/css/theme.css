@@ -2041,6 +2041,9 @@
   }
 }
 
+/* Related card — unlayered to beat base.css a { color: var(--link) } */
+.bain-project__related-card { color: var(--ink); }
+
 /* Legacy post_content fallback — unlayered to beat base.css h1/h2 element styles */
 .bain-project__block--legacy { grid-template-columns: 1fr; }
 .bain-project__prose--legacy h1,
