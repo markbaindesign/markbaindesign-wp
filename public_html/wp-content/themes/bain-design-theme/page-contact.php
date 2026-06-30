@@ -152,7 +152,9 @@ $faq = array(
 				</h3>
 
 				<div class="contact-channel-card__addr">
-					<?php echo esc_html( $c['addr'] ); ?>
+					<?php echo isset( $c['url'] ) && str_starts_with( (string) $c['url'], 'mailto:' )
+						? antispambot( $c['addr'] )
+						: esc_html( $c['addr'] ); ?>
 				</div>
 
 				<p class="contact-channel-card__desc">

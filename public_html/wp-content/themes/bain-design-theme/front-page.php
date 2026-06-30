@@ -196,9 +196,9 @@ get_header();
 		<p class="contact-section__lead">
 			If you're keen to find out more, there are lots of ways to get in touch &mdash; but why not start with an email?
 		</p>
-		<a href="mailto:hello@bain.design" class="contact-section__email" id="contact-email"
+		<a href="<?php echo antispambot( 'mailto:hello@bain.design' ); ?>" class="contact-section__email" id="contact-email"
 			   data-tip="click to copy + open">
-			hello@bain.design →
+			<?php echo antispambot( 'hello@bain.design' ); ?> →
 		</a>
 	</div>
 </section>

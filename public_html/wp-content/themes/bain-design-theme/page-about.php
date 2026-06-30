@@ -64,7 +64,7 @@ $off_clock = array(
 		<dl class="about-hero__meta">
 			<div class="about-hero__meta-row"><dt>Where</dt><dd>Sant Cugat, near Barcelona</dd></div>
 			<div class="about-hero__meta-row"><dt>Pronouns</dt><dd>he / him</dd></div>
-			<div class="about-hero__meta-row"><dt>Email</dt><dd><a href="mailto:mark@bain.design">mark@bain.design ↗</a></dd></div>
+			<div class="about-hero__meta-row"><dt>Email</dt><dd><a href="<?php echo antispambot( 'mailto:mark@bain.design' ); ?>"><?php echo antispambot( 'mark@bain.design' ); ?> ↗</a></dd></div>
 			<div class="about-hero__meta-row"><dt>Since</dt><dd>2012</dd></div>
 			<div class="about-hero__meta-row"><dt>Status</dt><dd>Booking 2026</dd></div>
 		</dl>
@@ -198,8 +198,8 @@ $off_clock = array(
 				<h3 class="about-cta__heading">Still reading? Let's start with an email<span class="about-cta__dot">.</span></h3>
 				<p class="about-cta__sub">I read every one. Usually reply within a working day, or the next morning if you wrote at midnight in another timezone.</p>
 			</div>
-			<a class="about-cta__email" href="mailto:mark@bain.design">
-				mark@bain.design <span aria-hidden="true">&rarr;</span>
+			<a class="about-cta__email" href="<?php echo antispambot( 'mailto:mark@bain.design' ); ?>">
+				<?php echo antispambot( 'mark@bain.design' ); ?> <span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
 	</div>
