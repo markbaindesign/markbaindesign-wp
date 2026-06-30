@@ -204,20 +204,6 @@ function bain_nw_short_quote( $post ) {
 	</div>
 </div>
 
-<!-- ============================================================= COUNTERS -->
-<div class="nw-counters">
-	<div class="bain-wrap">
-		<div class="nw-counters__grid">
-			<?php foreach ( $nice_numbers as $stat ) : ?>
-			<div class="nw-counters__item">
-				<div class="nw-counters__n"><?php echo esc_html( $stat['n'] ); ?></div>
-				<div class="nw-counters__label"><?php echo esc_html( $stat['label'] ); ?></div>
-				<div class="nw-counters__sub">[ <?php echo esc_html( $stat['sub'] ); ?> ]</div>
-			</div>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</div>
 
 <!-- ============================================================= CTA -->
 <section class="nw-archive-cta">
