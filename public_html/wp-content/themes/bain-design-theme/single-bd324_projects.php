@@ -37,7 +37,9 @@ while ( have_posts() ) :
 	if ( ! empty( $linked_testimonials ) && is_array( $linked_testimonials ) ) {
 		$t_post = get_post( $linked_testimonials[0] );
 		if ( $t_post && $t_post->post_status === 'publish' ) {
-			$tq = wp_trim_words( wp_strip_all_tags( $t_post->post_content ), 60, '…' ) ?: $tq;
+			$tq = $t_post->post_excerpt
+				?: wp_trim_words( wp_strip_all_tags( $t_post->post_content ), 30, '…' )
+				?: $tq;
 			$ta = $ta ?: get_the_title( $t_post );
 			$tr = $tr ?: get_post_meta( $t_post->ID, 'testimonial_role', true );
 			$testimonial_permalink = get_permalink( $t_post );
