@@ -33,6 +33,7 @@ $channels = array(
 		'kind'  => 'Primary',
 		'title' => 'Email',
 		'addr'  => $contact['email'],
+		'url'   => 'mailto:' . $contact['email'],
 		'desc'  => 'The most reliable way to reach me. I read everything, I reply within a working day or two.',
 		'cta'   => 'Compose →',
 		'tone'  => 'ink',
@@ -41,6 +42,7 @@ $channels = array(
 		'kind'  => 'Booking',
 		'title' => 'Schedule a chat',
 		'addr'  => $contact['schedule'],
+		'url'   => $contact['schedule'],
 		'desc'  => '30 minutes, free. Useful once you\'ve got a brief shape and want to talk about scope, timing or fit.',
 		'cta'   => 'Pick a slot ↗',
 		'tone'  => 'paper',
@@ -49,6 +51,7 @@ $channels = array(
 		'kind'  => 'Engineering',
 		'title' => 'GitHub',
 		'addr'  => $contact['github'],
+		'url'   => 'https://' . $contact['github'],
 		'desc'  => 'Open-source plugins, theme experiments, code review. Drop an issue if you found a bug.',
 		'cta'   => 'Browse repos ↗',
 		'tone'  => 'paper',
@@ -57,6 +60,7 @@ $channels = array(
 		'kind'  => 'Subscribe',
 		'title' => 'RSS',
 		'addr'  => $contact['rss'],
+		'url'   => 'https://' . $contact['rss'],
 		'desc'  => 'I write once or twice a quarter — usually about WordPress internals, the indie web, or a tool worth knowing.',
 		'cta'   => 'Subscribe ↗',
 		'tone'  => 'paper',
@@ -65,6 +69,7 @@ $channels = array(
 		'kind'  => 'In person',
 		'title' => 'Sabadell',
 		'addr'  => 'La Creu Alta',
+		'url'   => null,
 		'desc'  => 'I work from home in Sabadell. Happy to meet for coffee if you\'re passing through.',
 		'cta'   => 'Say hi if you\'re here',
 		'tone'  => 'paper',
@@ -73,6 +78,7 @@ $channels = array(
 		'kind'  => 'Hours',
 		'title' => 'Office hours',
 		'addr'  => $contact['hours'],
+		'url'   => null,
 		'desc'  => 'I close my mail client outside these. If something is genuinely on fire, mark the subject [URGENT].',
 		'cta'   => null,
 		'tone'  => 'paper',
@@ -155,7 +161,13 @@ $faq = array(
 
 				<?php if ( $c['cta'] ) : ?>
 				<div class="contact-channel-card__cta">
+					<?php if ( ! empty( $c['url'] ) ) : ?>
+					<a href="<?php echo esc_url( $c['url'] ); ?>" <?php echo str_starts_with( $c['url'], 'mailto:' ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>>
+						<?php echo esc_html( $c['cta'] ); ?>
+					</a>
+					<?php else : ?>
 					<?php echo esc_html( $c['cta'] ); ?>
+					<?php endif; ?>
 				</div>
 				<?php endif; ?>
 
