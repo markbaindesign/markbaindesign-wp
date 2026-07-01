@@ -1210,21 +1210,22 @@
     box-shadow: 6px 6px 0 var(--ink);
     transition: transform 220ms, box-shadow 220ms;
     cursor: default;
-    overflow: hidden;
 
     &:hover {
       transform: rotate(-1deg) translateY(-3px);
       box-shadow: 6px 6px 0 var(--clay);
     }
   }
-  .about-letter__portrait-img {
+  .about-letter__portrait-clip {
     position: absolute;
     inset: 0;
+    overflow: hidden;
+  }
+  .about-letter__portrait-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: grayscale(100%);
   }
   .about-letter__portrait-tick {
     position: absolute;
@@ -2043,6 +2044,9 @@
 
 /* Related card — unlayered to beat base.css a { color: var(--link) } */
 .bain-project__related-card { color: var(--ink); }
+
+/* About portrait — unlayered to beat base.css img { height: auto } */
+.about-letter__portrait-img { height: 100%; }
 
 /* Legacy post_content fallback — unlayered to beat base.css h1/h2 element styles */
 .bain-project__block--legacy { grid-template-columns: 1fr; }

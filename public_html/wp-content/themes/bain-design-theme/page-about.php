@@ -84,10 +84,12 @@ $off_clock = array(
 				<span class="about-letter__portrait-tick about-letter__portrait-tick--tr" aria-hidden="true">┐</span>
 				<span class="about-letter__portrait-tick about-letter__portrait-tick--bl" aria-hidden="true">└</span>
 				<span class="about-letter__portrait-tick about-letter__portrait-tick--br" aria-hidden="true">┘</span>
-				<?php echo wp_get_attachment_image( $portrait_id, 'large', false, array(
-					'class' => 'about-letter__portrait-img',
-					'alt'   => 'Mark Crawford Bain',
-				) ); ?>
+				<div class="about-letter__portrait-clip">
+					<?php echo wp_get_attachment_image( $portrait_id, 'large', false, array(
+						'class' => 'about-letter__portrait-img',
+						'alt'   => 'Mark Crawford Bain',
+					) ); ?>
+				</div>
 			</div>
 			<div class="about-letter__caption">
 				<div>[ Sant Cugat studio &middot; Tuesday morning ]</div>
