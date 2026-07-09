@@ -119,6 +119,20 @@ wp_reset_postdata();
 					<dt class="nw-meta-row__label">Year</dt>
 					<dd class="nw-meta-row__value"><?php echo esc_html( $year ); ?></dd>
 				</div>
+				<?php if ( ! empty( $related_projects ) ) : ?>
+				<div class="nw-meta-row">
+					<dt class="nw-meta-row__label">Project</dt>
+					<dd class="nw-meta-row__value">
+						<?php
+						$project_links = array();
+						foreach ( $related_projects as $rp ) {
+							$project_links[] = '<a href="' . esc_url( $rp['permalink'] ) . '">' . esc_html( $rp['title'] ) . '</a>';
+						}
+						echo implode( ', ', $project_links );
+						?>
+					</dd>
+				</div>
+				<?php endif; ?>
 			</dl>
 
 		</div>
