@@ -155,13 +155,12 @@ while ( have_posts() ) :
 	<?php if ( $tq ) : ?>
 	<section class="bain-project__quote">
 		<div class="bain-wrap bain-project__quote-inner">
+			<span class="bain-project__quote-mark" aria-hidden="true">&ldquo;</span>
 			<div class="bain-project__quote-eyebrow">
-				<span class="bain-project__quote-mark" aria-hidden="true">&ldquo;</span>
 				Nice words
-				<span class="bain-project__quote-mark" aria-hidden="true">&rdquo;</span>
 			</div>
 			<blockquote class="bain-project__quote-text">
-				&ldquo;<?php echo esc_html( $tq ); ?>&rdquo;
+				<?php echo esc_html( $tq ); ?>
 			</blockquote>
 			<?php if ( $ta || $tr ) : ?>
 			<div class="bain-project__quote-attribution">
