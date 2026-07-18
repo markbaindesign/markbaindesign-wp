@@ -2168,6 +2168,9 @@
   .bain-client__project-excerpt { font-size: 14px; color: var(--graphite); margin: 0; line-height: 1.55; text-wrap: pretty; }
   .bain-client__project-link { margin-top: auto; padding-top: 12px; font-family: var(--font-mono); font-size: 13px; color: var(--link); text-decoration: underline; }
 
+  /* Card as anchor — remove inherited underline from base.css a rule */
+  a.bain-client__project-card { text-decoration: none; }
+
   /* ---- Testimonials -------------------------------------------- */
   .bain-client__testimonials {
     padding: 96px var(--gutter) 0;
