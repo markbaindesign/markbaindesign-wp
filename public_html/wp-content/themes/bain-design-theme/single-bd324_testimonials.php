@@ -85,7 +85,11 @@ wp_reset_postdata();
 					<?php
 					echo $role ? esc_html( $role ) : 'A client';
 					if ( $org ) {
-						echo ' at <strong>' . esc_html( $org ) . '</strong>';
+						if ( $related_project ) {
+							echo ' at <strong><a href="' . esc_url( $related_project['permalink'] ) . '">' . esc_html( $org ) . '</a></strong>';
+						} else {
+							echo ' at <strong>' . esc_html( $org ) . '</strong>';
+						}
 					}
 					echo '. Wrote in to talk about';
 					if ( $related_project ) {
