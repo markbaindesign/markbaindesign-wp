@@ -1,34 +1,64 @@
-# markbaindesign WordPress theme
+# bain.design
 
-## By Mark Bain Design
+Personal portfolio and design studio WordPress site for Bain Design. A custom WordPress theme
+(`bain-design-theme`, based on Underscores) plus a companion plugin (`bd-custom`) that carries all
+site-specific business logic.
 
-### Version 2.6.0
+- **Local URL:** `https://bain.design.ddev.site`
+- **Production URL:** `https://bain.design`
 
-## 1. Setup
+## Requirements
 
-- [NPM]. Open project directory in terminal and run `npm install` to install all grunt plugins. See `package.json`for details. 
-- Run `bower install` to download Bower components (and their dependencies) to `/bower_components`. See `bower.json`for details.
-- Run `grunt copyassets`to copy assets from `/bower_components`to the appropriate theme directory. See `Gruntfile.js`for details.
+- [DDEV](https://ddev.readthedocs.io/) (local environment — replaces the old grunt/bower workflow entirely)
+- Docker
 
-## 2. Development
+## Setup
 
-- Run `grunt` to compile your Sass and run the watch task. See `Gruntfile.js`for details.
-- Run `grunt build` to output build files to `/release`. See `Gruntfile.js`for details.
+```bash
+ddev start           # start the local environment
+ddev wp plugin list  # verify bd-custom is active
+```
 
-## 3. Deployment
+The `bd-custom` plugin **must be active** — it registers all custom post types. If CPT queries
+come back empty, check it first.
 
-### Scripts
+## Development
 
-This project comes with a set of shell scripts to aid with deployment, [markbaindesign/mbd-wp-deploy-scripts]. These scripts can either be run manually, or via grunt tasks. For configuration instructions, see [mbd-wp-deploy-scripts/scripts/README.md]. 
+There is no build step. CSS and JS are edited directly in the theme:
 
-- Run `grunt import`to run the import script and install the archive currently in `/import`to your local environment.
-- Run `grunt export`to run the export script which creates an archive of your local install in `/export`, ready to upload to your remote environment (staging/production).
+```
+public_html/wp-content/
+  themes/bain-design-theme/
+    assets/css/tokens.css      # design tokens — CSS custom properties only; editor-safe
+    assets/css/base.css        # element styles + brand utilities; front-end only
+    assets/css/theme.css       # layout + components via @layer; depends on tokens + base
+    assets/js/dist/main.min.js # vanilla JS interaction layer (no build step)
+    inc/bain-design-system.php # PHP template-tag helpers (bain_ prefix)
+    templates/                 # template parts (postcard, portfolio, related-*)
+  plugins/bd-custom/
+    inc/post-types/register.php  # CPT + taxonomy registration (bd324_ prefix)
+    inc/helpers/helpers.php      # shared utilities
+    acf-json/                    # ACF field groups (version-controlled)
+```
 
-### Replacing URLs
+WP-CLI runs inside the DDEV container:
 
-Once you have run the import script, you need to change all the URLs in the database. I suggest using [interconnectit/Search-Replace-DB]. 
+```bash
+ddev wp <command>
+```
 
-[NPM]: https://www.npmjs.com/
-[interconnectit/Search-Replace-DB]: https://github.com/interconnectit/Search-Replace-DB
-[markbaindesign/mbd-wp-deploy-scripts]: https://github.com/markbaindesign/mbd-wp-deploy-scripts
-[mbd-wp-deploy-scripts/scripts/README.md]: https://github.com/markbaindesign/mbd-wp-deploy-scripts/blob/master/scripts/README.md
+## Git workflow
+
+- **Base branch:** `develop` — commit directly to `develop`; no feature branches or PRs.
+- `master` is the production branch. It is behind `develop` and must never be committed to directly.
+
+## Deployment
+
+Production access and deployment details live in `CLAUDE.md` (kept out of this README deliberately).
+
+## Historical note
+
+Earlier versions of this project used an npm/bower/grunt pipeline (`grunt/`, `sass/` directories
+remain from that era). That pipeline is retired: the config files it referenced (`Gruntfile.js`,
+`bower.json`, `package.json`) no longer exist, and no build tooling is required to work on the
+site today.
