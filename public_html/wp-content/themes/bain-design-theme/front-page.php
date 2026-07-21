@@ -177,7 +177,7 @@ get_header();
 			<ul class="bain-check">
 				<li>Dedicated and creative &mdash; every site is coded from scratch. <span class="tip-q" data-tip="no Wix/Squarespace/Webflow">?</span></li>
 				<li>Proficient in wireframing, designing responsive layouts, and coding bespoke themes &amp; plugins. <span class="tip-q" data-tip="full-stack, mostly">?</span></li>
-				<li>Two open-source plugins published on WordPress.org. <span class="tip-q" data-tip="free as in beer">?</span></li>
+				<li>Two open-source plugins published on <a href="https://profiles.wordpress.org/markcbain/" target="_blank" rel="noopener noreferrer">WordPress.org</a>. <span class="tip-q" data-tip="free as in beer">?</span></li>
 				<li>Committed to delivering technical solutions that align with clients&#8217; business objectives. <span class="tip-q" data-tip="translation: I read your brief">?</span></li>
 			</ul>
 		</div>
