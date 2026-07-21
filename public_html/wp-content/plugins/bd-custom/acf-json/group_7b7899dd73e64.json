@@ -1,0 +1,68 @@
+{
+    "key": "group_7b7899dd73e64",
+    "title": "Tool — timeline entry",
+    "fields": [
+        {
+            "key": "field_bd324_tool_start_date",
+            "label": "Start date",
+            "name": "start_date",
+            "type": "date_picker",
+            "instructions": "When this tool entered the practice. Day is optional — pick the 1st of the month if unknown.",
+            "required": 1,
+            "display_format": "F Y",
+            "return_format": "Ymd",
+            "first_day": 1,
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_bd324_tool_sunset_date",
+            "label": "Sunset date",
+            "name": "sunset_date",
+            "type": "date_picker",
+            "instructions": "When this tool stopped being used for new work — kept on only to maintain existing/legacy projects. Leave blank if never sunsetted (still fully current, or went straight to Ended).",
+            "required": 0,
+            "display_format": "F Y",
+            "return_format": "Ymd",
+            "first_day": 1,
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_bd324_tool_end_date",
+            "label": "End date",
+            "name": "end_date",
+            "type": "date_picker",
+            "instructions": "When this tool was dropped entirely — no longer used on any project, including legacy ones. Leave blank if still current or only sunsetting.",
+            "required": 0,
+            "display_format": "F Y",
+            "return_format": "Ymd",
+            "first_day": 1,
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_bd324_tool_url",
+            "label": "URL",
+            "name": "url",
+            "type": "url",
+            "instructions": "Link to the tool's website (optional).",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "bd324_tools"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [ "discussion", "comments", "trackbacks" ],
+    "active": true,
+    "description": "Bain Design — tools timeline entry fields. Post title is the tool name, post content/excerpt is the note describing why it mattered.",
+    "modified": 1784645126
+}
