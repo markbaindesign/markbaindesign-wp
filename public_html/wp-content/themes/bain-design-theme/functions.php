@@ -87,6 +87,24 @@ add_action( 'wp_enqueue_scripts', function () {
 		$ver,
 		true
 	);
+
+	// D3-powered tools timeline — only on its own archive.
+	if ( is_post_type_archive( 'bd324_tools' ) ) {
+		wp_enqueue_script(
+			'd3',
+			'https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js',
+			array(),
+			'7',
+			true
+		);
+		wp_enqueue_script(
+			'bain-tools-gantt',
+			get_theme_file_uri( 'assets/js/tools-gantt.js' ),
+			array( 'd3' ),
+			$ver,
+			true
+		);
+	}
 }, 20 );
 
 /* =============================================================================

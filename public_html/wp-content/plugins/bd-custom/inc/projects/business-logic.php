@@ -37,22 +37,14 @@ function bd324_get_project_meta( $post_id ) {
 	// Tagline (falls back to excerpt in templates)
 	$tagline = get_field( 'tagline', $post_id );
 
-	// Client display name (text field)
-	$client_display = get_field( 'client', $post_id );
-
-	// Related client CPT entry (for logo + permalink)
+	// Related client CPT entry (for name + logo + permalink)
 	$related_client_data = bd324_get_related_client_data( $post_id );
 	if ( $related_client_data ) {
 		$meta['client'] = [
-			'label'     => __( 'Client', 'bd-custom' ),
-			'value'     => $client_display ?: ( $related_client_data['client_name'] ?? '' ),
-			'image'     => esc_url( $related_client_data['client_logo'] ?? '' ),
-			'url'       => $related_client_data['client_permalink'] ?? '',
-		];
-	} elseif ( $client_display ) {
-		$meta['client'] = [
 			'label' => __( 'Client', 'bd-custom' ),
-			'value' => esc_html( $client_display ),
+			'value' => $related_client_data['client_name'] ?? '',
+			'image' => esc_url( $related_client_data['client_logo'] ?? '' ),
+			'url'   => $related_client_data['client_permalink'] ?? '',
 		];
 	}
 
@@ -266,14 +258,25 @@ function bd324_get_projects_for_related_posts( $post_id, $key ) {
 	global $post;
 	$saved_post = $post;
 
+	// ACF relationship values are serialized as either ints (i:0;i:123;)
+	// or strings (s:3:"123";) depending on how the field was saved, so
+	// both forms must be matched.
 	$args = [
 		'post_type'      => 'bd324_projects',
 		'posts_per_page' => -1,
-		'meta_query'     => [ [
-			'key'     => $key,
-			'value'   => 'i:' . (int) $post_id . ';',
-			'compare' => 'LIKE',
-		] ],
+		'meta_query'     => [
+			'relation' => 'OR',
+			[
+				'key'     => $key,
+				'value'   => 'i:' . (int) $post_id . ';',
+				'compare' => 'LIKE',
+			],
+			[
+				'key'     => $key,
+				'value'   => '"' . (int) $post_id . '"',
+				'compare' => 'LIKE',
+			],
+		],
 	];
 
 	$query    = new WP_Query( $args );

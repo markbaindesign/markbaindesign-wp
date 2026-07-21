@@ -104,7 +104,7 @@ while ( have_posts() ) :
 					$p_terms = wp_get_post_terms( $p['ID'], 'project-category-service', array( 'fields' => 'names' ) );
 					$p_tag   = ( $p_terms && ! is_wp_error( $p_terms ) ) ? $p_terms[0] : '';
 				?>
-				<article class="bain-client__project-card">
+				<a class="bain-client__project-card" href="<?php echo esc_url( $p['permalink'] ); ?>">
 					<?php if ( $p['thumbnail'] ) : ?>
 					<div class="bain-client__project-thumb">
 						<img src="<?php echo esc_url( $p['thumbnail'] ); ?>"
@@ -118,11 +118,11 @@ while ( have_posts() ) :
 						<?php if ( $p['excerpt'] ) : ?>
 						<p class="bain-client__project-excerpt"><?php echo esc_html( $p['excerpt'] ); ?></p>
 						<?php endif; ?>
-						<a class="bain-client__project-link" href="<?php echo esc_url( $p['permalink'] ); ?>">
+						<span class="bain-client__project-link">
 							view project &rarr;
-						</a>
+						</span>
 					</div>
-				</article>
+				</a>
 				<?php endforeach; ?>
 			</div>
 		</div>

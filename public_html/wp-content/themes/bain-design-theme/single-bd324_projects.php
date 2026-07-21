@@ -14,7 +14,8 @@ while ( have_posts() ) :
 	the_post();
 
 	$num      = bain_project_number();
-	$client   = bain_project_field( 'client',    null, '—' );
+	$related_client = get_field( 'related_client' );
+	$client   = ( ! empty( $related_client ) && is_array( $related_client ) ) ? ( $related_client[0]->post_title ?? '—' ) : '—';
 	$year     = bain_project_field( 'year',      null, get_the_date( 'Y' ) );
 	$duration = bain_project_field( 'duration',  null, '' );
 	$role     = bain_project_field( 'role',      null, '' );
@@ -27,24 +28,26 @@ while ( have_posts() ) :
 	$a_gallery = bain_project_field( 'approach_gallery', null, array() );
 	$s_gallery = bain_project_field( 'showcase_gallery', null, array() );
 	$wins     = bain_project_wins();
-	$stack    = bain_project_stack();
-	$tq       = bain_project_field( 'testimonial_quote',  null, '' );
-	$ta       = bain_project_field( 'testimonial_author', null, '' );
-	$tr       = bain_project_field( 'testimonial_role',   null, '' );
+	$stack    = bain_project_terms_pills( 'project-category-tech-stack' );
+	$services = bain_project_terms_pills( 'project-category-service' );
+	$tools    = bain_project_terms_pills( 'project-category-tool' );
+	$profiles = bain_project_terms_pills( 'project-category-profile' );
 
-	// Prefer linked testimonial CPT over hardcoded fields
+	// Quote for the project page comes solely from the related testimonial CPT.
+	$tq = $ta = $tr = '';
+	$testimonial_permalink = '';
 	$linked_testimonials = get_post_meta( get_the_ID(), 'related_testimonials', true );
 	if ( ! empty( $linked_testimonials ) && is_array( $linked_testimonials ) ) {
 		$t_post = get_post( $linked_testimonials[0] );
 		if ( $t_post && $t_post->post_status === 'publish' ) {
 			$tq = $t_post->post_excerpt
-				?: wp_trim_words( wp_strip_all_tags( $t_post->post_content ), 30, '…' )
-				?: $tq;
-			$ta = $ta ?: get_the_title( $t_post );
-			$tr = $tr ?: get_post_meta( $t_post->ID, 'testimonial_role', true );
+				?: wp_trim_words( wp_strip_all_tags( $t_post->post_content ), 30, '…' );
+			$ta = get_the_title( $t_post );
+			$tr = get_post_meta( $t_post->ID, 'testimonial_role', true );
 			$testimonial_permalink = get_permalink( $t_post );
 		}
 	}
+
 	$related  = bain_project_related();
 	$prev     = bain_project_adjacent( 'prev' );
 	$next     = bain_project_adjacent( 'next' );
@@ -155,13 +158,12 @@ while ( have_posts() ) :
 	<?php if ( $tq ) : ?>
 	<section class="bain-project__quote">
 		<div class="bain-wrap bain-project__quote-inner">
+			<span class="bain-project__quote-mark" aria-hidden="true">&ldquo;</span>
 			<div class="bain-project__quote-eyebrow">
-				<span class="bain-project__quote-mark" aria-hidden="true">&ldquo;</span>
 				Nice words
-				<span class="bain-project__quote-mark" aria-hidden="true">&rdquo;</span>
 			</div>
 			<blockquote class="bain-project__quote-text">
-				&ldquo;<?php echo esc_html( $tq ); ?>&rdquo;
+				<?php echo esc_html( $tq ); ?>
 			</blockquote>
 			<?php if ( $ta || $tr ) : ?>
 			<div class="bain-project__quote-attribution">
@@ -184,29 +186,59 @@ while ( have_posts() ) :
 
 	<!-- ============================================================== GALLERY -->
 	<?php
-	$s_gallery = array_values( array_filter( (array) $s_gallery ) );
-	if ( ! empty( $s_gallery ) ) :
-		$big   = $s_gallery[0] ?? null;
-		$right = array( $s_gallery[1] ?? null, $s_gallery[2] ?? null );
+	$gallery_items = array();
+	foreach ( (array) $s_gallery as $img ) {
+		$id = is_array( $img ) ? ( $img['ID'] ?? 0 ) : (int) $img;
+		if ( ! $id ) { continue; }
+		$gallery_items[] = array(
+			'id'      => $id,
+			'full'    => wp_get_attachment_image_url( $id, 'full' ),
+			'alt'     => get_post_meta( $id, '_wp_attachment_image_alt', true ),
+			'caption' => wp_get_attachment_caption( $id ),
+		);
+	}
+	if ( ! empty( $gallery_items ) ) :
+		$big         = $gallery_items[0];
+		$right       = array( $gallery_items[1] ?? null, $gallery_items[2] ?? null );
+		$extra_count = max( 0, count( $gallery_items ) - 3 );
 	?>
-	<section class="bain-project__gallery">
+	<section class="bain-project__gallery" data-gallery="<?php echo esc_attr( wp_json_encode( $gallery_items ) ); ?>">
 		<div class="bain-wrap">
 			<?php bain_project__section_inline( '04', 'Selected screens' ); ?>
 			<div class="bain-project__gallery-grid">
-				<?php if ( $big ) :
-					$id = is_array( $big ) ? ( $big['ID'] ?? 0 ) : (int) $big;
-					if ( $id ) { echo wp_get_attachment_image( $id, 'full', false, array( 'class' => 'bain-project__gallery-big' ) ); }
-				endif; ?>
+				<button type="button" class="bain-project__gallery-trigger bain-project__gallery-trigger--big" data-gallery-index="0">
+					<?php echo wp_get_attachment_image( $big['id'], 'full', false, array( 'class' => 'bain-project__gallery-big' ) ); ?>
+				</button>
 				<div class="bain-project__gallery-stack">
-					<?php foreach ( $right as $img ) :
+					<?php foreach ( $right as $i => $img ) :
 						if ( ! $img ) { continue; }
-						$id = is_array( $img ) ? ( $img['ID'] ?? 0 ) : (int) $img;
-						if ( $id ) { echo wp_get_attachment_image( $id, 'large', false, array( 'class' => 'bain-project__gallery-small' ) ); }
-					endforeach; ?>
+						$is_last = ( 1 === $i && $extra_count > 0 );
+					?>
+					<button type="button" class="bain-project__gallery-trigger" data-gallery-index="<?php echo esc_attr( $i + 1 ); ?>">
+						<?php echo wp_get_attachment_image( $img['id'], 'large', false, array( 'class' => 'bain-project__gallery-small' ) ); ?>
+						<?php if ( $is_last ) : ?>
+						<span class="bain-project__gallery-more" aria-hidden="true">+<?php echo esc_html( $extra_count ); ?></span>
+						<?php endif; ?>
+					</button>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<div class="bain-lightbox" id="bain-lightbox" hidden aria-hidden="true">
+		<div class="bain-lightbox__backdrop" data-lightbox-close></div>
+		<div class="bain-lightbox__inner" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Project screens', 'bain-design-theme' ); ?>">
+			<button type="button" class="bain-lightbox__close" data-lightbox-close aria-label="<?php esc_attr_e( 'Close', 'bain-design-theme' ); ?>">&times;</button>
+			<button type="button" class="bain-lightbox__nav bain-lightbox__prev" data-lightbox-prev aria-label="<?php esc_attr_e( 'Previous image', 'bain-design-theme' ); ?>">&larr;</button>
+			<img class="bain-lightbox__image" src="" alt="">
+			<button type="button" class="bain-lightbox__nav bain-lightbox__next" data-lightbox-next aria-label="<?php esc_attr_e( 'Next image', 'bain-design-theme' ); ?>">&rarr;</button>
+			<div class="bain-lightbox__footer">
+				<p class="bain-lightbox__caption"></p>
+				<span class="bain-lightbox__counter"></span>
+			</div>
+		</div>
+	</div>
 	<?php endif; ?>
 
 	<!-- ================================================================ STACK -->
@@ -216,7 +248,49 @@ while ( have_posts() ) :
 			<?php bain_project__section_inline( '05', 'Stack' ); ?>
 			<ul class="bain-project__stack-list" role="list">
 				<?php foreach ( $stack as $s ) : ?>
-					<li class="bain-project__stack-pill"><?php echo esc_html( $s ); ?></li>
+					<li class="bain-project__stack-pill"><a href="<?php echo esc_url( $s['url'] ); ?>"<?php echo $s['description'] ? ' data-tip="' . esc_attr( $s['description'] ) . '"' : ''; ?>><?php echo esc_html( $s['name'] ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<!-- ============================================================== SERVICES -->
+	<?php if ( $services ) : ?>
+	<section class="bain-project__stack">
+		<div class="bain-wrap">
+			<?php bain_project__section_inline( '06', 'Services' ); ?>
+			<ul class="bain-project__stack-list" role="list">
+				<?php foreach ( $services as $s ) : ?>
+					<li class="bain-project__stack-pill"><a href="<?php echo esc_url( $s['url'] ); ?>"<?php echo $s['description'] ? ' data-tip="' . esc_attr( $s['description'] ) . '"' : ''; ?>><?php echo esc_html( $s['name'] ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<!-- ================================================================ TOOLS -->
+	<?php if ( $tools ) : ?>
+	<section class="bain-project__stack">
+		<div class="bain-wrap">
+			<?php bain_project__section_inline( '07', 'Tools' ); ?>
+			<ul class="bain-project__stack-list" role="list">
+				<?php foreach ( $tools as $s ) : ?>
+					<li class="bain-project__stack-pill"><a href="<?php echo esc_url( $s['url'] ); ?>"<?php echo $s['description'] ? ' data-tip="' . esc_attr( $s['description'] ) . '"' : ''; ?>><?php echo esc_html( $s['name'] ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<!-- ============================================================= PROFILES -->
+	<?php if ( $profiles ) : ?>
+	<section class="bain-project__stack">
+		<div class="bain-wrap">
+			<?php bain_project__section_inline( '08', 'Profiles' ); ?>
+			<ul class="bain-project__stack-list" role="list">
+				<?php foreach ( $profiles as $s ) : ?>
+					<li class="bain-project__stack-pill"><a href="<?php echo esc_url( $s['url'] ); ?>"<?php echo $s['description'] ? ' data-tip="' . esc_attr( $s['description'] ) . '"' : ''; ?>><?php echo esc_html( $s['name'] ); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
@@ -227,7 +301,7 @@ while ( have_posts() ) :
 	<?php if ( $related || $archive ) : ?>
 	<section class="bain-project__related">
 		<div class="bain-wrap">
-			<?php bain_project__section_inline( '06', 'Related' ); ?>
+			<?php bain_project__section_inline( '09', 'Related' ); ?>
 			<div class="bain-project__related-grid">
 
 				<?php foreach ( $related as $r ) :

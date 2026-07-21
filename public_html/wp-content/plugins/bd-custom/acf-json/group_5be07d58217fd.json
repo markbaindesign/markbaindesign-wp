@@ -19,15 +19,6 @@
             "wrapper": { "width": "100" }
         },
         {
-            "key": "field_bain_proj_client",
-            "label": "Client",
-            "name": "client",
-            "type": "text",
-            "instructions": "Display name shown in the case study header.",
-            "required": 1,
-            "wrapper": { "width": "33" }
-        },
-        {
             "key": "field_bain_proj_year",
             "label": "Year",
             "name": "year",
@@ -35,7 +26,7 @@
             "min": 2000,
             "max": 2100,
             "instructions": "4-digit year. Defaults to publish year if blank.",
-            "wrapper": { "width": "16" }
+            "wrapper": { "width": "25" }
         },
         {
             "key": "field_bain_proj_duration",
@@ -43,7 +34,7 @@
             "name": "duration",
             "type": "text",
             "placeholder": "5 months",
-            "wrapper": { "width": "17" }
+            "wrapper": { "width": "25" }
         },
         {
             "key": "field_bain_proj_role",
@@ -51,7 +42,7 @@
             "name": "role",
             "type": "text",
             "placeholder": "Design & development",
-            "wrapper": { "width": "34" }
+            "wrapper": { "width": "50" }
         },
         {
             "key": "field_bain_proj_live_url",
@@ -126,36 +117,6 @@
         },
 
         {
-            "key": "field_bain_proj_quote_tab",
-            "label": "Testimonial",
-            "name": "",
-            "type": "tab"
-        },
-        {
-            "key": "field_bain_proj_testimonial_quote",
-            "label": "Quote",
-            "name": "testimonial_quote",
-            "type": "textarea",
-            "rows": 4,
-            "instructions": "No quote marks — they're added in the template."
-        },
-        {
-            "key": "field_bain_proj_testimonial_author",
-            "label": "Author",
-            "name": "testimonial_author",
-            "type": "text",
-            "wrapper": { "width": "50" }
-        },
-        {
-            "key": "field_bain_proj_testimonial_role",
-            "label": "Author role",
-            "name": "testimonial_role",
-            "type": "text",
-            "placeholder": "Executive Director · Acme Co.",
-            "wrapper": { "width": "50" }
-        },
-
-        {
             "key": "field_bain_proj_media_tab",
             "label": "Media",
             "name": "",
@@ -168,8 +129,8 @@
             "type": "gallery",
             "return_format": "id",
             "min": 0,
-            "max": 3,
-            "instructions": "Up to 3 images. First sits big on the left, the other two stack on the right."
+            "max": 0,
+            "instructions": "First sits big on the left, the other two stack on the right. Extra images beyond 3 show as a \"+N\" on the last thumbnail and open in the gallery viewer. Set each image's Caption in the media editor to describe it — captions appear in the viewer."
         },
 
         {
@@ -177,25 +138,6 @@
             "label": "Extras",
             "name": "",
             "type": "tab"
-        },
-        {
-            "key": "field_bain_proj_stack",
-            "label": "Stack",
-            "name": "stack",
-            "type": "repeater",
-            "instructions": "Tech the project runs on. Each entry renders as a hairline pill.",
-            "min": 0,
-            "layout": "table",
-            "button_label": "Add tech",
-            "sub_fields": [
-                {
-                    "key": "field_bain_proj_tech",
-                    "label": "Tech",
-                    "name": "tech",
-                    "type": "text",
-                    "placeholder": "WordPress, ACF, …"
-                }
-            ]
         },
         {
             "key": "field_bain_proj_related",
@@ -266,5 +208,5 @@
     "hide_on_screen": [ "discussion", "comments", "trackbacks" ],
     "active": true,
     "description": "Bain Design — project case study fields. Matches the new design system. Legacy fields (related_client, related_testimonials) preserved for back-compat.",
-    "modified": 1748131200
+    "modified": 1784635867
 }

@@ -340,20 +340,22 @@ function bain_project_wins( $post_id = null ) {
 }
 
 /**
- * Stack repeater → flat array of strings.
+ * Project taxonomy terms → array of [ 'name' => …, 'url' => term archive link ].
+ * Used for pill lists (Tech Stack, Services, Tools, Profiles) on the single project template.
  */
-function bain_project_stack( $post_id = null ) {
+function bain_project_terms_pills( $taxonomy, $post_id = null ) {
 	$post_id = $post_id ?: get_the_ID();
-	if ( ! function_exists( 'have_rows' ) ) {
-		return array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $post_id, 'stack', true ) ) ) );
+	$terms   = wp_get_post_terms( $post_id, $taxonomy );
+	if ( empty( $terms ) || is_wp_error( $terms ) ) {
+		return array();
 	}
 	$out = array();
-	if ( have_rows( 'stack', $post_id ) ) {
-		while ( have_rows( 'stack', $post_id ) ) {
-			the_row();
-			$txt = get_sub_field( 'tech' );
-			if ( $txt ) { $out[] = $txt; }
-		}
+	foreach ( $terms as $term ) {
+		$out[] = array(
+			'name'        => $term->name,
+			'url'         => get_term_link( $term ),
+			'description' => $term->description,
+		);
 	}
 	return $out;
 }
