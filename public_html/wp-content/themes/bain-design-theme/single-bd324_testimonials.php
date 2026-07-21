@@ -1,7 +1,7 @@
 <?php
 /**
  * Single testimonial template — single-bd324_testimonials.php
- * Matches SingleTestimonial.jsx: breadcrumb → hero → pull quote → context → project → prev/next → other voices.
+ * Matches SingleTestimonial.jsx: breadcrumb → hero → pull quote → project → prev/next → other voices.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -34,14 +34,12 @@ if ( function_exists( 'bd324_get_testimonial_related_client_data' ) ) {
 	$client_permalink = $client_data['client_permalink'] ?? '';
 }
 
-// Related project (first match)
-$related_project = null;
+// Related projects (a testimonial can relate to more than one)
+$related_projects = array();
 if ( function_exists( 'bd324_get_testimonial_related_projects' ) ) {
 	$related_projects = bd324_get_testimonial_related_projects( $post_id );
-	if ( ! empty( $related_projects ) ) {
-		$related_project = $related_projects[0];
-	}
 }
+$related_project = ! empty( $related_projects ) ? $related_projects[0] : null;
 
 // Prev/next within bd324_testimonials
 $prev_post = get_previous_post();
@@ -92,8 +90,12 @@ wp_reset_postdata();
 						}
 					}
 					echo '. Wrote in to talk about';
-					if ( $related_project ) {
+					if ( count( $related_projects ) === 1 ) {
 						echo ' the <em>' . esc_html( $related_project['title'] ) . '</em> build';
+					} elseif ( count( $related_projects ) > 1 ) {
+						$titles = array_map( 'esc_html', wp_list_pluck( $related_projects, 'title' ) );
+						$last   = array_pop( $titles );
+						echo ' the <em>' . implode( '</em>, <em>', $titles ) . '</em> and <em>' . $last . '</em> builds';
 					} else {
 						echo ' the work';
 					}
@@ -161,55 +163,34 @@ wp_reset_postdata();
 					?>
 				</div>
 			</div>
-			<?php if ( $related_project ) : ?>
+			<?php if ( ! empty( $related_projects ) ) : ?>
 			<div class="nw-pullquote__actions">
-				<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="<?php echo esc_url( $related_project['permalink'] ); ?>">
-					see the project <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span>
+				<?php foreach ( $related_projects as $i => $rp ) : ?>
+				<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="<?php echo esc_url( $rp['permalink'] ); ?>">
+					<?php echo 0 === $i && count( $related_projects ) === 1 ? 'see the project' : 'see &ldquo;' . esc_html( $rp['title'] ) . '&rdquo;'; ?> <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span>
 				</a>
+				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 		</div>
 	</div>
 </section>
 
-<!-- ============================================================= CONTEXT -->
-<section class="nw-context">
-	<div class="bain-wrap">
-		<div class="nw-context__grid">
-
-			<div>
-				<div class="nw-section-label__num">A</div>
-				<h2 class="nw-section-label__h3">Context</h2>
-			</div>
-
-			<div>
-				<p class="nw-context__p1">A client engagement, scoped carefully from brief to launch.</p>
-				<p class="nw-context__p2">The quote above came back when I checked in at the six-month mark. That is, in my experience, the best kind of review &mdash; unprompted, after the dust has settled.</p>
-			</div>
-
-			<aside class="nw-scope-card">
-				<?php bain_meta_bracket( 'scope of work' ); ?>
-				<p class="nw-context__p2" style="margin-top:var(--space-4);">Details on request &mdash; or read the project case study below.</p>
-			</aside>
-
-		</div>
-	</div>
-</section>
-
-<!-- ============================================================= LINKED PROJECT -->
-<?php if ( $related_project ) :
-	$p_id    = $related_project['ID'];
-	$p_url   = $related_project['permalink'];
-	$p_title = $related_project['title'];
-	$p_year  = $related_project['year'] ?: get_the_date( 'Y', $p_id );
-	$p_thumb = get_the_post_thumbnail( $p_id, 'large' );
-?>
+<!-- ============================================================= LINKED PROJECT(S) -->
+<?php if ( ! empty( $related_projects ) ) : ?>
 <section class="nw-linked-project">
 	<div class="bain-wrap">
 		<div class="nw-linked-project__header">
 			<span class="nw-linked-project__section-label" aria-hidden="true">B /</span>
-			<h3 class="nw-linked-project__h3">The project this is about</h3>
+			<h3 class="nw-linked-project__h3"><?php echo count( $related_projects ) === 1 ? 'The project this is about' : 'The projects this is about'; ?></h3>
 		</div>
+		<?php foreach ( $related_projects as $rp ) :
+			$p_id    = $rp['ID'];
+			$p_url   = $rp['permalink'];
+			$p_title = $rp['title'];
+			$p_year  = $rp['year'] ?: get_the_date( 'Y', $p_id );
+			$p_thumb = get_the_post_thumbnail( $p_id, 'large' );
+		?>
 		<a class="nw-linked-project__card" href="<?php echo esc_url( $p_url ); ?>">
 			<div class="nw-linked-project__thumb">
 				<?php echo $p_thumb; ?>
@@ -223,6 +204,7 @@ wp_reset_postdata();
 				<div class="nw-linked-project__cta">read the case study &rarr;</div>
 			</div>
 		</a>
+		<?php endforeach; ?>
 	</div>
 </section>
 <?php endif; ?>

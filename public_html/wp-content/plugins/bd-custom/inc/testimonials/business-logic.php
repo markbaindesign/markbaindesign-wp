@@ -4,6 +4,19 @@ if (!defined('ABSPATH')) {
     die('Invalid request, dude!');
 }
 
+/**
+ * Show every published testimonial on the archive — the template renders
+ * the whole wall in one scroll and has no pager, so the site-wide
+ * posts_per_page setting must not truncate it.
+ */
+function bd324_testimonials_archive_show_all($query)
+{
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('bd324_testimonials')) {
+        $query->set('posts_per_page', -1);
+    }
+}
+add_action('pre_get_posts', 'bd324_testimonials_archive_show_all');
+
 function bd324_get_testimonial_data($testimonial_id, $context = 'single')
 {
     $post_type = get_post_type($testimonial_id);
