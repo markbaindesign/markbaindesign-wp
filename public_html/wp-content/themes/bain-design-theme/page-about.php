@@ -34,12 +34,31 @@ $timeline = array(
 	array( 'year' => '2026', 'body' => 'Currently taking two more projects for the year. If you are reading this in 2027, that probably also applies, but ask.' ),
 );
 
-$tools = array(
-	array( 'group' => 'CMS / Back-end',  'items' => array( 'WordPress 6.x', 'PHP 8.2', 'ACF Pro', 'WP-CLI', 'Composer' ) ),
-	array( 'group' => 'Front-end',       'items' => array( 'HTML / CSS', 'Vanilla JS', 'Alpine.js (rarely)', 'No build step where possible', 'Vite when not' ) ),
-	array( 'group' => 'Editorial',       'items' => array( 'Bespoke custom post types', 'Block patterns', 'No page builders', 'Editorial workflows in plain PHP' ) ),
-	array( 'group' => 'Studio kit',      'items' => array( 'MacBook Pro 14"', 'A Field Notes pocket notebook', 'iA Writer for drafts', 'Tot for daily plan', 'Mechanical pencil — Pentel P205' ) ),
-);
+$tools = array();
+if ( function_exists( 'bd324_get_tools_timeline' ) ) {
+	$year_start = '20260101';
+	$year_end   = '20261231';
+	$by_group   = array();
+
+	foreach ( bd324_get_tools_timeline() as $t ) {
+		if ( empty( $t['start_date'] ) || $t['start_date'] > $year_end ) {
+			continue; // not started yet by end of 2026
+		}
+		if ( ! empty( $t['end_date'] ) && $t['end_date'] < $year_start ) {
+			continue; // already ended before 2026
+		}
+
+		$group = $t['category_name'] ?: 'Other';
+		if ( ! isset( $by_group[ $group ] ) ) {
+			$by_group[ $group ] = array();
+		}
+		$by_group[ $group ][] = $t['name'];
+	}
+
+	foreach ( $by_group as $group => $items ) {
+		$tools[] = array( 'group' => $group, 'items' => $items );
+	}
+}
 
 $off_clock = array(
 	array( 'label' => 'In the kitchen', 'text' => 'Slow-cooking, mostly North African and Catalan. Best loaf so far: a 36-hour sourdough. Worst: an attempt at canelones de marisco that the cat then ate.' ),
@@ -164,6 +183,10 @@ $off_clock = array(
 			</div>
 			<?php endforeach; ?>
 		</div>
+		<?php $tools_archive_link = get_post_type_archive_link( 'bd324_tools' ); ?>
+		<?php if ( $tools_archive_link ) : ?>
+		<p class="about-tools__more"><a href="<?php echo esc_url( $tools_archive_link ); ?>">See full timeline &rarr;</a></p>
+		<?php endif; ?>
 	</div>
 </section>
 

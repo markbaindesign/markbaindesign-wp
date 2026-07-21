@@ -49,6 +49,17 @@ function bd324_register_all_post_types_and_taxonomies()
         'has_archive'   => true,
     ]);
 
+    bd324_register_post_type('bd324_tools', [
+        'name'          => 'Tools',
+        'singular_name' => 'Tool',
+        'plural_name'   => 'Tools',
+        'menu_name'     => 'Tools Timeline',
+        'menu_icon'     => 'dashicons-admin-tools',
+        'menu_position' => 5,
+        'rewrite_slug'  => 'tools',
+        'has_archive'   => true,
+    ]);
+
     // Register Taxonomies
     bd324_register_taxonomy('client-industry', ['bd324_clients'], [
         'singular_name' => 'Client Industry',
@@ -82,6 +93,13 @@ function bd324_register_all_post_types_and_taxonomies()
         'plural_name' => 'Profiles',
         'menu_name' => 'Profiles',
         'rewrite_slug' => 'project-category/profile'
+    ]);
+
+    bd324_register_taxonomy('tool-category', ['bd324_tools'], [
+        'singular_name' => 'Tool Category',
+        'plural_name' => 'Tool Categories',
+        'menu_name' => 'Categories',
+        'rewrite_slug' => 'tool-category'
     ]);
 }
 
