@@ -8,12 +8,12 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 get_header();
 
-$portrait_id = 1954;
+$portrait_id = get_post_thumbnail_id() ?: 1954;
 
 $bio = array(
 	"I grew up taking radios apart and putting them back together, with the predictable variation in success. I started building websites for friends at university — a magazine, then a bicycle shop, then a small press — and at some point in 2012 stopped pretending it was a side project.",
 	"What I sell now is the same thing I sold then, only better-rehearsed. I read your brief carefully. I write a small, well-organised codebase to deliver it. I hand it over with documentation you'll actually open. And I am still here, on the other end of the email, two years later when you want to add a newsletter form.",
-	"I work from a small studio overlooking a quiet street in Sant Cugat. I take on between six and ten engagements a year. I do not have a sales team or a project manager or a JIRA instance — I have a notebook, a calendar, and the kind of clients who came back because they liked the first time.",
+	"I work from a small studio overlooking a quiet street in Sabadell. I take on between six and ten engagements a year. I do not have a sales team or a project manager or a JIRA instance — I have a notebook, a calendar, and the kind of clients who came back because they liked the first time.",
 );
 
 $principles = array(
@@ -81,7 +81,7 @@ $off_clock = array(
 		</div>
 
 		<dl class="about-hero__meta">
-			<div class="about-hero__meta-row"><dt>Where</dt><dd>Sant Cugat, near Barcelona</dd></div>
+			<div class="about-hero__meta-row"><dt>Where</dt><dd>Sabadell, near Barcelona</dd></div>
 			<div class="about-hero__meta-row"><dt>Pronouns</dt><dd>he / him</dd></div>
 			<div class="about-hero__meta-row"><dt>Email</dt><dd><a href="<?php echo antispambot( 'mailto:mark@bain.design' ); ?>"><?php echo antispambot( 'mark@bain.design' ); ?> ↗</a></dd></div>
 			<div class="about-hero__meta-row"><dt>Since</dt><dd>2012</dd></div>
@@ -111,7 +111,7 @@ $off_clock = array(
 				</div>
 			</div>
 			<div class="about-letter__caption">
-				<div>[ Sant Cugat studio &middot; Tuesday morning ]</div>
+				<div>[ Sabadell studio &middot; Tuesday morning ]</div>
 				<div class="about-letter__caption-sub">photo &middot; J. Vidal &middot; 2024</div>
 			</div>
 		</div>
@@ -128,12 +128,14 @@ $off_clock = array(
 					<?php endif; ?>
 				</p>
 				<?php endforeach; ?>
-				<div class="about-letter__sign">&mdash; Mark <span class="about-letter__sign-loc"> / Sant Cugat</span></div>
+				<div class="about-letter__sign">&mdash; Mark <span class="about-letter__sign-loc"> / Sabadell</span></div>
 			</div>
 		</div>
 
 	</div>
 </section>
+
+<?php /* Hidden pending content rewrite ("How I think about the work") */ if ( false ) : ?>
 
 <?php bain_ascii_rule(); ?>
 
@@ -161,6 +163,10 @@ $off_clock = array(
 
 	</div>
 </section>
+
+<?php endif; ?>
+
+<?php /* Hidden pending content rethink + styling pass */ if ( false ) : ?>
 
 <?php bain_ascii_rule(); ?>
 
@@ -190,6 +196,10 @@ $off_clock = array(
 	</div>
 </section>
 
+<?php endif; ?>
+
+<?php /* Hidden pending content ("Off the clock") */ if ( false ) : ?>
+
 <?php bain_ascii_rule(); ?>
 
 <!-- ============================================================ OFF THE CLOCK -->
@@ -213,6 +223,10 @@ $off_clock = array(
 
 	</div>
 </section>
+
+<?php endif; ?>
+
+<?php bain_ascii_rule(); ?>
 
 <!-- ================================================================== CTA -->
 <section class="about-cta">
