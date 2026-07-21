@@ -668,7 +668,6 @@
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: top center;
-    filter: grayscale(100%);
   }
 
   .about-section__name {

@@ -161,10 +161,19 @@ get_header();
 	<div class="bain-section__inner about-section__inner">
 
 		<div class="about-section__portrait">
-			<?php echo wp_get_attachment_image( 1954, 'large', false, array(
-				'class'   => 'about-section__portrait-img',
-				'alt'     => 'Mark Crawford Bain',
-			) ); ?>
+			<?php $fp_portrait_id = get_post_thumbnail_id( 69 ) ?: 1954; ?>
+			<div class="about-letter__portrait" data-tip="by J. Vidal · 2024">
+				<span class="about-letter__portrait-tick about-letter__portrait-tick--tl" aria-hidden="true">┌</span>
+				<span class="about-letter__portrait-tick about-letter__portrait-tick--tr" aria-hidden="true">┐</span>
+				<span class="about-letter__portrait-tick about-letter__portrait-tick--bl" aria-hidden="true">└</span>
+				<span class="about-letter__portrait-tick about-letter__portrait-tick--br" aria-hidden="true">┘</span>
+				<div class="about-letter__portrait-clip">
+					<?php echo wp_get_attachment_image( $fp_portrait_id, 'large', false, array(
+						'class' => 'about-letter__portrait-img',
+						'alt'   => 'Mark Crawford Bain',
+					) ); ?>
+				</div>
+			</div>
 		</div>
 
 		<div class="about-section__text">
