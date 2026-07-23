@@ -21,46 +21,6 @@
             "selected": 0
         },
         {
-            "key": "field_bain_proj_win",
-            "label": "",
-            "name": "",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_bain_proj_win",
-            "label": "",
-            "name": "",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_bain_proj_tagline",
             "label": "Tagline",
             "name": "tagline",
@@ -311,7 +271,22 @@
                     "key": "field_bain_proj_win",
                     "label": "Win",
                     "name": "win",
-                    "type": "text"
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
                 }
             ],
             "rows_per_page": 20,
@@ -608,5 +583,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1784805399
+    "modified": 1784806273
 }
