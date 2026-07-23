@@ -44,6 +44,8 @@ if ( function_exists( 'bd_get_foobot_device_uuid' ) ) {
 		<span class="footer-sep">/</span>
 		<a href="https://github.com/markbaindesign">GitHub</a>
 		<span class="footer-sep">/</span>
+		<a href="https://www.linkedin.com/in/mark-bain-070a09203/">LinkedIn</a>
+		<span class="footer-sep">/</span>
 		<a href="<?php echo esc_url( get_feed_link() ); ?>">RSS</a>
 	</nav>
 </footer><!-- #colophon -->
