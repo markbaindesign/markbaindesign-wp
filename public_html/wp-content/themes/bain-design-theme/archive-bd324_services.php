@@ -27,10 +27,7 @@ $services_intro = get_page_by_path( 'services' );
 <div class="bain-wrap bain-section">
 	<div class="services-layout">
 
-		<aside class="services-sidebar" aria-label="<?php esc_attr_e( 'Services', 'bain-design-theme' ); ?>">
-			<?php bain_meta_bracket( 'All services', array( 'tag' => 'div' ) ); ?>
-			<?php bain_service_tree( array( 'class' => 'stree--nav' ) ); ?>
-		</aside>
+		<?php bain_service_sidebar(); ?>
 
 		<div class="services-main bain-body-copy">
 			<?php

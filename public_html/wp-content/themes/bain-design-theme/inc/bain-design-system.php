@@ -493,3 +493,28 @@ function bain_service_tree_rows( $items, $parent_id, $prefix, $current_id, $ance
 		bain_service_tree_rows( $items, (int) $item->ID, $prefix . $extension, $current_id, $ancestors );
 	}
 }
+
+
+/**
+ * Sidebar for the /services/ section: a link back to the section landing
+ * page, then the service tree.
+ *
+ * Rendered from one place so the archive and the singles cannot drift apart.
+ * The "All services" label is marked up directly rather than through
+ * bain_meta_bracket(), which escapes its input and so cannot hold a link —
+ * the brackets themselves come from the .meta-bracket class either way.
+ *
+ * @param int $current_id Service being viewed, if any — marks the branch.
+ */
+function bain_service_sidebar( $current_id = 0 ) {
+	$archive_url = get_post_type_archive_link( 'bd324_services' );
+	$is_archive  = is_post_type_archive( 'bd324_services' );
+	?>
+	<aside class="services-sidebar" aria-label="<?php esc_attr_e( 'Services', 'bain-design-theme' ); ?>">
+		<a class="meta-bracket services-sidebar__all"
+		   href="<?php echo esc_url( $archive_url ); ?>"
+		   <?php echo $is_archive ? 'aria-current="page"' : ''; ?>>All services</a>
+		<?php bain_service_tree( array( 'class' => 'stree--nav', 'current_id' => $current_id ) ); ?>
+	</aside>
+	<?php
+}

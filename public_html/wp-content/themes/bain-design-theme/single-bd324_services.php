@@ -39,10 +39,7 @@ while ( have_posts() ) :
 	<div class="bain-wrap bain-section">
 		<div class="services-layout">
 
-			<aside class="services-sidebar" aria-label="<?php esc_attr_e( 'Services', 'bain-design-theme' ); ?>">
-				<?php bain_meta_bracket( 'All services', array( 'tag' => 'div' ) ); ?>
-				<?php bain_service_tree( array( 'class' => 'stree--nav', 'current_id' => get_the_ID() ) ); ?>
-			</aside>
+			<?php bain_service_sidebar( get_the_ID() ); ?>
 
 			<div class="services-main">
 

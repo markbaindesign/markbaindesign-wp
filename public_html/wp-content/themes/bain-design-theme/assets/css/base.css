@@ -167,6 +167,10 @@ a.bain-btn {
 }
 .meta-bracket::before { content: "["; }
 .meta-bracket::after  { content: "]"; }
+/* The brackets are punctuation, not content — hold them back so the label
+   reads first. */
+.meta-bracket::before,
+.meta-bracket::after { opacity: 0.5; }
 
 /* ----- Terminal cursor ----------------------------------------------- */
 
