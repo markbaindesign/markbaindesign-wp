@@ -38,6 +38,9 @@
 			'walker'         => new Bain_Nav_Walker(),
 		) );
 		?>
+		<div class="site-header__search">
+			<?php get_search_form(); ?>
+		</div>
 	</nav>
 
 </header><!-- #masthead -->

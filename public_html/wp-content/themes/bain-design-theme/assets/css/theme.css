@@ -100,6 +100,10 @@
     color: var(--pencil);
   }
 
+  .site-header__search {
+    margin-left: auto;
+  }
+
   /* Dropdown */
   #primary-menu {
     display: flex;
@@ -199,6 +203,15 @@
     }
     .site-header__nav.is-open .nav-sep { display: none; }
     .site-header__menu-toggle { display: flex; }
+    .site-header__search {
+      margin-left: 0;
+      margin-top: var(--space-2);
+      width: 100%;
+    }
+    .site-header__search .search-form {
+      width: 100%;
+      max-width: none;
+    }
   }
 }
 
@@ -2000,6 +2013,82 @@
 
     &:hover { background: var(--paper-deep); border-color: var(--ink); }
     &.current { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  }
+
+  /* Search form */
+  .search-form {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 400px;
+  }
+
+  .search-form__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .search-form__input {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: var(--type-13);
+    transition: border-color var(--dur-1), background var(--dur-1);
+
+    &:focus {
+      outline: none;
+      border-color: var(--clay);
+      background: var(--paper-pure);
+    }
+
+    &::placeholder {
+      color: var(--pencil);
+    }
+  }
+
+  .search-form__submit {
+    padding: 8px 14px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: var(--type-13);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--dur-1), color var(--dur-1);
+    white-space: nowrap;
+
+    &:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+  }
+
+  .search-form__submit-text {
+    display: inline;
+  }
+
+  @media (max-width: 640px) {
+    .search-form {
+      width: 100%;
+      max-width: none;
+    }
+    .search-form__input {
+      min-width: 160px;
+      flex: 1;
+    }
   }
 }
 
