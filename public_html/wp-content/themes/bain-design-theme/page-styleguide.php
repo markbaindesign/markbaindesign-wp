@@ -358,54 +358,54 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 		</ul>
 
 		<h3 class="sg-subhead">Cards</h3>
+		<p class="sg-note">
+			Three tones — default (flush with the page), <code>--surface</code>
+			(raised white panel), <code>--ink</code> (inverted) — plus optional
+			parts: <code>__title</code> / <code>__dot</code>,
+			<code>__meta</code> (add <code>--link</code> when it is an
+			<code>&lt;a&gt;</code>), <code>__desc</code>, <code>__cta</code>. A
+			card only uses the parts it needs; plain content works directly
+			inside it too.
+		</p>
+		<p class="sg-note">
+			Promoted 2026-07-30 from <code>.contact-channel-card</code>,
+			page-contact.php's dark/light card, which is where the ink tone's
+			two fixes below came from and now apply to every ink-toned card,
+			not just that one: <code>.meta-bracket</code> defaults to
+			graphite, sized for a light card, which read as near-invisible on
+			dark; and the generic <code>a:focus-visible</code> outline is
+			ink, invisible against a card whose own background is ink. Before
+			this, <code>.bain-card</code> had no real usage anywhere on the
+			site outside this demo — <code>.contact-channel-card</code> was
+			the only card with real structure, so its structure became the
+			generic one rather than a second system being invented.
+		</p>
 		<div class="sg-cluster sg-cluster--cards">
 			<div class="bain-card">
 				<?php bain_meta_bracket( '2026 / Frontend' ); ?>
 				<h4 class="sg-card__title">Card</h4>
-				<p>Hairline border that thickens to 2px on hover, with the padding compensating so the contents never reflow.</p>
+				<p>Hairline border that thickens to 2px on hover, with the padding compensating so the contents never reflow. Default tone: plain content works with no card parts at all.</p>
 			</div>
 			<div class="bain-card bain-press">
 				<?php bain_meta_bracket( 'utility' ); ?>
 				<h4 class="sg-card__title">bain-press</h4>
 				<p>Same card with the press-shadow utility applied.</p>
 			</div>
-		</div>
-
-		<h3 class="sg-subhead">Contact channel cards</h3>
-		<p class="sg-note">
-			<code>.contact-channel-card</code>, page-contact.php — two tones,
-			<code>--paper</code> (default) and <code>--ink</code>. The ink tone's
-			eyebrow and CTA link were both fixed 2026-07-30: the eyebrow used
-			<code>.meta-bracket</code>'s default graphite, sized for a light
-			card, which read as near-invisible on this dark one; the CTA was a
-			plain unclassed link, so its hover colour
-			(<code>--link-hover</code>, #0E0E0E) was functionally identical to
-			the card's own <code>--ink</code> background and vanished on
-			pointer-over. Both now use <code>--clay-soft</code> /
-			<code>--clay</code>, matching the address link already on this
-			tone, and the focus ring is overridden to match — the generic
-			<code>a:focus-visible</code> outline is also ink-on-ink here.
-		</p>
-		<div class="sg-cluster sg-cluster--cards">
-			<article class="contact-channel-card contact-channel-card--ink">
-				<div class="contact-channel-card__header">
-					<?php bain_meta_bracket( 'Primary', array( 'tag' => 'div' ) ); ?>
-				</div>
-				<h3 class="contact-channel-card__title">Email<span class="contact-channel-card__dot">.</span></h3>
-				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="#sg-components">hello@bain.design</a>
-				<p class="contact-channel-card__desc">The most reliable way to reach me. I read everything, I reply within a working day or two.</p>
-				<div class="contact-channel-card__cta">
+			<article class="bain-card bain-card--ink">
+				<?php bain_meta_bracket( 'Primary', array( 'tag' => 'div' ) ); ?>
+				<h3 class="bain-card__title">Email<span class="bain-card__dot">.</span></h3>
+				<a class="bain-card__meta bain-card__meta--link" href="#sg-components">hello@bain.design</a>
+				<p class="bain-card__desc">The most reliable way to reach me. I read everything, I reply within a working day or two.</p>
+				<div class="bain-card__cta">
 					<a href="#sg-components">Compose →</a>
 				</div>
 			</article>
-			<article class="contact-channel-card contact-channel-card--paper">
-				<div class="contact-channel-card__header">
-					<?php bain_meta_bracket( 'Engineering', array( 'tag' => 'div' ) ); ?>
-				</div>
-				<h3 class="contact-channel-card__title">GitHub<span class="contact-channel-card__dot">.</span></h3>
-				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="#sg-components">github.com/markbaindesign</a>
-				<p class="contact-channel-card__desc">Open-source plugins, theme experiments, code review. Drop an issue if you found a bug.</p>
-				<div class="contact-channel-card__cta">
+			<article class="bain-card bain-card--surface">
+				<?php bain_meta_bracket( 'Engineering', array( 'tag' => 'div' ) ); ?>
+				<h3 class="bain-card__title">GitHub<span class="bain-card__dot">.</span></h3>
+				<a class="bain-card__meta bain-card__meta--link" href="#sg-components">github.com/markbaindesign</a>
+				<p class="bain-card__desc">Open-source plugins, theme experiments, code review. Drop an issue if you found a bug.</p>
+				<div class="bain-card__cta">
 					<a href="#sg-components">Browse repos ↗</a>
 				</div>
 			</article>

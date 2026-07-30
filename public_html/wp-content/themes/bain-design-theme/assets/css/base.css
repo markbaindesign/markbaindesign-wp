@@ -213,6 +213,9 @@ img { max-width: 100%; height: auto; display: block; }
   border: 1px solid var(--rule);
   background: var(--paper);
   padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
   transition: border-width var(--dur-2) var(--ease-1),
               box-shadow var(--dur-2) var(--ease-1);
 }
@@ -221,6 +224,85 @@ img { max-width: 100%; height: auto; display: block; }
   /* offset padding so border thickening doesn't reflow contents */
   padding: calc(var(--space-5) - 1px);
 }
+
+/* Tones. Default (no modifier) sits flush with the page — --paper on
+   --paper, for a card that reads as part of the page rather than a
+   panel on it. --surface raises it as a bright white panel; --ink
+   inverts it. Promoted 2026-07-30 from .contact-channel-card, the
+   contact page's dark/light card — previously bain-card had no real
+   usage anywhere on the site outside its own style-guide demo, while
+   contact-channel-card was the only card with real structure. Rather
+   than build a second generic system, this file's card became the one
+   the site actually needed. */
+.bain-card--surface {
+  background: var(--paper-pure);
+  color: var(--ink);
+}
+.bain-card--ink {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+/* Both found on the one real ink-toned card that existed before this
+   promotion, and both apply to any ink-toned card now: .meta-bracket
+   defaults to graphite, sized for a light card, and the generic
+   a:focus-visible outline is ink — both read as near-invisible against
+   this tone's own background. */
+.bain-card--ink .meta-bracket { color: rgba(245, 240, 232, 0.5); }
+.bain-card--ink a:focus-visible { outline-color: var(--clay-soft); }
+
+/* ----- Card parts ------------------------------------------------------
+   Optional — a .bain-card only uses the parts it needs. All are tone-aware
+   via .bain-card--ink; the untinted rules below also cover --surface,
+   which does not diverge from the default text hierarchy, only the
+   background. */
+
+.bain-card__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: inherit;
+}
+.bain-card__dot { color: var(--clay); }
+
+/* Small mono meta line — a channel address, a byline, a date. Add
+   --link for the variant that is an <a> rather than static text. */
+.bain-card__meta {
+  font-family: var(--font-mono);
+  font-size: var(--type-13);
+  color: var(--pencil);
+  word-break: break-all;
+  text-decoration: none;
+}
+.bain-card__meta--link { color: var(--link); text-decoration: underline; }
+.bain-card--ink .bain-card__meta--link { color: var(--clay-soft); }
+
+.bain-card__desc {
+  font-size: var(--type-14);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+  color: var(--graphite);
+}
+.bain-card--ink .bain-card__desc { color: rgba(245, 240, 232, 0.65); }
+
+.bain-card__cta {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-mono);
+  font-size: var(--type-13);
+  font-weight: 500;
+}
+.bain-card--ink .bain-card__cta { border-color: rgba(245, 240, 232, 0.2); }
+/* Default tone's CTA link needs no override: it falls through to the
+   ordinary <a> colour (--link), which already reads fine on a light
+   card. Ink needed one because base.css's default hover colour,
+   --link-hover, is functionally the same colour as --ink itself. */
+.bain-card--ink .bain-card__cta a { color: var(--clay-soft); }
+.bain-card--ink .bain-card__cta a:hover { color: var(--clay); }
 
 /* ----- Bracket metadata ---------------------------------------------- */
 

@@ -140,33 +140,35 @@ $faq = array(
 		<h2 class="contact-channels__heading">Channels</h2>
 
 		<div class="contact-channels__grid">
-			<?php foreach ( $channels as $c ) : ?>
-			<article class="contact-channel-card contact-channel-card--<?php echo esc_attr( $c['tone'] ); ?>">
+			<?php foreach ( $channels as $c ) :
+				// 'ink' stays 'ink'; the page's other tone was always the raised
+				// white panel, which .bain-card calls '--surface'.
+				$tone_class = 'ink' === $c['tone'] ? 'bain-card--ink' : 'bain-card--surface';
+			?>
+			<article class="bain-card <?php echo esc_attr( $tone_class ); ?>">
 
-				<div class="contact-channel-card__header">
-					<?php bain_meta_bracket( $c['kind'], array( 'tag' => 'div' ) ); ?>
-				</div>
+				<?php bain_meta_bracket( $c['kind'], array( 'tag' => 'div' ) ); ?>
 
-				<h3 class="contact-channel-card__title">
-					<?php echo esc_html( $c['title'] ); ?><span class="contact-channel-card__dot">.</span>
+				<h3 class="bain-card__title">
+					<?php echo esc_html( $c['title'] ); ?><span class="bain-card__dot">.</span>
 				</h3>
 
 				<?php if ( ! empty( $c['url'] ) ) : ?>
-				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="<?php echo esc_url( $c['url'] ); ?>" <?php echo str_starts_with( $c['url'], 'mailto:' ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>>
+				<a class="bain-card__meta bain-card__meta--link" href="<?php echo esc_url( $c['url'] ); ?>" <?php echo str_starts_with( $c['url'], 'mailto:' ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>>
 					<?php echo str_starts_with( $c['url'], 'mailto:' ) ? antispambot( $c['addr'] ) : esc_html( $c['addr'] ); ?>
 				</a>
 				<?php else : ?>
-				<div class="contact-channel-card__addr">
+				<div class="bain-card__meta">
 					<?php echo esc_html( $c['addr'] ); ?>
 				</div>
 				<?php endif; ?>
 
-				<p class="contact-channel-card__desc">
+				<p class="bain-card__desc">
 					<?php echo esc_html( $c['desc'] ); ?>
 				</p>
 
 				<?php if ( $c['cta'] ) : ?>
-				<div class="contact-channel-card__cta">
+				<div class="bain-card__cta">
 					<?php if ( ! empty( $c['url'] ) ) : ?>
 					<a href="<?php echo esc_url( $c['url'] ); ?>" <?php echo str_starts_with( $c['url'], 'mailto:' ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>>
 						<?php echo esc_html( $c['cta'] ); ?>
