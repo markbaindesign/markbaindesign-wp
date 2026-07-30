@@ -58,13 +58,12 @@ wp_reset_postdata();
 ?>
 
 <!-- ============================================================= BREADCRUMB -->
-<nav class="nw-breadcrumb" aria-label="Breadcrumb">
-	<span aria-hidden="true">~ </span>
-	<span aria-hidden="true"> / </span>
-	<a class="nw-breadcrumb__archive" href="<?php echo esc_url( $archive_url ); ?>">nice-words</a>
-	<span aria-hidden="true"> / </span>
-	<span class="nw-breadcrumb__current"><?php echo esc_html( sanitize_title( $author ) ); ?>.md</span>
-</nav>
+<?php
+bain_breadcrumb( array(
+	array( 'label' => 'nice-words', 'url' => $archive_url ),
+	array( 'label' => $author ),
+), '.md' );
+?>
 
 <!-- ============================================================= HERO -->
 <section class="nw-hero">

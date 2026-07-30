@@ -21,17 +21,18 @@ while ( have_posts() ) :
 	) );
 	?>
 
+	<?php
+	$crumb_segments   = array();
+	$crumb_segments[] = array( 'label' => 'services', 'url' => get_post_type_archive_link( 'bd324_services' ) );
+	foreach ( $ancestors as $anc_id ) {
+		$crumb_segments[] = array( 'label' => get_the_title( $anc_id ), 'url' => get_permalink( $anc_id ) );
+	}
+	$crumb_segments[] = array( 'label' => get_the_title() );
+	bain_breadcrumb( $crumb_segments );
+	?>
+
 	<div class="archive-header">
 		<div class="archive-header__inner">
-			<?php
-			$crumb_parts   = array();
-			$crumb_parts[] = '<a href="' . esc_url( get_post_type_archive_link( 'bd324_services' ) ) . '">Services</a>';
-			foreach ( $ancestors as $anc_id ) {
-				$crumb_parts[] = '<a href="' . esc_url( get_permalink( $anc_id ) ) . '">' . esc_html( get_the_title( $anc_id ) ) . '</a>';
-			}
-			$crumb_parts[] = '<span>' . esc_html( get_the_title() ) . '</span>';
-			echo '<nav class="meta-bracket service-breadcrumb" aria-label="Breadcrumb">' . implode( ' / ', $crumb_parts ) . '</nav>';
-			?>
 			<h1 class="archive-header__title"><?php the_title(); ?><span class="archive-header__dot">.</span></h1>
 		</div>
 	</div>

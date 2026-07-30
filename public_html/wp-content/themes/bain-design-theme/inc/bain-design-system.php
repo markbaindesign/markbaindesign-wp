@@ -523,3 +523,46 @@ function bain_service_sidebar( $current_id = 0 ) {
 	</aside>
 	<?php
 }
+
+
+/* =====================================================================
+ *  Breadcrumb
+ * ================================================================== */
+
+/**
+ * Terminal-path breadcrumb — `~ / segment / segment / current`.
+ *
+ *     bain_breadcrumb( array(
+ *         array( 'label' => 'Services', 'url' => get_post_type_archive_link( 'bd324_services' ) ),
+ *         array( 'label' => 'Development', 'url' => get_permalink( $ancestor_id ) ),
+ *         array( 'label' => 'Plugin Development' ), // no url = current page
+ *     ) );
+ *
+ * Every label is slugified (lower-case, hyphenated) to read as a real path,
+ * matching the pattern the trail is named after — same treatment the
+ * testimonials breadcrumb already applied to its own segments by hand.
+ *
+ * @param array  $segments Ordered list of ['label' => string, 'url' => string|null].
+ *                         The first segment with no url (usually the last)
+ *                         renders as the current, unlinked page.
+ * @param string $suffix   Appended to the current segment only, e.g. '.md'
+ *                         for content that reads as a document. Default ''.
+ */
+function bain_breadcrumb( array $segments, $suffix = '' ) {
+	if ( ! $segments ) { return; }
+
+	echo '<nav class="bain-breadcrumb" aria-label="Breadcrumb">';
+	echo '<span aria-hidden="true">~</span>';
+
+	foreach ( $segments as $seg ) {
+		echo '<span aria-hidden="true"> / </span>';
+		$slug = sanitize_title( $seg['label'] );
+		if ( ! empty( $seg['url'] ) ) {
+			printf( '<a class="bain-breadcrumb__link" href="%s">%s</a>', esc_url( $seg['url'] ), esc_html( $slug ) );
+		} else {
+			printf( '<span class="bain-breadcrumb__current">%s%s</span>', esc_html( $slug ), esc_html( $suffix ) );
+		}
+	}
+
+	echo '</nav>';
+}

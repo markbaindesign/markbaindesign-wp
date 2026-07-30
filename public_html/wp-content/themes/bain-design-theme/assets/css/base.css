@@ -68,12 +68,11 @@ a {
               text-decoration-thickness var(--dur-1) var(--ease-1);
 }
 a:hover  { color: var(--link-hover); text-decoration-thickness: 2px; }
-a:visited { color: var(--visited); }
+/* Visited links read as normal links — no separate --visited colour. */
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .site-header__brand,
 .site-header__brand:hover { text-decoration: none; color: var(--ink); }
 a.services-list__item,
-a.services-list__item:visited,
 a.services-list__item:hover { text-decoration: none; color: inherit; }
 
 code, kbd, samp, pre {
@@ -183,29 +182,9 @@ img { max-width: 100%; height: auto; display: block; }
   border-color: var(--clay);
 }
 
-/* Buttons are not links: once a destination has been visited, `a:visited`
-   (0,1,1) beats .bain-btn's `color: var(--paper)` (0,1,0) — same class of
-   specificity trap as the tag-qualified selector above, just triggered by
-   browser history instead of markup. Every fill-dark button on the site
-   silently turns purple once you have visited its href; on this dark
-   background that measures 2.65:1, well below WCAG AA. Each of these is
-   two classes (0,2,0), which beats a:visited regardless of source order. */
-.bain-btn:visited { color: var(--paper); }
-.bain-btn--ghost:visited,
-.bain-btn--terracotta:visited { color: var(--ink); }
-
-/* Hovering a visited button: :visited and :hover above are the same
-   specificity (0,2,0), so whichever is declared later wins the `color`
-   property outright — it does not matter which state the cursor is
-   actually in. :visited landed last, so every hover became unreadable
-   once its href had been visited: outline showed ink text on the ink
-   hover fill, and fill dark showed paper text on the paper hover fill —
-   both effectively invisible. These compound selectors are a class ahead
-   of either alone (0,3,0), so hover's colour always wins regardless of
-   source order or visited state, as interactive feedback should. */
-.bain-btn:visited:hover { color: var(--ink); }
-.bain-btn--ghost:visited:hover { color: var(--paper); }
-.bain-btn--terracotta:visited:hover { color: var(--clay-deep); }
+/* No :visited overrides: visited links read as normal links sitewide now,
+   so the specificity conflict these existed to fix (a:visited beating a
+   button's own colour, then colliding with :hover) no longer applies. */
 
 /* ----- Cards ---------------------------------------------------------- */
 
@@ -373,6 +352,25 @@ ul.bain-check > li::before {
   font-size: var(--type-14);
 }
 .bain-signoff .heart { color: var(--clay); }
+
+/* ----- Breadcrumb ------------------------------------------------------
+   Terminal path: ~ / segment / segment / current. Rendered by
+   bain_breadcrumb(). Generalised 2026-07-30 from .nw-breadcrumb (the
+   testimonials single template), which is where this look came from.
+   Deliberately flush with the gutter, not the page's content column —
+   it sits with the site header's own logo, as its own system bar, not
+   as part of the page content beneath it. Every segment stays the same
+   light, muted colour, including the current one — no ink emphasis. */
+.bain-breadcrumb {
+  padding: 20px var(--gutter);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--pencil);
+}
+.bain-breadcrumb__link { color: var(--pencil); text-decoration: none; border-bottom: 1px dotted var(--pencil); }
+.bain-breadcrumb__link:hover { text-decoration: underline; }
+.bain-breadcrumb__current { color: var(--pencil); }
 
 /* ----- "Letter" layout for long-form pages --------------------------- */
 /* Apply via body class — see functions.php */

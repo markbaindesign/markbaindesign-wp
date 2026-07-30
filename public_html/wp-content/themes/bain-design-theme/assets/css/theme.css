@@ -1678,12 +1678,8 @@
     }
   }
 
-  /* Single service */
-  .service-breadcrumb {
-    display: block;
-    margin-bottom: var(--space-5);
-  }
-
+  /* Single service — breadcrumb is .bain-breadcrumb (base.css), a
+     standalone bar above .archive-header rather than stacked inside it. */
   .service-single__content {
     max-width: 68ch;
     margin-bottom: var(--space-9);
@@ -2859,18 +2855,7 @@
 
   /* ─── SINGLE ─── */
 
-  /* Breadcrumb */
-  .nw-breadcrumb {
-    padding: 20px var(--gutter);
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--pencil);
-  }
-  .nw-breadcrumb a { color: var(--pencil); text-decoration: none; }
-  .nw-breadcrumb a:hover { text-decoration: underline; }
-  .nw-breadcrumb__archive { border-bottom: 1px dotted var(--pencil); }
-  .nw-breadcrumb__current { color: var(--ink); }
+  /* Breadcrumb is .bain-breadcrumb (base.css), generic — was .nw-breadcrumb. */
 
   /* Single hero */
   .nw-hero {
