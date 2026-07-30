@@ -106,9 +106,15 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ----- Buttons -------------------------------------------------------- */
 
-.bain-btn,
-button.bain-btn,
-a.bain-btn {
+/* Plain class selector, not `.bain-btn, button.bain-btn, a.bain-btn` — the
+   tag-qualified forms have higher specificity (0-1-1) than a modifier like
+   .bain-btn--ghost (0-1-0), so on every <a class="bain-btn bain-btn--...">
+   in the theme this rule's fill-dark background always won regardless of
+   source order. Outline has never actually rendered as an outline anywhere
+   on the site; it has always looked identical to the default variant. A
+   plain class selector already beats the UA stylesheet on any element
+   (button, a, or otherwise), so the tag qualifiers were never load-bearing. */
+.bain-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -137,11 +143,50 @@ a.bain-btn {
 }
 .bain-btn:active { transform: translate(2px, 2px); box-shadow: none; }
 
+/* Outline */
 .bain-btn--ghost {
   background: transparent;
   color: var(--ink);
 }
-.bain-btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.bain-btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+  /* Overrides .bain-btn:hover's ink shadow-press: a hard shadow the same
+     colour as the surface it sits behind has no visible edge, so hovering
+     this button showed no shadow at all (same defect fixed on
+     .bain-project__related-card--all in theme.css). Clay is legible against
+     both the ink fill and the cream page, so the offset reads clearly. */
+  box-shadow: 2px 2px 0 var(--clay);
+}
+
+/* Fill terracotta. Text is ink, not paper: clay's contrast against paper
+   text is 2.95:1, below WCAG AA (4.5:1) for normal text; against ink it is
+   4.72:1, comfortably above. On hover it becomes an outline in its own
+   colour, rather than inverting to solid ink like the default variant,
+   so it stays visually distinct from "fill dark" instead of converging
+   with it. That hover state is light, so the inherited ink shadow-press
+   reads crisply without the override above. */
+.bain-btn--terracotta {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: var(--ink);
+}
+.bain-btn--terracotta:hover {
+  background: transparent;
+  color: var(--clay-deep);
+  border-color: var(--clay);
+}
+
+/* Buttons are not links: once a destination has been visited, `a:visited`
+   (0,1,1) beats .bain-btn's `color: var(--paper)` (0,1,0) — same class of
+   specificity trap as the tag-qualified selector above, just triggered by
+   browser history instead of markup. Every fill-dark button on the site
+   silently turns purple once you have visited its href; on this dark
+   background that measures 2.65:1, well below WCAG AA. Each of these is
+   two classes (0,2,0), which beats a:visited regardless of source order. */
+.bain-btn:visited { color: var(--paper); }
+.bain-btn--ghost:visited,
+.bain-btn--terracotta:visited { color: var(--ink); }
 
 /* ----- Cards ---------------------------------------------------------- */
 

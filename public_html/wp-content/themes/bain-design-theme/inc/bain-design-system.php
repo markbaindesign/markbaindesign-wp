@@ -88,7 +88,8 @@ function bain_check_list( array $items, $class = '' ) {
  *
  * @param string $label     Button text — keep it a plain verb phrase.
  * @param string $url       href.
- * @param array  $args      Optional. `variant` (primary|ghost),
+ * @param array  $args      Optional. `variant` (primary|ghost|terracotta) —
+ *                          fill dark, outline, and fill terracotta,
  *                          `external` (bool — adds rel + ↗),
  *                          `attrs` (assoc of extra HTML attributes).
  */
@@ -98,7 +99,11 @@ function bain_button( $label, $url, $args = array() ) {
 		'external' => false,
 		'attrs'    => array(),
 	) );
-	$class = 'bain-btn' . ( $args['variant'] === 'ghost' ? ' bain-btn--ghost' : '' );
+	$variant_classes = array(
+		'ghost'      => 'bain-btn--ghost',
+		'terracotta' => 'bain-btn--terracotta',
+	);
+	$class = trim( 'bain-btn ' . ( $variant_classes[ $args['variant'] ] ?? '' ) );
 
 	$attr_html = '';
 	foreach ( $args['attrs'] as $k => $v ) {

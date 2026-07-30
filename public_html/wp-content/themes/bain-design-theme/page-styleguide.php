@@ -240,14 +240,28 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 		</header>
 
 		<h3 class="sg-subhead">Buttons</h3>
-		<p class="sg-note">Rendered by <code>bain_button()</code> — the only button that should be reached for. Hover for the 2px hard-offset press shadow.</p>
+		<p class="sg-note">
+			Rendered by <code>bain_button()</code> — the only button that should
+			be reached for. Three variants: fill dark (default), outline
+			(<code>ghost</code>), fill terracotta (<code>terracotta</code>).
+			Hover for the 2px hard-offset press shadow.
+		</p>
 		<div class="sg-cluster">
 			<?php
-			bain_button( 'Arrange a chat now', '#sg-components' );
-			bain_button( 'Check out my work →', '#sg-components', array( 'variant' => 'ghost' ) );
+			bain_button( 'Fill dark', '#sg-components' );
+			bain_button( 'Outline', '#sg-components', array( 'variant' => 'ghost' ) );
+			bain_button( 'Fill terracotta', '#sg-components', array( 'variant' => 'terracotta' ) );
 			bain_button( 'External link', 'https://github.com/markbaindesign', array( 'variant' => 'ghost', 'external' => true ) );
 			?>
 		</div>
+		<p class="sg-note">
+			Outline's hover shadow is clay, not ink — an ink shadow behind an
+			ink-filled hover state has no visible edge, the same defect fixed
+			on the dark related-project card on single project pages. Fill
+			terracotta's text is ink rather than paper: clay against paper
+			text measures 2.95:1, below WCAG AA's 4.5:1 for normal text;
+			against ink it is 4.72:1.
+		</p>
 
 		<?php
 		/*
