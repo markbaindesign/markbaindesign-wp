@@ -142,6 +142,12 @@ img { max-width: 100%; height: auto; display: block; }
   text-decoration: none;
 }
 .bain-btn:active { transform: translate(2px, 2px); box-shadow: none; }
+/* Element-agnostic: .bain-btn renders on <a> (covered sitewide by the
+   generic a:focus-visible rule above) and now also on the CF7 form's
+   <input type="submit"> via class:bain-btn, which that rule does not
+   reach. Setting it here means the button never depends on which element
+   it happens to be. */
+.bain-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* Outline */
 .bain-btn--ghost {

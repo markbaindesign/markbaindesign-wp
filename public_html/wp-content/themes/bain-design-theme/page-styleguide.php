@@ -307,78 +307,39 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 
 		<?php
 		/*
-		 * Everything below is NOT the design system — it is every other
-		 * button-shaped element that exists in the codebase today, each
-		 * rendered with its real markup and class so the drift is visible
-		 * rather than described. bain_button() was added after these, and
-		 * none of them were ever migrated onto it.
+		 * This section used to list six independent button implementations.
+		 * Four have since been migrated onto bain_button() and their CSS
+		 * deleted: .nw-archive-cta__btn, .nw-pullquote__btn / --primary
+		 * (archive-bd324_testimonials.php, single-bd324_testimonials.php),
+		 * and the CF7 submit tag (class:bain-btn in the "Bain Contact" form's
+		 * _form field — a Contact Form 7 tag option, not a template edit).
+		 * .contact-form-field__btn was dead code with zero references and
+		 * was deleted outright rather than migrated.
+		 *
+		 * What is left below is deliberately NOT bain_button(): different UI
+		 * semantics, not overlooked drift.
 		 */
 		?>
 		<div class="sg-callout">
-			<strong>Six independent button implementations found</strong>, none
-			built on <code>.bain-btn</code> — different padding, border widths,
-			font sizes, and hover behaviour. Two (<code>.nw-archive-cta__btn</code>,
-			<code>.nw-pullquote__btn</code>) have <strong>no hover state at all</strong>.
-			One (<code>.contact-form-field__btn</code>) is <strong>dead code</strong> —
-			defined in <code>theme.css</code>, not referenced by any template, CF7
-			form, or script. Specimens below, real markup, each labelled with its
-			class and where it renders.
+			Down from six independent implementations to two, both kept apart
+			from <code>.bain-btn</code> on purpose rather than by omission —
+			see each specimen's label. Both now carry the same
+			<code>:focus-visible</code> ring <code>.bain-btn</code> has, which
+			neither had before: <code>a:focus-visible</code> is set sitewide,
+			but nothing covered plain <code>&lt;button&gt;</code> elements.
 		</div>
 
-		<h3 class="sg-subhead">Other buttons in the codebase</h3>
+		<h3 class="sg-subhead">Buttons deliberately not built on .bain-btn</h3>
 		<ul class="sg-specimens" role="list">
 
 			<li class="sg-specimen">
 				<span class="sg-specimen__label">
 					<code>.tools-filter-pill</code>
-					<span class="sg-specimen__value">archive-bd324_tools.php — filter toggle</span>
+					<span class="sg-specimen__value">archive-bd324_tools.php — a multi-select filter toggle with an is-active state, not a link; bain_button() only renders &lt;a href&gt;</span>
 				</span>
 				<span class="sg-specimen__sample">
 					<button type="button" class="tools-filter-pill is-active">All</button>
 					<button type="button" class="tools-filter-pill">Design</button>
-				</span>
-			</li>
-
-			<li class="sg-specimen">
-				<span class="sg-specimen__label">
-					<code>.wpcf7-submit</code>
-					<span class="sg-specimen__value">Contact Form 7 — every form submit</span>
-				</span>
-				<span class="sg-specimen__sample">
-					<input type="submit" class="wpcf7-submit" value="Send →">
-				</span>
-			</li>
-
-			<li class="sg-specimen">
-				<span class="sg-specimen__label">
-					<code>.nw-archive-cta__btn</code>
-					<span class="sg-specimen__value">archive-bd324_testimonials.php — no :hover rule</span>
-				</span>
-				<span class="sg-specimen__sample">
-					<a class="nw-archive-cta__btn" href="#sg-components">Get in touch <span class="nw-archive-cta__btn-arrow" aria-hidden="true">&rarr;</span></a>
-				</span>
-			</li>
-
-			<li class="sg-specimen">
-				<span class="sg-specimen__label">
-					<code>.nw-pullquote__btn</code> /
-					<code>--primary</code>
-					<span class="sg-specimen__value">single-bd324_testimonials.php — no :hover rule</span>
-				</span>
-				<span class="sg-specimen__sample">
-					<a class="nw-pullquote__btn" href="#sg-components">read more</a>
-					<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="#sg-components">see the project <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span></a>
-				</span>
-			</li>
-
-			<li class="sg-specimen">
-				<span class="sg-specimen__label">
-					<code>.contact-form-field__btn</code>
-					<span class="sg-specimen__value">defined in theme.css — unused anywhere</span>
-				</span>
-				<span class="sg-specimen__sample">
-					<button type="button" class="contact-form-field__btn contact-form-field__btn--selected">Selected</button>
-					<button type="button" class="contact-form-field__btn">Choice</button>
 				</span>
 			</li>
 

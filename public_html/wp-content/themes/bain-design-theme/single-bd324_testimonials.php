@@ -166,9 +166,12 @@ wp_reset_postdata();
 			<?php if ( ! empty( $related_projects ) ) : ?>
 			<div class="nw-pullquote__actions">
 				<?php foreach ( $related_projects as $i => $rp ) : ?>
-				<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="<?php echo esc_url( $rp['permalink'] ); ?>">
-					<?php echo 0 === $i && count( $related_projects ) === 1 ? 'see the project' : 'see &ldquo;' . esc_html( $rp['title'] ) . '&rdquo;'; ?> <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span>
-				</a>
+				<?php
+				$rp_label = ( 0 === $i && count( $related_projects ) === 1 )
+					? 'see the project →'
+					: 'see “' . $rp['title'] . '” →';
+				bain_button( $rp_label, $rp['permalink'] );
+				?>
 				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>

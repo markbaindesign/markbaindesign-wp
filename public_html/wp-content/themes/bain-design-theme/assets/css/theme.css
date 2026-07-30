@@ -945,29 +945,6 @@
     min-height: 140px;
   }
 
-  .contact-form-field__buttons {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-  }
-
-  .contact-form-field__btn {
-    font-family: var(--font-mono);
-    font-size: var(--type-12);
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--rule);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    transition: background 200ms, color 200ms;
-  }
-
-  .contact-form-field__btn--selected {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-
   .contact-form-section__form-footer {
     display: flex;
     align-items: center;
@@ -1156,24 +1133,9 @@
     margin-top: var(--space-1);
   }
 
-  /* submit */
-  .wpcf7-submit {
-    font-family: var(--font-mono);
-    font-size: var(--type-14);
-    font-weight: 700;
-    background: var(--ink);
-    color: var(--paper);
-    border: 2px solid var(--ink);
-    padding: var(--space-3) var(--space-6);
-    cursor: pointer;
-    transition: background 200ms, color 200ms;
-    letter-spacing: 0.03em;
-  }
-
-  .wpcf7-submit:hover {
-    background: transparent;
-    color: var(--ink);
-  }
+  /* submit: the "Bain Contact" CF7 form's submit tag carries class:bain-btn
+     (see its _form postmeta), so it renders via .bain-btn in base.css —
+     no component of its own. */
 
   @media (max-width: 900px) {
     .contact-channels__grid { grid-template-columns: 1fr 1fr; }
@@ -2968,21 +2930,8 @@
     line-height: 1.5;
     max-width: 60ch;
   }
-  .nw-archive-cta__btn {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 18px 28px;
-    font-family: var(--font-mono);
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration: none;
-    border: 1px solid var(--ink);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-  }
-  .nw-archive-cta__btn-arrow { color: var(--clay); }
+  /* CTA button: rendered by bain_button() in archive-bd324_testimonials.php,
+     not a component of its own — see the style guide's button audit. */
 
   /* ─── SINGLE ─── */
 
@@ -3099,23 +3048,10 @@
     color: var(--pencil);
     margin-top: 2px;
   }
+  /* Action button: rendered by bain_button() in single-bd324_testimonials.php.
+     .nw-pullquote__btn (the plain, non-primary variant) was declared here
+     but never used in any template — dead code, removed with the rest. */
   .nw-pullquote__actions { margin-left: auto; display: flex; gap: 12px; }
-  .nw-pullquote__btn {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    padding: 10px 16px;
-    border: 1px solid var(--rule);
-    color: var(--ink);
-    text-decoration: none;
-    background: var(--paper);
-    white-space: nowrap;
-  }
-  .nw-pullquote__btn--primary {
-    border-color: var(--ink);
-    color: var(--paper);
-    background: var(--ink);
-  }
-  .nw-pullquote__btn-arrow { color: var(--clay); }
 
   /* Context section */
   .nw-context { padding: var(--space-10) 0 0; }
@@ -3379,6 +3315,13 @@
   }
   .tools-filter-pill:hover { border-color: var(--clay); color: var(--clay); }
   .tools-filter-pill.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper-pure); }
+  /* Kept as its own component rather than bain_button(): this is a
+     multi-select filter toggle with an is-active state, not a CTA link —
+     bain_button() only renders <a href>. base.css gives every <a> a focus
+     ring via a:focus-visible, but nothing sitewide covers plain <button>
+     elements, so this was keyboard-invisible; every other button-shaped
+     thing on the site has the identical gap. */
+  .tools-filter-pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
   /* Year range slider */
   .tools-year-slider { padding: var(--space-4) var(--gutter) 0; }

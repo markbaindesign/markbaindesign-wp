@@ -214,10 +214,7 @@ function bain_nw_short_quote( $post ) {
 				<h3 class="nw-archive-cta__heading">I&rsquo;m taking on two more projects in 2026<span class="nw-dot">.</span></h3>
 				<p class="nw-archive-cta__sub">If yours is the sort of brief these clients describe &mdash; small, well-scoped, run by humans you&rsquo;d want to share an espresso with &mdash; start with an email.</p>
 			</div>
-			<a class="nw-archive-cta__btn" href="mailto:mark@bain.design">
-				<span>Arrange a chat</span>
-				<span class="nw-archive-cta__btn-arrow" aria-hidden="true">&rarr;</span>
-			</a>
+			<?php bain_button( 'Arrange a chat →', 'mailto:mark@bain.design' ); ?>
 		</div>
 	</div>
 </section>
