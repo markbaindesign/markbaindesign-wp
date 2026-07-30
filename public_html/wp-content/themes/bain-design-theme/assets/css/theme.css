@@ -322,46 +322,61 @@
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.25;
     letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0;
   }
 
-  /* Inline cycling slots — JS sets content via data attributes */
-  .hero__slot {
-    display: inline-grid;
-    font-weight: 700;
-    color: var(--clay-deep);
-    padding: 0 2px;
-    white-space: pre;
-    position: relative;
-  }
+  /* Grid rather than wrapped text: the rows stretch to the container, so the
+     tint is the same length on every line whatever word is showing, and the
+     animation emptying a slot can no longer collapse it or shift what follows.
 
-  .hero__slot-reserve {
-    grid-area: 1/1;
-    visibility: hidden;
-  }
+     The width is the widest the headline can ever be — "websites for
+     interesting" — plus room for the caret to sit past the last glyph. Below
+     that width a line soft-wraps inside the tint.
 
-  .hero__slot-inner {
-    grid-area: 1/1;
-    position: relative;
-    display: inline-block;
-  }
-
-  .hero__slot-highlight {
-    position: absolute;
-    inset: 0;
+     The tint is one background on the container rather than one per line:
+     the rows sit flush, so painting them separately would risk a hairline
+     seam wherever a row lands on a fractional pixel. */
+  .hero__lines {
+    display: grid;
+    width: 14.4em;
+    max-width: 100%;
     background: rgba(201, 100, 66, 0.12);
-    pointer-events: none;
+    /* Row height: the text's content area (JetBrains Mono's ascent +
+       descent) plus the leading that centres it. It lives here rather than
+       on .hero__headline because .hero__line's min-height has to match it —
+       one token, so the two cannot drift apart. */
+    --hero-band: 1.552em;
+    line-height: var(--hero-band);
   }
 
+  /* min-height holds the row open while the animation has a slot emptied:
+     a line whose only content is an empty slot generates no line box, so
+     without it the row collapses and drags the lines below it upwards. */
+  .hero__line {
+    min-height: var(--hero-band);
+  }
+
+  /* Spaces shown as dots, editor "render whitespace" style. The dot is a
+     background rather than a "·" glyph so the element keeps a real space:
+     it stays one character wide, and the heading still reads and copies as
+     separate words. pre-wrap keeps the space from collapsing while still
+     allowing the line to break here when the pane is too narrow. */
+  .hero__ws {
+    white-space: pre-wrap;
+    background-image: radial-gradient(circle at 50% 50%, var(--clay-deep) 0 0.055em, transparent 0.055em);
+    background-repeat: no-repeat;
+    opacity: 0.4;
+  }
+
+  /* Cycling slots (JS swaps the text in #slot-N-text) and the fixed words
+     between them. Plain inline boxes sized by their visible text, so the
+     rest of the line closes up as the animation deletes characters. */
+  .hero__slot,
   .hero__connector {
     font-weight: 700;
     color: var(--clay-deep);
-    background: rgba(201, 100, 66, 0.12);
-    padding: 0 2px;
-    white-space: pre;
   }
 
   .hero__caret {
@@ -399,20 +414,6 @@
     .hero__headline {
       max-width: none;
       font-size: clamp(30px, 8.5vw, 42px);
-    }
-    /* On mobile the inline-grid slots size to the reserve (widest) word,
-       which can be wider than the viewport (e.g. "entrepreneurs" ≈ 250px
-       at 32px font). Switch to inline so slots size to visible text only,
-       eliminating the overflow and the gap between wrapped lines. */
-    .hero__slot {
-      display: inline;
-      white-space: normal;
-    }
-    .hero__slot-reserve { display: none; }
-    .hero__slot-inner   { display: inline; }
-    .hero__slot-highlight { display: none; }
-    .hero__connector {
-      white-space: normal;
     }
     .hero__sub {
       font-size: 16px;
