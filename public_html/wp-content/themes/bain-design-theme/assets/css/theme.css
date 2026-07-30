@@ -6,7 +6,7 @@
 /* Layer order. `base` is base.css's layer and comes first so component
    styles here win over its element styles — see the note at the top of
    base.css. */
-@layer base, layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, styleguide, wp;
+@layer base, layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, styleguide, prose, wp;
 
 /* ----- Dropdown visibility — unlayered to beat @layer header specificity ----- */
 .nav-dropdown { display: none; }
@@ -1705,6 +1705,11 @@
   .stree-section { padding: var(--space-9) 0; }
 
   /* Single service */
+  .service-breadcrumb {
+    display: block;
+    margin-bottom: var(--space-5);
+  }
+
   .service-single__content {
     max-width: 68ch;
     margin-bottom: var(--space-9);
@@ -1771,13 +1776,17 @@
 /* ----- Archive pages ------------------------------------------------- */
 @layer archive {
   .archive-header {
-    padding: var(--space-8) var(--gutter) var(--space-6);
+    padding: var(--space-8) 0 var(--space-6);
     border-bottom: 1px solid var(--rule);
   }
 
   .archive-header__inner {
     max-width: var(--max-w);
     margin: 0 auto;
+    /* The gutter belongs on the inner, matching .bain-wrap. With it on the
+       parent, the centred inner is measured inside the padding and its
+       content lands a gutter's width left of every .bain-wrap below it. */
+    padding: 0 var(--gutter);
   }
 
   .archive-header__title {
@@ -3647,5 +3656,27 @@
   @media (max-width: 720px) {
     .sg-specimen  { grid-template-columns: 1fr; gap: var(--space-2); }
     .sg-scale__row { grid-template-columns: 110px 56px minmax(0, 1fr); }
+  }
+}
+
+/* ----- Prose ---------------------------------------------------------- */
+/* Vertical rhythm for WYSIWYG output from the_content().
+   base.css zeroes heading margins because headings elsewhere are placed by
+   their own components — which leaves editor content with nothing between a
+   heading and the paragraph above it. Paragraph rhythm already comes from
+   base.css's `p { margin-bottom }`, so only the headings need setting.
+   Declared late in the layer order so it beats the flat `> * + *` spacing
+   the content containers apply to every child alike. */
+@layer prose {
+  .bain-body-copy :is(h2, h3, h4, h5, h6),
+  .entry-content  :is(h2, h3, h4, h5, h6) {
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-3);
+  }
+
+  /* No leading gap where the copy starts on a heading. */
+  .bain-body-copy > :first-child,
+  .entry-content  > :first-child {
+    margin-top: 0;
   }
 }
