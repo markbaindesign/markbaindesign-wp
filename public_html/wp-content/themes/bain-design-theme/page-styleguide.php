@@ -241,19 +241,61 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 
 		<h3 class="sg-subhead">Buttons</h3>
 		<p class="sg-note">
-			Rendered by <code>bain_button()</code> — the only button that should
-			be reached for. Three variants: fill dark (default), outline
-			(<code>ghost</code>), fill terracotta (<code>terracotta</code>).
-			Hover for the 2px hard-offset press shadow.
+			Rendered by <code>bain_button( $label, $url, $args )</code> — the
+			only button that should be reached for. <code>.bain-btn</code> is
+			always present; the variant is an additional modifier class, chosen
+			with <code>$args['variant']</code>. Hover for the 2px hard-offset
+			press shadow.
 		</p>
-		<div class="sg-cluster">
-			<?php
-			bain_button( 'Fill dark', '#sg-components' );
-			bain_button( 'Outline', '#sg-components', array( 'variant' => 'ghost' ) );
-			bain_button( 'Fill terracotta', '#sg-components', array( 'variant' => 'terracotta' ) );
-			bain_button( 'External link', 'https://github.com/markbaindesign', array( 'variant' => 'ghost', 'external' => true ) );
-			?>
-		</div>
+
+		<ul class="sg-specimens" role="list">
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					Fill dark <em>(default)</em><br>
+					<code>.bain-btn</code>
+					<span class="sg-specimen__value">variant omitted, or 'primary'</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<?php bain_button( 'Arrange a chat now', '#sg-components' ); ?>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					Outline<br>
+					<code>.bain-btn.bain-btn--ghost</code>
+					<span class="sg-specimen__value">variant: 'ghost'</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<?php bain_button( 'Check out my work', '#sg-components', array( 'variant' => 'ghost' ) ); ?>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					Fill terracotta<br>
+					<code>.bain-btn.bain-btn--terracotta</code>
+					<span class="sg-specimen__value">variant: 'terracotta'</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<?php bain_button( 'Send a brief', '#sg-components', array( 'variant' => 'terracotta' ) ); ?>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					External link modifier<br>
+					<code>.bain-btn.bain-btn--ghost</code>
+					<span class="sg-specimen__value">any variant + external: true — adds target="_blank", rel, and the ↗ arrow</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<?php bain_button( 'View on GitHub', 'https://github.com/markbaindesign', array( 'variant' => 'ghost', 'external' => true ) ); ?>
+				</span>
+			</li>
+
+		</ul>
+
 		<p class="sg-note">
 			Outline's hover shadow is clay, not ink — an ink shadow behind an
 			ink-filled hover state has no visible edge, the same defect fixed
