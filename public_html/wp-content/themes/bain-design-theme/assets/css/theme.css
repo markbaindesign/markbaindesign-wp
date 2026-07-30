@@ -3,7 +3,10 @@
    Depends on tokens.css and base.css being loaded first.
    ===================================================================== */
 
-@layer layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, styleguide, wp;
+/* Layer order. `base` is base.css's layer and comes first so component
+   styles here win over its element styles — see the note at the top of
+   base.css. */
+@layer base, layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, styleguide, wp;
 
 /* ----- Dropdown visibility — unlayered to beat @layer header specificity ----- */
 .nav-dropdown { display: none; }

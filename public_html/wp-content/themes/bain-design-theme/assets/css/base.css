@@ -14,7 +14,16 @@
 
    Load on the front end only — NOT inside add_editor_style — so the
    WP admin doesn't inherit body-level rules.
+
+   Everything below sits in @layer base, which theme.css declares first in
+   its layer order. Without a layer these rules would be unlayered, and
+   unlayered declarations beat every layer regardless of specificity — so
+   `h1 { font-size }` here would silently win over `.hero__headline
+   { font-size }` in theme.css's @layer hero. Keep new element styles inside
+   this layer.
    ===================================================================== */
+
+@layer base {
 
 html, body {
   background: var(--bg-1);
@@ -268,3 +277,5 @@ label {
   .bain-letter .entry-content,
   .bain-letter main { margin-left: var(--space-4); margin-right: var(--space-4); }
 }
+
+} /* @layer base */
