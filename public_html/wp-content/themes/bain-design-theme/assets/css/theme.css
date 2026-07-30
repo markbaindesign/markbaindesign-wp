@@ -1789,6 +1789,22 @@
     padding: 0 var(--gutter);
   }
 
+  /* Page-header eyebrows: hang the opening bracket into the gutter so the
+     label's words line up with the title below it. Without this the "[" sits
+     inside the column and pushes the text in by exactly one character — the
+     faces are monospace, so 1ch is an exact measure. Needs display: block for
+     text-indent to apply, since the helper emits a span.
+
+     Listed together here, rather than per component, so the page headers
+     cannot drift apart again. @layer archive is declared after contact and
+     about-page, so these win. */
+  .archive-header__inner > .meta-bracket,
+  .contact-hero__grid  > .meta-bracket,
+  .about-hero__body    > .meta-bracket {
+    display: block;
+    text-indent: -1ch;
+  }
+
   .archive-header__title {
     font-size: var(--type-44);
     letter-spacing: -0.02em;
