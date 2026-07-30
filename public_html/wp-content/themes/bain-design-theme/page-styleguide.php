@@ -240,7 +240,7 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 		</header>
 
 		<h3 class="sg-subhead">Buttons</h3>
-		<p class="sg-note">Rendered by <code>bain_button()</code>. Hover for the 2px hard-offset press shadow.</p>
+		<p class="sg-note">Rendered by <code>bain_button()</code> — the only button that should be reached for. Hover for the 2px hard-offset press shadow.</p>
 		<div class="sg-cluster">
 			<?php
 			bain_button( 'Arrange a chat now', '#sg-components' );
@@ -248,6 +248,97 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 			bain_button( 'External link', 'https://github.com/markbaindesign', array( 'variant' => 'ghost', 'external' => true ) );
 			?>
 		</div>
+
+		<?php
+		/*
+		 * Everything below is NOT the design system — it is every other
+		 * button-shaped element that exists in the codebase today, each
+		 * rendered with its real markup and class so the drift is visible
+		 * rather than described. bain_button() was added after these, and
+		 * none of them were ever migrated onto it.
+		 */
+		?>
+		<div class="sg-callout">
+			<strong>Six independent button implementations found</strong>, none
+			built on <code>.bain-btn</code> — different padding, border widths,
+			font sizes, and hover behaviour. Two (<code>.nw-archive-cta__btn</code>,
+			<code>.nw-pullquote__btn</code>) have <strong>no hover state at all</strong>.
+			One (<code>.contact-form-field__btn</code>) is <strong>dead code</strong> —
+			defined in <code>theme.css</code>, not referenced by any template, CF7
+			form, or script. Specimens below, real markup, each labelled with its
+			class and where it renders.
+		</div>
+
+		<h3 class="sg-subhead">Other buttons in the codebase</h3>
+		<ul class="sg-specimens" role="list">
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.tools-filter-pill</code>
+					<span class="sg-specimen__value">archive-bd324_tools.php — filter toggle</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<button type="button" class="tools-filter-pill is-active">All</button>
+					<button type="button" class="tools-filter-pill">Design</button>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.wpcf7-submit</code>
+					<span class="sg-specimen__value">Contact Form 7 — every form submit</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<input type="submit" class="wpcf7-submit" value="Send →">
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.nw-archive-cta__btn</code>
+					<span class="sg-specimen__value">archive-bd324_testimonials.php — no :hover rule</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<a class="nw-archive-cta__btn" href="#sg-components">Get in touch <span class="nw-archive-cta__btn-arrow" aria-hidden="true">&rarr;</span></a>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.nw-pullquote__btn</code> /
+					<code>--primary</code>
+					<span class="sg-specimen__value">single-bd324_testimonials.php — no :hover rule</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<a class="nw-pullquote__btn" href="#sg-components">read more</a>
+					<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="#sg-components">see the project <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span></a>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.contact-form-field__btn</code>
+					<span class="sg-specimen__value">defined in theme.css — unused anywhere</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<button type="button" class="contact-form-field__btn contact-form-field__btn--selected">Selected</button>
+					<button type="button" class="contact-form-field__btn">Choice</button>
+				</span>
+			</li>
+
+			<li class="sg-specimen">
+				<span class="sg-specimen__label">
+					<code>.bain-project__stack-pill</code>
+					<span class="sg-specimen__value">single-bd324_projects.php — a tag, not a button (no cursor: pointer); listed for contrast</span>
+				</span>
+				<span class="sg-specimen__sample">
+					<ul class="bain-project__stack-list" style="display:flex;list-style:none;padding:0;margin:0;">
+						<li class="bain-project__stack-pill"><a href="#sg-components">WordPress</a></li>
+					</ul>
+				</span>
+			</li>
+
+		</ul>
 
 		<h3 class="sg-subhead">Cards</h3>
 		<div class="sg-cluster sg-cluster--cards">

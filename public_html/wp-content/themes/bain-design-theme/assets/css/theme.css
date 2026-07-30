@@ -893,6 +893,17 @@
     background: var(--paper-pure);
     border: 1px solid var(--rule);
     padding: var(--space-6);
+  }
+
+  /* CF7 injects a .wpcf7 div and a <form> around the field markup, so the
+     rows and .contact-form-field divs are grandchildren of
+     .contact-form-section__form, not direct children — a gap set there
+     never reaches them. Flush siblings meant 0px between one field's input
+     and the next field's label, while each field's own internal gap (label
+     to its input, --space-2) was 8px — so every label sat closer to the
+     field above it than the one it names. Set the row gap on the actual
+     parent of the rows instead. */
+  .contact-form-section__form .wpcf7 form {
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
@@ -963,6 +974,9 @@
     justify-content: space-between;
     gap: var(--space-4);
     flex-wrap: wrap;
+    /* .contact-form-section__form is no longer the flex container that
+       gapped this from .wpcf7 — see the note above it. */
+    margin-top: var(--space-5);
   }
 
   .contact-form-section__form-note {
@@ -1724,6 +1738,21 @@
   .services-sidebar .meta-bracket {
     display: block;
     margin-bottom: var(--space-4);
+    /* Hang the bracket, as the page-header eyebrows do, so the label's words
+       line up with the tree beneath it rather than sitting a character in. */
+    text-indent: -1ch;
+  }
+
+  /* It is a link back to the section landing page, but it reads as a label —
+     underline on hover only, and no visited colour. */
+  .services-sidebar a.meta-bracket {
+    color: var(--fg-2);
+    text-decoration: none;
+  }
+  .services-sidebar a.meta-bracket:hover,
+  .services-sidebar a.meta-bracket:focus-visible {
+    color: var(--ink);
+    text-decoration: underline;
   }
 
   .services-main { max-width: 68ch; }
@@ -2285,7 +2314,13 @@
     color: var(--paper);
     border-color: var(--ink);
     justify-content: space-between;
-    &:hover { box-shadow: var(--shadow-press-2); }
+    /* --shadow-press-2 is an ink shadow, same as this card's own fill — on
+       every other (light) card that reads as a crisp offset layer, but
+       here the shadow was invisible against the card and only showed as a
+       faint sliver against the page. Clay already marks the "cat
+       portfolio.md" CTA on this card, so it reads as the same accent
+       lighting up, not a new colour. */
+    &:hover { box-shadow: 4px 4px 0 var(--clay); }
     .meta-bracket { color: var(--paper-deep); }
   }
   .bain-project__related-title { font-size: 22px; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
@@ -3598,6 +3633,22 @@
     font-size: var(--type-14);
     max-width: 70ch;
   }
+
+  /* Flags a known inconsistency for the reader rather than hiding it. Amber
+     is tokens.css's caution colour — this is the only place on the site
+     that uses it, since it exists to mark exactly this kind of thing. */
+  .sg-callout {
+    max-width: 70ch;
+    margin-top: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--amber);
+    /* rgba tint, matching the hero's rgba(201, 100, 66, 0.12) idiom rather
+       than color-mix() — nothing else in this codebase uses color-mix(). */
+    background: rgba(216, 154, 43, 0.1);
+    font-size: var(--type-14);
+    line-height: 1.6;
+  }
+  .sg-callout code { font-size: var(--type-12); }
 
   /* ----- Swatches ----- */
   .sg-swatches {
