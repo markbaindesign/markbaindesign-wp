@@ -3,7 +3,7 @@
    Depends on tokens.css and base.css being loaded first.
    ===================================================================== */
 
-@layer layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, wp;
+@layer layout, header, footer, hero, sections, about, contact, services, about-page, archive, single, testimonials, tools-timeline, error404, styleguide, wp;
 
 /* ----- Dropdown visibility — unlayered to beat @layer header specificity ----- */
 .nav-dropdown { display: none; }
@@ -3466,5 +3466,182 @@
   @media (max-width: 480px) {
     .e404-cats { gap: var(--space-5); }
     .e404-nav  { gap: var(--space-4); }
+  }
+}
+
+/* ----- Style guide ---------------------------------------------------- */
+/* Everything here is chrome for the /styleguide page — labels, swatch
+   chips, specimen rows. The specimens themselves are deliberately left
+   unstyled so they render exactly as they do on the site. Only .sg-*
+   classes are targeted, so nothing leaks into real pages. */
+@layer styleguide {
+  .sg-title {
+    font-size: var(--type-64);
+    letter-spacing: var(--tracking-tight);
+    margin-top: var(--space-3);
+  }
+
+  .sg-lead {
+    font-size: var(--type-18);
+    color: var(--fg-2);
+    max-width: 60ch;
+    margin-top: var(--space-4);
+  }
+
+  .sg-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin-top: var(--space-6);
+    font-size: var(--type-14);
+  }
+
+  .sg-subhead {
+    font-size: var(--type-20);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-2);
+  }
+  .sg-subhead:first-of-type { margin-top: var(--space-6); }
+
+  .sg-note {
+    color: var(--fg-2);
+    font-size: var(--type-14);
+    max-width: 70ch;
+  }
+
+  /* ----- Swatches ----- */
+  .sg-swatches {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .sg-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--type-13);
+  }
+
+  /* Chequerboard shows through the semi-transparent tokens (--hover-bg). */
+  .sg-swatch__chip {
+    display: block;
+    height: 72px;
+    border: 1px solid var(--border-1);
+    background-image:
+      linear-gradient(45deg, var(--border-2) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--border-2) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--border-2) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--border-2) 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  .sg-swatch__name  { font-size: var(--type-13); }
+  .sg-swatch__value,
+  .sg-specimen__value,
+  .sg-scale__value {
+    color: var(--fg-3);
+    font-family: var(--font-mono-2);
+    font-size: var(--type-12);
+  }
+
+  /* ----- Specimen rows ----- */
+  .sg-specimens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sg-specimen {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: baseline;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--border-2);
+  }
+
+  .sg-specimen__label {
+    display: flex;
+    flex-direction: column;
+    /* Without this the code chips stretch to the full column width. */
+    align-items: flex-start;
+    gap: var(--space-1);
+    font-size: var(--type-13);
+  }
+
+  /* Big scale samples must not wrap the row into a wall of text. */
+  .sg-specimen__sample--clip {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sg-specimen__sample--para { display: block; max-width: 60ch; }
+
+  .sg-prose { max-width: 70ch; margin-top: var(--space-5); }
+  .sg-prose > * + * { margin-top: var(--space-4); }
+
+  /* ----- Spacing scale ----- */
+  .sg-scale { list-style: none; padding: 0; margin: var(--space-5) 0 0; }
+
+  .sg-scale__row {
+    display: grid;
+    grid-template-columns: 120px 60px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-2) 0;
+    font-size: var(--type-13);
+  }
+
+  .sg-scale__bar {
+    display: block;
+    height: 16px;
+    background: var(--clay);
+    /* Tokens are absolute px, so a wide one can outrun its column. */
+    max-width: 100%;
+  }
+
+  /* ----- Component clusters ----- */
+  .sg-cluster {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: flex-start;
+    margin: var(--space-5) 0 0;
+  }
+
+  .sg-cluster--cards > * { flex: 1 1 320px; }
+  .sg-card__title { font-size: var(--type-24); margin: var(--space-3) 0 var(--space-2); }
+
+  .sg-form { max-width: 480px; margin-top: var(--space-5); }
+
+  .sg-motion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--border-1);
+    background: var(--bg-1);
+    font-size: var(--type-13);
+    transition-property: background, color, transform;
+    transition-timing-function: var(--ease-1);
+  }
+  .sg-motion:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translate(2px, 2px);
+  }
+
+  @media (max-width: 720px) {
+    .sg-specimen  { grid-template-columns: 1fr; gap: var(--space-2); }
+    .sg-scale__row { grid-template-columns: 110px 56px minmax(0, 1fr); }
   }
 }
