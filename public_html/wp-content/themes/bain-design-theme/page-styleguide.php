@@ -371,6 +371,46 @@ $sg_motion   = array( '--dur-1', '--dur-2', '--dur-3' );
 			</div>
 		</div>
 
+		<h3 class="sg-subhead">Contact channel cards</h3>
+		<p class="sg-note">
+			<code>.contact-channel-card</code>, page-contact.php — two tones,
+			<code>--paper</code> (default) and <code>--ink</code>. The ink tone's
+			eyebrow and CTA link were both fixed 2026-07-30: the eyebrow used
+			<code>.meta-bracket</code>'s default graphite, sized for a light
+			card, which read as near-invisible on this dark one; the CTA was a
+			plain unclassed link, so its hover colour
+			(<code>--link-hover</code>, #0E0E0E) was functionally identical to
+			the card's own <code>--ink</code> background and vanished on
+			pointer-over. Both now use <code>--clay-soft</code> /
+			<code>--clay</code>, matching the address link already on this
+			tone, and the focus ring is overridden to match — the generic
+			<code>a:focus-visible</code> outline is also ink-on-ink here.
+		</p>
+		<div class="sg-cluster sg-cluster--cards">
+			<article class="contact-channel-card contact-channel-card--ink">
+				<div class="contact-channel-card__header">
+					<?php bain_meta_bracket( 'Primary', array( 'tag' => 'div' ) ); ?>
+				</div>
+				<h3 class="contact-channel-card__title">Email<span class="contact-channel-card__dot">.</span></h3>
+				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="#sg-components">hello@bain.design</a>
+				<p class="contact-channel-card__desc">The most reliable way to reach me. I read everything, I reply within a working day or two.</p>
+				<div class="contact-channel-card__cta">
+					<a href="#sg-components">Compose →</a>
+				</div>
+			</article>
+			<article class="contact-channel-card contact-channel-card--paper">
+				<div class="contact-channel-card__header">
+					<?php bain_meta_bracket( 'Engineering', array( 'tag' => 'div' ) ); ?>
+				</div>
+				<h3 class="contact-channel-card__title">GitHub<span class="contact-channel-card__dot">.</span></h3>
+				<a class="contact-channel-card__addr contact-channel-card__addr--link" href="#sg-components">github.com/markbaindesign</a>
+				<p class="contact-channel-card__desc">Open-source plugins, theme experiments, code review. Drop an issue if you found a bug.</p>
+				<div class="contact-channel-card__cta">
+					<a href="#sg-components">Browse repos ↗</a>
+				</div>
+			</article>
+		</div>
+
 		<h3 class="sg-subhead">Checked list</h3>
 		<?php
 		bain_check_list( array(

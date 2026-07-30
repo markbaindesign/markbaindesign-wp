@@ -777,6 +777,14 @@
     margin-bottom: var(--space-2);
   }
 
+  /* .meta-bracket defaults to --fg-2 (graphite), sized for a light card —
+     on the dark tone that reads as near-black on near-black. Matches the
+     rgba(245, 240, 232, …) treatment already used below for __desc on this
+     same tone, dimmer since an eyebrow sits below body copy in emphasis. */
+  .contact-channel-card--ink .contact-channel-card__header .meta-bracket {
+    color: rgba(245, 240, 232, 0.5);
+  }
+
   .contact-channel-card__title {
     font-family: var(--font-mono);
     font-weight: 700;
@@ -799,6 +807,12 @@
   }
   .contact-channel-card--ink .contact-channel-card__addr--link { color: var(--clay-soft); text-decoration: underline; }
   .contact-channel-card--paper .contact-channel-card__addr--link { color: var(--link); text-decoration: underline; }
+  /* base.css's generic a:focus-visible outlines in --ink — invisible on a
+     card whose own background is --ink. Same defect as the CTA hover
+     above, just on keyboard focus instead of mouse hover. */
+  .contact-channel-card--ink a:focus-visible {
+    outline-color: var(--clay-soft);
+  }
 
   .contact-channel-card__desc {
     font-size: var(--type-14);
@@ -828,6 +842,20 @@
 
   .contact-channel-card--ink .contact-channel-card__cta {
     border-color: rgba(245, 240, 232, 0.2);
+  }
+
+  /* The CTA is a plain, unclassed <a> — it was falling through to base.css's
+     default link colours: blue at rest (poor on this dark card) and
+     --link-hover (#0E0E0E) on hover, which is functionally the same colour
+     as this card's own --ink background, so the link vanished the moment
+     you pointed at it. Reuses clay-soft/clay, already the link colours for
+     .contact-channel-card__addr--link on this same tone, so both links on
+     the card read as one system rather than two different fixes. */
+  .contact-channel-card--ink .contact-channel-card__cta a {
+    color: var(--clay-soft);
+  }
+  .contact-channel-card--ink .contact-channel-card__cta a:hover {
+    color: var(--clay);
   }
 
   .contact-channel-card--paper .contact-channel-card__cta {
