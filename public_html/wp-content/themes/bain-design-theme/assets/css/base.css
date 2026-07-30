@@ -188,6 +188,19 @@ img { max-width: 100%; height: auto; display: block; }
 .bain-btn--ghost:visited,
 .bain-btn--terracotta:visited { color: var(--ink); }
 
+/* Hovering a visited button: :visited and :hover above are the same
+   specificity (0,2,0), so whichever is declared later wins the `color`
+   property outright — it does not matter which state the cursor is
+   actually in. :visited landed last, so every hover became unreadable
+   once its href had been visited: outline showed ink text on the ink
+   hover fill, and fill dark showed paper text on the paper hover fill —
+   both effectively invisible. These compound selectors are a class ahead
+   of either alone (0,3,0), so hover's colour always wins regardless of
+   source order or visited state, as interactive feedback should. */
+.bain-btn:visited:hover { color: var(--ink); }
+.bain-btn--ghost:visited:hover { color: var(--paper); }
+.bain-btn--terracotta:visited:hover { color: var(--clay-deep); }
+
 /* ----- Cards ---------------------------------------------------------- */
 
 .bain-card {
