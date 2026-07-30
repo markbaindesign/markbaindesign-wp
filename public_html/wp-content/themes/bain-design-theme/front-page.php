@@ -9,8 +9,6 @@ get_header();
 <!-- ================================================================== HERO -->
 <section class="hero" aria-label="<?php esc_attr_e( 'Introduction', 'bain-design-theme' ); ?>">
 	<div class="bain-wrap">
-		<?php bain_meta_bracket( 'WordPress Designer & Developer' ); ?>
-
 		<h1 class="hero__headline" id="hero-headline">
 			<?php
 			/*
