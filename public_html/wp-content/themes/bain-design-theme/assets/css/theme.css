@@ -1704,6 +1704,65 @@
 
   .stree-section { padding: var(--space-9) 0; }
 
+  /* ----- /services/ section layout ----- */
+  .services-layout {
+    display: grid;
+    /* Wide enough for the deepest branch — "    └── Plugin Development" is
+       26 monospace characters — so the tree glyphs never wrap out of line. */
+    grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .services-sidebar {
+    position: sticky;
+    top: var(--space-6);
+    border-right: 1px solid var(--rule-soft);
+    padding-right: var(--space-5);
+  }
+
+  .services-sidebar .meta-bracket {
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+
+  .services-main { max-width: 68ch; }
+
+  /* Compact variant of the service tree for the sidebar. The archive's own
+     tree is display type at 28/56px; this is navigation. */
+  .stree--nav {
+    gap: var(--space-5);
+    line-height: 1.7;
+  }
+  .stree--nav .stree__prefix,
+  .stree--nav .stree__name { font-size: var(--type-14); }
+  .stree--nav .stree__name--root {
+    font-size: var(--type-16);
+    letter-spacing: var(--tracking-tight);
+  }
+  .stree--nav .stree__row--root { margin-bottom: var(--space-1); }
+
+  /* Current branch. Clay is a brand mark, never a navigation cue (see
+     tokens.css), so the selected item is weighted ink and clay only marks
+     the branch glyph — the same division the tools timeline uses. */
+  .stree__name.is-on-path { color: var(--ink); }
+  .stree__name.is-current {
+    font-weight: 700;
+    border-bottom-color: var(--ink);
+  }
+  .stree__row:has(.is-current) .stree__prefix { color: var(--clay); }
+
+  @media (max-width: 900px) {
+    .services-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+    .services-sidebar {
+      position: static;
+      border-right: 0;
+      padding-right: 0;
+      border-bottom: 1px solid var(--rule-soft);
+      padding-bottom: var(--space-5);
+    }
+  }
+
   /* Single service */
   .service-breadcrumb {
     display: block;

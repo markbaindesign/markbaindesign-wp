@@ -37,28 +37,39 @@ while ( have_posts() ) :
 	</div>
 
 	<div class="bain-wrap bain-section">
+		<div class="services-layout">
 
-		<?php if ( get_the_content() ) : ?>
-		<div class="service-single__content bain-body-copy">
-			<?php the_content(); ?>
+			<aside class="services-sidebar" aria-label="<?php esc_attr_e( 'Services', 'bain-design-theme' ); ?>">
+				<?php bain_meta_bracket( 'All services', array( 'tag' => 'div' ) ); ?>
+				<?php bain_service_tree( array( 'class' => 'stree--nav', 'current_id' => get_the_ID() ) ); ?>
+			</aside>
+
+			<div class="services-main">
+
+				<?php if ( get_the_content() ) : ?>
+				<div class="service-single__content bain-body-copy">
+					<?php the_content(); ?>
+				</div>
+				<?php endif; ?>
+
+				<?php if ( $children ) : ?>
+				<div class="service-single__children">
+					<?php bain_meta_bracket( 'In this section', array( 'tag' => 'div' ) ); ?>
+					<ul class="service-single__child-list">
+						<?php foreach ( $children as $child ) : ?>
+						<li>
+							<a href="<?php echo esc_url( get_permalink( $child ) ); ?>">
+								<?php echo esc_html( $child->post_title ); ?> →
+							</a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+				<?php endif; ?>
+
+			</div>
+
 		</div>
-		<?php endif; ?>
-
-		<?php if ( $children ) : ?>
-		<div class="service-single__children">
-			<?php bain_meta_bracket( 'In this section', array( 'tag' => 'div' ) ); ?>
-			<ul class="service-single__child-list">
-				<?php foreach ( $children as $child ) : ?>
-				<li>
-					<a href="<?php echo esc_url( get_permalink( $child ) ); ?>">
-						<?php echo esc_html( $child->post_title ); ?> →
-					</a>
-				</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-		<?php endif; ?>
-
 	</div>
 
 <?php endwhile;

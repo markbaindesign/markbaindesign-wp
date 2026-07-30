@@ -405,3 +405,91 @@ function bain_project_adjacent( $direction = 'prev' ) {
  *   add_action( 'wp_footer', 'bain_sign_off_footer', 5 );
  *   function bain_sign_off_footer() { echo '<div class="bain-wrap">'; bain_sign_off(); echo '</div>'; }
  */
+
+
+/* =====================================================================
+ *  Service tree
+ * ================================================================== */
+
+/**
+ * ASCII branch menu of the services CPT, used across the /services/ section.
+ *
+ * Queries the CPT on every render, so services appear in the menu as soon as
+ * they are published — nothing to keep in sync by hand. Order follows
+ * menu_order, then the post hierarchy.
+ *
+ * @param array $args Optional.
+ *                    `current_id` (int)  Marks this service and its ancestors
+ *                                        as the current branch.
+ *                    `class`      (str)  Extra class names on the wrapper.
+ */
+function bain_service_tree( $args = array() ) {
+	$args = wp_parse_args( $args, array(
+		'current_id' => 0,
+		'class'      => '',
+	) );
+
+	$items = get_posts( array(
+		'post_type'      => 'bd324_services',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'orderby'        => 'menu_order',
+		'order'          => 'ASC',
+	) );
+
+	if ( ! $items ) { return; }
+
+	$current_id = (int) $args['current_id'];
+	$ancestors  = $current_id ? array_map( 'intval', get_post_ancestors( $current_id ) ) : array();
+	$roots      = array_values( array_filter( $items, fn( $p ) => (int) $p->post_parent === 0 ) );
+
+	printf( '<div class="stree %s">', esc_attr( $args['class'] ) );
+
+	foreach ( $roots as $root ) {
+		$is_current = ( (int) $root->ID === $current_id );
+		$on_path    = $is_current || in_array( (int) $root->ID, $ancestors, true );
+		?>
+		<div class="stree__block">
+			<div class="stree__row stree__row--root">
+				<a class="stree__name stree__name--root<?php echo $is_current ? ' is-current' : ''; ?><?php echo $on_path ? ' is-on-path' : ''; ?>"
+				   href="<?php echo esc_url( get_permalink( $root ) ); ?>"
+				   <?php echo $is_current ? 'aria-current="page"' : ''; ?>>
+					<?php echo esc_html( $root->post_title ); ?>
+				</a>
+			</div>
+			<?php bain_service_tree_rows( $items, (int) $root->ID, '', $current_id, $ancestors ); ?>
+		</div>
+		<?php
+	}
+
+	echo '</div>';
+}
+
+
+/**
+ * Recursive row renderer for bain_service_tree(). Draws the ├── └── │ glyphs.
+ * Not intended to be called directly.
+ */
+function bain_service_tree_rows( $items, $parent_id, $prefix, $current_id, $ancestors ) {
+	$children = array_values( array_filter( $items, fn( $p ) => (int) $p->post_parent === $parent_id ) );
+	$total    = count( $children );
+
+	foreach ( $children as $i => $item ) {
+		$is_last    = ( $i === $total - 1 );
+		$connector  = $is_last ? '└── ' : '├── ';
+		$extension  = $is_last ? '    ' : '│   ';
+		$is_current = ( (int) $item->ID === (int) $current_id );
+		$on_path    = $is_current || in_array( (int) $item->ID, $ancestors, true );
+		?>
+		<div class="stree__row">
+			<span class="stree__prefix" aria-hidden="true"><?php echo esc_html( $prefix . $connector ); ?></span>
+			<a class="stree__name<?php echo $is_current ? ' is-current' : ''; ?><?php echo $on_path ? ' is-on-path' : ''; ?>"
+			   href="<?php echo esc_url( get_permalink( $item ) ); ?>"
+			   <?php echo $is_current ? 'aria-current="page"' : ''; ?>>
+				<?php echo esc_html( $item->post_title ); ?>
+			</a>
+		</div>
+		<?php
+		bain_service_tree_rows( $items, (int) $item->ID, $prefix . $extension, $current_id, $ancestors );
+	}
+}
