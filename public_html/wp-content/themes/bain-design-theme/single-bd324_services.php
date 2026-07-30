@@ -36,8 +36,6 @@ while ( have_posts() ) :
 		</div>
 	</div>
 
-	<?php bain_ascii_rule(); ?>
-
 	<div class="bain-wrap bain-section">
 
 		<?php if ( get_the_content() ) : ?>

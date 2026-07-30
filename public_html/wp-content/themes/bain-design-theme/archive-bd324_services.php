@@ -46,8 +46,6 @@ $roots = array_values( array_filter( $all_services, fn( $p ) => (int) $p->post_p
 	</div>
 </div>
 
-<?php bain_ascii_rule(); ?>
-
 <section class="stree-section">
 	<div class="bain-wrap">
 
