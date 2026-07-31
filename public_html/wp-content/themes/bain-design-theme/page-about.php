@@ -11,9 +11,10 @@ get_header();
 $portrait_id = get_post_thumbnail_id() ?: 1954;
 
 $bio = array(
-	"I grew up taking radios apart and putting them back together, with the predictable variation in success. I started building websites for friends at university — a magazine, then a bicycle shop, then a small press — and at some point in 2012 stopped pretending it was a side project.",
-	"What I sell now is the same thing I sold then, only better-rehearsed. I read your brief carefully. I write a small, well-organised codebase to deliver it. I hand it over with documentation you'll actually open. And I am still here, on the other end of the email, two years later when you want to add a newsletter form.",
-	"I work from a small studio overlooking a quiet street in Sabadell. I take on between six and ten engagements a year. I do not have a sales team or a project manager or a JIRA instance — I have a notebook, a calendar, and the kind of clients who came back because they liked the first time.",
+	"When I moved to Spain from my hometown of Edinburgh, Scotland, I took the well-trodden route of teaching English for a living. That's when I built my first website, on a platform called Blogger, where I'd post each day's homework for my students. I quickly figured out how to add a custom header and change the background color. I'm a web developer! I thought.",
+	"Like most of my peers, I stole the bulk of my teaching ideas from a guy called Jamie Keddie, who ran a website called Lessonstream. One day, he blogged about wanting to re-do his site. I responded: let me know if you need any help. I might have claimed to be something of an expert.",
+	"That careless boast sent me down a rabbithole, but the site turned out OK, and that one WordPress build turned into a regular stream of projects that eventually led me out of teaching and into building websites for a living.",
+	"I work from a small home studio in Sabadell, Spain, which I share with 2 cats and an indeterminate number of guitars.",
 );
 
 $principles = array(
@@ -77,7 +78,7 @@ $off_clock = array(
 		<div class="about-hero__body">
 			<?php bain_meta_bracket( 'WordPress Designer &amp; Developer / since 2012 / freelance' ); ?>
 			<h1 class="about-hero__name">Mark Crawford Bain<span class="about-hero__dot" aria-hidden="true">.</span></h1>
-			<p class="about-hero__lead">I design &amp; build bespoke WordPress sites for individuals, small businesses &amp; start-ups. No page builders, no parent themes, no nonsense. One developer, one designer — same person, same head — from inception to launch and onwards.</p>
+			<p class="about-hero__lead">I design &amp; build bespoke mostly-WordPress sites for individuals, small businesses &amp; start-ups. But you know that already. Here's where I convince you I'm a human not a code monkey.</p>
 		</div>
 
 		<dl class="about-hero__meta">
@@ -112,7 +113,7 @@ $off_clock = array(
 			</div>
 			<div class="about-letter__caption">
 				<div>[ Sabadell studio &middot; Tuesday morning ]</div>
-				<div class="about-letter__caption-sub">photo &middot; J. Vidal &middot; 2024</div>
+				<div class="about-letter__caption-sub">photo &middot; M. Bain &middot; 2026</div>
 			</div>
 		</div>
 
