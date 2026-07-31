@@ -41,26 +41,6 @@
             "append": ""
         },
         {
-            "key": "field_bain_proj_client",
-            "label": "Client",
-            "name": "client",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Display name shown in the case study header.",
-            "required": 1,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_bain_proj_year",
             "label": "Year",
             "name": "year",
@@ -583,5 +563,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1784806273
+    "modified": 1785486553
 }
