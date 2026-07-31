@@ -590,16 +590,15 @@
   }
 
   .portfolio-card__thumb {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: var(--paper-deep);
-
-    /* contain, not cover: most project screenshots are taller than 16:9
-       (full-page captures), so cover cropped the bottom off every one of
-       them. contain letterboxes instead — --paper-deep fills the gap,
-       matching the empty-thumbnail placeholder's background so it reads
-       as deliberate rather than a rendering gap. */
-    & img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    /* No fixed aspect-ratio: a fixed box needs cover (crops anything
+       taller than the box — most full-page screenshots) or contain
+       (never crops, but leaves letterbox gaps on anything narrower than
+       the box). Neither fills the container without cropping unless the
+       box matches the image's own proportions — so let the box be the
+       image's own proportions. Each thumbnail is a different height;
+       the grid is no longer visually uniform, but every image shows in
+       full with no dead space. */
+    & img { width: 100%; height: auto; display: block; }
   }
 
   .portfolio-card__body {
@@ -1808,11 +1807,6 @@
     @media (max-width: 560px) { grid-template-columns: 1fr; }
   }
 
-  /* 4:3 thumbnail on archive cards */
-  .portfolio-archive .portfolio-card__thumb {
-    aspect-ratio: 4 / 3;
-  }
-
   /* 2-column internal layout at single-column breakpoint: thumb | body */
   @media (max-width: 560px) {
     .portfolio-archive .portfolio-card {
@@ -1821,11 +1815,15 @@
     .portfolio-archive .portfolio-card__thumb {
       width: 38%;
       flex-shrink: 0;
-      aspect-ratio: unset;
       align-self: stretch;
+      overflow: hidden;
     }
+    /* Unlike the main grid, this thumb's height is set by the row (the
+       text next to it), not by the image — cover is correct here: it is
+       filling an externally-determined box, not a decorative fixed one. */
     .portfolio-archive .portfolio-card__thumb img {
       height: 100%;
+      object-fit: cover;
     }
   }
 
