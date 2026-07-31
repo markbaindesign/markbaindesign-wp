@@ -592,8 +592,14 @@
   .portfolio-card__thumb {
     aspect-ratio: 16 / 9;
     overflow: hidden;
+    background: var(--paper-deep);
 
-    & img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* contain, not cover: most project screenshots are taller than 16:9
+       (full-page captures), so cover cropped the bottom off every one of
+       them. contain letterboxes instead — --paper-deep fills the gap,
+       matching the empty-thumbnail placeholder's background so it reads
+       as deliberate rather than a rendering gap. */
+    & img { width: 100%; height: 100%; object-fit: contain; display: block; }
   }
 
   .portfolio-card__body {
@@ -619,13 +625,6 @@
     line-height: var(--leading-snug);
     margin: 0;
     flex: 1;
-  }
-
-  .portfolio-card__meta {
-    display: flex;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-    margin-top: auto;
   }
 
   /* Empty thumbnail placeholder */

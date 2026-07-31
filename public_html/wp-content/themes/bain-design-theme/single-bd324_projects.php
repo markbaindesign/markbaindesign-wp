@@ -304,13 +304,8 @@ while ( have_posts() ) :
 			<?php bain_project__section_inline( '09', 'Related' ); ?>
 			<div class="bain-project__related-grid">
 
-				<?php foreach ( $related as $r ) :
-					$r_year = (int) bain_project_field( 'year', $r->ID, get_the_date( 'Y', $r ) );
-					$r_terms = wp_get_post_terms( $r->ID, 'project-category-service', array( 'fields' => 'names' ) );
-					$r_tag   = ( $r_terms && ! is_wp_error( $r_terms ) ) ? $r_terms[0] : '';
-				?>
+				<?php foreach ( $related as $r ) : ?>
 				<a class="bain-project__related-card" href="<?php echo esc_url( get_permalink( $r ) ); ?>">
-					<?php bain_meta_bracket( trim( $r_year . ( $r_tag ? ' / ' . $r_tag : '' ) ) ); ?>
 					<h4 class="bain-project__related-title"><?php echo esc_html( get_the_title( $r ) ); ?></h4>
 					<span class="bain-project__related-link">view project &rarr;</span>
 				</a>

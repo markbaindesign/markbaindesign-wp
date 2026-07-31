@@ -117,11 +117,7 @@ get_header();
 		if ( $fp_projects->have_posts() ) :
 		?>
 		<div class="portfolio-grid">
-			<?php while ( $fp_projects->have_posts() ) : $fp_projects->the_post();
-				$proj_year  = get_the_date( 'Y' );
-				$proj_terms = get_the_terms( get_the_ID(), 'project-category-service' );
-				$proj_tag   = ( $proj_terms && ! is_wp_error( $proj_terms ) ) ? $proj_terms[0]->name : '';
-			?>
+			<?php while ( $fp_projects->have_posts() ) : $fp_projects->the_post(); ?>
 			<article class="portfolio-card" id="post-<?php the_ID(); ?>">
 				<?php if ( has_post_thumbnail() ) : ?>
 					<a href="<?php the_permalink(); ?>" class="portfolio-card__thumb" tabindex="-1" aria-hidden="true">
@@ -134,9 +130,6 @@ get_header();
 				<?php endif; ?>
 
 				<div class="portfolio-card__body">
-					<div class="portfolio-card__meta">
-						<?php bain_meta_bracket( trim( $proj_year . ( $proj_tag ? ' / ' . $proj_tag : '' ) ) ); ?>
-					</div>
 					<h3 class="portfolio-card__title">
 						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 					</h3>
