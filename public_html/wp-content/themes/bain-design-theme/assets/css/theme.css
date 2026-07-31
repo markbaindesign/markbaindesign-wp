@@ -347,7 +347,7 @@
        descent) plus the leading that centres it. It lives here rather than
        on .hero__headline because .hero__line's min-height has to match it —
        one token, so the two cannot drift apart. */
-    --hero-band: 1.552em;
+    --hero-band: 1.15em;
     line-height: var(--hero-band);
   }
 
