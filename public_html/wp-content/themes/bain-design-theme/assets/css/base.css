@@ -14,7 +14,16 @@
 
    Load on the front end only — NOT inside add_editor_style — so the
    WP admin doesn't inherit body-level rules.
+
+   Everything below sits in @layer base, which theme.css declares first in
+   its layer order. Without a layer these rules would be unlayered, and
+   unlayered declarations beat every layer regardless of specificity — so
+   `h1 { font-size }` here would silently win over `.hero__headline
+   { font-size }` in theme.css's @layer hero. Keep new element styles inside
+   this layer.
    ===================================================================== */
+
+@layer base {
 
 html, body {
   background: var(--bg-1);
@@ -59,12 +68,11 @@ a {
               text-decoration-thickness var(--dur-1) var(--ease-1);
 }
 a:hover  { color: var(--link-hover); text-decoration-thickness: 2px; }
-a:visited { color: var(--visited); }
+/* Visited links read as normal links — no separate --visited colour. */
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .site-header__brand,
 .site-header__brand:hover { text-decoration: none; color: var(--ink); }
 a.services-list__item,
-a.services-list__item:visited,
 a.services-list__item:hover { text-decoration: none; color: inherit; }
 
 code, kbd, samp, pre {
@@ -97,9 +105,15 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ----- Buttons -------------------------------------------------------- */
 
-.bain-btn,
-button.bain-btn,
-a.bain-btn {
+/* Plain class selector, not `.bain-btn, button.bain-btn, a.bain-btn` — the
+   tag-qualified forms have higher specificity (0-1-1) than a modifier like
+   .bain-btn--ghost (0-1-0), so on every <a class="bain-btn bain-btn--...">
+   in the theme this rule's fill-dark background always won regardless of
+   source order. Outline has never actually rendered as an outline anywhere
+   on the site; it has always looked identical to the default variant. A
+   plain class selector already beats the UA stylesheet on any element
+   (button, a, or otherwise), so the tag qualifiers were never load-bearing. */
+.bain-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -127,12 +141,50 @@ a.bain-btn {
   text-decoration: none;
 }
 .bain-btn:active { transform: translate(2px, 2px); box-shadow: none; }
+/* Element-agnostic: .bain-btn renders on <a> (covered sitewide by the
+   generic a:focus-visible rule above) and now also on the CF7 form's
+   <input type="submit"> via class:bain-btn, which that rule does not
+   reach. Setting it here means the button never depends on which element
+   it happens to be. */
+.bain-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
+/* Outline */
 .bain-btn--ghost {
   background: transparent;
   color: var(--ink);
 }
-.bain-btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.bain-btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+  /* Overrides .bain-btn:hover's ink shadow-press: a hard shadow the same
+     colour as the surface it sits behind has no visible edge, so hovering
+     this button showed no shadow at all (same defect fixed on
+     .bain-project__related-card--all in theme.css). Clay is legible against
+     both the ink fill and the cream page, so the offset reads clearly. */
+  box-shadow: 2px 2px 0 var(--clay);
+}
+
+/* Fill terracotta. Text is ink, not paper: clay's contrast against paper
+   text is 2.95:1, below WCAG AA (4.5:1) for normal text; against ink it is
+   4.72:1, comfortably above. On hover it becomes an outline in its own
+   colour, rather than inverting to solid ink like the default variant,
+   so it stays visually distinct from "fill dark" instead of converging
+   with it. That hover state is light, so the inherited ink shadow-press
+   reads crisply without the override above. */
+.bain-btn--terracotta {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: var(--ink);
+}
+.bain-btn--terracotta:hover {
+  background: transparent;
+  color: var(--clay-deep);
+  border-color: var(--clay);
+}
+
+/* No :visited overrides: visited links read as normal links sitewide now,
+   so the specificity conflict these existed to fix (a:visited beating a
+   button's own colour, then colliding with :hover) no longer applies. */
 
 /* ----- Cards ---------------------------------------------------------- */
 
@@ -140,6 +192,9 @@ a.bain-btn {
   border: 1px solid var(--rule);
   background: var(--paper);
   padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
   transition: border-width var(--dur-2) var(--ease-1),
               box-shadow var(--dur-2) var(--ease-1);
 }
@@ -148,6 +203,85 @@ a.bain-btn {
   /* offset padding so border thickening doesn't reflow contents */
   padding: calc(var(--space-5) - 1px);
 }
+
+/* Tones. Default (no modifier) sits flush with the page — --paper on
+   --paper, for a card that reads as part of the page rather than a
+   panel on it. --surface raises it as a bright white panel; --ink
+   inverts it. Promoted 2026-07-30 from .contact-channel-card, the
+   contact page's dark/light card — previously bain-card had no real
+   usage anywhere on the site outside its own style-guide demo, while
+   contact-channel-card was the only card with real structure. Rather
+   than build a second generic system, this file's card became the one
+   the site actually needed. */
+.bain-card--surface {
+  background: var(--paper-pure);
+  color: var(--ink);
+}
+.bain-card--ink {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+/* Both found on the one real ink-toned card that existed before this
+   promotion, and both apply to any ink-toned card now: .meta-bracket
+   defaults to graphite, sized for a light card, and the generic
+   a:focus-visible outline is ink — both read as near-invisible against
+   this tone's own background. */
+.bain-card--ink .meta-bracket { color: rgba(245, 240, 232, 0.5); }
+.bain-card--ink a:focus-visible { outline-color: var(--clay-soft); }
+
+/* ----- Card parts ------------------------------------------------------
+   Optional — a .bain-card only uses the parts it needs. All are tone-aware
+   via .bain-card--ink; the untinted rules below also cover --surface,
+   which does not diverge from the default text hierarchy, only the
+   background. */
+
+.bain-card__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: inherit;
+}
+.bain-card__dot { color: var(--clay); }
+
+/* Small mono meta line — a channel address, a byline, a date. Add
+   --link for the variant that is an <a> rather than static text. */
+.bain-card__meta {
+  font-family: var(--font-mono);
+  font-size: var(--type-13);
+  color: var(--pencil);
+  word-break: break-all;
+  text-decoration: none;
+}
+.bain-card__meta--link { color: var(--link); text-decoration: underline; }
+.bain-card--ink .bain-card__meta--link { color: var(--clay-soft); }
+
+.bain-card__desc {
+  font-size: var(--type-14);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+  color: var(--graphite);
+}
+.bain-card--ink .bain-card__desc { color: rgba(245, 240, 232, 0.65); }
+
+.bain-card__cta {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-mono);
+  font-size: var(--type-13);
+  font-weight: 500;
+}
+.bain-card--ink .bain-card__cta { border-color: rgba(245, 240, 232, 0.2); }
+/* Default tone's CTA link needs no override: it falls through to the
+   ordinary <a> colour (--link), which already reads fine on a light
+   card. Ink needed one because base.css's default hover colour,
+   --link-hover, is functionally the same colour as --ink itself. */
+.bain-card--ink .bain-card__cta a { color: var(--clay-soft); }
+.bain-card--ink .bain-card__cta a:hover { color: var(--clay); }
 
 /* ----- Bracket metadata ---------------------------------------------- */
 
@@ -158,6 +292,10 @@ a.bain-btn {
 }
 .meta-bracket::before { content: "["; }
 .meta-bracket::after  { content: "]"; }
+/* The brackets are punctuation, not content — hold them back so the label
+   reads first. */
+.meta-bracket::before,
+.meta-bracket::after { opacity: 0.5; }
 
 /* ----- Terminal cursor ----------------------------------------------- */
 
@@ -215,6 +353,25 @@ ul.bain-check > li::before {
 }
 .bain-signoff .heart { color: var(--clay); }
 
+/* ----- Breadcrumb ------------------------------------------------------
+   Terminal path: ~ / segment / segment / current. Rendered by
+   bain_breadcrumb(). Generalised 2026-07-30 from .nw-breadcrumb (the
+   testimonials single template), which is where this look came from.
+   Deliberately flush with the gutter, not the page's content column —
+   it sits with the site header's own logo, as its own system bar, not
+   as part of the page content beneath it. Every segment stays the same
+   light, muted colour, including the current one — no ink emphasis. */
+.bain-breadcrumb {
+  padding: 20px var(--gutter);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--pencil);
+}
+.bain-breadcrumb__link { color: var(--pencil); text-decoration: none; border-bottom: 1px dotted var(--pencil); }
+.bain-breadcrumb__link:hover { text-decoration: underline; }
+.bain-breadcrumb__current { color: var(--pencil); }
+
 /* ----- "Letter" layout for long-form pages --------------------------- */
 /* Apply via body class — see functions.php */
 .bain-letter .entry-content,
@@ -268,3 +425,5 @@ label {
   .bain-letter .entry-content,
   .bain-letter main { margin-left: var(--space-4); margin-right: var(--space-4); }
 }
+
+} /* @layer base */

@@ -88,7 +88,8 @@ function bain_check_list( array $items, $class = '' ) {
  *
  * @param string $label     Button text — keep it a plain verb phrase.
  * @param string $url       href.
- * @param array  $args      Optional. `variant` (primary|ghost),
+ * @param array  $args      Optional. `variant` (primary|ghost|terracotta) —
+ *                          fill dark, outline, and fill terracotta,
  *                          `external` (bool — adds rel + ↗),
  *                          `attrs` (assoc of extra HTML attributes).
  */
@@ -98,7 +99,11 @@ function bain_button( $label, $url, $args = array() ) {
 		'external' => false,
 		'attrs'    => array(),
 	) );
-	$class = 'bain-btn' . ( $args['variant'] === 'ghost' ? ' bain-btn--ghost' : '' );
+	$variant_classes = array(
+		'ghost'      => 'bain-btn--ghost',
+		'terracotta' => 'bain-btn--terracotta',
+	);
+	$class = trim( 'bain-btn ' . ( $variant_classes[ $args['variant'] ] ?? '' ) );
 
 	$attr_html = '';
 	foreach ( $args['attrs'] as $k => $v ) {
@@ -405,3 +410,159 @@ function bain_project_adjacent( $direction = 'prev' ) {
  *   add_action( 'wp_footer', 'bain_sign_off_footer', 5 );
  *   function bain_sign_off_footer() { echo '<div class="bain-wrap">'; bain_sign_off(); echo '</div>'; }
  */
+
+
+/* =====================================================================
+ *  Service tree
+ * ================================================================== */
+
+/**
+ * ASCII branch menu of the services CPT, used across the /services/ section.
+ *
+ * Queries the CPT on every render, so services appear in the menu as soon as
+ * they are published — nothing to keep in sync by hand. Order follows
+ * menu_order, then the post hierarchy.
+ *
+ * @param array $args Optional.
+ *                    `current_id` (int)  Marks this service and its ancestors
+ *                                        as the current branch.
+ *                    `class`      (str)  Extra class names on the wrapper.
+ */
+function bain_service_tree( $args = array() ) {
+	$args = wp_parse_args( $args, array(
+		'current_id' => 0,
+		'class'      => '',
+	) );
+
+	$items = get_posts( array(
+		'post_type'      => 'bd324_services',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'orderby'        => 'menu_order',
+		'order'          => 'ASC',
+	) );
+
+	if ( ! $items ) { return; }
+
+	$current_id = (int) $args['current_id'];
+	$ancestors  = $current_id ? array_map( 'intval', get_post_ancestors( $current_id ) ) : array();
+	$roots      = array_values( array_filter( $items, fn( $p ) => (int) $p->post_parent === 0 ) );
+
+	printf( '<div class="stree %s">', esc_attr( $args['class'] ) );
+
+	foreach ( $roots as $root ) {
+		$is_current = ( (int) $root->ID === $current_id );
+		$on_path    = $is_current || in_array( (int) $root->ID, $ancestors, true );
+		?>
+		<div class="stree__block">
+			<div class="stree__row stree__row--root">
+				<a class="stree__name stree__name--root<?php echo $is_current ? ' is-current' : ''; ?><?php echo $on_path ? ' is-on-path' : ''; ?>"
+				   href="<?php echo esc_url( get_permalink( $root ) ); ?>"
+				   <?php echo $is_current ? 'aria-current="page"' : ''; ?>>
+					<?php echo esc_html( $root->post_title ); ?>
+				</a>
+			</div>
+			<?php bain_service_tree_rows( $items, (int) $root->ID, '', $current_id, $ancestors ); ?>
+		</div>
+		<?php
+	}
+
+	echo '</div>';
+}
+
+
+/**
+ * Recursive row renderer for bain_service_tree(). Draws the ├── └── │ glyphs.
+ * Not intended to be called directly.
+ */
+function bain_service_tree_rows( $items, $parent_id, $prefix, $current_id, $ancestors ) {
+	$children = array_values( array_filter( $items, fn( $p ) => (int) $p->post_parent === $parent_id ) );
+	$total    = count( $children );
+
+	foreach ( $children as $i => $item ) {
+		$is_last    = ( $i === $total - 1 );
+		$connector  = $is_last ? '└── ' : '├── ';
+		$extension  = $is_last ? '    ' : '│   ';
+		$is_current = ( (int) $item->ID === (int) $current_id );
+		$on_path    = $is_current || in_array( (int) $item->ID, $ancestors, true );
+		?>
+		<div class="stree__row">
+			<span class="stree__prefix" aria-hidden="true"><?php echo esc_html( $prefix . $connector ); ?></span>
+			<a class="stree__name<?php echo $is_current ? ' is-current' : ''; ?><?php echo $on_path ? ' is-on-path' : ''; ?>"
+			   href="<?php echo esc_url( get_permalink( $item ) ); ?>"
+			   <?php echo $is_current ? 'aria-current="page"' : ''; ?>>
+				<?php echo esc_html( $item->post_title ); ?>
+			</a>
+		</div>
+		<?php
+		bain_service_tree_rows( $items, (int) $item->ID, $prefix . $extension, $current_id, $ancestors );
+	}
+}
+
+
+/**
+ * Sidebar for the /services/ section: a link back to the section landing
+ * page, then the service tree.
+ *
+ * Rendered from one place so the archive and the singles cannot drift apart.
+ * The "All services" label is marked up directly rather than through
+ * bain_meta_bracket(), which escapes its input and so cannot hold a link —
+ * the brackets themselves come from the .meta-bracket class either way.
+ *
+ * @param int $current_id Service being viewed, if any — marks the branch.
+ */
+function bain_service_sidebar( $current_id = 0 ) {
+	$archive_url = get_post_type_archive_link( 'bd324_services' );
+	$is_archive  = is_post_type_archive( 'bd324_services' );
+	?>
+	<aside class="services-sidebar" aria-label="<?php esc_attr_e( 'Services', 'bain-design-theme' ); ?>">
+		<a class="meta-bracket services-sidebar__all"
+		   href="<?php echo esc_url( $archive_url ); ?>"
+		   <?php echo $is_archive ? 'aria-current="page"' : ''; ?>>All services</a>
+		<?php bain_service_tree( array( 'class' => 'stree--nav', 'current_id' => $current_id ) ); ?>
+	</aside>
+	<?php
+}
+
+
+/* =====================================================================
+ *  Breadcrumb
+ * ================================================================== */
+
+/**
+ * Terminal-path breadcrumb — `~ / segment / segment / current`.
+ *
+ *     bain_breadcrumb( array(
+ *         array( 'label' => 'Services', 'url' => get_post_type_archive_link( 'bd324_services' ) ),
+ *         array( 'label' => 'Development', 'url' => get_permalink( $ancestor_id ) ),
+ *         array( 'label' => 'Plugin Development' ), // no url = current page
+ *     ) );
+ *
+ * Every label is slugified (lower-case, hyphenated) to read as a real path,
+ * matching the pattern the trail is named after — same treatment the
+ * testimonials breadcrumb already applied to its own segments by hand.
+ *
+ * @param array  $segments Ordered list of ['label' => string, 'url' => string|null].
+ *                         The first segment with no url (usually the last)
+ *                         renders as the current, unlinked page.
+ * @param string $suffix   Appended to the current segment only, e.g. '.md'
+ *                         for content that reads as a document. Default ''.
+ */
+function bain_breadcrumb( array $segments, $suffix = '' ) {
+	if ( ! $segments ) { return; }
+
+	echo '<nav class="bain-breadcrumb" aria-label="Breadcrumb">';
+	echo '<span aria-hidden="true">~</span>';
+
+	foreach ( $segments as $seg ) {
+		echo '<span aria-hidden="true"> / </span>';
+		$slug = sanitize_title( $seg['label'] );
+		if ( ! empty( $seg['url'] ) ) {
+			printf( '<a class="bain-breadcrumb__link" href="%s">%s</a>', esc_url( $seg['url'] ), esc_html( $slug ) );
+		} else {
+			printf( '<span class="bain-breadcrumb__current">%s%s</span>', esc_html( $slug ), esc_html( $suffix ) );
+		}
+	}
+
+	echo '</nav>';
+}

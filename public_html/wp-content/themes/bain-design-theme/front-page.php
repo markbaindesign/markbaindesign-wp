@@ -9,31 +9,31 @@ get_header();
 <!-- ================================================================== HERO -->
 <section class="hero" aria-label="<?php esc_attr_e( 'Introduction', 'bain-design-theme' ); ?>">
 	<div class="bain-wrap">
-		<?php bain_meta_bracket( 'WordPress Designer & Developer' ); ?>
-
 		<h1 class="hero__headline" id="hero-headline">
-			<span class="hero__slot" id="slot-0"
-				><span class="hero__slot-reserve" aria-hidden="true">Tasteful</span
-				><span class="hero__slot-inner"
-					><span class="hero__slot-highlight" aria-hidden="true"></span
-					><span id="slot-0-text">Friendly</span
-				></span
-			></span
-			><span class="hero__connector"> websites for </span
-			><span class="hero__slot" id="slot-1"
-				><span class="hero__slot-reserve" aria-hidden="true">interesting</span
-				><span class="hero__slot-inner"
-					><span class="hero__slot-highlight" aria-hidden="true"></span
-					><span id="slot-1-text">interesting</span
-				></span
-			></span
-			>&nbsp;<span class="hero__slot" id="slot-2"
-				><span class="hero__slot-reserve" aria-hidden="true">entrepreneurs</span
-				><span class="hero__slot-inner"
-					><span class="hero__slot-highlight" aria-hidden="true"></span
-					><span id="slot-2-text">people</span
-				></span
-			></span>
+			<?php
+			/*
+			 * One .hero__line per line rather than letting the headline wrap:
+			 * slots size to their visible text, so a wrapping headline would
+			 * rewrap on every keystroke of the typing animation.
+			 *
+			 * The tint is a single background on .hero__lines at a fixed width,
+			 * so it holds still while the animation empties and refills a slot.
+			 * A line still soft-wraps inside the pane if it cannot fit, so
+			 * narrow screens degrade instead of overflowing.
+			 *
+			 * .hero__ws holds a real space, drawn as a dot by theme.css. The
+			 * space is kept in the markup rather than swapped for a "·" so the
+			 * heading still reads and copies as words separated by spaces.
+			 *
+			 * No incidental whitespace inside a .hero__line: it would collapse
+			 * into a rendered space and throw the character grid out.
+			 */
+			?>
+			<span class="hero__lines">
+				<span class="hero__line"><span class="hero__slot" id="slot-0"><span id="slot-0-text">Friendly</span></span></span>
+				<span class="hero__line"><span class="hero__connector">websites</span><span class="hero__ws"> </span><span class="hero__connector">for</span><span class="hero__ws"> </span><span class="hero__slot" id="slot-1"><span id="slot-1-text">interesting</span></span></span>
+				<span class="hero__line"><span class="hero__slot" id="slot-2"><span id="slot-2-text">people</span></span></span>
+			</span>
 			<span class="hero__caret" id="hero-caret" aria-hidden="true"></span>
 		</h1>
 

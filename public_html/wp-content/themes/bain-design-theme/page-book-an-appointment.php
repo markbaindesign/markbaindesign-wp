@@ -24,7 +24,6 @@ the_post();
 	</div>
 </div>
 
-<?php bain_ascii_rule(); ?>
 
 <div class="bain-section">
 	<div class="bain-section__inner">

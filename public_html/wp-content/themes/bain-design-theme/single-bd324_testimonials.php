@@ -58,13 +58,12 @@ wp_reset_postdata();
 ?>
 
 <!-- ============================================================= BREADCRUMB -->
-<nav class="nw-breadcrumb" aria-label="Breadcrumb">
-	<span aria-hidden="true">~ </span>
-	<span aria-hidden="true"> / </span>
-	<a class="nw-breadcrumb__archive" href="<?php echo esc_url( $archive_url ); ?>">nice-words</a>
-	<span aria-hidden="true"> / </span>
-	<span class="nw-breadcrumb__current"><?php echo esc_html( sanitize_title( $author ) ); ?>.md</span>
-</nav>
+<?php
+bain_breadcrumb( array(
+	array( 'label' => 'nice-words', 'url' => $archive_url ),
+	array( 'label' => $author ),
+), '.md' );
+?>
 
 <!-- ============================================================= HERO -->
 <section class="nw-hero">
@@ -166,9 +165,12 @@ wp_reset_postdata();
 			<?php if ( ! empty( $related_projects ) ) : ?>
 			<div class="nw-pullquote__actions">
 				<?php foreach ( $related_projects as $i => $rp ) : ?>
-				<a class="nw-pullquote__btn nw-pullquote__btn--primary" href="<?php echo esc_url( $rp['permalink'] ); ?>">
-					<?php echo 0 === $i && count( $related_projects ) === 1 ? 'see the project' : 'see &ldquo;' . esc_html( $rp['title'] ) . '&rdquo;'; ?> <span class="nw-pullquote__btn-arrow" aria-hidden="true">&rarr;</span>
-				</a>
+				<?php
+				$rp_label = ( 0 === $i && count( $related_projects ) === 1 )
+					? 'see the project →'
+					: 'see “' . $rp['title'] . '” →';
+				bain_button( $rp_label, $rp['permalink'] );
+				?>
 				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>

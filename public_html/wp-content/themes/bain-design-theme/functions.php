@@ -13,6 +13,10 @@ add_action( 'after_setup_theme', function () {
 	// Localisation
 	load_theme_textdomain( 'bain-design-theme', get_template_directory() . '/languages' );
 
+	// Document title. header.php prints no <title> of its own, so without this
+	// every page ships untitled — WP generates it on wp_head().
+	add_theme_support( 'title-tag' );
+
 	// Featured images
 	add_theme_support( 'post-thumbnails' );
 
