@@ -19,12 +19,12 @@ function bd324_register_all_post_types_and_taxonomies()
 
     bd324_register_post_type('bd324_projects', [
         'name' => 'Projects',
-        'singular_name' => 'Portfolio Project',
-        'plural_name' => 'Portfolio Projects',
+        'singular_name' => 'Case Study',
+        'plural_name' => 'Case Studies',
         'menu_name' => 'Projects',
         'menu_icon' => 'dashicons-portfolio',
         'menu_position' => 5,
-        'rewrite_slug' => 'portfolio'
+        'rewrite_slug' => 'case-studies'
     ]);
 
     bd324_register_post_type('bd324_testimonials', [

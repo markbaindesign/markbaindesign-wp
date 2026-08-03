@@ -45,7 +45,7 @@ get_header();
 
 		<div class="hero__actions">
 			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="bain-btn">Arrange a chat now</a>
-			<a href="<?php echo esc_url( home_url( '/portfolio' ) ); ?>" class="bain-btn bain-btn--ghost">Check out my work →</a>
+			<a href="<?php echo esc_url( get_post_type_archive_link( 'bd324_projects' ) ); ?>" class="bain-btn bain-btn--ghost">Check out my work →</a>
 		</div>
 	</div>
 </section>
@@ -101,7 +101,7 @@ get_header();
 			<h2 class="section-header__title" id="projects-heading">
 				<span class="section-number" aria-hidden="true">02 /</span>Latest projects
 			</h2>
-			<a href="<?php echo esc_url( home_url( '/portfolio' ) ); ?>" class="bain-btn bain-btn--ghost bain-btn--sm">
+			<a href="<?php echo esc_url( get_post_type_archive_link( 'bd324_projects' ) ); ?>" class="bain-btn bain-btn--ghost bain-btn--sm">
 				See all →
 			</a>
 		</div>
