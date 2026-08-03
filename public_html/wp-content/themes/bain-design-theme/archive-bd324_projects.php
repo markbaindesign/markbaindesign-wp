@@ -9,17 +9,12 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 get_header();
-
-$pub_count = (int) wp_count_posts( 'bd324_projects' )->publish;
 ?>
 
 <div class="archive-header">
 	<div class="archive-header__inner">
 		<?php bain_meta_bracket( 'Selected work' ); ?>
 		<h1 class="archive-header__title">Case Studies</h1>
-		<p class="archive-header__count">
-			<?php echo $pub_count; ?> projects shipped
-		</p>
 	</div>
 </div>
 

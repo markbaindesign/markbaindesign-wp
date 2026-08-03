@@ -99,7 +99,7 @@ get_header();
 
 		<div class="section-header section-header--row">
 			<h2 class="section-header__title" id="projects-heading">
-				<span class="section-number" aria-hidden="true">02 /</span>Latest projects
+				<span class="section-number" aria-hidden="true">02 /</span>Selected work
 			</h2>
 			<a href="<?php echo esc_url( get_post_type_archive_link( 'bd324_projects' ) ); ?>" class="bain-btn bain-btn--ghost bain-btn--sm">
 				See all →

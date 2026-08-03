@@ -52,7 +52,6 @@ while ( have_posts() ) :
 	$prev     = bain_project_adjacent( 'prev' );
 	$next     = bain_project_adjacent( 'next' );
 	$archive  = get_post_type_archive_link( 'bd324_projects' );
-	$pub_count = (int) wp_count_posts( 'bd324_projects' )->publish;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'bain-project' ); ?>>
@@ -313,7 +312,6 @@ while ( have_posts() ) :
 
 				<?php if ( $archive ) : ?>
 				<a class="bain-project__related-card bain-project__related-card--all" href="<?php echo esc_url( $archive ); ?>">
-					<?php bain_meta_bracket( $pub_count . ' projects shipped' ); ?>
 					<div>
 						<h4 class="bain-project__related-title">See all work</h4>
 						<div class="bain-project__related-cta">cat case-studies.md &rarr;</div>
