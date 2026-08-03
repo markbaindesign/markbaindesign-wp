@@ -1825,18 +1825,18 @@
     .portfolio-archive .portfolio-card {
       flex-direction: row;
     }
+    /* Previously align-self: stretch + object-fit: cover, matching the
+       thumb's height to the text column next to it. Wrong call: these are
+       landscape screenshots, and stretching one into a tall narrow column
+       means cover has to zoom in hugely and crop almost everything but a
+       thin vertical sliver — illegible, not just cropped. Same fix as the
+       main grid: don't force the image into a box at all. Sits at its own
+       natural ratio at the top of the row instead of matching the text's
+       height, so thumb and text may end at different points. */
     .portfolio-archive .portfolio-card__thumb {
       width: 38%;
       flex-shrink: 0;
-      align-self: stretch;
-      overflow: hidden;
-    }
-    /* Unlike the main grid, this thumb's height is set by the row (the
-       text next to it), not by the image — cover is correct here: it is
-       filling an externally-determined box, not a decorative fixed one. */
-    .portfolio-archive .portfolio-card__thumb img {
-      height: 100%;
-      object-fit: cover;
+      align-self: flex-start;
     }
   }
 
