@@ -316,7 +316,7 @@ while ( have_posts() ) :
 					<?php bain_meta_bracket( $pub_count . ' projects shipped' ); ?>
 					<div>
 						<h4 class="bain-project__related-title">See all work</h4>
-						<div class="bain-project__related-cta">cat portfolio.md &rarr;</div>
+						<div class="bain-project__related-cta">cat case-studies.md &rarr;</div>
 					</div>
 				</a>
 				<?php endif; ?>

@@ -116,24 +116,24 @@ get_header();
 
 		if ( $fp_projects->have_posts() ) :
 		?>
-		<div class="portfolio-grid">
+		<div class="case-study-grid">
 			<?php while ( $fp_projects->have_posts() ) : $fp_projects->the_post(); ?>
-			<article class="portfolio-card" id="post-<?php the_ID(); ?>">
+			<article class="case-study-card" id="post-<?php the_ID(); ?>">
 				<?php if ( has_post_thumbnail() ) : ?>
-					<a href="<?php the_permalink(); ?>" class="portfolio-card__thumb" tabindex="-1" aria-hidden="true">
+					<a href="<?php the_permalink(); ?>" class="case-study-card__thumb" tabindex="-1" aria-hidden="true">
 						<?php the_post_thumbnail( 'medium_large' ); ?>
 					</a>
 				<?php else : ?>
-					<a href="<?php the_permalink(); ?>" class="portfolio-card__thumb portfolio-card__thumb--empty" tabindex="-1" aria-hidden="true">
-						<span class="portfolio-card__placeholder">[project preview]</span>
+					<a href="<?php the_permalink(); ?>" class="case-study-card__thumb case-study-card__thumb--empty" tabindex="-1" aria-hidden="true">
+						<span class="case-study-card__placeholder">[project preview]</span>
 					</a>
 				<?php endif; ?>
 
-				<div class="portfolio-card__body">
-					<h3 class="portfolio-card__title">
+				<div class="case-study-card__body">
+					<h3 class="case-study-card__title">
 						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 					</h3>
-					<p class="portfolio-card__excerpt">
+					<p class="case-study-card__excerpt">
 						<?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
 					</p>
 				</div>

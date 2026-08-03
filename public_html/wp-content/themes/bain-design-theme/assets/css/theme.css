@@ -576,14 +576,14 @@
     padding: 8px 14px;
   }
 
-  /* Portfolio grid */
-  .portfolio-grid {
+  /* Case study grid */
+  .case-study-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-5);
   }
 
-  .portfolio-card {
+  .case-study-card {
     position: relative;
     border: 1px solid var(--rule);
     background: var(--paper);
@@ -596,13 +596,13 @@
     will-change: transform;
   }
 
-  .portfolio-card:hover {
+  .case-study-card:hover {
     box-shadow: var(--shadow-press);
     text-decoration: none;
     color: var(--ink);
   }
 
-  .portfolio-card__thumb {
+  .case-study-card__thumb {
     /* No fixed aspect-ratio: a fixed box needs cover (crops anything
        taller than the box — most full-page screenshots) or contain
        (never crops, but leaves letterbox gaps on anything narrower than
@@ -614,7 +614,7 @@
     & img { width: 100%; height: auto; display: block; }
   }
 
-  .portfolio-card__body {
+  .case-study-card__body {
     padding: var(--space-5);
     flex: 1;
     display: flex;
@@ -622,7 +622,7 @@
     gap: var(--space-3);
   }
 
-  .portfolio-card__title {
+  .case-study-card__title {
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: var(--type-20);
@@ -631,7 +631,7 @@
     line-height: var(--leading-tight);
   }
 
-  .portfolio-card__excerpt {
+  .case-study-card__excerpt {
     font-size: var(--type-14);
     color: var(--fg-2);
     line-height: var(--leading-snug);
@@ -640,7 +640,7 @@
   }
 
   /* Empty thumbnail placeholder */
-  .portfolio-card__thumb--empty {
+  .case-study-card__thumb--empty {
     aspect-ratio: 16 / 9;
     background: var(--paper-deep);
     display: flex;
@@ -648,7 +648,7 @@
     justify-content: center;
     border-bottom: 1px solid var(--rule-soft);
   }
-  .portfolio-card__placeholder {
+  .case-study-card__placeholder {
     font-family: var(--font-mono);
     font-size: var(--type-12);
     color: var(--pencil);
@@ -1812,8 +1812,8 @@
     margin: 0 auto;
   }
 
-  /* Portfolio archive grid — 3 columns, 4:3 thumb */
-  .portfolio-grid--archive {
+  /* Case study archive grid — 3 columns */
+  .case-study-grid--archive {
     grid-template-columns: repeat(3, 1fr);
 
     @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
@@ -1822,7 +1822,7 @@
 
   /* 2-column internal layout at single-column breakpoint: thumb | body */
   @media (max-width: 560px) {
-    .portfolio-archive .portfolio-card {
+    .case-study-archive .case-study-card {
       flex-direction: row;
     }
     /* Previously align-self: stretch + object-fit: cover, matching the
@@ -1833,7 +1833,7 @@
        main grid: don't force the image into a box at all. Sits at its own
        natural ratio at the top of the row instead of matching the text's
        height, so thumb and text may end at different points. */
-    .portfolio-archive .portfolio-card__thumb {
+    .case-study-archive .case-study-card__thumb {
       width: 38%;
       flex-shrink: 0;
       align-self: flex-start;
@@ -1841,7 +1841,7 @@
   }
 
   /* ASCII corner ticks */
-  .portfolio-card__tick {
+  .case-study-card__tick {
     position: absolute;
     font-family: var(--font-mono);
     font-size: 14px;
@@ -1851,19 +1851,19 @@
     transition: opacity 180ms;
     line-height: 1;
   }
-  .portfolio-card:hover .portfolio-card__tick { opacity: 1; }
-  .portfolio-card__tick--tl { top: -8px;  left: -8px; }
-  .portfolio-card__tick--tr { top: -8px;  right: -8px; }
-  .portfolio-card__tick--bl { bottom: -8px; left: -8px; }
-  .portfolio-card__tick--br { bottom: -8px; right: -8px; }
+  .case-study-card:hover .case-study-card__tick { opacity: 1; }
+  .case-study-card__tick--tl { top: -8px;  left: -8px; }
+  .case-study-card__tick--tr { top: -8px;  right: -8px; }
+  .case-study-card__tick--bl { bottom: -8px; left: -8px; }
+  .case-study-card__tick--br { bottom: -8px; right: -8px; }
 
   /* Clay shadow on hover (set by JS tilt, but also CSS fallback) */
-  .portfolio-card:hover {
+  .case-study-card:hover {
     box-shadow: 6px 6px 0 var(--clay);
   }
 
   /* "view project" link inside card */
-  .portfolio-card__link {
+  .case-study-card__link {
     margin-top: var(--space-3);
     font-family: var(--font-mono);
     font-size: var(--type-12);
@@ -1871,11 +1871,11 @@
     text-decoration: none;
     transition: color var(--dur-1);
 
-    .portfolio-card:hover & { color: var(--clay); }
+    .case-study-card:hover & { color: var(--clay); }
   }
 
   /* Pagination */
-  .portfolio-pagination {
+  .case-study-pagination {
     margin-top: var(--space-8);
     display: flex;
     justify-content: center;
@@ -1883,7 +1883,7 @@
     font-family: var(--font-mono);
     font-size: var(--type-13);
   }
-  .portfolio-pagination .page-numbers {
+  .case-study-pagination .page-numbers {
     padding: 8px 14px;
     border: 1px solid var(--rule);
     color: var(--ink);
@@ -2286,7 +2286,7 @@
        every other (light) card that reads as a crisp offset layer, but
        here the shadow was invisible against the card and only showed as a
        faint sliver against the page. Clay already marks the "cat
-       portfolio.md" CTA on this card, so it reads as the same accent
+       case-studies.md" CTA on this card, so it reads as the same accent
        lighting up, not a new colour. */
     &:hover { box-shadow: 4px 4px 0 var(--clay); }
     .meta-bracket { color: var(--paper-deep); }
