@@ -4,13 +4,20 @@ All notable changes to the bain.design site and theme. Follows [Keep a Changelog
 
 ---
 
-## [Unreleased] — Active development
+## v3.0.0 — 2026-08-03
+
+First production launch of the v3 rebuild (design system, CPT migration, and
+all work below since v2.6.4), plus git-based deploys to staging and
+production and GA4 tracking.
 
 ### Added
 - Testimonials admin list: thumbnail, related client, and related projects columns
 - Template-source metabox on all template-driven pages, pointing editors to the correct PHP file
 - Custom dashicons for each CPT (clients, projects, testimonials, services)
 - QA workflow under `qa/` — inbox, wip, review, review-passed folders with tracking log
+- Git-based deploy to staging and production (`staging`/`main` branches, sparse-checked-out on each Cloudways app)
+- GA4 tracking (`inc/analytics.php`), gated to fire only when `wp_get_environment_type()` is `production` via a `DB_NAME`-keyed `WP_ENVIRONMENT_TYPE` switch in each environment's `wp-config.php`
+- Production branch renamed `master` → `main`
 
 ### Fixed
 - Homepage services block now links through to individual service pages
