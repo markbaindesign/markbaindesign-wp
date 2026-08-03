@@ -16,7 +16,7 @@ Personal portfolio/design studio WordPress site for Bain Design. A custom WordPr
 ## Git Branching
 
 - **Base branch:** `develop` — commit directly to `develop`; no feature branches or PRs
-- `master` is the production branch; it is behind `develop` and must never be committed to directly
+- `main` is the production branch; it is behind `develop` and must never be committed to directly
 
 ## Build Commands
 
