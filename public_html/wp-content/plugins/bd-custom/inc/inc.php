@@ -13,6 +13,7 @@ require_once BD092__PLUGIN_DIR . '/inc/helpers/helpers.php';
 require_once BD092__PLUGIN_DIR . '/inc/post-types/register.php';
 require_once BD092__PLUGIN_DIR . '/inc/clients/business-logic.php';
 require_once BD092__PLUGIN_DIR . '/inc/projects/business-logic.php';
+require_once BD092__PLUGIN_DIR . '/inc/projects/archive.php';
 require_once BD092__PLUGIN_DIR . '/inc/testimonials/business-logic.php';
 require_once BD092__PLUGIN_DIR . '/inc/tools/business-logic.php';
 require_once BD092__PLUGIN_DIR . '/inc/admin/index.php';

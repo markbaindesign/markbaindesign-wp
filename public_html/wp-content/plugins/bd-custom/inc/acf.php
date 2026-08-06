@@ -25,6 +25,7 @@ function BD092_acf_json_save_point($path)
 add_filter('acf/settings/save_json/key=group_5be07d58217fd', 'BD092_acf_json_save_point'); // "Projects"
 add_filter('acf/settings/save_json/key=group_68fa5cdda7847', 'BD092_acf_json_save_point'); // "Clients"
 add_filter('acf/settings/save_json/key=group_68fb299ce1b4a', 'BD092_acf_json_save_point'); // "Testimonials"
+add_filter('acf/settings/save_json/key=group_portfolio_order', 'BD092_acf_json_save_point'); // "Portfolio Ordering"
 /**
  * Custom Load Point for ACF Local JSON
  */
