@@ -1,0 +1,66 @@
+{
+    "key": "group_portfolio_order",
+    "title": "Portfolio Ordering",
+    "fields": [
+        {
+            "key": "field_portfolio_custom_order",
+            "label": "Custom Case Study Order",
+            "name": "portfolio_custom_order",
+            "type": "repeater",
+            "instructions": "Select and order case studies. Only these will display on the archive. Leave empty to show all.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": false,
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Case Study",
+            "sub_fields": [
+                {
+                    "key": "field_portfolio_project_select",
+                    "label": "Case Study",
+                    "name": "project",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "bd324_projects"
+                    ],
+                    "taxonomy": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "bd-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}
