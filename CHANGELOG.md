@@ -1,10 +1,29 @@
 # Changelog
 
-All notable changes to the bain.design site and theme. Follows [Keep a Changelog](https://keepachangelog.com/) loosely — entries are grouped by development phase rather than semver, since this is a live portfolio rather than a versioned release product.
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+Note: entries dated before the v3 launch are grouped by development phase rather
+than by release. Those phase headings carry no version number and are therefore
+not linked below.
 
 ---
 
-## v3.0.0 — 2026-08-03
+## [Unreleased]
+
+### Added
+- Case study ordering on the portfolio archive, driven by an ACF repeater on the
+  BD Settings page (BD-135)
+
+### Fixed
+- Contact form emails now send from a static `wordpress@` sender, preventing Gmail
+  alias filtering from swallowing them (BD-156)
+
+---
+
+## [3.0.0] - 2026-08-03
 
 First production launch of the v3 rebuild (design system, CPT migration, and
 all work below since v2.6.4), plus git-based deploys to staging and
@@ -91,7 +110,7 @@ Custom post types rebuilt with `bd324_` prefix, content migrated.
 
 ---
 
-## v2.6.4 — 2025-09-10
+## [2.6.4] - 2025-09-10
 
 Sass module migration.
 
@@ -101,7 +120,7 @@ Sass module migration.
 
 ---
 
-## v2.6.0 — 2024-02-21
+## [2.6.0] - 2024-02-21
 
 Visual refresh and archive improvements.
 
@@ -116,7 +135,7 @@ Visual refresh and archive improvements.
 
 ---
 
-## v2.5.0 — 2017-05-10
+## [2.5.0] - 2017-05-10
 
 Font update.
 
@@ -125,7 +144,7 @@ Font update.
 
 ---
 
-## v2.4.x — 2017-02-18 to 2017-02-22
+## 2.4.x — 2017-02-18 to 2017-02-22
 
 ### Added
 - Tisa fonts for body text
@@ -137,7 +156,7 @@ Font update.
 
 ---
 
-## v2.3.x — 2016-04-28
+## 2.3.x — 2016-04-28
 
 ### Changed
 - Restructured project directory layout
@@ -148,3 +167,9 @@ Font update.
 ## Initial release — 2014-11-21
 
 First commit. Custom theme built on Underscores with Grunt build pipeline. Sass compilation, image optimisation, JS concat.
+
+[Unreleased]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.4...3.0.0
+[2.6.4]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.0...2.6.4
+[2.6.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.5.0...2.6.0
+[2.5.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.4.1...2.5.0
