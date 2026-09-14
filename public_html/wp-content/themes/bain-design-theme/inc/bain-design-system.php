@@ -385,6 +385,15 @@ function bain_project_related( $post_id = null, $limit = 2 ) {
  * @return WP_Post|null
  */
 function bain_project_adjacent( $direction = 'prev' ) {
+	// Use custom portfolio ordering if configured (via plugin)
+	if ( function_exists( 'bd324_get_adjacent_project' ) ) {
+		$adjacent = bd324_get_adjacent_project( get_the_ID(), $direction );
+		if ( $adjacent ) {
+			return $adjacent;
+		}
+	}
+
+	// Fallback to default date-based navigation
 	$args = array(
 		'post_type'      => 'bd324_projects',
 		'posts_per_page' => 1,
