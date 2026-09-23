@@ -13,6 +13,10 @@ not linked below.
 
 ## [Unreleased]
 
+---
+
+## [3.1.0] - 2026-09-23
+
 ### Added
 - Case study ordering on the portfolio archive, driven by an ACF repeater on the
   BD Settings page (BD-135)
@@ -172,7 +176,8 @@ Font update.
 
 First commit. Custom theme built on Underscores with Grunt build pipeline. Sass compilation, image optimisation, JS concat.
 
-[Unreleased]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.1.0...HEAD
+[3.1.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.4...3.0.0
 [2.6.4]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.0...2.6.4
 [2.6.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.5.0...2.6.0
