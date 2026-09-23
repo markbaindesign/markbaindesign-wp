@@ -17,9 +17,13 @@ not linked below.
 - Case study ordering on the portfolio archive, driven by an ACF repeater on the
   BD Settings page (BD-135)
 
+### Changed
+- Outgoing email is blocked on non-production environments (staging, development)
+
 ### Fixed
-- Contact form emails now send from a static `wordpress@` sender, preventing Gmail
-  alias filtering from swallowing them (BD-156)
+- Contact form submissions now arrive in the inbox: mail is sent through Postmark
+  instead of the Gmail mailer, which filed messages to `hello@` under Sent only
+  (BD-156)
 
 ---
 
