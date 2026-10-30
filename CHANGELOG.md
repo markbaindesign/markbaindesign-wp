@@ -13,6 +13,18 @@ not linked below.
 
 ## [Unreleased]
 
+### Fixed
+- Pages without a dedicated template now use the site's branded page header.
+  `page.php` was never updated in the v3 redesign: it opened a second `#main`
+  inside the one `header.php` already provides, and wrapped content in
+  `.section`/`.container`, which only exist in the unenqueued legacy
+  `style.css`. The result was an unwrapped, full-bleed title and an empty
+  `#secondary` sidebar for a widget area that is not registered. Affects
+  `/ink-slip/` on production (BD-171)
+
+### Removed
+- `content-page.php`, whose only caller was `page.php`
+
 ---
 
 ## [3.1.0] - 2026-09-23
