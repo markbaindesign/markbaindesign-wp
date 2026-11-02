@@ -29,6 +29,15 @@ not linked below.
   Attachments parented to a page resolve to `page.php` and were unaffected
   (BD-167)
 
+### Changed
+- Single tool pages (`/tools/{slug}/`) now redirect to the tools timeline at
+  `/tools/` with a 301, and are excluded from site search. The timeline lives
+  entirely on the archive; individual tools have no template, so these URLs
+  rendered an indexable blank page. `publicly_queryable => false` was tried
+  first and rejected: it removes the singles but also breaks the archive,
+  because `WP::parse_request()` drops the `post_type` query var for any type
+  that is not publicly queryable, sending `/tools/` to the home page (BD-167)
+
 ### Removed
 - `content-page.php`, whose only caller was `page.php`
 - `content.php`, `content-single.php`, `content-archive.php` and `content-test.php`.

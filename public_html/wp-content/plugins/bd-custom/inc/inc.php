@@ -17,4 +17,5 @@ require_once BD092__PLUGIN_DIR . '/inc/projects/business-logic.php';
 require_once BD092__PLUGIN_DIR . '/inc/projects/archive.php';
 require_once BD092__PLUGIN_DIR . '/inc/testimonials/business-logic.php';
 require_once BD092__PLUGIN_DIR . '/inc/tools/business-logic.php';
+require_once BD092__PLUGIN_DIR . '/inc/tools/redirect.php';
 require_once BD092__PLUGIN_DIR . '/inc/admin/index.php';
