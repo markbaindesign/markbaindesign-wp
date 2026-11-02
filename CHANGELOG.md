@@ -31,6 +31,15 @@ not linked below.
 
 ### Removed
 - `content-page.php`, whose only caller was `page.php`
+- `content.php`, `content-single.php`, `content-archive.php` and `content-test.php`.
+  All four were unreachable: `content.php` is only the fallback for
+  `get_template_part( 'content', $slug )`, and every variant it could fall back
+  from (`content-home.php`, `content-none.php`, `content-featured.php`) exists,
+  while the other three had no callers at all. Each one carried calls to
+  `mbdmaster_posted_on()`, `mbdmaster_post_meta()` or
+  `_mbbasetheme_categorized_blog()`, which live in the unloaded legacy `lib/`
+  tree and would have been fatal the moment a template rendered — the same bug
+  as BD-167. No live template now calls any `lib/` function (BD-172)
 
 ---
 
