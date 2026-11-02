@@ -13,7 +13,35 @@ not linked below.
 
 ## [Unreleased]
 
+---
+
+## [3.2.0] - 2026-11-02
+
+### Changed
+
+- Single tool pages (`/tools/{slug}/`) now redirect to the tools timeline at
+  `/tools/` with a 301, and are excluded from site search. The timeline lives
+  entirely on the archive; individual tools have no template, so these URLs
+  rendered an indexable blank page. `publicly_queryable => false` was tried
+  first and rejected: it removes the singles but also breaks the archive,
+  because `WP::parse_request()` drops the `post_type` query var for any type
+  that is not publicly queryable, sending `/tools/` to the home page (BD-167)
+
+### Removed
+
+- `content-page.php`, whose only caller was `page.php`
+- `content.php`, `content-single.php`, `content-archive.php` and `content-test.php`.
+  All four were unreachable: `content.php` is only the fallback for
+  `get_template_part( 'content', $slug )`, and every variant it could fall back
+  from (`content-home.php`, `content-none.php`, `content-featured.php`) exists,
+  while the other three had no callers at all. Each one carried calls to
+  `mbdmaster_posted_on()`, `mbdmaster_post_meta()` or
+  `_mbbasetheme_categorized_blog()`, which live in the unloaded legacy `lib/`
+  tree and would have been fatal the moment a template rendered — the same bug
+  as BD-167. No live template now calls any `lib/` function (BD-172)
+
 ### Fixed
+
 - Pages without a dedicated template now use the site's branded page header.
   `page.php` was never updated in the v3 redesign: it opened a second `#main`
   inside the one `header.php` already provides, and wrapped content in
@@ -28,27 +56,6 @@ not linked below.
   which have no `single-bd324_tools.php` and fall through to `single.php`.
   Attachments parented to a page resolve to `page.php` and were unaffected
   (BD-167)
-
-### Changed
-- Single tool pages (`/tools/{slug}/`) now redirect to the tools timeline at
-  `/tools/` with a 301, and are excluded from site search. The timeline lives
-  entirely on the archive; individual tools have no template, so these URLs
-  rendered an indexable blank page. `publicly_queryable => false` was tried
-  first and rejected: it removes the singles but also breaks the archive,
-  because `WP::parse_request()` drops the `post_type` query var for any type
-  that is not publicly queryable, sending `/tools/` to the home page (BD-167)
-
-### Removed
-- `content-page.php`, whose only caller was `page.php`
-- `content.php`, `content-single.php`, `content-archive.php` and `content-test.php`.
-  All four were unreachable: `content.php` is only the fallback for
-  `get_template_part( 'content', $slug )`, and every variant it could fall back
-  from (`content-home.php`, `content-none.php`, `content-featured.php`) exists,
-  while the other three had no callers at all. Each one carried calls to
-  `mbdmaster_posted_on()`, `mbdmaster_post_meta()` or
-  `_mbbasetheme_categorized_blog()`, which live in the unloaded legacy `lib/`
-  tree and would have been fatal the moment a template rendered — the same bug
-  as BD-167. No live template now calls any `lib/` function (BD-172)
 
 ---
 
@@ -213,7 +220,8 @@ Font update.
 
 First commit. Custom theme built on Underscores with Grunt build pipeline. Sass compilation, image optimisation, JS concat.
 
-[Unreleased]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.1.0...HEAD
+[Unreleased]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.2.0...HEAD
+[3.2.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.4...3.0.0
 [2.6.4]: https://github.com/markbaindesign/markbaindesign-wp/compare/2.6.0...2.6.4
