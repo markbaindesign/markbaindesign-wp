@@ -21,6 +21,13 @@ not linked below.
   `style.css`. The result was an unwrapped, full-bleed title and an empty
   `#secondary` sidebar for a widget area that is not registered. Affects
   `/ink-slip/` on production (BD-171)
+- Attachment and `/tools/` pages no longer return HTTP 500. `single.php` called
+  `mbdmaster_post_nav()`, which lives in the legacy `lib/` tree that is no
+  longer loaded, making the call fatal. This affected ~235 attachment pages
+  whose parent is a post or CPT, and all 28 published `bd324_tools` singles,
+  which have no `single-bd324_tools.php` and fall through to `single.php`.
+  Attachments parented to a page resolve to `page.php` and were unaffected
+  (BD-167)
 
 ### Removed
 - `content-page.php`, whose only caller was `page.php`
