@@ -62,7 +62,10 @@ public_html/wp-content/themes/*
 !public_html/wp-content/themes/bain-design-*/
 
 # Ignore compiled stylesheets if using Sass
-public_html/wp-content/themes/bain-design-*/style.css
+# style.css is NOT ignored: Sass/Grunt compilation is no longer used, and the
+# file is now only the WordPress theme header. It carries the theme's Version,
+# which wp_get_theme()->get('Version') reads for asset cache-busting, so it has
+# to be version-controlled for the theme/plugin lockstep to mean anything.
 public_html/wp-content/themes/bain-design-*/editor-style.css
 public_html/wp-content/themes/bain-design-*/editor-style-shared.css
 
