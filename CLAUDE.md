@@ -57,7 +57,7 @@ All CPTs use the `bd324_` prefix:
 | Post Type | Slug | URL | Notes |
 |---|---|---|---|
 | `bd324_clients` | `clients` | `/clients/` | |
-| `bd324_projects` | `portfolio` | `/portfolio/` | |
+| `bd324_projects` | `case-studies` | `/case-studies/` | |
 | `bd324_testimonials` | `testimonials` | `/testimonials/` | |
 | `bd324_services` | `services` | `/services/` | hierarchical; replaces old service pages |
 
