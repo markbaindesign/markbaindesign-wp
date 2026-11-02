@@ -10,7 +10,6 @@
       "Edit(*)",
       "WebSearch(*)",
       "WebFetch(*)",
-      "Write(.claude/asana-mirror.md)",
       "Edit(.claude/asana-mirror.md)"
     ]
   }

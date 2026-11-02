@@ -27,11 +27,6 @@ $post_type = get_post_type();
 		    ?>
 </div>
 </div>
-<div class="section post-navigation">
-<div class="container">
-			<?php mbdmaster_post_nav(); ?>
-</div>
-</div>
 		<?php endwhile; // end of the loop.?>
 
 		</main><!-- #main -->

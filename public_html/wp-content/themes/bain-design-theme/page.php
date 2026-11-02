@@ -2,32 +2,51 @@
 /**
  * The template for displaying all pages.
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package _mbbasetheme
+ * Fallback for any page without a page-{slug}.php template or an assigned
+ * page template. Uses the same branded header + content wrapper pattern as
+ * page-hire-me.php and page-ui-ux-design.php.
  */
 
-get_header(); ?>
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+get_header();
 
-<div class="section">
-<div class="container">
-			<?php while ( have_posts() ) : the_post(); ?>
+if ( ! have_posts() ) {
+	get_footer();
+	exit;
+}
 
-				<?php get_template_part( 'content', 'page' ); ?>
+the_post();
 
+// Meta bracket label: the top-level ancestor's title for a child page,
+// otherwise a plain 'page'.
+$bain_ancestors = get_post_ancestors( get_the_ID() );
+$bain_label     = $bain_ancestors
+	? get_the_title( end( $bain_ancestors ) )
+	: 'page';
+?>
 
-
-			<?php endwhile; // end of the loop. ?>
+<div class="archive-header">
+	<div class="archive-header__inner">
+		<?php bain_meta_bracket( $bain_label ); ?>
+		<h1 class="archive-header__title"><?php the_title(); ?></h1>
+	</div>
 </div>
-</div>
-		</main><!-- #main -->
-	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+
+<div class="bain-section">
+	<div class="bain-section__inner">
+		<div class="entry-content bain-content">
+			<?php
+			the_content();
+
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bain-design-theme' ),
+				'after'  => '</div>',
+			) );
+			?>
+		</div>
+	</div>
+</div>
+
+<?php get_footer();
