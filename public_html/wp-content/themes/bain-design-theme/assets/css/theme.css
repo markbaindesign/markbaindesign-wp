@@ -2756,6 +2756,7 @@
     .bain-client__projects { padding-top: 64px; }
     .bain-client__testimonials { padding-top: 64px; }
     .bain-client__body { padding-top: 64px; }
+    .bain-client__blank { padding-top: 64px; padding-bottom: 64px; }
     .bain-client__projects-grid { grid-template-columns: 1fr; }
     .bain-client__inline-label { font-size: 24px; }
     .bain-client__quote { padding-left: 20px; }
