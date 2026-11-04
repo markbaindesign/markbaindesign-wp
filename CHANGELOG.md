@@ -27,8 +27,22 @@ not linked below.
   industry term, and those pages put the hero straight on top of the pager with
   nothing to read in between (BD-188).
 
+- Client names now link to the client profile in three places: the Client row
+  on a case study, and the "Org" row plus the `at <org>` phrase on a
+  testimonial (BD-187).
+
+### Changed
+
+- `at <org>` in a testimonial's hero points at the client profile instead of
+  the related case study. The case study is still reached from the Project
+  row, the button under the quote, and the "project this is about" card
+  (BD-187).
+
 ### Fixed
 
+- A case study with no related client showed "Client —" and put an em dash in
+  its eyebrow. Both are now omitted, matching how the template already skips
+  Duration and Role (BD-187).
 - The last card in a case study's Related row rendered its "See all work"
   heading in ink on its own ink fill, leaving the card as a bare
   "cat case-studies.md" strip beside two normal cards (BD-182).

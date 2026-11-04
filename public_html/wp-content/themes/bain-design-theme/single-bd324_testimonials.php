@@ -82,8 +82,13 @@ bain_breadcrumb( array(
 					<?php
 					echo $role ? esc_html( $role ) : 'A client';
 					if ( $org ) {
-						if ( $related_project ) {
-							echo ' at <strong><a href="' . esc_url( $related_project['permalink'] ) . '">' . esc_html( $org ) . '</a></strong>';
+						// "at <org>" points at the client profile. It used to point at
+						// the related case study, which is a different thing being
+						// named, and $client_permalink was fetched and never used. The
+						// case study is still reached from the Project meta row, the
+						// button below the quote, and the "project this is about" card.
+						if ( $client_permalink ) {
+							echo ' at <strong><a href="' . esc_url( $client_permalink ) . '">' . esc_html( $org ) . '</a></strong>';
 						} else {
 							echo ' at <strong>' . esc_html( $org ) . '</strong>';
 						}
@@ -117,7 +122,13 @@ bain_breadcrumb( array(
 				<?php if ( $org ) : ?>
 				<div class="nw-meta-row">
 					<dt class="nw-meta-row__label">Org</dt>
-					<dd class="nw-meta-row__value"><?php echo esc_html( $org ); ?></dd>
+					<dd class="nw-meta-row__value">
+						<?php if ( $client_permalink ) : ?>
+							<a href="<?php echo esc_url( $client_permalink ); ?>"><?php echo esc_html( $org ); ?></a>
+						<?php else : ?>
+							<?php echo esc_html( $org ); ?>
+						<?php endif; ?>
+					</dd>
 				</div>
 				<?php endif; ?>
 				<div class="nw-meta-row">

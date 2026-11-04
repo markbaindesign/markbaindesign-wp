@@ -85,10 +85,12 @@ function bain_nw_short_quote( $post ) {
 	$f_year  = get_the_date( 'Y', $f_id );
 	$f_url   = get_permalink( $f_id );
 	$f_quote = bain_nw_short_quote( $featured );
-	$f_org   = '';
+	$f_org     = '';
+	$f_org_url = '';
 	if ( function_exists( 'bd324_get_testimonial_related_client_data' ) ) {
-		$f_client = bd324_get_testimonial_related_client_data( $f_id );
-		$f_org    = $f_client['client_name'] ?? '';
+		$f_client  = bd324_get_testimonial_related_client_data( $f_id );
+		$f_org     = $f_client['client_name'] ?? '';
+		$f_org_url = $f_client['client_permalink'] ?? '';
 	}
 ?>
 <section class="nw-featured">
@@ -119,7 +121,13 @@ function bain_nw_short_quote( $post ) {
 					<?php if ( $f_org ) : ?>
 					<div class="nw-mini-row">
 						<span class="nw-mini-row__label">Org</span>
-						<span class="nw-mini-row__value"><?php echo esc_html( $f_org ); ?></span>
+						<span class="nw-mini-row__value">
+							<?php if ( $f_org_url ) : ?>
+								<a href="<?php echo esc_url( $f_org_url ); ?>"><?php echo esc_html( $f_org ); ?></a>
+							<?php else : ?>
+								<?php echo esc_html( $f_org ); ?>
+							<?php endif; ?>
+						</span>
 					</div>
 					<?php endif; ?>
 					<div class="nw-mini-row">

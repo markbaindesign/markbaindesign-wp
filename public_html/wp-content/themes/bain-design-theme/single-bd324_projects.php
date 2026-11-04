@@ -15,7 +15,9 @@ while ( have_posts() ) :
 
 	$num      = bain_project_number();
 	$related_client = get_field( 'related_client' );
-	$client   = ( ! empty( $related_client ) && is_array( $related_client ) ) ? ( $related_client[0]->post_title ?? '—' ) : '—';
+	$client_post = ( ! empty( $related_client ) && is_array( $related_client ) ) ? $related_client[0] : null;
+	$client      = $client_post ? get_the_title( $client_post ) : '';
+	$client_url  = $client_post ? get_permalink( $client_post ) : '';
 	$year     = bain_project_field( 'year',      null, get_the_date( 'Y' ) );
 	$duration = bain_project_field( 'duration',  null, '' );
 	$role     = bain_project_field( 'role',      null, '' );
@@ -63,7 +65,13 @@ while ( have_posts() ) :
 			<div class="bain-project__num" aria-hidden="true"><?php echo esc_html( $num ); ?></div>
 
 			<div class="bain-project__hero-body">
-				<?php bain_meta_bracket( esc_html( $year ) . ' / ' . esc_html( $client ) ); ?>
+				<?php
+				// array_filter so a project with no related client reads "[2024]"
+				// rather than "[2024 / —]". bain_meta_bracket escapes its own
+				// input, so escaping here is redundant (esc_html does not
+				// double-encode, so the old double escape was harmless).
+				bain_meta_bracket( implode( ' / ', array_filter( array( $year, $client ) ) ) );
+				?>
 				<h1 class="bain-project__title">
 					<?php the_title(); ?><span class="bain-project__title-dot" aria-hidden="true">.</span>
 				</h1>
@@ -73,7 +81,7 @@ while ( have_posts() ) :
 			</div>
 
 			<dl class="bain-project__meta">
-				<?php bain_project__meta_row( 'Client',   $client ); ?>
+				<?php if ( $client ) { bain_project__meta_row( 'Client', $client, false, $client_url ); } ?>
 				<?php bain_project__meta_row( 'Year',     $year ); ?>
 				<?php if ( $duration ) { bain_project__meta_row( 'Duration', $duration ); } ?>
 				<?php if ( $role )     { bain_project__meta_row( 'Role',     $role ); } ?>
@@ -362,7 +370,18 @@ get_footer();
  * self-contained. Promote to bain-design-system.php if used elsewhere.
  * ---------------------------------------------------------------------- */
 
-function bain_project__meta_row( $label, $value, $is_link = false ) { ?>
+/**
+ * One row of the case study's meta list.
+ *
+ * @param string $label   Row label.
+ * @param string $value   Row value, or the URL itself when $is_link is true.
+ * @param bool   $is_link $value IS an external URL. Renders it as its own link
+ *                        text with the protocol stripped, a ↗ and a new tab.
+ * @param string $url     An internal destination for a text $value. Renders in
+ *                        the same tab with no ↗, since it stays on the site.
+ *                        Ignored when $is_link is true.
+ */
+function bain_project__meta_row( $label, $value, $is_link = false, $url = '' ) { ?>
 	<div class="bain-project__meta-row">
 		<dt class="bain-project__meta-label"><?php echo esc_html( $label ); ?></dt>
 		<dd class="bain-project__meta-value">
@@ -370,6 +389,8 @@ function bain_project__meta_row( $label, $value, $is_link = false ) { ?>
 				<a href="<?php echo esc_url( $value ); ?>" target="_blank" rel="noopener noreferrer">
 					<?php echo esc_html( preg_replace( '#^https?://#', '', (string) $value ) ); ?> &nearr;
 				</a>
+			<?php elseif ( $url ) : ?>
+				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $value ); ?></a>
 			<?php else : ?>
 				<?php echo esc_html( $value ); ?>
 			<?php endif; ?>
