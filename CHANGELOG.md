@@ -22,11 +22,24 @@ not linked below.
   one alphabetical list, grouped by initial, each row carrying its industries, a
   case-study count and a link to the client profile (BD-186).
 
+- An empty state on client profiles that have no case study, testimonial or
+  description. 31 of the 52 published clients hold nothing but a name and an
+  industry term, and those pages put the hero straight on top of the pager with
+  nothing to read in between (BD-188).
+
 ### Fixed
 
 - The last card in a case study's Related row rendered its "See all work"
   heading in ink on its own ink fill, leaving the card as a bare
   "cat case-studies.md" strip beside two normal cards (BD-182).
+- Client profiles reserved a 240px column for a logo on every page, though only
+  two clients have a featured image, so the hero lost a quarter of its width to
+  an empty column and titles wrapped early against nothing (BD-188).
+- Project cards on a client profile rendered their title and excerpt in link
+  blue. The card is an anchor and declared no text colour, so it inherited
+  `a { color: var(--link) }` (BD-188).
+- Client profiles printed the industry twice, once as the hero's eyebrow and
+  again as the only row of the meta list (BD-188).
 
 ---
 

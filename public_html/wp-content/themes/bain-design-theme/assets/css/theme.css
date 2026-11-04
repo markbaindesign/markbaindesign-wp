@@ -2545,11 +2545,17 @@
     padding: 80px var(--gutter) 64px;
     border-bottom: 1px solid var(--rule);
   }
+  /* Single column by default. The 240px logo track used to be unconditional,
+     so all but the two clients that actually have a featured image lost a
+     quarter of the hero to an empty column and had their title wrapping early
+     against nothing. */
   .bain-client__hero-grid {
     display: grid;
-    grid-template-columns: 1fr 240px;
     gap: 64px;
     align-items: start;
+  }
+  .bain-client__hero-grid--with-logo {
+    grid-template-columns: minmax(0, 1fr) 240px;
   }
   .bain-client__title {
     font-size: clamp(40px, 6vw, 72px);
@@ -2591,6 +2597,45 @@
     object-fit: contain;
   }
 
+  /* ---- No write-up -------------------------------------------- */
+
+  /* 31 of the 52 published clients hold nothing but a name and an industry
+     term. Without this the page put its hero straight on top of its own pager,
+     with two empty ASCII rules stacked between them and nothing to read. */
+  .bain-client__blank {
+    padding: 96px var(--gutter);
+  }
+  .bain-client__blank-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    align-items: flex-start;
+  }
+  .bain-client__blank-note {
+    font-size: var(--type-20);
+    color: var(--graphite);
+    /* The sentence runs to about 50 characters for a short client name, so a
+       48ch measure broke it one word from the end. */
+    max-width: 62ch;
+    line-height: var(--leading-snug);
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .bain-client__blank-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+  .bain-client__blank-link {
+    font-family: var(--font-mono);
+    font-size: var(--type-13);
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover { color: var(--link-hover); }
+  }
+
   /* ---- Section heads ------------------------------------------- */
   .bain-client__inline-head {
     display: flex;
@@ -2611,6 +2656,11 @@
   .bain-client__project-card {
     background: var(--paper-pure);
     border: 1px solid var(--rule);
+    /* The card is an anchor and declared no colour, so its title and excerpt
+       inherited base.css's a { color: var(--link) } and rendered in link blue.
+       __project-link keeps its own blue, the same split as the related cards
+       on a case study. */
+    color: var(--ink);
     display: flex;
     flex-direction: column;
     transition: border-color var(--dur-2) var(--ease-1), box-shadow var(--dur-2) var(--ease-1);
@@ -2693,7 +2743,10 @@
 
   /* ---- Responsive ---------------------------------------------- */
   @media (max-width: 1080px) {
-    .bain-client__hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    /* Names the modifier too. It only beats the modifier here by being later in
+       the file, and both carry one class, so relying on that is fragile. */
+    .bain-client__hero-grid,
+    .bain-client__hero-grid--with-logo { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .bain-client__logo-wrap { justify-content: flex-start; order: -1; }
     .bain-client__logo { max-width: 160px; }
   }

@@ -25,6 +25,7 @@ while ( have_posts() ) :
 
 	$testimonials = get_field( 'related_testimonials' ) ?: array();
 	$projects     = bd324_get_projects_by_client( $client_id ) ?: array();
+	$content      = get_the_content();
 
 	$archive_link = get_post_type_archive_link( 'bd324_clients' );
 	$prev         = bain_client_adjacent( 'prev' );
@@ -37,13 +38,22 @@ while ( have_posts() ) :
 		$raw     = $location['address'] ?? '';
 		$location_label = $city ? trim( $city . ( $country ? ', ' . $country : '' ) ) : $raw;
 	}
+
+	// Most client records hold a name and an industry term and nothing else, so
+	// the body sections have to be able to be absent without leaving the page as
+	// a hero stacked straight on top of its own pager.
+	$has_sections = ! empty( $projects ) || ! empty( $testimonials ) || (bool) $content;
+
+	// The meta list carries Website and Location only. Industry is already the
+	// hero's eyebrow, and printing it twice was the page's most visible repeat.
+	$has_meta = (bool) $website || (bool) $location_label;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'bain-client' ); ?>>
 
 	<!-- ================================================================ HERO -->
 	<section class="bain-client__hero">
-		<div class="bain-wrap bain-client__hero-grid">
+		<div class="bain-wrap bain-client__hero-grid<?php echo $logo_id ? ' bain-client__hero-grid--with-logo' : ''; ?>">
 
 			<div class="bain-client__hero-body">
 				<?php bain_meta_bracket( $industry_label ?: 'Client' ); ?>
@@ -54,6 +64,7 @@ while ( have_posts() ) :
 					<p class="bain-client__tagline"><?php echo esc_html( $excerpt ); ?></p>
 				<?php endif; ?>
 
+				<?php if ( $has_meta ) : ?>
 				<dl class="bain-client__meta">
 					<?php if ( $website ) : ?>
 					<div class="bain-client__meta-row">
@@ -71,13 +82,8 @@ while ( have_posts() ) :
 						<dd class="bain-client__meta-value"><?php echo esc_html( $location_label ); ?></dd>
 					</div>
 					<?php endif; ?>
-					<?php if ( $industry_label ) : ?>
-					<div class="bain-client__meta-row">
-						<dt class="bain-client__meta-label">Industry</dt>
-						<dd class="bain-client__meta-value"><?php echo esc_html( $industry_label ); ?></dd>
-					</div>
-					<?php endif; ?>
 				</dl>
+				<?php endif; ?>
 			</div>
 
 			<?php if ( $logo_id ) : ?>
@@ -93,6 +99,21 @@ while ( have_posts() ) :
 	</section>
 
 	<?php bain_ascii_rule(); ?>
+
+	<?php if ( ! $has_sections ) : ?>
+	<!-- ========================================================== NO WRITE-UP -->
+	<section class="bain-client__blank">
+		<div class="bain-wrap bain-client__blank-inner">
+			<p class="bain-client__blank-note">I worked with <?php echo esc_html( get_the_title() ); ?>. I haven't written it up.</p>
+			<div class="bain-client__blank-links">
+				<a class="bain-client__blank-link" href="<?php echo esc_url( get_post_type_archive_link( 'bd324_projects' ) ); ?>">read the case studies &rarr;</a>
+				<?php if ( $archive_link ) : ?>
+				<a class="bain-client__blank-link" href="<?php echo esc_url( $archive_link ); ?>">see every client &rarr;</a>
+				<?php endif; ?>
+			</div>
+		</div>
+	</section>
+	<?php endif; ?>
 
 	<?php if ( ! empty( $projects ) ) : ?>
 	<!-- ============================================================ PROJECTS -->
@@ -148,7 +169,7 @@ while ( have_posts() ) :
 						&ldquo;<?php echo esc_html( $t_quote ); ?>&rdquo;
 					</blockquote>
 					<div class="bain-client__quote-attribution">
-						&mdash; <?php echo esc_html( $t_name ); ?>
+						<?php echo esc_html( $t_name ); ?>
 						<?php if ( $t_role ) : ?>
 							<span class="bain-client__quote-role"> / <?php echo esc_html( $t_role ); ?></span>
 						<?php endif; ?>
@@ -165,9 +186,7 @@ while ( have_posts() ) :
 	</section>
 	<?php endif; ?>
 
-	<?php
-	$content = get_the_content();
-	if ( $content ) : ?>
+	<?php if ( $content ) : ?>
 	<!-- ================================================================ BODY -->
 	<section class="bain-client__body">
 		<div class="bain-wrap bain-client__body-inner">

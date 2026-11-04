@@ -3,9 +3,14 @@
  * Clients archive — bd324_clients.
  *
  * A directory index rather than a card grid. A client record carries a name,
- * an industry and sometimes a website; there are no logos and no copy, so a
- * grid of cards would be mostly empty boxes. Leader dots and letter groups
- * suit the data and the monospace face.
+ * an industry and sometimes a website, and almost never any copy, so a grid of
+ * cards would be mostly empty boxes. Leader dots and letter groups suit the
+ * data and the monospace face.
+ *
+ * There is no dedicated logo field; the featured image serves as the logo, and
+ * only two of the 52 published clients have one (checked against production
+ * 2026-11-04). The index therefore does not show logos. If that changes, this
+ * is the decision to revisit.
  *
  * The query is widened to every client, ordered by title, in
  * bd-custom/inc/clients/business-logic.php.
