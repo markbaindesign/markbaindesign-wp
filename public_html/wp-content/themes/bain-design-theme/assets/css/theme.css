@@ -2086,6 +2086,168 @@
       flex: 1;
     }
   }
+
+  /* ----- Clients archive — directory index ---------------------------- */
+
+  .client-index__group + .client-index__group {
+    margin-top: var(--space-7);
+  }
+
+  /* The initial sits in the margin beside its rows rather than above them,
+     so the names keep one unbroken left edge down the whole index. */
+  .client-index__group {
+    display: grid;
+    /* minmax(0, 1fr), not 1fr: a bare 1fr is minmax(auto, 1fr) and refuses to
+       shrink below its content, so a long industry list pushed the rows past
+       the viewport. */
+    grid-template-columns: 3ch minmax(0, 1fr);
+    column-gap: var(--space-5);
+    align-items: start;
+  }
+
+  /* Not sticky. .site-header is sticky at top: 0 with z-index 10 and stands
+     68px tall, so a letter stuck at any offset small enough to look attached
+     to its group scrolled underneath it and vanished. The groups run two to
+     five rows, so there is little to keep in view anyway. */
+  .client-index__letter {
+    font-size: var(--type-20);
+    color: var(--clay);
+    margin: 0;
+    /* Matches .client-index__row's top padding so the initial sits on the
+       same line as the first name beside it. */
+    padding-top: var(--space-3);
+  }
+
+  .client-index__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .client-index__item + .client-index__item {
+    border-top: 1px solid var(--rule-soft);
+  }
+
+  .client-index__row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-2);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background var(--dur-1) var(--ease-1);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--hover-bg);
+      text-decoration: none;
+    }
+  }
+
+  .client-index__name {
+    font-size: var(--type-18);
+    font-weight: 600;
+    /* The leader does the stretching; the name must be free to wrap on a
+       narrow column instead of forcing the row wider than the page. */
+    min-width: 0;
+  }
+
+  .client-index__row:hover .client-index__name,
+  .client-index__row:focus-visible .client-index__name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Leader dots. flex-grow eats the slack between the name and the metadata,
+     so the two edges line up however long the name is. */
+  .client-index__leader {
+    flex: 1 1 var(--space-7);
+    min-width: var(--space-5);
+    border-bottom: 1px dotted var(--pencil);
+    transform: translateY(-0.3em);
+  }
+
+  .client-index__industry,
+  .client-index__work {
+    font-family: var(--font-mono);
+    font-size: var(--type-13);
+    color: var(--pencil);
+    white-space: nowrap;
+  }
+
+  .client-index__work {
+    color: var(--graphite);
+    min-width: 14ch;
+    text-align: right;
+  }
+
+  .client-index__work--none {
+    color: var(--pencil);
+  }
+
+  .client-index__arrow {
+    font-family: var(--font-mono);
+    font-size: var(--type-14);
+    color: var(--clay);
+    opacity: 0;
+    transition: opacity var(--dur-1) var(--ease-1), transform var(--dur-2) var(--ease-1);
+  }
+
+  .client-index__row:hover .client-index__arrow,
+  .client-index__row:focus-visible .client-index__arrow {
+    opacity: 1;
+    transform: translateX(var(--space-1));
+  }
+
+  @media (max-width: 760px) {
+    /* Letter above its rows, and the metadata under the name: at this width
+       there is no slack left for a leader to fill. */
+    .client-index__group {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: var(--space-2);
+    }
+    .client-index__letter {
+      padding-top: 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    /* Explicit areas rather than a wrapping flex row: left to wrap, the arrow
+       was pushed onto a third line of its own whenever the industry list and
+       the case-study count filled the second. Name on top, metadata beneath,
+       arrow held at the right across both. */
+    .client-index__row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) max-content max-content;
+      grid-template-areas:
+        "name     name  arrow"
+        "industry work  arrow";
+      align-items: baseline;
+      gap: var(--space-1) var(--space-3);
+    }
+    .client-index__name {
+      grid-area: name;
+      /* Some client names are single unbroken strings longer than the column */
+      overflow-wrap: anywhere;
+    }
+    .client-index__leader {
+      display: none;
+    }
+    /* Multi-industry clients list three or four terms; held on one line they
+       set the row's width and overflow the page. */
+    .client-index__industry {
+      grid-area: industry;
+      white-space: normal;
+    }
+    .client-index__work {
+      grid-area: work;
+      min-width: 0;
+      text-align: left;
+    }
+    .client-index__arrow {
+      grid-area: arrow;
+      align-self: center;
+      opacity: 1;
+    }
+  }
 }
 
 /* ----- Single post / page -------------------------------------------- */

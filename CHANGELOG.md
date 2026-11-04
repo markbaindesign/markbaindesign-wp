@@ -13,6 +13,21 @@ not linked below.
 
 ## [Unreleased]
 
+### Added
+
+- Clients archive template (`archive-bd324_clients.php`). `/clients/` had no
+  template of its own and fell through to the legacy `archive.php`, which
+  rendered it as unstyled default-blue links under a "Work / Archives" heading,
+  12 at a time across five pages. It is now a directory index: all 51 clients in
+  one alphabetical list, grouped by initial, each row carrying its industries, a
+  case-study count and a link to the client profile (BD-186).
+
+### Fixed
+
+- The last card in a case study's Related row rendered its "See all work"
+  heading in ink on its own ink fill, leaving the card as a bare
+  "cat case-studies.md" strip beside two normal cards (BD-182).
+
 ---
 
 ## [3.2.0] - 2026-11-02

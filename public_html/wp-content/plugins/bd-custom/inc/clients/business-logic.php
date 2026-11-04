@@ -1,5 +1,23 @@
 <?php
 
+/**
+ * Show every published client on the archive, in alphabetical order.
+ *
+ * The template renders a directory index, not a paged card grid: a client
+ * carries a name and an industry and little else, so 51 of them belong in one
+ * scannable list. At the site-wide 12 per page the archive ran to five pages
+ * of names in no useful order.
+ */
+function bd324_clients_archive_order($query)
+{
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('bd324_clients')) {
+        $query->set('posts_per_page', -1);
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+    }
+}
+add_action('pre_get_posts', 'bd324_clients_archive_order');
+
 function bd324_get_client_data($client_id)
 {
     if (empty($client_id) || get_post_type($client_id) !== 'bd324_clients') {
