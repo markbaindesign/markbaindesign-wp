@@ -2343,6 +2343,11 @@
 
 /* Related card — unlayered to beat base.css a { color: var(--link) } */
 .bain-project__related-card { color: var(--ink); }
+/* The last card in the row is ink-filled, so it needs its paper text colour
+   at this same unlayered level. Stating it only in @layer single lost to the
+   rule above and rendered "See all work" as ink on ink — the heading was
+   invisible and the card read as a bare "cat case-studies.md" strip. */
+.bain-project__related-card--all { color: var(--paper); }
 
 /* About portrait — unlayered to beat base.css img { height: auto } */
 .about-letter__portrait-img { height: 100%; }
