@@ -176,7 +176,17 @@ function bd324_get_project_related( $post_id, $limit = 2 ) {
 		$posts = array_filter( array_map( function ( $p ) {
 			return is_object( $p ) ? $p : get_post( (int) $p );
 		}, $picked ) );
-		return array_slice( array_values( $posts ), 0, $limit );
+		// A project is not related to itself. The chooser no longer offers it
+		// (see BD092_acf_exclude_self_from_related_projects), but a value saved
+		// before that filter existed would still render a card linking to the
+		// page you are already on. If self was the only pick, fall through to
+		// the taxonomy auto-pick rather than showing an empty Related row.
+		$posts = array_filter( $posts, function ( $p ) use ( $post_id ) {
+			return (int) $p->ID !== (int) $post_id;
+		} );
+		if ( ! empty( $posts ) ) {
+			return array_slice( array_values( $posts ), 0, $limit );
+		}
 	}
 
 	// Auto-pick by shared taxonomy

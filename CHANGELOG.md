@@ -40,6 +40,12 @@ not linked below.
 
 ### Fixed
 
+- A project's "Related projects" chooser offered the project being edited as one
+  of its own choices. It is now excluded, and a value saved before this fix that
+  names the project itself is dropped at render, falling back to the taxonomy
+  auto-pick rather than linking a card to the page you are already on. No
+  published case study on production currently holds such a value, checked
+  across all 16 on 4 November 2026 (BD-192).
 - A case study with no related client showed "Client —" and put an em dash in
   its eyebrow. Both are now omitted, matching how the template already skips
   Duration and Role (BD-187).

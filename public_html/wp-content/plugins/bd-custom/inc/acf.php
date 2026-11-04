@@ -59,3 +59,29 @@ function my_acf_op_init()
         ));
     }
 }
+
+/**
+ * Drop the project being edited from its own "Related projects" chooser.
+ *
+ * Targeted by field key, not name: "related_projects" is also the name of a
+ * field on the Clients and Testimonials groups, and those point at a different
+ * post type, so the post being edited can never appear in them anyway.
+ *
+ * @param array      $args    WP_Query args for the chooser's results.
+ * @param array      $field   The field being queried.
+ * @param int|string $post_id The post the field is attached to. ACF passes
+ *                            strings such as "options" or "term_42" for
+ *                            non-post contexts, hence the numeric check.
+ * @return array
+ */
+function BD092_acf_exclude_self_from_related_projects($args, $field, $post_id)
+{
+    if (is_numeric($post_id)) {
+        $excluded             = isset($args['post__not_in']) ? (array) $args['post__not_in'] : array();
+        $excluded[]           = (int) $post_id;
+        $args['post__not_in'] = $excluded;
+    }
+
+    return $args;
+}
+add_filter('acf/fields/relationship/query/key=field_bain_proj_related', 'BD092_acf_exclude_self_from_related_projects', 10, 3);
